@@ -1,3 +1,5 @@
+\documentclass[../Main/thesis.tex]{subfiles}
+\begin{document}
 \chapter{中华人民共和国}
 \label{cha:china}
 
@@ -58,9 +60,9 @@ jPicEdt, jaxdraw 等等。
 和图~\ref{fig:subfig2}。推荐使用 \verb|\subcaption|，不要再用\verb|\subfloat|，\verb|\subfigure| 和 \verb|\subtable|了。
 \begin{figure} %[h]
   \centering%
-  \subcaptionbox{第一个小图形\label{fig:subfig1}}{%    
+  \subcaptionbox{第一个小图形\label{fig:subfig1}}{%
     \includegraphics[height=2cm]{tongji-fig-logo.png}}\hspace{4em}%
-  \subcaptionbox{第二个小图形。如果标题很长的话，它会自动换行，这个 caption 就是这样的例子\label{fig:subfig2}}{%    
+  \subcaptionbox{第二个小图形。如果标题很长的话，它会自动换行，这个 caption 就是这样的例子\label{fig:subfig2}}{%
     \includegraphics[height=2cm]{tongji-text-logo.png}}
   \caption{包含子图形的大图形}
   \label{fig:big1}
@@ -135,7 +137,7 @@ jPicEdt, jaxdraw 等等。
 问题描述
 
 插入~pdf~格式的图，有时采用~XeLaTeX~编译后，插图被翻转~90~度。有时却不会出现该问题。问题图片如图~\ref{rotatedBode}~所示。
-\begin{figure}[H] 
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm]{BodeGraph.pdf}
   \caption{被自动翻转的bode图}
@@ -155,9 +157,9 @@ jPicEdt, jaxdraw 等等。
 第二种方法：采用GhostScript软件消除多余的旋转命令。
 \begin{enumerate}
     \item 下载安装~GhostScript~软件，官网为\url{https://www.ghostscript.com/download/gsdnld.html/}
-        
+
     \item 将安装后的bin文件夹地址加入用户环境变量，在我电脑上为~\verb|D:|\verb|\Program Files|\verb|\gs|\verb|\gs9.22|\verb|\bin|
-	
+
     \item cmd~命令行进入想转换图片所在文件夹，执行命令\\gswin32c -sDEVICE=pdfwrite -o newname.pdf  previousname.pdf
               得到一个去除多余旋转命令的~newname.pdf~文件。
 
@@ -165,14 +167,11 @@ jPicEdt, jaxdraw 等等。
 \end{enumerate}
 
 处理之后的图片如图~\ref{Bode}~所示。
-\begin{figure}[H] 
+\begin{figure}[H]
   \centering
   \includegraphics[width=12cm]{Bode.pdf}
   \caption{处理后的bode图}
   \label{Bode}
 \end{figure}
 
-
-
-
-
+\end{document}

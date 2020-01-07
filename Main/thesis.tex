@@ -1,0 +1,51 @@
+\documentclass[degree=doctor,bibtype=numeric]{../THEME/tongjithesis}
+% 选项列表（*代表默认选项）
+%   degree=[master*|doctor], % 必选：硕士* 或 博士
+%   bibtype=[numeric*|authoryear], % 可选：数字式上标* 或 作者-年份
+%   degreetype=[academic*|profession|equaleducation], % 可选：学术型* 或 专业型 或 同等学力
+%   titlenum=[rmtitlenum*|sftitlenum|heititlenum], % 可选：章节编号字体:：有衬线* 或 无衬线 或 黑体
+%   electronic=false, % 可选：封面左上角“打印时删除”显示与否
+%   draft=false, % 可选：是否减少空白页以求页面紧凑，会在封面打印“电子版”字样作为提示。
+%   secret=false, % 可选：是否保密
+%   raggedbottom=true, % 可选：优化页面布置
+
+% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际添加或者删除。
+\usepackage{../THEME/tongjithesis}
+
+%参考文献更新使用biblatex包, 使用gb7714-2015标准, 具体参数设置可在cls文件中搜索biblatex进行了解
+%加入bib文件(老版本文件依然能够使用)
+\addbibresource{../ref/refs.bib}%
+
+% 定义所有的eps文件在 figures 子目录下
+\graphicspath{{../figures/}{../THEME}}
+
+\begin{document}
+
+\makecover*{../data/cover} % 中英文封面，带*则无书脊
+\makeauthorizationpage%[../data/scanauth.pdf] % 授权书
+\makedeclarepage%[../data/scandecl.pdf] % 原创声明
+
+\frontmatter %%% 论文前段
+\input{../data/abstract} % 中英文摘要
+\tableofcontents % 目录
+\input{../data/denotation} % 符号对照表
+
+%%% 正文
+\mainmatter
+\subfile{../data/chap01}
+\subfile{../data/chap02}
+
+\backmatter %%% 其它部分
+\input{../data/ack} % 致谢
+%% 索引，星号影响是否出现在目录页中
+\listoffigures%* % 插图索引
+\listoftables%* % 表格索引
+\lisfoflistings % 代码索引
+\listofequations* % 公式索引
+\printTJbibliography % 参考文献
+\begin{appendix}% 附录
+  \subfile{../data/appendix.tex}
+\end{appendix}
+\input{../data/resume} % 个人简历
+
+\end{document}
