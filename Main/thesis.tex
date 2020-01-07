@@ -21,31 +21,31 @@
 
 \begin{document}
 
-\makecover*{../data/cover} % 中英文封面，带*则无书脊
-\makeauthorizationpage%[../data/scanauth.pdf] % 授权书
-\makedeclarepage%[../data/scandecl.pdf] % 原创声明
+\makecover*{../pages/cover} % 中英文封面，带*则无书脊
+\makeauthorizationpage%[../pages/scanauth.pdf] % 授权书
+\makedeclarepage%[../pages/scandecl.pdf] % 原创声明
 
 \frontmatter %%% 论文前段
-\input{../data/abstract} % 中英文摘要
+\input{../pages/abstract} % 中英文摘要
 \tableofcontents % 目录
-\input{../data/denotation} % 符号对照表
+\input{../pages/denotation} % 符号对照表
 
 %%% 正文
 \mainmatter
-\subfile{../data/chap01}
-\subfile{../data/chap02}
+\subfile{../body/chap01}
+\subfile{../body/chap02}
 
 \backmatter %%% 其它部分
-\input{../data/ack} % 致谢
+\input{../pages/ack} % 致谢
 %% 索引，星号影响是否出现在目录页中
-\listoffigures%* % 插图索引
-\listoftables%* % 表格索引
-\lisfoflistings % 代码索引
-\listofequations* % 公式索引
-\printTJbibliography % 参考文献
+\listoffigures%*% 插图索引
+\listoftables%*% 表格索引
+\lisfoflistings% 代码索引
+\listofequations*% 公式索引
+\printTJbibliography% 参考文献
 \begin{appendix}% 附录
-  \subfile{../data/appendix.tex}
+  \subfile{../pages/appendix.tex}
 \end{appendix}
-\input{../data/resume} % 个人简历
+\input{../pages/resume} % 个人简历
 
 \end{document}
