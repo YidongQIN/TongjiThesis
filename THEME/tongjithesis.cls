@@ -53,13 +53,18 @@
 % 论文是否保密
 \DeclareBoolOption{secret}
 % bottom margins 选项
-  % 如果没有调用\raggedbottom，那么tex就会尽量使得所有page的bottom margins相等.
+  % 如果没有调用\raggedbottom，那么tex就会尽量使得所有page的bottom margins相等。
   % 而这个命令就是告诉tex不要这么搞，即允许不同page的不一样，方便一大段材料跨页排版。
 \DeclareBoolOption{raggedbottom}
+% 在脚注标记中使用 \pkg{pifont} 的带圈数字（默认打开），此选项生成的带圈数字更漂亮。
+\DeclareBoolOption{pifootnote}
 % 参数传递给 ctexbook 模版
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 % 设置以下参数的默认值为true。
-\kvsetkeys{tongji}{raggedbottom}% 未加入的参数，\DeclareBoolOption 导致其默认false
+\kvsetkeys{tongji}{
+  raggedbottom,
+  % pifootnote,
+  }% 未加入的参数，\DeclareBoolOption 导致其默认false
 \ProcessKeyvalOptions*
 
 %% 参数检查
@@ -91,7 +96,6 @@
     \fi
   \fi
 \fi
-
 % 使用 \XeTeX\ 引擎时，\pkg{fontspec} 宏包会被 \pkg{xeCJK} 自动调用。
 % 传递给 \pkg{fontspec} 宏包 \option{no-math} 选项，避免部分数学符号字体自动调整为 CMR。
 % 其他引擎下没有这个问题，这一行会被无视。

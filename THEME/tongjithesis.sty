@@ -188,13 +188,27 @@
 % \newcommand\tongji@underline[2][6em]{\hspace{1pt}\underline{\hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}
 
 % 脚注美化 https://en.wikibooks.org/wiki/LaTeX/Footnotes_and_Margin_Notes
-\RequirePackage{pifont}
-\RequirePackage[bottom,perpage,hang]{footmisc}
+% 脚注按页编号。
+\iftongji@raggedbottom
+  \RequirePackage[bottom,perpage,hang]{footmisc}% \raggedbottom
+\else
+  \RequirePackage[perpage,hang]{footmisc}
+\fi
+% pifont有很多Pi fonts，如Dingbats（杂锦字体）, Symbol, etc
+\iftongji@pifootnote
+  \RequirePackage{pifont}
+\fi
+% 生成带圈的脚注数字，最多处理到 10。
 \def\tongji@textcircled#1{%
   \ifnum\value{#1}>9
-    \ClassError{tongjithesis}{Too many footnotes in this page.}{Keep footnote less than 10.}
+    \ClassError{tongjithesis}%
+      {Too many footnotes in this page.}{Keep footnote less than 10.}
   \fi
-  \ding{\the\numexpr\value{#1}+171\relax}%
+  \iftongji@pifootnote%
+    \ding{\the\numexpr\value{#1}+171\relax}%
+  \else%
+    \xiaoliu\arabic{#1}%
+  \fi
 }
 \renewcommand{\thefootnote}{\tongji@textcircled{footnote}}
 \renewcommand{\thempfootnote}{\tongji@textcircled{mpfootnote}}
