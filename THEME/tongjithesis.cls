@@ -121,14 +121,14 @@
 \RequirePackage{geometry}
   \geometry{
     a4paper,% 210 * 297mm
-    hcentering,% 将hmarginratio设为1:1，即left=right
-    ignoreall,% body部分不包含top,bottom,left,right，即textheight就是正文的高度。
     nomarginpar,% 即\marginparwidth=0pt and \marginparsep=0pt
+    hcentering,% 将hmarginratio设为1:1，即left=right
     left=31.7mm,% 注意left=right
-    top=29.63mm,% 加上一个行间距减去字高
-    bottom=25.4mm,
-    headheight=23.7mm,
-    headsep=4.23mm,% 页眉距顶端要求2cm。即25.4-20=5.4
+    includehead=true,% body 部分包含top
+    top=20.00mm,% Word 模板页眉顶端距离20mm
+    headheight=5.4mm,% 上缘页边距25.4mm-top=5.4mm
+    includefoot=false,% body部分不包含bottom
+    bottom=25.4mm,% 校方模板底面页边距
     footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
     }
 % 页眉页脚\pkg{fancyhdr} 设置
