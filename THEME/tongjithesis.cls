@@ -123,12 +123,12 @@
     a4paper,% 210 * 297mm
     hcentering,% 将hmarginratio设为1:1，即left=right
     ignoreall,% body部分不包含top,bottom,left,right，即textheight就是正文的高度。
-    top=25.4mm,
-    bottom=25.4mm,
     nomarginpar,% 即\marginparwidth=0pt and \marginparsep=0pt
     left=31.7mm,% 注意left=right
-    headheight=20mm,
-    headsep=5.4mm,% 页眉距顶端要求2cm。即25.4-20=5.4
+    top=29.63mm,% 加上一个行间距减去字高
+    bottom=25.4mm,
+    headheight=23.7mm,
+    headsep=4.23mm,% 页眉距顶端要求2cm。即25.4-20=5.4
     footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
     }
 % 页眉页脚\pkg{fancyhdr} 设置
