@@ -907,8 +907,7 @@
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \NewDocumentCommand\tongji@listof{s m}{
- \IfBooleanTF#1
-  {% 带星 \listof* 的不加入目录
+  \IfBooleanTF#1{% 带星 \listof* 的不加入目录
     \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
