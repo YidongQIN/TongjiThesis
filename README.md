@@ -497,7 +497,7 @@ footskip=5.4mm,
 
 调整过后的文档结构示意如下。
 
-```
+```latex
 ..  % 主文件夹 Master Folder
 |-- appendix\ % 附录
     |-- appendix.tex % 附录章节，可以在一个.tex文件中分\chapter，也可以每章一个.tex文件。
@@ -530,7 +530,7 @@ footskip=5.4mm,
 各种路径都要先用`../`回到上一层、然后再指定平级目录、最后指定文件。
 虽然这种操作不是很常见，但是相比正常路径，也就多了`../`这一步，算是可以接受。
 
-```
+```latex
 \documentclass[bibtype=numeric]{../THEME/tongjithesis} % 1. 文档类型
 \usepackage{../THEME/tongjithesis} % 2. 宏包
 \begin{document}
