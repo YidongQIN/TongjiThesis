@@ -8,9 +8,9 @@
 \newcommand{\brim}{桥梁信息模型}
 \newcommand{\db}{数据库}
 \newcommand{\oop}{面向对象编程}
-\newcommand{\ob}{OpenBrIM}
-\newcommand{\ifc}{IFC标准}
-\newcommand{\py}{Python}
+\newcommand{\ob}{\texttt{OpenBrIM}}
+\newcommand{\ifc}{\texttt{IFC标准}}
+\newcommand{\py}{\texttt{Python}}
 
 % 设置各级列表的样式，依赖于 enumitem 宏包
 \setlist[1]{labelindent=\parindent,leftmargin=2\parindent}
@@ -143,7 +143,7 @@
 % 浮动图形控制
 % 确定浮动对象的位置，可以使用 H，强制将浮动对象放到这里（可能效果很差）
 % \RequirePackage{float} % 允许上一个 section 的浮动图形出现在下一个 section 的开始部分
-% \RequirePackage[below]{placeins} % \FloatBarrier，使所有未处理的浮动图形立即被处理。
+% \RequirePackage[below]{placeins} % 提供\FloatBarrier命令，使所有未处理的浮动图形立即被处理。
 % \RequirePackage{floatflt} % 图文混排用宏包
 % \RequirePackage{rotating} % 图形和表格的控制旋转
 
@@ -181,6 +181,9 @@
 
 % 多级公式输入时修改分子分母字母大小
 \newcommand{\FRAC}[2]{\displaystyle\frac{#1}{#2}}
+
+% 原样抄写加引号
+\newcommand{\tvt}[1]{“\texttt{#1}”}
 
 % \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 % \RequirePackage{CJKfntef}
