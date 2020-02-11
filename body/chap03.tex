@@ -1,9 +1,386 @@
-\documentclass[../Main/thesis.tex]{subfiles}
+\documentclass[../Main/thesis]{subfiles}
 \begin{document}
-\chapter{新增功能测试}
-\label{chp:newFunc}
+\chapter{新增内容测试}
+\label{cha:new}
 
-\section{新增命令}
+之前的两章都是原同济LaTeX模板中的内容。
+这一章开始，就是修改、或新加内容的测试。
+\cite{RN2018}
+
+当然，不变的是满纸荒唐言，用于填充内容。
+\cite{RN2361}
+
+\section{下划线测试}
+\label{sec:underline}
+
+测试下划线。虽然是不常用的功能，决定是否留在 cls 文件中。
+
+这是默认的\underline{下划线功能}的效果。
+
+% 这是CJK字体的\CJKunderline[*]{特殊下划线}宏包的效果。
+
+\section{多级标题} \label{sec:seclv}
+
+原本的 \textsf{romantitle} 命令没有用。
+验证发现，是因为 \textsf{CTeX} 宏包中的字体命令（\textsf{$\backslash$songti}、\textsf{$\backslash$heiti}、\textsf{$\backslash$fangsong}、\textsf{$\backslash$lishu}）等，只对汉字字体生效。
+究其原因，因为是 \textsf{xeCJK} 的设计。
+
+于是，重写了控制章节标题的数字编号的命令。
+
+\subsection{二级节标题} \label{ssc:subsec2}
+
+二级节标题形如“1.3.1 xxx”。
+格式为：黑体，四号，顶左，单倍行距，段前 12 磅，段后 6 磅，序号与题名间空一个字符。
+
+\subsubsection{三级节标题} \label{sss:subsub3}
+
+三级节标题形如“1.3.1.1 xxx”。
+格式为：黑体，小四顶左，单倍行距，段前空 12 磅，段后空 6 磅，序号，且与题名间空一个字符。
+
+\paragraph{四级标题即段落} \label{par:par4}
+
+这是本次新增的层次命令。
+
+四级标题形如：“（1） xxx”。
+格式是仿照正文的，区别就在黑体字体。
+
+\paragraph{另一个四级标题} \label{spr:subpar}
+
+至此，已经有了从0级chapter到4级paragraph共5个级别了，应该够了吧。
+
+\paragraph{如果必须要有更低的层次}
+
+就像必须要有巫妖王一样。
+
+\subsubsection{段落编号}
+
+需要更加完善地测试新命令。
+现在测试用 subsubsection 分割。
+
+\paragraph{一个新段落}
+
+多补充几个段落测试。
+经过 subsubsection 的分隔，现在应该是全新的段落了。
+
+\paragraph{两个段落} \label{par:second}
+
+正文格式是宋体，小四号（英文用 Times New Roman 体，小四号），两端对齐书写，段落首行左缩进 2 个汉字符。行距 20 磅（段落中有数学表达式时，可根据表达需要设置该段的行距），段前段后 0 磅。
+
+\subsection{最后的段落测试} \label{sec:lastpar}
+
+如果“跨级”中断呢？
+比如这个，用section分隔之后，直接用paragraph会不会重新编号呢。
+
+一下就用伟大的 Git 教程测试一下吧。
+
+\paragraph{基本概念} \label{par:git-concept}
+
+\paragraph{工作区}
+working directory = workspace，就是电脑中的目录。
+
+\paragraph{暂存区}
+
+stage = staging area=index
+而repository中最重要的就是称为stage（或者叫index）的暂存区
+每次修改，如果不用git add到暂存区，那就不会加入到commit中
+
+\paragraph{版本库}
+
+repository = git directory =(local +remote)
+可以简单理解成目录下隐藏的.git文件夹。
+
+\paragraph{远程仓库}
+remote = remote repository
+一个主机，作为团队公用的仓库。一般就是GitHub、bitbucket、gitee等git服务商。
+本质上是一个git仓库的地址，形如 git@xxx.com:username/project。
+在远程仓库管理中，会给它一个别名，通常是origin表示。
+
+\paragraph{分支}
+branch
+一个仓库会有多个分支，对用不同的开发进度。
+约定俗成的主分支叫master，也就是对外展示用的发布版本。
+
+\subsection{基本流程} \label{ssc:git-workflow}
+
+其实应该顺便测试列表环境的，这里就偷懒吧。
+调整本地工作目录
+2. 创建项目
+a. 在git网站建立好新项目，把库克隆到本地
+git clone http://
+b. 或者，直接在本地文件夹目录下初始化
+git init
+（本地初始化后如要连接网络远程仓库可以再用 git remote add）
+3. 工作区 -> 暂存区：add添加（也叫stage）
+a. 保存修改并添加文件到暂存区（index，或叫staging area)
+git add <文件名>
+常用简化命令如下
+git add -A % stages all changes
+git add .  % stages new files and modifications, without deletions
+git add -u % stages modifications and deletions, without new files
+b. 或者查看区别
+git diff
+4. 暂存区 -> 版本库：commit提交
+git commit -a -m “message”
+-a表示全部 -m 添加一个留言
+○ 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
+○ 然后：wq保存并退出vim，即可回到git命令窗口。
+5. * 确认提交状况  git status
+6. 推送 git push -branch
+之前步骤1-5都是在本地的版本管理，直到这一步才牵扯到远程仓库。
+
+\section{列表环境测试} \label{sec:list}
+
+列表也是很常用的排版方式。
+最方便的方法就是调用 enumerate 宏包定制标签，用 A a R r 1 分别代表大写字母、小写字母、大写罗马、小写罗马和阿拉伯数字编号。
+
+为了偷懒和整齐，这次对一到三级列表的默认样式进行了设计。
+
+\subsection{基本列表} \label{ssc:basiclist}
+
+首先，先熟悉一下基本列表环境。
+最常用的是有序列表。
+
+\begin{enumerate}
+  \item 中文 gb7714-2015.bbx
+  \item gb7714-2015.bbx
+  \item 中文 gb7714-2015ay.bbx
+  \item gb7714-2015ay.bbx
+\end{enumerate}
+
+也挺常用的无序列表。
+
+\begin{itemize}
+  \item 中文 gb7714-2015.bbx
+  \item gb7714-2015.bbx
+  \item 中文 gb7714-2015ay.bbx
+  \item gb7714-2015ay.bbx
+\end{itemize}
+
+本次修改的发起者，用description列表。
+感觉这是一种不怎么常用的列表：大概是因为 word 中没有吧哈哈哈。
+
+\begin{description}
+  \item[CNchence] 在github.com CNchence
+  \item[marquistj13] 在github.com marquistj13
+  \item[Wenda] 在github.com Williamwenda
+  \item[CNchence] 在github.com CNchence
+  \item[Wenda] 在github.com Williamwenda
+\end{description}
+
+更常见的是嵌套列表。
+
+\subsection{嵌套}
+
+列表的内容就很随意了。
+查看commit的历史it log pretty=oneline 会显示历次commit的一个SHA1码，以及现在HEAD指向的版本。
+上一个版本就是HEAD，上上一个版本就是HEAD，往上100个版本成HEAD~100。
+回滚版本 git reset --hard HEAD
+有时候不识别，会追问 More？ 那么就用HEAD~1指向上一个版本。
+回滚“回滚”的版本 reset到旧版本之后，新版本不会显示在log中。但是仍然可以用那个十六进制的版本号找回。
+git reset --hard nnnn版本号前几位，版本号没必要写全，前几位就可以了，Git会自动去找。 git reflog 记录你的每一次命令
+对比功能 git diff \#其参数解释如下图。
+
+\begin{enumerate}
+  \item 介绍了时间序列分析的相关概念与理论。
+  \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
+  \begin{enumerate}
+    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。
+    \item 对建模过程中的平稳性检验、模型建立步骤、定阶、参数估计以及检验进行了系统的阐述，
+  \end{enumerate}
+  \item 并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。
+  \item 结果表明季节 ARIMA 模型能较好地模拟监测序列的变化趋势，预测精度较高。
+  \begin{enumerate}
+    \item 用力地嵌套列表。
+    \begin{enumerate}
+      \item 针对监测序列中某些测点间具有较高的相似性，
+      \item 探讨了滞后协整分析的参数估计、模型检验等方法，
+    \end{enumerate}
+    \item 最后建立了支座位移与温度间的 ADL 与 ECM 模型，
+    \item 结果表明该模型具有良好的拟合精度与预测效果。
+  \end{enumerate}
+\end{enumerate}
+
+建立起基于多测点序列的模型分析方法。
+并排图形。已经不再推荐，用新的需要注意的是，由于我们的新模板中使用了的浮动体的配置，并且加载了，就不能再加载了，因此我们再也无法使用提供的命令了。不用这么悲伤，我们可以使用的直接将其替换即可。同时注意标题在中是必选参数，即用增加伪斜体伪粗体选项。段前距离修改关键词加粗。
+
+主要参考资料：
+\begin{itemize}
+  \item 介绍了时间序列分析的相关概念与理论。
+  \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
+  \begin{itemize}
+    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。
+    \item 对建模过程中的平稳性检验、模型建立步骤、定阶、参数估计以及检验进行了系统的阐述，
+  \end{itemize}
+  \item 并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。
+  \item 结果表明季节 ARIMA 模型能较好地模拟监测序列的变化趋势，预测精度较高。
+  \begin{itemize}
+    \item 用力地嵌套列表。
+    \begin{itemize}
+      \item 针对监测序列中某些测点间具有较高的相似性，
+      \item 探讨了滞后协整分析的参数估计、模型检验等方法，
+    \end{itemize}
+    \item 最后建立了支座位移与温度间的 ADL 与 ECM 模型，
+    \item 结果表明该模型具有良好的拟合精度与预测效果。
+  \end{itemize}
+\end{itemize}
+
+
+效果预览：请到这里下载PDF，在github.com marquistj13 TongjiThesis releases latest。
+注意：由于我们不经常打tag，因此release界面往往不是最新的，请在本页面下载最新模板。
+
+
+\begin{itemize}
+  \item 介绍了时间序列分析的相关概念与理论。重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
+  \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。对建模过程中的平稳性检验、模型建立步骤、
+  定阶、参数估计以及检验进行了系统的阐述，并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。结果表明季节 ARIMA 模型能较好地模
+  拟监测序列的变化趋势，预测精度较高。
+  \item 针对监测序列中某些测点间具有较高的相似性，建立起基于多测点序列的 ADL 模型分析方法。将滞后分析、时序分析以及滞后协整分析有机整合在一起，探讨了滞后协整分析的参数估计、模型检验等方法，并推导了完整的 ADL-ECM 误差修正模型表达方程。最后建立了支座位移与温度间的 ADL 与 ECM 模型，结果表明该模型具有良好的拟合精度与预测效果。
+  \item 以时间序列的预测模型作为结构的退化模型，对各测点进行退化趋势模拟与退化临界时刻预测，从整体上把握桥梁的整体性能退化趋势与使用极限寿命。尽管目前时间序列分析方法在桥梁监测上的应用还较少见。
+\end{itemize}
+
+RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcommand macro的一种高性能的替代，即 NewDocumentCommand。
+去掉了tj的RequirePackage{hypernat},hypernat比较老了（2001年的），它的功能是使得natbib 的multiple sequential citations (e.g [3,2,1]) will be compressed to [1-3], where the '1' and the '3' are (color)linked to the bibliography.但现在不用这个hypernat也可以实现了，我推测是其他宏包自带了这些功能，不细细追究了。
+
+下面是一个无序列表。
+
+\begin{description}
+  \item [linxdcn] (在github.com linxdcn TongjiThesis)同学汇总的wildwolf、
+  \item [svandex] 在github.com svandex masthesis)、
+  \begin{description}
+    \item [zhao-chen] 在github.com zhao-chen TongjiThesis)的版本。
+    \item [收藏有本硕博模板的zhouyuan版] 在github.com zhouyuan/tongjithesis)。
+  \end{description}
+\end{description}
+
+\section{表格测试} \label{sec:tabletest}
+
+常用的表格是三线表。
+
+\begin{table}[htb]
+\centering
+\caption{这不是个图}
+\label{tab:fig}
+\begin{tabular}[c]{lll}
+  \toprule[1.5pt]
+  0 & 1 & 2 \\ % title row
+  \midrule[1pt]
+  0 & 1 & 2 \\ % title row
+  0 & 1 & 2 \\ % title row
+  \bottomrule[1.5pt]
+\end{tabular}
+\end{table}
+
+\begin{table}[htb]
+\centering
+\caption{tabularx}
+\label{tab:tabularx}
+\begin{tabularx}{0.7\textwidth}{>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\centering\arraybackslash}X}
+  \toprule[1.5pt]
+  0 & 1 & 2 \\ % title row
+  \midrule[1pt]
+  0 & 1 & 2 \\ % title row
+  0 & 1 & 2 \\ % title row
+  \bottomrule[1.5pt]
+\end{tabularx}
+\end{table}
+\section{代码环境} \label{sec:code}
+常用的代码展示，基于 Listings 宏包。
+\begin{lstlisting}[style=monocolor,
+  caption={first lst env},
+  label={no label},
+  name=测试第一个代码,
+  language=PythonPlus]
+  # import lxml
+  import requests
+  from bs4 import BeautifulSoup
+  import re
+\end{lstlisting}
+
+由于本模板参考文献部分依赖biblatex-gb7714-2015宏包的2018版本，因此必须在安装好Texlive后更新此宏包，Texlive2018 自带的biblatex-gb7714-2015宏包依然较老，无法正常运行本模板。
+
+\begin{lstlisting}[language=Python,
+  caption=Second CODE Block,
+  label=lst:2nd,
+  style=colored]
+  import numpy as np
+  def incmatrix(genl1,genl2):
+      m = len(genl1)
+      #compute the bitwise xor matrix
+      M1 = bitxormatrix(genl1)
+      for i in range(m-1):
+          for j in range(i+1, m):
+              [r,c] = np.where(M2 == M1[i,j])
+              for k in range(len(r)):
+                  VT[(i)*n + r[k]] = 1;
+
+                  if M is None:
+                      M = np.copy(VT)
+                  else:
+                      M = np.concatenate((M, VT), 1)
+      return M
+\end{lstlisting}
+
+不同于tabled 表~\ref{tab:fig}，源代码的展示用\ref{lst:inp}不会显示开头。
+好吧，是我错了。都是需要手动指定其是“图”、“表”、“代码”或“章节”。\textbackslash ref 命令只显示编号。
+仔细一想，这样也好，只做最小程度的工作，格式完全可以 \textbackslash newcommand 或者用 VSCode 脚本辅助。
+
+第~\ref{sec:code} 小节的内容也被引用了。
+
+\begin{lstlisting}[language=Python,
+  caption=中文标题没有括号,
+  label=lst:outer,
+  style=colorEX]
+  import numpy as np
+  def incmatrix(genl1,genl2):
+      m = len(genl1)
+      #compute the bitwise xor matrix
+      M1 = bitxormatrix(genl1)
+      for i in range(m-1):
+          for j in range(i+1, m):
+              [r,c] = np.where(M2 == M1[i,j])
+              for k in range(len(r)):
+                  VT[(i)*n + r[k]] = 1;
+      return M
+\end{lstlisting}
+
+推荐使用其包管理器更新此宏包，如若更新失败（我更新了好几次都失败了，它还把我的这个宏包给删了，郁闷），那么可按照官方页面在github.com/hushidong/biblatex-gb7714-2015的安装介绍，在你的tex安装目录搜索biblatex-gb7714-2015文件夹，将该文件夹中的四个文件替换为官方页面在github.com/hushidong/biblatex-gb7714-2015提供的文件即可。
+
+这里测试三个代码片段的引用。
+
+代码片段，没有前缀，直接中括号，见 \ref{no label} 代码。
+
+代码片段，是按照现有的snippet直接插入的样式 \ref{lst:2nd} 代码。
+
+代码片段， \ref{lst:outer} 代码，手动在环境之后加了label，可以被 vscode 插件检测到。
+
+代码片段， \ref{lst:parenthesis} 代码，仅供测试，caption 加了花括号。
+
+貌似不能从ref命令中自动调用。难道需要手动加 label 更好吗？
+\begin{lstlisting}[language=Python,
+  caption={Must have Parenthesis},
+  label=lst:parenthesis]
+  import numpy as np
+  def incmatrix(genl1,genl2):
+      m = len(genl1)
+      #compute the bitwise xor matrix
+      M1 = bitxormatrix(genl1)
+      for i in range(m-1):
+          for j in range(i+1, m):
+              [r,c] = np.where(M2 == M1[i,j])
+              for k in range(len(r)):
+                  VT[(i)*n + r[k]] = 1;
+      return M
+\end{lstlisting}
+
+还可以直接导入。
+\lstinputlisting[language=Python,
+  caption=inputted Python,
+  label=lst:inp,
+  style=monocolor,
+  ]{../code/tmp.py}
+
+
+\section{行内原样抄写并带有双引号命令}
 \label{sec:newfunction}
 
 考虑到会出现一些后缀名或者文件名之类的内容，所以新添了一个命令：
