@@ -101,15 +101,33 @@
 \lstdefinelanguage{PyBrIM}[]{PythonPlus}{ % extend Python with user-defined keywords
   emph={d,E,a,Fc28,Fy,Fu,D,des,supplier,Material,Rectangle,PyELMT}, % add word you want to highlight
   }
+% XML syntax and styles (To replace the predefined Listings.XML, which is preliminary)
+\lstdefinelanguage{XML}{
+  % tag is identifier
+  moredelim=[s][keywordstyle]{\ }{=},% attribute's key
+  morestring=[s]{"}{"},% attribute's value
+  morestring=[s][]{>}{<},% text
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  morecomment=[l]{!DOCTYPE},
+}
+% XML in Firefox
+\lstdefinestyle{Firefox_XML}{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  identifierstyle=\bfseries\color{darkred},% tag name
+  keywordstyle=\bfseries\color{red},% attribute's key
+  stringstyle=\color{blue},% attribute's value
+  keywordstyle=[3]\color{black},% text
+  commentstyle=\itshape\color{darkgreen},
+}
 % OpenBrIM Listings syntax and styles
 \lstdefinelanguage{ParamML}{
   morestring=[s][\color{blue}]{"}{"},
   morestring=[s][\color{black}]{>}{<},
   morecomment=[s][\color{green}]{<!--}{-->},
-  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,D,N,V,T,Type,}
-  showstringspaces=false,
-}
-\lstdefinestyle{OpenBrIM_style}{
+  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,D,N,V,T,Type,},
   basicstyle=\small\ttfamily,
   backgroundcolor=\color{white},
   commentstyle=\color{green}\itshape,
@@ -118,6 +136,7 @@
   stringstyle=\color{black},
   showstringspaces=false,
 }
+
 % settings of `list of Listings'
 \renewcommand{\lstlistingname}{代码}% 原"Listing"改为"代码块"
 \renewcommand{\lstlistlistingname}{代码索引}
