@@ -296,6 +296,19 @@ RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcom
   import re
 \end{lstlisting}
 
+\begin{lstlisting}[language=ParamML,
+  % caption=,
+  % label=lst:,
+  style=OpenBrIM_style,
+  ]
+<O  N="C4000Psi"  T="Material"  D="Concrete">
+  <P N="d"  V="0.0000002248"  D="Density"/>
+  <P N="E"  V="3604.9965"  D="Modulus of Elasticity"/>
+  <P N="Fc28"  V="4"  D="Concrete Compressive Strength"/>
+</O>
+<!-- comment -->
+\end{lstlisting}
+
 由于本模板参考文献部分依赖biblatex-gb7714-2015宏包的2018版本，因此必须在安装好Texlive后更新此宏包，Texlive2018 自带的biblatex-gb7714-2015宏包依然较老，无法正常运行本模板。
 
 \begin{lstlisting}[language=Python,
