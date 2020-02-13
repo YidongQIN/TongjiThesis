@@ -209,12 +209,31 @@
 
 用 `\lstdefinelanguage{NewLanguageName}[dialect]{BasedLanguage}{key=value}` 的方法，扩展了 Python 的关键词列表，并据其继续包装了一个可供自定义的语言；同理，把 `OpenBrIM` 设定为一个语言。
 
-> 不能把 `OpenBrIM` 建立在 XML 之上，否则 tag 不能正常显示 `identifierstyle` 样式。
 
 可用 `lstdefinestyle={}` 以值对的方式定义样式，即关键词、字符串等不同类型代码的高亮颜色、字体样式等：
 1. 基础样式 `monocolor` 是只有黑白，依靠字体区分关键词；
 2. 样式 `colored` 是基本的配色方案，可以不依靠宏包 `{color}` 使用，也可以把其中“注释”类型的绿色改为深绿色，以求美观；
 3. 针对扩展过后的 Python 建成了一个相对色彩丰富的样式 `colorEX`。
+
+> 不能把 `OpenBrIM` 建立在 XML 之上，否则 tag 不能正常显示 `identifierstyle` 样式。
+> 原因是：`listings` 宏包的 XML 语言尚未完成。
+
+所以针对需要的 `OpenBrIM`，特意完成了相关的环境定义：
+1. 通用的 `XML` 语言，包括：
+
+   1. tag 用 identifier 实现高亮，
+   2. attribute key 用`空格`和`=`作为前后边界定义，高亮形式为 `keyworldstyle`，
+   3. attribute value 定义为字符串，
+   4. text 信息定义为没有格式的字符串。
+
+2. 仿照 Firefox 浏览器的样式，定义了 `XML` 的高亮格式。
+
+   参照 <https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting> 。
+
+3. 专用`ParamML` 语言。
+
+   因为通用的 `XML` 在高亮属性的键时，会把作为分界符的`=`一起高亮，效果不甚满意。
+   所以，没有从 `XML` 继承定义 `ParamML`，而是重新定义了一种语言及其配套的高亮（仿照OpenBrIM平台样式）。
 
 重定义 `\lstlistingname` 和 `\lstlistlistingname` 以更改环境名。
 
