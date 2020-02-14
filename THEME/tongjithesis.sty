@@ -81,7 +81,7 @@
   basicstyle=\small\ttfamily,
   backgroundcolor=\color{white},
   commentstyle=\color{darkgreen}\slshape,
-  keywordstyle=\color{blue}\bfseries\itshape,
+  keywordstyle=\color{darkblue}\bfseries\itshape,
   keywordstyle=[2]\color{blue}\bfseries,
   keywordstyle=[3]\color{grass},
   keywordstyle=[4]\color{red},
@@ -136,7 +136,15 @@
   stringstyle=\color{black},
   showstringspaces=false,
 }
-
+% EXPRESS-G syntax and styles
+\lstdefinelanguage{EXPRESS}{
+  morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,},
+  morekeywords=[2]{,STRING,BINARY,LOGICAL,BOOLEAN,NUMBER,INTEGER,REAL,LIST,},
+  emph={,OPTIONAL,SUBTYPE,SUPERTYPE,OF,DERIVE,WHERE,},
+  morestring=[s]{\ \ }{:\ },% attribute's key
+  morecomment=[s]{--}{;},
+  showstringspaces=false,
+}
 % settings of `list of Listings'
 \renewcommand{\lstlistingname}{代码}% 原"Listing"改为"代码块"
 \renewcommand{\lstlistlistingname}{代码索引}
