@@ -884,7 +884,7 @@
 \newenvironment{denotation}[1][2.5cm]{
   % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@denotation@name}
   \tongji@chapter*[]{\tongji@denotation@name}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@denotation@name]
-  \vspace*{18bp}\xiaosi[1.6]\begin{tongji@denotation}[labelwidth=#1]
+  \vspace*{18bp}\xiaosi[1.6]\begin{tongji@denotation}[labelwidth=#1]\xiaosi[2]
   }{%
     \end{tongji@denotation}
     \clearpage
