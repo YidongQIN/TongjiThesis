@@ -1,3 +1,5 @@
+% !TeX root = ../Main/thesis.tex
+% !TEX program = xelatex
 \documentclass[../Main/thesis]{subfiles}
 \begin{document}
 \chapter{新增内容测试}
@@ -10,14 +12,14 @@
 当然，不变的是满纸荒唐言，用于填充内容。
 \cite{RN2361}
 
+只不过偷了个懒：用\textsf{zhlipsum} 宏包填充废话充篇幅。
+
 \section{下划线测试}
 \label{sec:underline}
 
 测试下划线。虽然是不常用的功能，决定是否留在 cls 文件中。
 
 这是默认的\underline{下划线功能}的效果。
-
-% 这是CJK字体的\CJKunderline[*]{特殊下划线}宏包的效果。
 
 \section{多级标题} \label{sec:seclv}
 
@@ -26,6 +28,8 @@
 究其原因，因为是 \textsf{xeCJK} 的设计。
 
 于是，重写了控制章节标题的数字编号的命令。
+并且可以在 \textbackslash documentclass[titlenum=[rmtitlenum*|sftitlenum|heititlenum]] 中启用。
+有衬线* 或 无衬线 或 黑体。
 
 \subsection{二级节标题} \label{ssc:subsec2}
 
@@ -41,16 +45,24 @@
 
 这是本次新增的层次命令。
 
-四级标题形如：“（1） xxx”。
+四级标题形如：“（1）. xxx”。
 格式是仿照正文的，区别就在黑体字体。
 
 \paragraph{另一个四级标题} \label{spr:subpar}
 
 至此，已经有了从0级chapter到4级paragraph共5个级别了，应该够了吧。
 
-\paragraph{如果必须要有更低的层次}
+\subparagraph{如果必须要有更低的层次}
 
 就像必须要有巫妖王一样。
+
+\subparagraph{但是样式过多也不好}
+
+然而应该不会用到这么多层级吧？
+因为有一个问题，那就是 \textsf{paragraph} 和 \textsf{subparagraph} 与各类列表如何区分？
+其实挺容易弄混的。
+
+所以如果内容不多，干脆用列表好了，见第~\ref{sec:list}节。
 
 \subsubsection{段落编号}
 
@@ -66,7 +78,7 @@
 
 正文格式是宋体，小四号（英文用 Times New Roman 体，小四号），两端对齐书写，段落首行左缩进 2 个汉字符。行距 20 磅（段落中有数学表达式时，可根据表达需要设置该段的行距），段前段后 0 磅。
 
-\subsection{最后的段落测试} \label{sec:lastpar}
+\subsection{最后的段落测试} \label{ssc:lastpar}
 
 如果“跨级”中断呢？
 比如这个，用section分隔之后，直接用paragraph会不会重新编号呢。
@@ -79,13 +91,11 @@
 working directory = workspace，就是电脑中的目录。
 
 \paragraph{暂存区}
-
 stage = staging area=index
 而repository中最重要的就是称为stage（或者叫index）的暂存区
 每次修改，如果不用git add到暂存区，那就不会加入到commit中
 
 \paragraph{版本库}
-
 repository = git directory =(local +remote)
 可以简单理解成目录下隐藏的.git文件夹。
 
@@ -102,31 +112,61 @@ branch
 
 \subsection{基本流程} \label{ssc:git-workflow}
 
-其实应该顺便测试列表环境的，这里就偷懒吧。
-调整本地工作目录
-2. 创建项目
-a. 在git网站建立好新项目，把库克隆到本地
-git clone http://
-b. 或者，直接在本地文件夹目录下初始化
-git init
-（本地初始化后如要连接网络远程仓库可以再用 git remote add）
-3. 工作区 -> 暂存区：add添加（也叫stage）
-a. 保存修改并添加文件到暂存区（index，或叫staging area)
-git add <文件名>
-常用简化命令如下
-git add -A % stages all changes
-git add .  % stages new files and modifications, without deletions
-git add -u % stages modifications and deletions, without new files
-b. 或者查看区别
-git diff
-4. 暂存区 -> 版本库：commit提交
-git commit -a -m “message”
--a表示全部 -m 添加一个留言
-○ 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
-○ 然后：wq保存并退出vim，即可回到git命令窗口。
-5. * 确认提交状况  git status
-6. 推送 git push -branch
-之前步骤1-5都是在本地的版本管理，直到这一步才牵扯到远程仓库。
+顺便测试一下多级列表。
+
+\begin{enumerate}[1.]
+  \item 调整本地工作目录
+  \item 创建项目
+  \begin{enumerate}[a.]
+    \item 在git网站建立好新项目，把库克隆到本地 \\
+
+    \verb| git clone http:// |
+
+    \item 或者，直接在本地文件夹目录下初始化 \\
+
+    \verb| git init |
+
+    本地初始化后，如要连接网络远程仓库可以再用
+
+    \verb| git remote add |
+  \end{enumerate}
+
+  \item 工作区 -> 暂存区：add添加（也叫stage）
+    \begin{enumerate}[A.]
+      \item 保存修改并添加文件到暂存区（index，或叫staging area)
+
+      \verb| git add <文件名> |
+
+      常用简化命令如下：
+        \begin{itemize}[\textbullet]
+          \item \verb| git add -A % 所有更改 |
+          \item \verb| git add .  % 新增、修改，不含删除 |
+          \item \verb| git add -u % 修改、删除，不含新增 |
+        \end{itemize}
+
+      \item 或者查看区别
+
+      \verb!git diff!
+    \end{enumerate}
+
+  \item 暂存区 -> 版本库：commit提交
+
+  \verb| git commit -a -m "message" |
+
+  其中，-a 表示全部 -m 添加一个留言。
+  \begin{enumerate}[(a)]
+    \item 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
+    \item 然后：wq保存并退出vim，即可回到git命令窗口。
+  \end{enumerate}
+
+  \item * 确认提交状况  git status
+
+  \item 推送到远程仓库
+
+  \verb| git push -branch |
+
+  之前步骤1-5都是在本地的版本管理，直到这一步才牵扯。
+\end{enumerate}
 
 \section{列表环境测试} \label{sec:list}
 
@@ -156,8 +196,8 @@ git commit -a -m “message”
   \item gb7714-2015ay.bbx
 \end{itemize}
 
-本次修改的发起者，用description列表。
-感觉这是一种不怎么常用的列表：大概是因为 word 中没有吧哈哈哈。
+本次修改的发起者，用description列表展示。
+感觉这是一种不怎么常用的列表\footnote{大概是因为 word 中没有吧哈哈哈}。
 
 \begin{description}
   \item[CNchence] 在github.com CNchence
@@ -171,15 +211,12 @@ git commit -a -m “message”
 
 \subsection{嵌套}
 
-列表的内容就很随意了。
-查看commit的历史it log pretty=oneline 会显示历次commit的一个SHA1码，以及现在HEAD指向的版本。
-上一个版本就是HEAD，上上一个版本就是HEAD，往上100个版本成HEAD~100。
-回滚版本 git reset --hard HEAD
-有时候不识别，会追问 More？ 那么就用HEAD~1指向上一个版本。
-回滚“回滚”的版本 reset到旧版本之后，新版本不会显示在log中。但是仍然可以用那个十六进制的版本号找回。
-git reset --hard nnnn版本号前几位，版本号没必要写全，前几位就可以了，Git会自动去找。 git reflog 记录你的每一次命令
-对比功能 git diff \#其参数解释如下图。
+先填充一些废话。\zhlipsum[6]
 
+可以参见第~\ref{ssc:git-workflow}节的例子，也可以看下面这个。
+区别在于，本小节的例子完全展示了\emph{默认参数}情况下的样式。
+
+首先是有序列表。
 \begin{enumerate}
   \item 介绍了时间序列分析的相关概念与理论。
   \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
@@ -200,10 +237,7 @@ git reset --hard nnnn版本号前几位，版本号没必要写全，前几位�
   \end{enumerate}
 \end{enumerate}
 
-建立起基于多测点序列的模型分析方法。
-并排图形。已经不再推荐，用新的需要注意的是，由于我们的新模板中使用了的浮动体的配置，并且加载了，就不能再加载了，因此我们再也无法使用提供的命令了。不用这么悲伤，我们可以使用的直接将其替换即可。同时注意标题在中是必选参数，即用增加伪斜体伪粗体选项。段前距离修改关键词加粗。
-
-主要参考资料：
+然后是无序列表的。
 \begin{itemize}
   \item 介绍了时间序列分析的相关概念与理论。
   \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
@@ -224,24 +258,7 @@ git reset --hard nnnn版本号前几位，版本号没必要写全，前几位�
   \end{itemize}
 \end{itemize}
 
-
-效果预览：请到这里下载PDF，在github.com marquistj13 TongjiThesis releases latest。
-注意：由于我们不经常打tag，因此release界面往往不是最新的，请在本页面下载最新模板。
-
-
-\begin{itemize}
-  \item 介绍了时间序列分析的相关概念与理论。重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
-  \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。对建模过程中的平稳性检验、模型建立步骤、
-  定阶、参数估计以及检验进行了系统的阐述，并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。结果表明季节 ARIMA 模型能较好地模
-  拟监测序列的变化趋势，预测精度较高。
-  \item 针对监测序列中某些测点间具有较高的相似性，建立起基于多测点序列的 ADL 模型分析方法。将滞后分析、时序分析以及滞后协整分析有机整合在一起，探讨了滞后协整分析的参数估计、模型检验等方法，并推导了完整的 ADL-ECM 误差修正模型表达方程。最后建立了支座位移与温度间的 ADL 与 ECM 模型，结果表明该模型具有良好的拟合精度与预测效果。
-  \item 以时间序列的预测模型作为结构的退化模型，对各测点进行退化趋势模拟与退化临界时刻预测，从整体上把握桥梁的整体性能退化趋势与使用极限寿命。尽管目前时间序列分析方法在桥梁监测上的应用还较少见。
-\end{itemize}
-
-RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcommand macro的一种高性能的替代，即 NewDocumentCommand。
-去掉了tj的RequirePackage{hypernat},hypernat比较老了（2001年的），它的功能是使得natbib 的multiple sequential citations (e.g [3,2,1]) will be compressed to [1-3], where the '1' and the '3' are (color)linked to the bibliography.但现在不用这个hypernat也可以实现了，我推测是其他宏包自带了这些功能，不细细追究了。
-
-下面是一个无序列表。
+下面是一个description列表，不知道中文叫什么。
 
 \begin{description}
   \item [linxdcn] (在github.com linxdcn TongjiThesis)同学汇总的wildwolf、
@@ -270,6 +287,10 @@ RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcom
 \end{tabular}
 \end{table}
 
+先填充一些废话。\zhlipsum[7]
+
+在这里学习一下新定义的列形式。
+
 \begin{table}[htb]
 \centering
 \caption{tabularx}
@@ -283,6 +304,7 @@ RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcom
   \bottomrule[1.5pt]
 \end{tabularx}
 \end{table}
+
 \section{代码环境} \label{sec:code}
 常用的代码展示，基于 Listings 宏包。
 \begin{lstlisting}[style=monocolor,
@@ -296,10 +318,11 @@ RequirePackage部分主要参考自thuthesis。xparse 提供了LATEX2ε的newcom
   import re
 \end{lstlisting}
 
+先填充一些废话。\zhlipsum[8]
+
 \begin{lstlisting}[language=ParamML,
   % caption=,
   % label=lst:,
-  style=OpenBrIM_style,
   ]
 <O  N="C4000Psi"  T="Material"  D="Concrete">
   <P N="d"  V="0.0000002248"  D="Density"/>

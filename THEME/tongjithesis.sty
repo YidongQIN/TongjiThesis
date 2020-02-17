@@ -245,7 +245,7 @@
 % 定义脚注分割线
 \def\footnoterule{\vspace{-3pt}\hrule\@width0.3\textwidth\@height0.4\p@\vspace{2.6pt}}
 \let\tongji@footnotesize\footnotesize
-%字号（宋体小五），以及悬挂缩进（1.5字符）。
+% 字号（宋体小五），以及悬挂缩进（1.5字符）。
 \renewcommand\footnotesize{\tongji@footnotesize\xiaowu[1.5]}
 \footnotemargin1.5em\relax
 % \cs{@makefnmark} 默认是上标样式，而在脚注部分要求为正文大小。
@@ -254,5 +254,8 @@
 \def\tongji@@makefnmark{\hbox{{\normalfont\@thefnmark}}}
 \pretocmd{\@makefntext}{\let\@makefnmark\tongji@@makefnmark}{}{}
 \apptocmd{\@makefntext}{\let\@makefnmark\tongji@makefnmark}{}{}
+
+% 填充废话专用宏包
+\RequirePackage{zhlipsum}
 
 \endinput
