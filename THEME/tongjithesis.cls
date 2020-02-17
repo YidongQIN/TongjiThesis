@@ -387,14 +387,24 @@
     number=\arabic{paragraph},
     format=\heiti\xiaosi[1],
     nameformat=\tongji@title@font\wuhao,
-    aftername=\hspace{0.5em},
+    aftername=\hspace{0pt},
     titleformat={},
     runin=false,
     afterindent=true,
     beforeskip=6bp,
     afterskip=0bp,
   },
-  subparagraph/afterindent=true,
+  subparagraph={
+    name={（,）},
+    number=\chinese{subparagraph},
+    format=\heiti\xiaosi[1],
+    nameformat=\tongji@title@font,
+    titleformat={},
+    runin=false,
+    afterindent=true,
+    beforeskip=6bp,
+    afterskip=0bp,
+    },
   appendixname=附录,
   contentsname=目录,
   listfigurename=插图索引,
@@ -813,7 +823,7 @@
 
 %% 目录
 % 章节编号等级 \setcounter{secnumdepth}{level} suppresses heading numbers at any depth > level
-\setcounter{secnumdepth}{4}
+\setcounter{secnumdepth}{5}
 % 目录显示等级最多三层，即: x.x.x
 \setcounter{tocdepth}{2}
 % 目录生成

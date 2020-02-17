@@ -45,7 +45,7 @@
 
 这是本次新增的层次命令。
 
-四级标题形如：“（1）. xxx”。
+四级标题形如：“（1）xxx”。
 格式是仿照正文的，区别就在黑体字体。
 
 \paragraph{另一个四级标题} \label{spr:subpar}
@@ -56,6 +56,9 @@
 
 就像必须要有巫妖王一样。
 
+用了 \textbackslash chinese 命令，五级标题形如“（一） XXX”
+
+记得更改 \textbackslash setcounter\{secnumdepth\} 为 5。
 \subparagraph{但是样式过多也不好}
 
 然而应该不会用到这么多层级吧？
