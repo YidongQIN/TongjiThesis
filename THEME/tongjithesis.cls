@@ -63,7 +63,7 @@
 % 设置以下参数的默认值为true。
 \kvsetkeys{tongji}{
   raggedbottom,
-  % pifootnote,
+  pifootnote,
   }% 未加入的参数，\DeclareBoolOption 导致其默认false
 \ProcessKeyvalOptions*
 
@@ -312,13 +312,13 @@
 % only floats.)被浮动对象占的比例最少是0.6
 
 %% 浮动体标题样式
-% 图表标题字体为宋体五号
+% 图表标题、表内容字体为宋体五号
 \let\old@tabular\@tabular
 \def\tongji@tabular{\wuhao[1.5]\old@tabular}
 % \DeclareCaptionLabelFormat 来自 subcaption 宏包。
 \DeclareCaptionLabelFormat{tongji}{{\wuhao[1]\normalfont #1~#2}}
-% \DeclareCaptionLabelFormat{tongji}{{\wuhao[1]\hei #1~\rmfamily #2}}% 如果
-% 去掉图表号后面的冒号。图序与图名文字之间空一个汉字符宽度。
+% \DeclareCaptionLabelFormat{tongji}{{\wuhao[1]\hei #1~\rmfamily #2}}% 去掉图表号后面的冒号。
+% 图序与图名文字之间空一个汉字符宽度。
 \DeclareCaptionLabelSeparator{tongji}{\hspace{1em}}
 \DeclareCaptionFont{tongji}{\wuhao[1]}
 \captionsetup{labelformat=tongji,labelsep=tongji,font=tongji}
@@ -891,7 +891,7 @@
 
 %% 可选索引：符号说明（主要符号对照表）、图索引、表索引、公式索引
 % 主要符号对照表
-\newenvironment{denotation}[1][2.5cm]{
+\newenvironment{denotation}[1][2cm]{
   % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@denotation@name}
   \tongji@chapter*[]{\tongji@denotation@name}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@denotation@name]
   \vspace*{18bp}\xiaosi[1.6]\begin{tongji@denotation}[labelwidth=#1]\xiaosi[2]
@@ -917,7 +917,8 @@
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \NewDocumentCommand\tongji@listof{s m}{
-  \IfBooleanTF#1{% 带星 \listof* 的不加入目录
+ \IfBooleanTF#1
+  {% 带星 \listof* 的不加入目录
     \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
