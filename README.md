@@ -498,7 +498,11 @@ footskip=5.4mm,
 `ctex` 提供的章节标题命令最小是 `\subparagraph`、即5级标题，形如“x.x.x.x.x.x”共6个数字。
 
 出于强迫症考虑，把所有的样式都统一定义了。
-特别地，发现了`\chinese`命令取代`\arabic`，将数字以中文数字形式输出，作为章节序号的一部分。
+1. 开启5级标题编号：
+   1. 自动化的方案是，`\LoadClass`时添加上`sub4section`参数（没有true/false值）；
+   2. 手动方案是`\setcounter{secnumdepth}=5`。
+2. 样式定义，同`section`等，不再赘述。
+   特别地，发现了`\chinese`命令取代`\arabic`，将数字以中文数字形式输出，作为章节序号的一部分。
 
 不过，目前觉得 `paragrah` 和 `subparagraph` 的等级太详细了、而且样式上跟列表环境有相似，还没有确定好如何处理。
 * 是否把 `paragrah` 改成“（一） XXX”的样式？
