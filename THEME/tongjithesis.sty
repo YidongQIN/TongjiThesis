@@ -203,14 +203,20 @@
 % \def\hlinewd#1{% 参数是厚度
 %   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
 
+% 横置页面，用于宽表
+\RequirePackage{lscape}
+
+% 原样抄写加引号
+\newcommand{\tvt}[1]{“\texttt{#1}”}
+
+% 彩色展示网页
+\newcommand{\colorurl}[1]{\texttt{\color{darkblue}<\uline{#1}>}}
+
 % 定义破折号
 \newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
 
 % 多级公式输入时修改分子分母字母大小
 \newcommand{\FRAC}[2]{\displaystyle\frac{#1}{#2}}
-
-% 原样抄写加引号
-\newcommand{\tvt}[1]{“\texttt{#1}”}
 
 % \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
 % \RequirePackage{CJKfntef}
