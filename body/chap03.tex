@@ -7,21 +7,14 @@
 
 之前的两章都是原同济LaTeX模板中的内容。
 这一章开始，就是修改、或新加内容的测试。
-\cite{RN2018}
 
 当然，不变的是满纸荒唐言，用于填充内容。
-\cite{RN2361}
 
 只不过偷了个懒：用\textsf{zhlipsum} 宏包填充废话充篇幅。
 
-\section{下划线测试}
-\label{sec:underline}
-
-测试下划线。虽然是不常用的功能，决定是否留在 cls 文件中。
-
-这是默认的\underline{下划线功能}的效果。
-
 \section{多级标题} \label{sec:seclv}
+
+先填充一些废话。\zhlipsum[4]
 
 \subsection{多级标题样式修正}
 \label{ssc:titles-style}
@@ -34,7 +27,7 @@
 于是，重写了控制章节标题的数字编号的命令。
 具体修改见 \tvt{README.md} 文件中的章节。
 现在，可以在 \textbackslash documentclass[titlenum=XXX] 中启用不同的编号字体。
-其中XXX可以选择如~\ref{tab:title-number-format}
+其中XXX可以选择如表~\ref{tab:title-number-format}所示。
 
 \begin{table}[htbp]
 \centering
@@ -98,14 +91,15 @@
 
 应该不会用到这么多层级吧？
 一个比较明显的问题就是 \textsf{paragraph} 和 \textsf{subparagraph} 的样式，难以与各类列表高效区分。
-目前的方案，其实就是避免与正文（列表）一样的字体的方法。
+\footnote{所以如果内容不多，推荐采用列表，见第~\ref{sec:list}节的展示。}
 
-所以如果内容不多，干脆用列表好了，见第~\ref{sec:list}节。
+目前的方案，其实就是避免与正文（列表）采用同样的字体。
+四级标题的黑体是继承自校方模板的前几级标题设置，而五级标题的楷体参考了国家公文写作的有关规范\cite{GBT9704}。
 
 \subsubsection{段落编号}
 
 需要更加完善地测试新命令。
-现在测试用 subsubsection 分割。
+现在测试用 subsubsection 分割后，能否正常编号。
 
 \paragraph{一个新段落}
 
@@ -463,16 +457,25 @@ branch
   style=monocolor,
   ]{../code/tmp.py}
 
+\section{特殊标记方式}
+\label{sec:mark-methods}
 
-\section{行内原样抄写并带有双引号命令}
-\label{sec:newfunction}
+先填充一些废话。\zhlipsum[9]
+
+\subsection{下划线测试}
+\label{ssc:underline}
+
+这是默认的\underline{下划线功能}的效果。
+可以看到，比 MS Word 的下划线好看多了，不会产生文字底线与下划线重合的问题。
+
+\subsection{行内原样抄写并带有双引号命令}
+\label{ssc:newfunction}
 
 考虑到会出现一些后缀名或者文件名之类的内容，所以新添了一个命令：
-\verb|\tvt|，
+\verb|\tvt{}|，
 其作用是在一个原样抄写的文字外围加上双引号。
 
 CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
-对应上述梁的大纲，该梁在\texttt{*.stp}中性格式文件中的主要内容如下.
-
+对应上述梁的大纲，该梁在\texttt{*.stp}中性格式文件中的主要内容如下。
 
 \end{document}
