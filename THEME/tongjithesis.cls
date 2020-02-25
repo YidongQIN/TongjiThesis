@@ -398,7 +398,7 @@
     name={（,）},
     number=\chinese{subparagraph},
     format=\kaishu\xiaosi[1],
-    nameformat=\tongji@title@font\kaishu\xiaosi,
+    nameformat=\kaishu\xiaosi,
     aftername=\hspace{0pt},
     titleformat={},
     runin=false,
