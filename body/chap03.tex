@@ -23,47 +23,82 @@
 
 \section{多级标题} \label{sec:seclv}
 
-原本的 \textsf{romantitle} 命令没有用。
+\subsection{多级标题样式修正}
+\label{ssc:titles-style}
+
+问题描述：原本的 \textsf{romantitle} 命令没有用。
+
 验证发现，是因为 \textsf{CTeX} 宏包中的字体命令（\textsf{$\backslash$songti}、\textsf{$\backslash$heiti}、\textsf{$\backslash$fangsong}、\textsf{$\backslash$lishu}）等，只对汉字字体生效。
-究其原因，因为是 \textsf{xeCJK} 的设计。
+究其原因，因为是 \textsf{xeCJK} 宏包的设计，使得CJK的字体可以独立于英语字体设置。
 
 于是，重写了控制章节标题的数字编号的命令。
-并且可以在 \textbackslash documentclass[titlenum=[rmtitlenum*|sftitlenum|heititlenum]] 中启用。
-有衬线* 或 无衬线 或 黑体。
+具体修改见 \tvt{README.md} 文件中的章节。
+现在，可以在 \textbackslash documentclass[titlenum=XXX] 中启用不同的编号字体。
+其中XXX可以选择如~\ref{tab:title-number-format}
+
+\begin{table}[htbp]
+\centering
+\caption{\tongjithesis 章节编号样式选项}
+\label{tab:title-number-format}
+\begin{tabular}[c]{lll}
+  \toprule[1.5pt]
+  选项 & 编号字体 & 备注 \\ % title row
+  \midrule[1pt]
+  \texttt{rmtitlenum} & 衬线（Times New Roman） & 本模板默认选项 \\
+  \texttt{sftitlenum} & 无衬线（Arial） & 原模版默认选项 \\
+  \texttt{heititlenum} & 黑体 & 严格按照校方模板 \\
+  \bottomrule[1.5pt]
+\end{tabular}
+\end{table}
 
 \subsection{二级节标题} \label{ssc:subsec2}
 
-二级节标题形如“1.3.1 xxx”。
+二级节标题形如\tvt{1.3.1 xxx}。
+
 格式为：黑体，四号，顶左，单倍行距，段前 12 磅，段后 6 磅，序号与题名间空一个字符。
 
 \subsubsection{三级节标题} \label{sss:subsub3}
 
-三级节标题形如“1.3.1.1 xxx”。
-格式为：黑体，小四顶左，单倍行距，段前空 12 磅，段后空 6 磅，序号，且与题名间空一个字符。
+三级节标题形如\tvt{1.3.1.1 xxx}。
+
+格式为：黑体，小四，顶左，单倍行距，段前空 12 磅，段后空 6 磅，序号，且与题名间空一个字符。
 
 \paragraph{四级标题即段落} \label{par:par4}
 
-这是本次新增的层次命令。
+段落 paragraph 是本次新增的层次命令。
 
-四级标题形如：“（1）xxx”。
+四级标题形如\tvt{（1）xxx}。
+
+格式为：黑体，小四号，顶左，单倍行距，段前 6 磅，段后 0 磅，序号与题名间没有空。
+
 格式是仿照正文的，区别就在黑体字体。
 
 \paragraph{另一个四级标题} \label{spr:subpar}
+
+其实，段落的样式已经与序号列表有一些相似了，相差可能也就是“黑体”以及“顶格书写”了吧。
 
 至此，已经有了从0级chapter到4级paragraph共5个级别了，应该够了吧。
 
 \subparagraph{如果必须要有更低的层次}
 
-就像必须要有巫妖王一样。
+如果必须要有最低等级的标题，就像必须要有巫妖王一样。
+\sout{其实就是为了满足强迫症。}
+故还是把最低层级的 subparagraph 样式给定义了。
 
-用了 \textbackslash chinese 命令，五级标题形如“（一） XXX”
+\subparagraph{五级标题即子段落}
 
-记得更改 \textbackslash setcounter\{secnumdepth\} 为 5。
+五级标题形如\tvt{（一）xxx}。
+
+格式为：楷书，小四号，左侧空两格，单倍行距，段前 6 磅，段后 0 磅，序号与题名间没有空。
+
+使用了 \textbackslash chinese 命令产生汉字数字。
+并更改 \textbackslash setcounter\{secnumdepth\} 为 5。
+
 \subparagraph{但是样式过多也不好}
 
-然而应该不会用到这么多层级吧？
-因为有一个问题，那就是 \textsf{paragraph} 和 \textsf{subparagraph} 与各类列表如何区分？
-其实挺容易弄混的。
+应该不会用到这么多层级吧？
+一个比较明显的问题就是 \textsf{paragraph} 和 \textsf{subparagraph} 的样式，难以与各类列表高效区分。
+目前的方案，其实就是避免与正文（列表）一样的字体的方法。
 
 所以如果内容不多，干脆用列表好了，见第~\ref{sec:list}节。
 
@@ -79,7 +114,8 @@
 
 \paragraph{两个段落} \label{par:second}
 
-正文格式是宋体，小四号（英文用 Times New Roman 体，小四号），两端对齐书写，段落首行左缩进 2 个汉字符。行距 20 磅（段落中有数学表达式时，可根据表达需要设置该段的行距），段前段后 0 磅。
+正文格式是宋体，小四号（英文用 Times New Roman 体，小四号），两端对齐书写，段落首行左缩进 2 个汉字符。
+行距 20 磅（段落中有数学表达式时，可根据表达需要设置该段的行距），段前段后 0 磅。
 
 \subsection{最后的段落测试} \label{ssc:lastpar}
 
@@ -113,7 +149,7 @@ branch
 一个仓库会有多个分支，对用不同的开发进度。
 约定俗成的主分支叫master，也就是对外展示用的发布版本。
 
-\subsection{基本流程} \label{ssc:git-workflow}
+\subsection{Git工作基本流程} \label{ssc:git-workflow}
 
 顺便测试一下多级列表。
 
@@ -169,6 +205,15 @@ branch
   \verb| git push -branch |
 
   之前步骤1-5都是在本地的版本管理，直到这一步才牵扯。
+\end{enumerate}
+
+\subsection{总结章节样式}
+\label{ssc:summary-title-formats}
+
+实际上，章节样式划分为两类：
+\begin{enumerate}[(1)]
+  \item 章与各级节都是传统、常用的多层次数字编号，对应\LaTeX 层次 0 $\sim$ 3。
+  \item 段落是新增的，其编号由全角括号包围，对应\LaTeX 层次 4 $\sim$ 5。
 \end{enumerate}
 
 \section{列表环境测试} \label{sec:list}
