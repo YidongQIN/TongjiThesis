@@ -111,6 +111,47 @@
 
 交叉引用时，前缀与编号之间通常建议用不中断空格 `~` 连接，以避免不良的分行，打断了“图”、“表”、“第”等前缀词、编号数字和可能的后缀“节”、“章”。
 
+```latex
+% 交叉引用的命令
+\newcommand*{\reftab}[1]{\tablename~\ref{#1}}
+\newcommand*{\reffig}[1]{\figurename~\ref{#1}}
+\newcommand*{\refalg}[1]{\ALG@name~\ref{#1}}
+\newcommand*{\reflst}[1]{\lstlistingname~\ref{#1}}
+\newcommand*{\refequ}[1]{\equationname（\ref{#1}）}
+\newcommand*{\refsec}[1]{第~\ref{#1}~节}
+\newcommand*{\refcha}[1]{第~\ref{#1}~章}
+```
+
+比如说，`见\refsec{}。` 可以直接生成“见第~X.X~节。”这样的语句。
+而且，好处是 VS Code 依然识别这个命令是 `\ref`，可以自动联想到 label。
+
+为了配合它的使用，还在 VS Code 中制定了一个 `tjref` 的 snippet。
+
+```json
+"TJ Ref with Prefix": {
+  "prefix": "tjref",
+  "body": [
+    "\\ref${1|tab,fig,sec,cha,alg,lst,equ|}{$1:$2}"
+  ],
+  "description": "TJ Ref with Prefix"
+},
+```
+
+但是此时发现，这个功能直接用 snippet 完成仿佛更加合适、灵巧。
+因此又放弃了这些命令。
+
+附上取而代之的 snippet。
+
+```json
+"Ref with Prefix": {
+	"prefix": "pref",
+	"body": [
+		"${1|第,图,表,公式,算法,代码|}~\\ref{$0}${2|~,所示,~节,~章|}"
+	],
+	"description": "Ref with Prefix"
+},
+```
+
 ## 模板结构调整
 
 按照 [clsguide](http://texdoc.net/texmf-dist/doc/latex/base/clsguide.pdf) 的理解，宏包 package 是更加具有通用性的文件，而 cls 类文件仅仅对一类文档有用。
