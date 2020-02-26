@@ -457,6 +457,30 @@ branch
   style=monocolor,
   ]{../code/tmp.py}
 
+\subsection{算法}
+\label{ssc:algo}
+
+比代码更加抽象的方式就是算法展示了。
+
+\begin{algorithm}
+  \caption{测试算法}
+  \label{alg:test}
+  \begin{algorithmic}[1]
+    \REQUIRE PDf
+    \ENSURE xelatex biber xelatex*2
+    \IF{some condition is true}
+    \STATE do some processing
+    \ELSIF{some other condition is true}
+    \STATE do some different processing
+    \ELSIF{some even more bizarre condition is met}
+    \STATE do something else
+    \ELSE
+    \STATE do the default actions
+    \ENDIF
+  \end{algorithmic}
+  \end{algorithm}
+
+
 \section{特殊标记方式}
 \label{sec:mark-methods}
 
@@ -477,5 +501,27 @@ branch
 
 CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 对应上述梁的大纲，该梁在\texttt{*.stp}中性格式文件中的主要内容如下。
+
+\subsection{交叉引用}
+\label{ssc:cross-ref-cmd}
+
+先填充一些废话。\zhlipsum[10]
+
+交叉引用命令 \textbackslash ref 是非常有用的，但是格式上有一个注意点：
+最好在命令的前后用“不可分割空格”（即$\sim$）连接关键文字，以避免换行。
+比如\tvt{图 ~ \textbackslash 1.1}
+
+本次添加了关于“图”、“表”、“章节”等常用的交叉引用命令，方便用 snippet 调用。
+
+然后测试一下新添加的交叉引用命令。
+\begin{itemize}[\textbullet]
+  \item \reftab{tab:tabularx}
+  \item \reffig{fig:ken}
+  \item \refalg{alg:test}
+  \item \reflst{lst:outer}
+  \item \refequ{eq:B}
+  \item \refsec{ssc:cross-ref-cmd}
+  \item \refcha{cha:intro}
+\end{itemize}
 
 \end{document}
