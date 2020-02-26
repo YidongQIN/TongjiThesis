@@ -256,7 +256,7 @@
 
 ## 新增环境类型：算法（伪代码）
 
-采用宏包 `{algorithm}`，它其实是两个宏包 `{algorithm}` 与 `{algorithmic}` 的合集，是最基础的算法排版宏包。
+采用宏包 `{algorithms}`，它其实是两个宏包 `{algorithm}` 与 `{algorithmic}` 的合集，是最基础的算法排版宏包。
 
 * 前者类似于 `table` 环境，控制算法框为一个浮动体，从而控制其页面位置、组织跨页、添加 caption 和 label 等。
 

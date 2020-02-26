@@ -462,24 +462,29 @@ branch
 
 比代码更加抽象的方式就是算法展示了。
 
-\begin{algorithm}
+先填充一些废话。\zhlipsum[7]
+
+\begin{minipage}{0.75\textwidth}
+\begin{algorithm}[H]
   \caption{测试算法}
   \label{alg:test}
-  \begin{algorithmic}[1]
-    \REQUIRE PDf
-    \ENSURE xelatex biber xelatex*2
-    \IF{some condition is true}
-    \STATE do some processing
-    \ELSIF{some other condition is true}
-    \STATE do some different processing
-    \ELSIF{some even more bizarre condition is met}
-    \STATE do something else
-    \ELSE
-    \STATE do the default actions
-    \ENDIF
-  \end{algorithmic}
+    \begin{algorithmic}[1]
+      \REQUIRE PDf
+      \ENSURE xelatex biber xelatex*2
+      \IF{some condition is true}
+      \STATE do some processing
+      \ELSIF{some other condition is true}
+      \STATE do some different processing
+      \ELSIF{some even more bizarre condition is met}
+      \STATE do something else
+      \ELSE
+      \STATE do the default actions
+      \ENDIF
+    \end{algorithmic}
   \end{algorithm}
+\end{minipage}
 
+但是好像用上的机会不多。
 
 \section{特殊标记方式}
 \label{sec:mark-methods}
