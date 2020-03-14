@@ -717,6 +717,7 @@ You have requested document class `../THEME/tongjithesis',
 
 ### 讨论
 
+* 命令 `kpsewhich` 是 $\TeX Live$ 命令，用法参看 `texlive-en.pdf`；如果是其他发行版，需要另行找资料。
 * 「安装」在 `TEXMFHOME` 中的文件，只有（登陆操作系统的）当前用户可以使用。
   + 如果希望为所有用户「安装」，可以把第二步中的 TEXMFHOME 替换为 TEXMFLOCAL。
   + 此时，还需要第七步：以管理员权限在终端执行 `texhash` 命令。
