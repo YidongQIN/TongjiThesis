@@ -84,7 +84,7 @@
 \iftongji@academic\relax\else
   \iftongji@profession\relax\else
     \iftongji@equaleducation\relax\else
-        \ClassError{tongjithesis}{Unknown degree type option.\MessageBreak Please check your degree type option.}{}
+      \ClassError{tongjithesis}{Unknown degree type option.\MessageBreak Please check your degree type option.}{}
     \fi
   \fi
 \fi
@@ -92,7 +92,7 @@
 \iftongji@rmtitlenum\relax\else
   \iftongji@sftitlenum\relax\else
     \iftongji@heititlenum\relax\else
-        \ClassError{tongjithesis}{Unknown title number font option.\MessageBreak Please check your titlenum option.}{}
+      \ClassError{tongjithesis}{Unknown title number font option.\MessageBreak Please check your titlenum option.}{}
     \fi
   \fi
 \fi
@@ -446,21 +446,21 @@
     \addcontentsline{toc}{chapter}{#3}
   }%
   \IfValueTF{#4}{% 提供了第四个参数，即header
-      \ifthenelse{\equal{#4}{}}
-        {\@mkboth{}{}}% #4=空，则左、右页眉为空、为空
-        % 此命令等同于\markboth{left}{right}
-        % 也就是定义一个“left-hand heading” 和“righthand heading”
-        % 这样，\leftmark读出来的就是设的left，\rightmark就是设的right
-        {% #4 不为空，则成为页眉
-          \thispagestyle{fancy}
-          \fancyhead{}
-          \fancyhead[RO,LE]{#4}
-          \fancyfoot{}
-          \fancyfoot[C]{\songti\wuhao\thepage}
-          \renewcommand{\headrulewidth}{0.4pt}
-          \renewcommand{\footrulewidth}{0pt}
-          }
+    \ifthenelse{\equal{#4}{}}
+      {\@mkboth{}{}}% #4=空，则左、右页眉为空、为空
+      % 此命令等同于\markboth{left}{right}
+      % 也就是定义一个“left-hand heading” 和“righthand heading”
+      % 这样，\leftmark读出来的就是设的left，\rightmark就是设的right
+      {% #4 不为空，则成为页眉
+        \thispagestyle{fancy}
+        \fancyhead{}
+        \fancyhead[RO,LE]{#4}
+        \fancyfoot{}
+        \fancyfoot[C]{\songti\wuhao\thepage}
+        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\footrulewidth}{0pt}
         }
+      }
     {% 如果没有提供 #4 即 header 参数，则取 title 作为页眉 header 出现的标题，
       \thispagestyle{fancy}
       \fancyhead{}
@@ -838,13 +838,13 @@
 \contentsmargin{0em}
 \titlecontents{chapter}[0em]{\filright}%
   {\xiaosi\songti\thecontentslabel\enspace}%
-    {\xiaosi[1.5]\songti}{\dotfill\contentspage}[\addvspace{0pt}]
+  {\xiaosi[1.5]\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 \titlecontents{section}[1em]{\addvspace{0pt}}%
   {\xiaosi\songti\thecontentslabel\enspace}%
-      {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
+  {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 \titlecontents{subsection}[2em]{\addvspace{0pt}}%
   {\xiaosi\songti\thecontentslabel\enspace}%
-      {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
+  {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
@@ -919,7 +919,7 @@
   \@starttoc{\csname ext@#1\endcsname}
   \let\numberline\oldnumberline}
 \NewDocumentCommand\tongji@listof{s m}{
- \IfBooleanTF#1
+  \IfBooleanTF#1
   {% 带星 \listof* 的不加入目录
     \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
