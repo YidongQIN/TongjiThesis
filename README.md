@@ -21,6 +21,17 @@
 > 没有细致地区分论文内容撰写与样式调整两项工作。
 > 也即：丢失了调整过程的步骤，没有 commit 历史可供参考。
 
+## 手动安装模板文件
+
+手动安装了 `.cls`、`.sty` 等模板所用的文件，从而方便了分章节编译、方便了多项目使用同一模板。
+
+主要步骤是：
+1. 用 cmd 命令 `kpsewhich --var-value=TEXMFHOME` 得知路径 `X:/xxx/texmf`
+2. 在其中继续创建 3 层文件夹 `tex/latex/tongjithesis/`，
+3. 把 `.cls` 和 `.sty` 文件放进文件夹 `tongjithesis/`。
+
+具体参见 [处理（改良）](#%e5%a4%84%e7%90%86%e6%94%b9%e8%89%af) 一节。
+
 ## 封面布局格式调整
 
 微调了封面的布局。
@@ -590,13 +601,15 @@ footskip=5.4mm,
 
 ## 状况描述
 
-之前尝试几次，但是因为宏包、参考文献和图片的路径无法统一，所以编译报错。
+如果把章节 .tex 文档放到另一个文件夹中，则宏包、参考文献和图片的路径相对位置是不同的。
+会编译报错，比如找不到文件。
 
 ## 答疑
 
 可以把 main.tex 文件也放到一个子文件夹内，则 `\documentclass{}` 和 `\usepackage{}` 的都可以采用 `../xxx` 的相对路径。
 
-### 处理
+## 处理
+### 项目目录结构处理
 
 调整过后的文档结构示意如下。
 
@@ -668,6 +681,50 @@ You have requested document class `../THEME/tongjithesis',
 \ProvidesPackage{../THEME/tongjithesis}
 ```
 
+## 处理（改良）
+
+手动安装 `.cls` 和 `.sty` 文件到系统，即可避免这些问题。
+
+方法参考：[手动安装 sty 和 cls 文件](https://zhuanlan.zhihu.com/p/113124407)
+
+### 主要步骤
+
+1. 打开终端
+
+   * Windows 上的 cmd.exe 或 PowerShell.exe，
+   * macOS 上的 Terminal.app 。
+
+2. 输入 `kpsewhich --var-value=TEXMFHOME`，按回车，得到一个路径，比如说 `X:/xxx/texmf` 。
+
+   1. 打开这个路径（文件夹）。
+   2. 如果路径中的某一层或几层文件夹不存在，就创建它们。
+   3. 最后会位于 `texmf/` 文件夹。
+
+3. 在 `texmf/` 中继续创建两层文件夹 `tex/latex/`，
+   把现在的路径为 `X:/xxx/texmf/tex/latex/` 。
+
+4. 在 `latex/` 文件夹中创建一个文件夹，名称任选（例如为 `my-pkg/`）。
+   名称其实不关键，只是用于管理文件罢了。
+
+5. 把 `xxx.cls` 和 `xxx.sty` 文件放进文件夹 `my-pkg/`。
+   最终完整路径形如：
+   * `X:/xx/texmf/tex/latex/my-pkg/xxx.cls`
+   * `X:/xx/texmf/tex/latex/my-pkg/xxx.sty`
+
+结束。
+
+现在，本机任何位置的 `.tex` 文件都可以取用这些类文件（`xxx.cls`）和宏包（`xxx.sty`）。
+
+### 讨论
+
+* 「安装」在 `TEXMFHOME` 中的文件，只有（登陆操作系统的）当前用户可以使用。
+  + 如果希望为所有用户「安装」，可以把第二步中的 TEXMFHOME 替换为 TEXMFLOCAL。
+  + 此时，还需要第七步：以管理员权限在终端执行 `texhash` 命令。
+* 变量 `TEXMFHOME` 的值（第二步中得到的路径）可以修改，还可以包括多个路径。
+* 变量 `TEXMFHOME` 储存的每一个路径，都要满足特定的目录结构要求，称为 TDS (TeX Directory Structure)。有时也叫做 texmf 树。在步骤介绍中，
+  + `tex/latex/` 两层目录是 TDS 强制的，表示【这是 latex 格式的宏包文件】。
+  + `my-pkg/` 一层，体现的是包名（package name），可以任取。有多个包时，可以在 `tex/latex/` 下建立多个文件夹。
+* 可以用符号链接的方式把宏文件（包括但不限于 sty, cls, tex, def 等）加到 TDS 的特定子目录中。符号链接能进一步提高宏文件的可维护性。
 
 # 宏包 gb7714 报错
 

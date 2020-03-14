@@ -176,7 +176,7 @@
 \newcommand{\tjclearpage}% 如果是紧凑版，则尽量少空页
   {\iftongji@draft{\clearpage}\else{\cleardoublepage}\fi}
 % Tikz 绘制的封面中的同济 Logo
-\RequirePackage{../THEME/tjlogo}
+\RequirePackage{tjlogo}
 
 %% 字体
 %% 中文字体已经由ctexbook文档类型接管（调用 xeCJK）
@@ -961,7 +961,7 @@
 \let\l@equation\l@figure
 
 % 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改。
-\AtEndOfClass{\input{../THEME/tongjithesis.cfg}}
+\AtEndOfClass{\input{tongjithesis.cfg}}
 \AtEndOfClass{\sloppy}
 
 \endinput
