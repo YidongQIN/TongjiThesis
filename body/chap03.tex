@@ -347,8 +347,14 @@ branch
 \end{tabularx}
 \end{table}
 
-\section{代码环境} \label{sec:code}
+\section{代码环境}
+\label{sec:code}
+
 常用的代码展示，基于 Listings 宏包。
+
+\subsection{Listings 环境展示}
+\label{ssc:listings}
+
 \begin{lstlisting}[style=monocolor,
   caption={first lst env},
   label={no label},
@@ -374,7 +380,9 @@ branch
 <!-- comment -->
 \end{lstlisting}
 
-由于本模板参考文献部分依赖biblatex-gb7714-2015宏包的2018版本，因此必须在安装好Texlive后更新此宏包，Texlive2018 自带的biblatex-gb7714-2015宏包依然较老，无法正常运行本模板。
+不同于tabled 表~\ref{tab:fig}，源代码的展示用\ref{lst:inp}不会显示开头。
+好吧，是我错了。都是需要手动指定其是“图”、“表”、“代码”或“章节”。\textbackslash ref 命令只显示编号。
+仔细一想，这样也好，只做最小程度的工作，格式完全可以 \textbackslash newcommand 或者用 VSCode 脚本辅助。
 
 \begin{lstlisting}[language=Python,
   caption=Second CODE Block,
@@ -398,9 +406,9 @@ branch
       return M
 \end{lstlisting}
 
-不同于tabled 表~\ref{tab:fig}，源代码的展示用\ref{lst:inp}不会显示开头。
-好吧，是我错了。都是需要手动指定其是“图”、“表”、“代码”或“章节”。\textbackslash ref 命令只显示编号。
-仔细一想，这样也好，只做最小程度的工作，格式完全可以 \textbackslash newcommand 或者用 VSCode 脚本辅助。
+为 宏包 Listings 定义了许多种语言和样式，比如XML，再基于XML定义了 ParamML。
+语法比较简单，看看 \tvt{tongjithesis.sty} 文件 也就懂了。
+故不赘述。
 
 第~\ref{sec:code} 小节的内容也被引用了。
 
@@ -421,7 +429,17 @@ branch
       return M
 \end{lstlisting}
 
-推荐使用其包管理器更新此宏包，如若更新失败（我更新了好几次都失败了，它还把我的这个宏包给删了，郁闷），那么可按照官方页面在github.com/hushidong/biblatex-gb7714-2015的安装介绍，在你的tex安装目录搜索biblatex-gb7714-2015文件夹，将该文件夹中的四个文件替换为官方页面在github.com/hushidong/biblatex-gb7714-2015提供的文件即可。
+还可以直接导入一个外部文件，并摘选其中的部分行。
+
+\lstinputlisting[language=Python,
+  caption=inputted Python,
+  label=lst:inp,
+  style=monocolor,
+  ]{../code/tmp.py}
+
+先填充一些废话。\zhlipsum[12]
+
+\subsubsection{代码片段 Listings 引用}
 
 这里测试三个代码片段的引用。
 
@@ -449,14 +467,6 @@ branch
                   VT[(i)*n + r[k]] = 1;
       return M
 \end{lstlisting}
-
-还可以直接导入。
-\lstinputlisting[language=Python,
-  caption=inputted Python,
-  label=lst:inp,
-  style=monocolor,
-  ]{../code/tmp.py}
-
 \subsection{算法}
 \label{ssc:algo}
 
@@ -465,6 +475,7 @@ branch
 先填充一些废话。\zhlipsum[7]
 
 \begin{minipage}{0.75\textwidth}
+
 \begin{algorithm}[H]
   \caption{测试算法}
   \label{alg:test}
@@ -482,9 +493,20 @@ branch
       \ENDIF
     \end{algorithmic}
   \end{algorithm}
+
 \end{minipage}
+\newline
 
 但是好像用上的机会不多。
+
+algorithm 是个 float 环境，相当于 table。
+其宽度用 minipage 可以调整宽度，但是会取消 \textbackslash intextsep 导致上下间距过小。
+
+\begin{enumerate}[(1)]
+  \item 偷懒的方案是手动加竖向间距。
+  \item 更好的方案是用另一个可以接受宽度的的浮动体包围、algorithm 以选项 H 放置其中。
+  比如 tcolorbox、fullwidth 等。
+\end{enumerate}
 
 \section{特殊标记方式}
 \label{sec:mark-methods}
@@ -498,7 +520,7 @@ branch
 可以看到，比 MS Word 的下划线好看多了，不会产生文字底线与下划线重合的问题。
 
 \subsection{行内原样抄写并带有双引号命令}
-\label{ssc:newfunction}
+\label{ssc:tvt}
 
 考虑到会出现一些后缀名或者文件名之类的内容，所以新添了一个命令：
 \verb|\tvt{}|，
@@ -507,6 +529,17 @@ branch
 CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 对应上述梁的大纲，该梁在\texttt{*.stp}中性格式文件中的主要内容如下。
 
+\subsection{行内原样抄写并带有圆括号命令}
+\label{ssc:pvp}
+
+同理，如果不想两端不用引号（quotation marks），可以用圆括号（parentheses）的版本。
+\verb|\pvp{}|
+\footnote{已经有了 TvT 了，怎么能没有 PvP 呢？来自星际二的梗。}
+。
+
+名称属性 \pvp{N} 必须是文本格式、且不允许空格或特殊字符。
+值属性 \pvp{V} 可以是常数、文本、函数表达式，或者引用其他的 对象元素。
+
 \subsection{交叉引用}
 \label{ssc:cross-ref-cmd}
 
@@ -514,9 +547,9 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 
 交叉引用命令 \textbackslash ref 是非常有用的，但是格式上有一个注意点：
 最好在命令的前后用“不可分割空格”（即$\sim$）连接关键文字，以避免换行。
-比如\tvt{图 ~ \textbackslash 1.1}
+比如\tvt{图 ~ \textbackslash 1.1 ~}
 
-本次添加了关于“图”、“表”、“章节”等常用的交叉引用命令，方便用 snippet 调用。
+本次添加了关于“图”、“表”、“章节”等常用的交叉引用命令，方便调用。
 
 然后测试一下新添加的交叉引用命令。
 \begin{itemize}[\textbullet]
@@ -528,5 +561,11 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
   \item \refsec{ssc:cross-ref-cmd}
   \item \refcha{cha:intro}
 \end{itemize}
+
+好处是，VS Code 依然可以识别这些命令是交叉引用，所以括号内的自动补全是 label 没错。
+
+但是，这种命令还不如直接用 snippet 完成呢，snippet 更具有灵活性。
+所以，未来的版本可能会抛弃这个功能吧。
+
 
 \end{document}

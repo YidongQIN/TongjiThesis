@@ -177,6 +177,10 @@
 % \RequirePackage{floatflt} % 图文混排用宏包
 % \RequirePackage{rotating} % 图形和表格的控制旋转
 
+% 辅助控制浮动体边距
+% \RequirePackage{fullwidth} % 提供一个用于放置浮动体的环境，方便进行上下左右的边距控制
+% \RequirePackage{tcolorbox} % 彩色盒子，但也可以用于浮动体控制
+
 % array宏包定义三种新的column对齐格式，允许使用L C R的带长度的表格列
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
