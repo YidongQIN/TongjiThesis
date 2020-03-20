@@ -149,7 +149,7 @@
   showstringspaces=false,
 }
 % settings of `list of Listings'
-\renewcommand{\lstlistingname}{代码}% 原"Listing"改为"代码块"
+\renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"
 \renewcommand{\lstlistlistingname}{代码索引}
 \renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}}% 代码索引的对齐样式
 \newcommand{\lisfoflistings}{
@@ -188,12 +188,12 @@
 % 表格内部换行，可以用自定义的\tabincell，或者宏包{multirow}或{makecell}
 \newcommand{\tabincell}[2]{%参数：{对齐方式}{单元格内容}
   \begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\RequirePackage{multirow} % 表格中支持跨行
-\RequirePackage{multicol} % 表格中支持跨行
-\RequirePackage{makecell} % 单元格内换行
-\RequirePackage{diagbox} % 表格中的反斜线
-\RequirePackage{slashbox} % 表格中的反斜线
-\RequirePackage{tabularx} % 固定宽度的表格
+\RequirePackage{multirow}% 表格中支持跨行
+\RequirePackage{multicol}% 表格中支持跨行
+\RequirePackage{makecell}% 单元格内换行
+\RequirePackage{diagbox}% 表格中的反斜线
+\RequirePackage{slashbox}% 表格中的反斜线
+\RequirePackage{tabularx}% 固定宽度的表格
 % 定义 tabularx 的三种新的列对齐模式，跟一个{}参数可以控制列宽分配比例
 \newcolumntype{a}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}% 左对齐
 \newcolumntype{d}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}% 右对齐
