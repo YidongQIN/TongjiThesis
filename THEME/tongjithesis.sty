@@ -126,16 +126,19 @@
   commentstyle=\itshape\color{darkgreen},
 }
 % OpenBrIM Listings syntax and styles
-\lstdefinelanguage{ParamML}{
+\lstdefinelanguage{ParamML}{ 
+  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
+  morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
+  morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
+  morekeywords={Lng,Lat,Elev,P1,P2,P3,},
   morestring=[s][\color{blue}]{"}{"},
   morestring=[s][\color{black}]{>}{<},
-  morecomment=[s][\color{green}]{<!--}{-->},
-  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,D,N,V,T,Type,Extends,Role,C,R,Node1,Node2,Node3,Node4,Factor,},
+  morecomment=[s][\color{green}]{<!--}{-->},  
   basicstyle=\small\ttfamily,
   backgroundcolor=\color{white},
   commentstyle=\color{green}\itshape,
-  identifierstyle=\color{darkred},
-  keywordstyle=\color{red}\bfseries,
+  identifierstyle=\color{darkred}\bfseries,
+  keywordstyle=\color{red},
   stringstyle=\color{black},
   showstringspaces=false,
 }
