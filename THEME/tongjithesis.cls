@@ -290,9 +290,10 @@
   colorlinks=false,
   plainpages=false,
   % pdfpagelabels,% 将\thepage写入pdf，使得阅读器显示‘ii (4 of 40)’
-  pdfborder=0 0 0}
+  pdfborder=0 0 0,% 移除超链接的 color box 边框
+  }
 \urlstyle{same}% 四选一设置 \url{} 的字体样式 tt/rm/sf/same（与前文保持一致）
-% \def\UrlFont{\ttfamily\small}% 若不满意可以用此命令精确设定
+% \def\UrlFont{\ttfamily\small}% 可以用此命令精确设定 URL 的字体样式
 \RequirePackage{bookmark}% 生成 PDF 电子书签
 
 %% 浮动对象和文字之间的距离
