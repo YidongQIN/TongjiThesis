@@ -332,7 +332,8 @@
 有两套处理思路：
 
 * 在原模板的基础上，微调尺寸参数。
-  ```latex
+
+  ```ini
   ignoreall,
   top=30.34mm,
   headsep=4.94mm,
@@ -340,8 +341,10 @@
   bottom=25.4mm,
   footskip=5.4mm,
   ```
+
 * 打开 `includehead` 选项。
-  ```latex
+
+  ```ini
   includehead=true,
   top=20.00mm,
   headheight=5.4mm,
@@ -364,7 +367,7 @@
 此外，在 `CTeX` 的项目主页 issue [xeCJK: 部分汉字的伪粗体在 PDF 文件中无法拷贝或拷贝出异常内容 #353](https://github.com/CTeX-org/ctex-kit/issues/353) 提出，这个问题还与字体选择有关。
 Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华文的字体都会出错。
 
-```
+```latex
 % 选用 Adobe 字体
 \documentclass[fontset=windows]{ctexbook}
 % 或者依次手动设定 Adobe 字体
@@ -393,6 +396,10 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 查阅 AMS 宏包，发现 `amssymb` 只是提供了部分数学字符的粗体、而且可以被标准的 `bm` 宏包取代。
 故将其移除，仅保留 `amsmath`。
 
+* 未经验证的方案：
+
+  需要把宏包的调用移至 `ctex` 之前，即可避免出错。
+
 # Geometry 页面尺寸、页眉页脚尺寸
 
 ## 页眉尺寸
@@ -403,7 +410,7 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
 如果按照原 $\LaTeX$ 模板的设置，那么页眉**底缘横线**的位置距离纸张顶部 $top-headsep=20mm$。
 
-```latex
+```ini
 top=25.4mm,
 headheight=20mm,
 headsep=5.4mm,
@@ -414,7 +421,7 @@ headsep=5.4mm,
 在默认设置（`includehead` 和 `includefoot` 选项都是 false）情况下，
 若要求排版效果跟校方模版的样本（而不是跟其描述内容）一致，需要如下设置。
 
-```latex
+```ini
 top=30.34mm,
 headsep=4.94mm,
 headheight=24.81mm,
@@ -442,7 +449,7 @@ $headheight = 20mm + 10.5bp*1.3 = 24.81mm$。
 但是如上处理，发现页眉相关尺寸参数比较“奇怪”，可能回给后续修改者带来困惑。
 一个稍微清晰的方案是打开页眉的 `includehead` 选项。
 
-```latex
+```ini
 includehead=true,
 top=20.00mm,
 headheight=5.4mm,
@@ -488,7 +495,7 @@ footskip=5.4mm,
 >
 > 需要先清空 `nameformat` 和 `titleformat` 的设置：
 
-```
+```latex
 \documentclass[zihao=-4]{ctexbook}
 \ctexset{
     chapter/format      = \zihao{4}\bfseries,
@@ -506,7 +513,7 @@ footskip=5.4mm,
 >
 > 简单解决方法：`scheme=plain` 时，根据需要清空 `nameformat` 或 `titleformat。`
 
-```
+```latex
 \documentclass[scheme=plain]{ctexbook}
 \ctexset{
   chapter={
@@ -526,7 +533,7 @@ footskip=5.4mm,
 >
 > muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案是，通过 `fontspec` 和 `xeCJK` 的 `\new[CJK]fontfamily` 命令，分别定义中西字体切换命令，然后一起使用。
 
-```
+```latex
 % def
 \newfontfamily\useSomeEnFont{<font name 1>}
 \newCJKfontfamily\useSomeEnFont{<font name 2>}
@@ -621,7 +628,7 @@ footskip=5.4mm,
 
 调整过后的文档结构示意如下。
 
-```latex
+```
 ..  % 主文件夹 Master Folder
 |-- appendix\ % 附录
     |-- appendix.tex % 附录章节，可以在一个.tex文件中分\chapter，也可以每章一个.tex文件。
@@ -667,7 +674,7 @@ footskip=5.4mm,
 
 子文件中按照 subfile 的要求即可，不需要 \usepackage，然后用{document}环境包围正文代码。
 
-```
+```latex
 \documentclass[../main/BMS_BIM.tex]{subfiles} % 1. 文档类型选项
 \begin{document}
   ...
@@ -684,7 +691,7 @@ You have requested document class `../THEME/tongjithesis',
 ```
 
 可以在模板文件中修改 `.cls` 和 `.sty` 引用名。
-```
+```latex
 \ProvidesClass{../THEME/tongjithesis}
 \ProvidesPackage{../THEME/tongjithesis}
 ```
