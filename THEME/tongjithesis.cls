@@ -274,11 +274,10 @@
     \RequirePackage[backend=biber,style=gb7714-2015ay,gbpub=false,isbn=false,doi=false,gbtitlelink=true,url=false,sortlocale=zh__pinyin,gbnamefmt=lowercase]{biblatex}
   \fi
 \fi
-% 参考文献宏包的其他选项：
-% gbpub=false :用于去除参考文献中的出版地不详、出版者不详等信息
-% 后边 isbn 和 doi 选项同理
+% 选项 gbpub=false 用于去除参考文献中的出版地不详
+% 后续选项 isbn 和 doi 选项同理
 
-% PDF书签，请结合 gbk2uni 避免书签乱码。
+% PDF书签
 \RequirePackage{hyperref}
 \hypersetup{% 设置PDF电子书签格式
   CJKbookmarks=true,% 删除原\ifxetex判断，CJKbookmark并入下方统一设置
@@ -299,19 +298,18 @@
 %% 浮动对象和文字之间的距离
 % 语法举例：{10pt plus 1.0pt minus 2.0pt} The plus and minus parts allow the space to stretch or shrink (the greater they are, the more it stretches or shrinks when needed).
 \setlength{\floatsep}{12bp \@plus4pt \@minus1pt}% vertical distance between two floats
-\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}% distance between floats inserted inside the page text (using h) and the text proper. 即，对于插入正文中的float，这个\intextsep指的是图片上部和下部距离正文的距离。
+\setlength{\intextsep}{12bp \@plus4pt \@minus2pt}% distance between floats inserted inside the page text (using h) and the text proper. 对于插入正文中的float用\intextsep调节图片上部和下部距离正文的距离。
 \setlength{\textfloatsep}{12bp \@plus4pt \@minus2pt}% distance between floats on the top or the bottom and the text
 \setlength{\@fptop}{0bp \@plus1.0fil}
 \setlength{\@fpsep}{12bp \@plus2.0fil}
 \setlength{\@fpbot}{0bp \@plus1.0fil}
 
 %% 浮动体页面布局优化
-% 下面这组命令使浮动对象的缺省值稍微宽松一点，从而防止浮动对象占据过多的文本页面，也可以防止在很大空白的浮动页上放置很小的图形。
+% 防止浮动对象占据过多的文本页面，防止在很大空白的浮动页上放置很小的图形。
 \renewcommand{\textfraction}{0.15}% 一个page的text的最小比例是0.15，默认是0.2。当然如果浮动对象占的比例太大，就会移到另一个页面。
 \renewcommand{\topfraction}{0.85}% 页面顶部至多有0.85的空间被浮动对象填充。
-\renewcommand{\bottomfraction}{0.65}% 同理，这个是底部的。
-\renewcommand{\floatpagefraction}{0.60}% 一个float page(a page containing no text,
-% only floats.)被浮动对象占的比例最少是0.6
+\renewcommand{\bottomfraction}{0.65}% 同理，底部的。
+\renewcommand{\floatpagefraction}{0.60}% float page(no text, only floats)被浮动对象占的比例最少是0.6
 
 %% 浮动体标题样式
 % 图表标题、表内容字体为宋体五号
@@ -329,8 +327,8 @@
 % 表：caption 在上，段前空 6 磅，段后空 6 磅，单倍行距
 \captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip={6bp-\intextsep}}
 \captionsetup[sub]{font=tongji,aboveskip=6bp,belowskip=6bp}
-\renewcommand{\thesubfigure}{(\alph{subfigure})}
-\renewcommand{\thesubtable}{(\alph{subtable})}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.a, 1.b
+\renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.a, 1.b
 
 \AtBeginDocument{%
   \pagestyle{tongji@empty}
@@ -425,7 +423,8 @@
   % o 表示可选参数；
   % m 表示强制参数。
   % 举个例子：对于's o o m',如果输入‘*[Foo]{Bar}’，那么#1 = \BooleanTrue，#2 = Foo，#3 = -NoValue-，#4 = Bar。
-% 下面定义的用法是：\cs{tongji@chapter*}\oarg{tocline}\marg{title}\oarg{header}: tocline 是出现在目录中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；title 是章标题；header 是页眉出现的标题，如果忽略则取 title。
+% 下面定义的用法是：\cs{tongji@chapter*}\oarg{tocline}\marg{title}\oarg{header}
+% 其中 tocline 是出现在目录中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；title 是章标题；header 是页眉出现的标题，如果忽略则取 title。
 \newcounter{tongji@bookmark}
 \NewDocumentCommand\tongji@chapter{s o m o}{
   \IfBooleanF{#1}{% 如果调用的时候不带*，那么 #1 = \BooleanFalse
@@ -475,8 +474,8 @@
 
 %% 非正文页面
 % * \make页面：中文封面、EngCover、书脊、版权授权、原创声明、
-% * \frontmatter: 中文摘要、Abastract、目录
-% * \backmatter:致谢、参考文献、附录、个人简历
+% * \frontmatter：中文摘要、Abastract、目录
+% * \backmatter：致谢、参考文献、附录、个人简历
 % * 可选：符号说明（主要符号对照表）、图索引、表索引、公式索引
 %% 封面信息收集
 \def\tongji@def@term#1{%
@@ -535,8 +534,8 @@
 % 为了简化操作界面，提供一个 \cs{tongjisetup} 命令支持 key/value 的方式来设置。
 % key 就是前面各个设置项的名字。
 % 只能设置普通项，不支持环境项，
-% 如 \texttt{cabstract} 和 \texttt{eabstract}。} 由于这些设置项被 \cs{makecover}
-% 调用，所以此命令需要在 \cs{makecover} 之前被调用。
+% 如 \texttt{cabstract} 和 \texttt{eabstract}。
+% 由于这些设置项被 \cs{makecover} 调用，所以此命令需要其之前被调用。
 \def\tongjisetup{\kvsetkeys{tongji}}
 
 %% 中文封面页面
@@ -632,7 +631,7 @@
   \centering\noindent\normalsize
   \vspace*{24bp}% labels on top
 
-  \parbox[t][2.6cm][t]{\textwidth}{%logo
+  \parbox[t][2.6cm][t]{\textwidth}{% logo
     \centering%\includegraphics[width=10cm]{tjlogofull.eps}
     \parbox[b][25mm][c]{30mm}{\TJLogo[black]{21mm}}
     \parbox[b][25mm][c]{65mm}{
@@ -641,7 +640,7 @@
     }
   }
 
-  \vspace*{14bp}% \\[14bp]%二号字段前0.5行=0.5*22*1.3
+  \vspace*{14bp}% \\[14bp]% 二号字段前0.5行=0.5*22*1.3
   \parbox[t][3cm][t]{\textwidth}{% Eng degree type
     \centering\sihao\tongji@eapply
     }
@@ -730,10 +729,8 @@
 \NewDocumentCommand{\makedeclarepage}{o}{
   \phantomsection
   \IfNoValueTF{#1}
-    % 没有PDF就调用原本的\tongji@declareshortname@mk生成
-    {\tongji@declareshortname@mk}
-    % 有PDF就导入扫描页
-    {\includepdf{#1}}
+    {\tongji@declareshortname@mk}% 没有PDF就生成电子版
+    {\includepdf{#1}} % 有PDF就导入扫描页
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@declarename}
   \tjclearpage
 }
@@ -759,10 +756,8 @@
 \NewDocumentCommand{\makeauthorizationpage}{o}{
   \phantomsection
   \IfNoValueTF{#1}
-    % 没有PDF就调用\tongji@authorization@mk生成
-    {\tongji@authorization@mk}
-    % 有PDF就导入扫描页
-    {\includepdf{#1}}
+    {\tongji@authorization@mk}% 没有PDF就生成电子版
+    {\includepdf{#1}}% 有PDF就导入扫描页
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@authtitle}
   \tjclearpage
 }
@@ -785,7 +780,7 @@
 }
 
 %% 摘要
-  % 摘要最好以环境的形式出现,须让环境能够自己保存内容留待以后使用。
+  % 摘要以环境的形式，保存内容留待以后使用。
   % 使用 \pkg{environ} 的\cs{Collect@Body} 来实现。
   \newcommand{\tongji@@cabstract}[1]{\long\gdef\tongji@cabstract{#1}}
   \newenvironment{cabstract}{\Collect@Body\tongji@@cabstract}{}
@@ -815,7 +810,7 @@
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries\tongji@ckeywords@title}}
   \noindent\hangindent\wd0\hangafter1
-  \box0\tongji@ckeywords
+  \box0\tongji@ckeywords% 结束中文摘要，以下 Abstract
   \tongji@chapter*[]{\eabstractname}[\wuhao\tongji@eschoolname~\tongji@edegree~\eabstractname]
   \tongji@eabstract
   \vspace*{12bp}\par
@@ -825,9 +820,9 @@
 }
 
 %% 目录
-% 章节编号等级 \setcounter{secnumdepth}{level} suppresses heading numbers at any depth > level
+% 章节编号等级从 \chapter=0 至 \subparagraph=5
 \setcounter{secnumdepth}{5}
-% 目录显示等级最多三层，即: x.x.x
+% 目录显示等级，最多三层，即: x.x.x
 \setcounter{tocdepth}{2}
 % 目录生成
 % 减小目录项中的导引小点跟页码之间的留白
@@ -897,18 +892,19 @@
 \newenvironment{denotation}[1][2cm]{
   % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@denotation@name}
   \tongji@chapter*[]{\tongji@denotation@name}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@denotation@name]
-  \vspace*{18bp}\xiaosi[1.6]\begin{tongji@denotation}[labelwidth=#1]\xiaosi[2]
+  \vspace*{18bp}\xiaosi[2]
+  \begin{tongji@denotation}[labelwidth=#1]
   }{%
-    \end{tongji@denotation}
-    \clearpage
+  \end{tongji@denotation}
+  \clearpage
 }
-\newlist{tongji@denotation}{description}{1}
+\newlist{tongji@denotation}{description}{1}% 基于 description 的专用列表样式
 \setlist[tongji@denotation]{%
   nosep,
   font=\normalfont,
   align=left,
   leftmargin=!,% sum of the following 3 lengths
-  labelindent=0pt,
+  labelindent=2em,
   labelwidth=2.5cm,
   labelsep*=0.5cm,
   itemindent=0pt,
