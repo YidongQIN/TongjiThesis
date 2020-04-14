@@ -112,7 +112,7 @@
 % etoolbox 引入了 LATEX kernel commands 的不同实现，但功能一样。
 % \RequirePackage{etoolbox}
 % environ 创建新的环境
-% \RequirePackage{environ}
+\RequirePackage{environ}
 % 分章节独立编译
 \RequirePackage{subfiles}
 
