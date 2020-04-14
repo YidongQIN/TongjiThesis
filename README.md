@@ -386,6 +386,12 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
 特别地，针对中文字体，可以用 `fc-list -f "%{family}\n" :lang=zh > zhfont.txt` 查看。
 
+## 移除 amssymb 包
+在更新了 Tex Live 2020 之后，发现了 ```Command `\Bbbk' already defined.``` 的报错。
+
+原因是 `XeLaTeX` 与 `amsfont` 中有了重复定义。
+查阅 AMS 宏包，发现 `amssymb` 只是提供了部分数学字符的粗体、而且可以被标准的 `bm` 宏包取代。
+故将其移除，仅保留 `amsmath`。
 
 # Geometry 页面尺寸、页眉页脚尺寸
 

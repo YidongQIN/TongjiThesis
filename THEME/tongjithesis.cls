@@ -251,7 +251,7 @@
 \RequirePackage{booktabs}% 基础三线表\cs{toprule}，\cs{midrule}，\cs{bottomrule}
 
 % 公式基础宏包 AmSTeX
-\RequirePackage{amsmath,amssymb}
+\RequirePackage{amsmath}
 % 允许太长的公式断行、分页等。
 \allowdisplaybreaks[4]
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
