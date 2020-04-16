@@ -709,14 +709,14 @@
 \NewDocumentCommand{\makecover}{s m}{
   \input{#2}% 首先读取 cover.tex 中的标题、作者等信息
   \hypersetup{% 设置PDF属性为文档元数据
-    pdftitle={\tongji@ctitle},
+    pdftitle={\tongji@cheadingtitle},
     pdfauthor={\tongji@cauthor},
     pdfsubject={\tongji@schoolname\tongji@capply},
     pdfcreator={\tongji@eauthor},
     pdfproducer={\tongjithesis}}
   \begin{titlepage}% 生成封面页
     \chncover
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ctitle}
+    \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@cheadingtitle}
     \engcover
     \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@etitle}
     % 不带星则生成书脊（旧式\shuji 新式\bookspine），带星则无书脊
