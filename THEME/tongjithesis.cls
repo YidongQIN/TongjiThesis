@@ -568,7 +568,7 @@
 
   \vspace*{14bp}% \\[14bp]%二号字段前0.5行=0.5*22*1.3
   \parbox[t][3cm][t]{\textwidth}{% 学位类型
-    \centering{\erhao[1]\bfseries\lishu\tongji@capply}% 硕/博学位类型
+    \centering{\erhao[1]\lishu\tongji@capply}% 硕/博学位类型
     \iftongji@academic{\empty}% 学位类型补充
       \else \iftongji@profession{
         \par \vspace*{0.4cm} {\sihao[1]\bfseries\lishu（专业学位）}
