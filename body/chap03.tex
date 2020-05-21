@@ -154,71 +154,20 @@ branch
 一个仓库会有多个分支，对用不同的开发进度。
 约定俗成的主分支叫master，也就是对外展示用的发布版本。
 
-\subsection{Git工作基本流程} \label{ssc:git-workflow}
-
-顺便测试一下多级列表。
-
-\begin{enumerate}[1.]
-  \item 调整本地工作目录
-  \item 创建项目
-  \begin{enumerate}[a.]
-    \item 在git网站建立好新项目，把库克隆到本地 \\
-
-    \verb| git clone http:// |
-
-    \item 或者，直接在本地文件夹目录下初始化 \\
-
-    \verb| git init |
-
-    本地初始化后，如要连接网络远程仓库可以再用
-
-    \verb| git remote add |
-  \end{enumerate}
-
-  \item 工作区 -> 暂存区：add添加（也叫stage）
-    \begin{enumerate}[A.]
-      \item 保存修改并添加文件到暂存区（index，或叫staging area)
-
-      \verb| git add <文件名> |
-
-      常用简化命令如下：
-        \begin{itemize}[\textbullet]
-          \item \verb| git add -A % 所有更改 |
-          \item \verb| git add .  % 新增、修改，不含删除 |
-          \item \verb| git add -u % 修改、删除，不含新增 |
-        \end{itemize}
-
-      \item 或者查看区别
-
-      \verb!git diff!
-    \end{enumerate}
-
-  \item 暂存区 -> 版本库：commit提交
-
-  \verb| git commit -a -m "message" |
-
-  其中，-a 表示全部 -m 添加一个留言。
-  \begin{enumerate}[(a)]
-    \item 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
-    \item 然后：wq保存并退出vim，即可回到git命令窗口。
-  \end{enumerate}
-
-  \item * 确认提交状况  git status
-
-  \item 推送到远程仓库
-
-  \verb| git push -branch |
-
-  之前步骤1-5都是在本地的版本管理，直到这一步才牵扯。
-\end{enumerate}
-
 \subsection{总结章节样式}
 \label{ssc:summary-title-formats}
 
 实际上，章节样式划分为两类：
 \begin{enumerate}[(1)]
-  \item 章与各级节都是传统、常用的多层次数字编号，对应\LaTeX 层次 0 $\sim$ 3。
-  \item 段落是新增的，其编号由全角括号包围，对应\LaTeX 层次 4 $\sim$ 5。
+  \item 章与各级节都是传统、常用的多层次数字编号，对应 \LaTeX 层次 0 $\sim$ 3。
+  \begin{itemize}[\textbullet]
+    \item 区别在于，本次新增了 subsubsetion 级别，即 “x.x.x.x” 的编号形式。
+  \end{itemize}
+  \item 段落是新增的，其编号由全角括号包围，对应 \LaTeX 层次 4 $\sim$ 5。
+  \begin{itemize}[\textbullet]
+    \item paragraph 的样式与章、节级相似，均为黑体、无缩进。
+    \item subparagraph 的样式与正文相同，包括宋体、小四、缩进 2 字符。
+  \end{itemize}
 \end{enumerate}
 
 \section{列表环境测试} \label{sec:list}
@@ -323,6 +272,63 @@ branch
 \end{description}
 
 \zhlipsum[33]
+
+顺便测试一下一个复杂的多级列表。
+其实就是在嵌套的基础上， 手动定制多级列表的 label 形式。
+
+\begin{enumerate}[1.]
+  \item 调整本地工作目录
+  \item 创建项目
+  \begin{enumerate}[a.]
+    \item 在git网站建立好新项目，把库克隆到本地 \\
+
+    \verb| git clone http:// |
+
+    \item 或者，直接在本地文件夹目录下初始化 \\
+
+    \verb| git init |
+
+    本地初始化后，如要连接网络远程仓库可以再用
+
+    \verb| git remote add |
+  \end{enumerate}
+
+  \item 工作区 -> 暂存区：add添加（也叫stage）
+    \begin{enumerate}[A.]
+      \item 保存修改并添加文件到暂存区（index，或叫staging area)
+
+      \verb| git add <文件名> |
+
+      常用简化命令如下：
+        \begin{itemize}[\textbullet]
+          \item \verb| git add -A % 所有更改 |
+          \item \verb| git add .  % 新增、修改，不含删除 |
+          \item \verb| git add -u % 修改、删除，不含新增 |
+        \end{itemize}
+
+      \item 或者查看区别
+
+      \verb!git diff!
+    \end{enumerate}
+
+  \item 暂存区 -> 版本库：commit提交
+
+  \verb| git commit -a -m "message" |
+
+  其中，-a 表示全部 -m 添加一个留言。
+  \begin{enumerate}[(a)]
+    \item 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
+    \item 然后：wq保存并退出vim，即可回到git命令窗口。
+  \end{enumerate}
+
+  \item * 确认提交状况  git status
+
+  \item 推送到远程仓库
+
+  \verb| git push -branch |
+
+  之前步骤1-5都是在本地的版本管理，直到这一步才牵扯。
+\end{enumerate}
 
 下面是行内列表的展示。
 
