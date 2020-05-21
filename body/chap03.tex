@@ -78,12 +78,10 @@
 故还是把最低层级的 subparagraph 样式给定义了。
 
 \subparagraph{五级标题即子段落。}
-五级标题形如\tvt{（一）xxx}。
+五级标题形如“（1）xxx”。
 
-格式为：楷书，小四号，左侧空两格，单倍行距，段前 6 磅，段后 0 磅，序号与题名间没有空。
-
-使用了 \textbackslash chinese 命令产生汉字数字。
-并更改 \textbackslash setcounter\{secnumdepth\} 为 5。
+最初设定格式为：楷书，小四号，左侧空两格，单倍行距，段前 6 磅，段后 0 磅，序号与题名间没有空。
+其中，使用了 \textbackslash chinese 命令产生汉字数字，并更改 \textbackslash setcounter\{secnumdepth\} 为 5。
 
 \subparagraph{但是样式过多也不好。}
 应该不会用到这么多层级吧？
@@ -92,6 +90,20 @@
 
 目前的方案，其实就是避免与正文（列表）采用同样的字体。
 四级标题的黑体是继承自校方模板的前几级标题设置，而五级标题的楷体参考了国家公文写作的有关规范\cite{GBT9704}。
+
+\subparagraph{更新子段落。}
+考虑到两方面原因：
+\begin{inlinecn}
+  \item 论文中完全没有说过“楷体”字体，擅自加入有些多余；
+  \item 中文数字比如一二三，并不适合作为低等级标题的数字编号，这不符合日常使用习惯。
+\end{inlinecn}
+所以，最终用更改了实现。
+
+现在，子段落的格式是这样的：
+\begin{inline}
+  \item 子段落标题的字体格式与正文格式完全一样，只是会自动编号；
+  \item 与其他标题的差别在于，不会换行。
+\end{inline}
 
 \subsubsection{段落编号}
 

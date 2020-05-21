@@ -16,8 +16,11 @@
 \setlist[itemize,2]{label=$\circ$}
 \setlist[itemize,3]{label=\tiny$\blacksquare$}
 \setlist[description]{font=\heiti\bfseries}
+\newlist{inlinecn}{enumerate*}{1}
+\setlist[inlinecn,1]{label=第\chinese{inlinecni}，}
 \newlist{inline}{enumerate*}{1}
-\setlist[inline,1]{label=（\arabic*）}
+\setlist[inline,1]{label=(\arabic*)}
+% \setlist[inline,1]{label=}
 
 % 算法环境
 \RequirePackage{algorithm}
