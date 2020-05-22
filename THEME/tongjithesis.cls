@@ -603,19 +603,20 @@
     \fi
     \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
     \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
-      姓  名 & \tongji@cauthor \\% 相邻汉字之间的空格确保分散对齐
-      学  号 & \tongji@studentnumber \\
-      所 在 院 系 & \tongji@cdepartment \\
+      姓名 & \tongji@cauthor \\
+      学号 & \tongji@studentnumber \\
+      所在院系 & \tongji@cdepartment \\
       \iftongji@profession% 专业型仅中间两行是例外
-        专 业 学 位 名 称 & \tongji@cmajorfirst \\
-        专 业 领 域  & \tongji@cmajorsecond \\
+        专业学位名称 & \tongji@cmajorfirst \\
+        专业领域  & \tongji@cmajorsecond \\
       \else
-        学 科 门 类 & \tongji@cmajorfirst \\
-        学 科 专 业 & \tongji@cmajorsecond \\
+        学科门类 & \tongji@cmajorfirst \\
+        学科专业 & \tongji@cmajorsecond \\
       \fi
-      指 导 教 师 & \tongji@csupervisor \\
-      \ifx\tongji@cassosupervisor\@empty\else% 若有副指导
-        副 指 导 教 师 & \tongji@cassosupervisor \\
+      指导教师 & \tongji@csupervisor \\
+      \ifx\tongji@cassosupervisor\@empty% 若是空，没有任何命令
+      \else% 若有副指导
+        副指导教师 & \tongji@cassosupervisor \\
       \fi
       \end{tabular}
   }
@@ -655,18 +656,18 @@
     }
 
   \parbox[t][8.5cm][t]{\textwidth}{% candidate's info
-    \sanhao[1.5]\centering% \hspace{4.5em}% 若按照校方模版的要求缩进4.5字符，则太偏右
-      \begin{tabular}{ll}
-        Candidate :        & \tongji@eauthor       \\
-        Student Number :   & \tongji@studentnumber \\
-        School/Department :& \tongji@edepartment   \\
-        Discipline :       & \tongji@emajorfirst   \\
-        Major :            & \tongji@emajorsecond  \\
-        Supervisor :       & \tongji@esupervisor \\
-        \ifx\tongji@eassosupervisor\@empty\else
-          Associate Supervisor :& \tongji@eassosupervisor \\
-        \fi
-      \end{tabular}
+    \sanhao[1.75]\centering% \hspace{4.5em}% 若按照校方模版的要求缩进4.5字符，则太偏右
+    \begin{tabular}{l<{:}l}
+      Candidate         & \tongji@eauthor       \\
+      Student Number    & \tongji@studentnumber \\
+      School/Department & \tongji@edepartment   \\
+      Discipline        & \tongji@emajorfirst   \\
+      Major             & \tongji@emajorsecond  \\
+      Supervisor        & \tongji@esupervisor \\
+      \ifx\tongji@eassosupervisor\@empty\else
+        Associate Supervisor & \tongji@eassosupervisor \\
+      \fi
+    \end{tabular}
   }
 
   \vfill
