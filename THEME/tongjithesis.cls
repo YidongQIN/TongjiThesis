@@ -603,19 +603,19 @@
     \fi
     \centering%\hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
     \begin{tabular}{p{\tongji@title@width}@{}c@{\extracolsep{8pt}}l}
-      \tongji@cauthortitle & \tongji@title@sep & \tongji@cauthor \\
-      \tongji@cstudentnumbertitle & \tongji@title@sep & \tongji@studentnumber \\
-      \tongji@put@title{\tongji@cdepartmenttitle} & \tongji@title@sep & \tongji@cdepartment \\
+      姓 \hfill 名 & \tongji@title@sep & \tongji@cauthor \\
+      学 \hfill 号 & \tongji@title@sep & \tongji@studentnumber \\
+      \tongji@put@title{所在院系} & \tongji@title@sep & \tongji@cdepartment \\
       \iftongji@profession% 专业型仅中间两行是例外
-        \tongji@put@title{\tongji@cmajorfirsttitleprofession} & \tongji@title@sep & \tongji@cmajorfirst \\
-        \tongji@put@title{\tongji@cmajorsecondtitleprofession} & \tongji@title@sep & \tongji@cmajorsecond \\
+        \tongji@put@title{专业学位名称} & \tongji@title@sep & \tongji@cmajorfirst \\
+        \tongji@put@title{专业领域} & \tongji@title@sep & \tongji@cmajorsecond \\
       \else
-        \tongji@put@title{\tongji@cmajorfirsttitle} & \tongji@title@sep & \tongji@cmajorfirst \\
-        \tongji@put@title{\tongji@cmajorsecondtitle} & \tongji@title@sep & \tongji@cmajorsecond \\
+        \tongji@put@title{学科门类} & \tongji@title@sep & \tongji@cmajorfirst \\
+        \tongji@put@title{学科专业} & \tongji@title@sep & \tongji@cmajorsecond \\
       \fi
-      \tongji@put@title{\tongji@csupervisortitle} & \tongji@title@sep & \tongji@csupervisor \\
+      \tongji@put@title{指导教师} & \tongji@title@sep & \tongji@csupervisor \\
       \ifx\tongji@cassosupervisor\@empty\else% 若有副指导
-          \tongji@put@title{\tongji@cassosupertitle} & \tongji@title@sep & \tongji@cassosupervisor \\
+          \tongji@put@title{副指导教师} & \tongji@title@sep & \tongji@cassosupervisor \\
       \fi
       \end{tabular}
   }
