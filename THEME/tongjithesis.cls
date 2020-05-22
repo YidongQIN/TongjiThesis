@@ -539,9 +539,9 @@
 \def\tongjisetup{\kvsetkeys{tongji}}
 
 %% 中文封面页面
-\newlength{\tongji@title@width}
-\def\tongji@put@title#1{\makebox{\hb@xt@ \tongji@title@width{#1}}}% 用于分散对齐
-% 生成给定长度的一个水平盒子 \hb@xt@ = \hbox to
+\newlength{\tongji@title@width}% 用于计算申请人信息首列宽度
+% \def\tongji@put@title#1{\makebox{\hb@xt@\tongji@title@width{#1}}}% 用于分散对齐
+% 其中的生成给定长度的一个水平盒子 \hb@xt@ = \hbox to
 \newcommand{\chncover}{
   \phantomsection
   \centering\noindent\normalsize
@@ -601,21 +601,21 @@
         \setlength{\tongji@title@width}{5em}
       \fi
     \fi
-    \centering%\hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
-    \begin{tabular}{p{\tongji@title@width}@{}c@{\extracolsep{8pt}}l}
-      姓 \hfill 名 & \tongji@title@sep & \tongji@cauthor \\
-      学 \hfill 号 & \tongji@title@sep & \tongji@studentnumber \\
-      \tongji@put@title{所在院系} & \tongji@title@sep & \tongji@cdepartment \\
+    \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
+    \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
+      姓  名 & \tongji@cauthor \\% 相邻汉字之间的空格确保分散对齐
+      学  号 & \tongji@studentnumber \\
+      所 在 院 系 & \tongji@cdepartment \\
       \iftongji@profession% 专业型仅中间两行是例外
-        \tongji@put@title{专业学位名称} & \tongji@title@sep & \tongji@cmajorfirst \\
-        \tongji@put@title{专业领域} & \tongji@title@sep & \tongji@cmajorsecond \\
+        专 业 学 位 名 称 & \tongji@cmajorfirst \\
+        专 业 领 域  & \tongji@cmajorsecond \\
       \else
-        \tongji@put@title{学科门类} & \tongji@title@sep & \tongji@cmajorfirst \\
-        \tongji@put@title{学科专业} & \tongji@title@sep & \tongji@cmajorsecond \\
+        学 科 门 类 & \tongji@cmajorfirst \\
+        学 科 专 业 & \tongji@cmajorsecond \\
       \fi
-      \tongji@put@title{指导教师} & \tongji@title@sep & \tongji@csupervisor \\
+      指 导 教 师 & \tongji@csupervisor \\
       \ifx\tongji@cassosupervisor\@empty\else% 若有副指导
-          \tongji@put@title{副指导教师} & \tongji@title@sep & \tongji@cassosupervisor \\
+        副 指 导 教 师 & \tongji@cassosupervisor \\
       \fi
       \end{tabular}
   }
