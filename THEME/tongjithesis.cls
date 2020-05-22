@@ -249,6 +249,7 @@
 % 表格基础宏包
 \RequirePackage{array}% array支持数学模式表格，例如矩阵
 \RequirePackage{booktabs}% 基础三线表\cs{toprule}，\cs{midrule}，\cs{bottomrule}
+\RequirePackage{makecell}% 行内换行
 
 % 公式基础宏包 AmSTeX
 \RequirePackage{amsmath}
