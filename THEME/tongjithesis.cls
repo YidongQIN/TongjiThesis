@@ -680,6 +680,7 @@
 \NewDocumentCommand{\shuji}{O{\tongji@ctitle} O{\tongji@cauthor}}
 {% 单独使用书脊命令会在新的一页产生竖排书脊，无边框。
   \newpage\thispagestyle{empty}
+  \phantomsection
   \bfseries\fangsong\sihao\ziju{0.4}
   \ifxetex\addCJKfontfeatures{RawFeature={vertical:}}\fi
   \noindent\hfill\rotatebox[origin=lt]{-90}
@@ -696,11 +697,12 @@
     \fangsong\sihao\bfseries\ziju{0.4}% 书脊仿宋，四号，加粗
     \addCJKfontfeatures{RawFeature={vertical:+vert}}
     \setlength{\fboxrule}{1pt}
-    \framebox[2em][c]{\hspace{1em}% 盒子两字符宽，平移一个字符使居中
-      \rotatebox{-90}{
-        \hspace{5cm}#1\hspace{2em}\hfill#2\hspace{2em}\hfill#3\hspace{5cm}
-        }
+    \framebox[2em][c]{%
+      \hspace{1em}% 盒子两字符宽，平移一个字符使居中
+      \rotatebox{-90}{% 旋转
+        \hspace{5cm}#1\hspace{2em}\hfill#2\hspace{2em}\hfill#3\hspace{5cm}}
       }
+    \phantomsection
     \hfill% 文本框framebox右边的hfill以居中排布
     \tjclearpage\normalsize\restoregeometry
 }
@@ -717,12 +719,15 @@
     pdfcreator={\tongji@eauthor},
     pdfproducer={\tongjithesis}}
   \begin{titlepage}% 生成封面页
+    % \tolerance=10000% 改变排版容忍度
+    \hbadness=10000% 改变警报等级
+    \vbadness=10000
     \chncover
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@cheadingtitle}
+    \bookmark[dest=\HyperLocalCurrentHref, level=0]{封面}
     \engcover
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@etitle}
+    \bookmark[dest=\HyperLocalCurrentHref, level=0]{Cover}
     % 不带星则生成书脊（旧式\shuji 新式\bookspine），带星则无书脊
-    \IfBooleanTF#1{\relax}{\bookspine}
+    \IfBooleanTF#1{\relax}{\bookspine\bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}}
   \end{titlepage}
   \let\@tabular\tongji@tabular
 }
