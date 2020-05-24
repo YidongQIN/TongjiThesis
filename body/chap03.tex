@@ -72,8 +72,9 @@
 
 至此，已经有了从0级chapter到4级paragraph共5个级别了，应该够了吧。
 
-\subparagraph{如果必须要有更低的层次。}
+\subparagraph{如果必须要有更低的层次。\\}
 如果必须要有最低等级的标题，就像必须要有巫妖王一样。
+
 \sout{其实就是为了满足强迫症。}
 故还是把最低层级的 subparagraph 样式给定义了。
 
@@ -599,5 +600,20 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 但是，这种命令还不如直接用 snippet 完成呢，snippet 更具有灵活性。
 所以，未来的版本可能会抛弃这个功能吧。
 
+\subsection{圆圈序号}
+这里是几个圆圈序号测试。
+
+原生的命令特别丑陋。
+圆圈序号1是这样的\textcircled{1}，圆圈序号2是这样的\textcircled{2}，圆圈序号3是这样的\textcircled{3}，圆圈序号4是这样的\textcircled{4}，可见并不美观\footnote{用 Tikz 绘制的}。
+
+传统方法是利用 Pifont 宏包。
+圆圈序号1是这样的\ding{172}，圆圈序号2是这样的\ding{173}，圆圈序号3是这样的\ding{174}，圆圈序号4是这样的\ding{175}，可见并不美观\footnote{pi font 的衬线命令}。
+
+圆圈序号1是这样的\ding{192}，圆圈序号2是这样的\ding{193}，圆圈序号3是这样的\ding{194}，圆圈序号4是这样的\ding{195}，可见并不美观\footnote{pi font 的非衬线衬线命令}。
+
+投机的方法是用 Tikz 宏包。
+圆圈序号1是这样的\tikzcircnum{1}，圆圈序号2是这样的\tikzcircnum{2}，圆圈序号3是这样的\tikzcircnum{3}，圆圈序号4是这样的\tikzcircnum{4}，可见并不美观\footnote{用 Tikz 绘制的}。
+
+圆形命令带星号则转化为 Tikz 方法。圆圈序号1是这样的\textcircled*{1}，圆圈序号2是这样的\textcircled*{2}，圆圈序号3是这样的\textcircled*{3}，圆圈序号4是这样的\textcircled*{4}，可见并不美观\footnote{原生命令}。
 
 \end{document}

@@ -46,6 +46,16 @@
     \tongji@sftitlenumfalse
     \tongji@heititlenumfalse
     \expandafter\csname tongji@#1true\endcsname}
+% 脚注中的编号数字形式
+\newif\iftongji@pifont
+\tongji@pifonttrue% 默认衬线
+\newif\iftongji@circle% 采用圆圈字体
+\newif\iftongji@normal% 原始的数字
+\define@key{tongji}{footnotenum}{%
+  \tongji@pifontfalse
+  \tongji@circlefalse
+  \tongji@normalfalse
+  \expandafter\csname tongji@#1true\endcsname}
 % 封面的electronic选项（打印时删除）
 \DeclareBoolOption{electronic}
 % 草稿的紧凑版本会尽量避免空白页
@@ -110,7 +120,7 @@
 % xparse 提供了 \newcommand 的一种高性能的替代，即 \NewDocumentCommand
 \RequirePackage{xparse}
 % etoolbox 引入了 LATEX kernel commands 的不同实现，但功能一样。
-% \RequirePackage{etoolbox}
+\RequirePackage{etoolbox}
 % environ 创建新的环境
 \RequirePackage{environ}
 % 分章节独立编译
@@ -331,6 +341,19 @@
 \renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.a, 1.b
 \renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.a, 1.b
 
+% 圆圈数字序号 \textcircled 的美化
+\RequirePackage{pifont}% 传统方案 pkg{pifont}
+\newcommand{\circlerm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
+\newcommand{\circlesf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字
+\RequirePackage{tikz}% 绘图方案 pkg{Tikz}
+\DeclareRobustCommand{\tikzcircnum}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.5pt] (char) {#1};}}% 绘制圆
+\let\textcircled@old\textcircled
+\RenewDocumentCommand\textcircled{s m}{% 带*则替换为新 Tikz 命令
+  \IfBooleanTF{#1}
+  {\tikzcircnum{#2}}
+  {\textcircled@old{#2}}
+  }
+
 \AtBeginDocument{%
   \pagestyle{tongji@empty}
   \pagenumbering{roman}
@@ -386,20 +409,19 @@
   paragraph={
     name={（,）},
     number=\arabic{paragraph},
-    format=\heiti\xiaosi[1],
+    format=\heiti\normalsize,
     nameformat=\tongji@title@font\wuhao,
     aftername=\hspace{0pt},
     titleformat={},
     runin=false,
     afterindent=true,
-    beforeskip={6bp \@plus .2ex},
+    beforeskip={0bp \@plus .2ex},
     afterskip={0bp \@plus .2ex},
   },
   subparagraph={
-    name={（,）},
-    number=\arabic{subparagraph},% \chinese{subparagraph},
     format=\normalsize,
-    aftername=\hspace{0pt},
+    number=\tikzcircnum{\arabic{subparagraph}},%\circlerm{subparagraph},% pifont 有点小
+    aftername=\hspace{0.5em},
     aftertitle=\hspace{0pt},
     runin=true,
     indent=2em,

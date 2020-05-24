@@ -1,3 +1,4 @@
+% !TeX root = ../Main/thesis.tex
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesPackage{tongjithesis}[2019/06/21 3 put any packages you would like to use here]
 
@@ -6,7 +7,7 @@
 \newcommand{\tngj}{\TJTextLogo[black]{10.5bp}}%{{\lishu 同济大学}}
 
 % 设置各级列表的样式，依赖于 enumitem 宏包
-\setlist[1]{labelindent=\parindent,leftmargin=2\parindent}
+\setlist[1]{labelindent=\parindent,leftmargin=\parindent}
 \setlist[2]{labelindent=1em,leftmargin=\parindent}
 \setlist[3]{labelindent=1em,leftmargin=\parindent}
 \setlist[enumerate,1]{label=(\arabic*), ref = \arabic*}
@@ -15,11 +16,13 @@
 \setlist[itemize,1]{label=$\bullet$}
 \setlist[itemize,2]{label=$\circ$}
 \setlist[itemize,3]{label=\tiny$\blacksquare$}
-\setlist[description]{font=\heiti\bfseries}
+\setlist[description]{font=\heiti}
 \newlist{inlinecn}{enumerate*}{1}
-\setlist[inlinecn,1]{label=第\chinese{inlinecni}，}
-\newlist{inline}{enumerate*}{1}
+\setlist[inlinecn,1]{label=\tikzcircnum{\arabic*}}
+\setlist[inlinecn,2]{label= 第\chinese{inlinecni}，}
+\newlist{inline}{enumerate*}{2}
 \setlist[inline,1]{label=(\arabic*)}
+\setlist[inline,2]{label=\roman*.}
 % \setlist[inline,1]{label=}
 
 % 算法环境
@@ -172,9 +175,6 @@
   \addcontentsline{toc}{chapter}{\lstlistlistingname}
   }
 
-% 绘制UML图 % 建议用 VScode 的插件绘制 GraphViz 或 PlantUML。
-% \RequirePackage{tikz}
-
 % 处理数学公式中的黑斜体的宏包
 %\RequirePackage{bm}
 % 不同于 \mathcal 或 \mathfrak 的英文花体字体`
@@ -250,30 +250,30 @@
 % \newcommand\tongji@underline[2][6em]{\hspace{1pt}\underline{\hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}
 
 % 脚注美化 https://en.wikibooks.org/wiki/LaTeX/Footnotes_and_Margin_Notes
-% 脚注按页编号。
+% 脚注按页编号
 \iftongji@raggedbottom
   \RequirePackage[bottom,perpage,hang]{footmisc}% \raggedbottom
 \else
   \RequirePackage[perpage,hang]{footmisc}
 \fi
-% pifont有很多Pi fonts，如Dingbats（杂锦字体）, Symbol, etc
-\iftongji@pifootnote
-  \RequirePackage{pifont}
-\fi
-% 生成带圈的脚注数字，最多处理到 10。
-\def\tongji@textcircled#1{%
-  \ifnum\value{#1}>9
-    \ClassError{tongjithesis}%
-      {Too many footnotes in this page.}{Keep footnote less than 10.}
+% 定义脚注用的带圈数字
+\def\tongji@ftntnum#1{%
+  \ifnum\value{#1}>9% 脚注数字最多处理到 9
+    \ClassError{tongjithesis}{Too many footnotes in this page.}{Keep footnote less than 10.}
   \fi
-  \iftongji@pifootnote%
-    \ding{\the\numexpr\value{#1}+171\relax}%
-  \else%
-    \xiaoliu\arabic{#1}%
+  \iftongji@pifont
+    \circlerm{#1}% 采用 Pifont 的衬线数字、图形较小
+  \else\iftongji@circle
+    \tikzcircnum{\arabic{#1}}% 采用 Tikz 在外侧绘制圆形
+  \else\iftongji@normal
+    \xiaoliu\arabic{#1}% 原始类型
+  \fi
+  \fi
   \fi
 }
-\renewcommand{\thefootnote}{\tongji@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\tongji@textcircled{mpfootnote}}
+% 取代脚注编号
+\renewcommand{\thefootnote}{\tongji@ftntnum{footnote}}
+\renewcommand{\thempfootnote}{\tongji@ftntnum{mpfootnote}}% minipage footnote
 % 定义脚注分割线
 \def\footnoterule{\vspace{-3pt}\hrule\@width0.3\textwidth\@height0.4\p@\vspace{2.6pt}}
 \let\tongji@footnotesize\footnotesize

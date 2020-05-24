@@ -248,6 +248,35 @@
 
 本模板新定义了命令 `\colorurl`，用于展示 URL。
 
+## 圆圈序号
+之前一直困于多级列表与段落的样式过于重合，想寻找中文中常用的、更多的序号样式。
+整理脚注的时候，也发现圆圈样式的实现很特别，所以就找到了一篇关于 [带圈数字](https://stone-zeng.github.io/2019-02-09-circled-numbers/) 的实现教程，将部分成果吸纳进了这个模板。
+> 也是为了跟老板编的教材保持一致。
+
+1. 传统方法是利用 `pifont` 宏包，它封装了很多PostScript 字体。这也是原模板采用的美化方法。
+2. 一个更加灵活的方法，是用大名鼎鼎的 `Tikz` 宏包绘制一个圆形。
+   1. 最初找到的是 [LaTeX 工作室](https://www.latexstudio.net/archives/1571.html) 的方案。
+
+   2. 更好的方案是 [StackExchange](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers#) 的方案。相比前者，有两个优势：
+      1. 用 `[baseline=(char.base)]` 定位，而不是手动的 $0.7ex$ 上下调整。
+      2. 评论区建议了 `\DeclareRobustCommand` 定义。
+
+```latex
+% 方案 1 利用 Tikz
+\newcommand*{\circled}[1]{\lower.7ex\hbox{\tikz\draw (0pt, 0pt) circle (.5em) node {\makebox[1em][c]{\small #1}};}}
+\robustify{\circled}% 依赖于 pkg{etoolbox} 的命令
+% 方案 2 利用 Tikz
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+```
+
+此外，还有提到用 `addfontfeatures{Annotation=2}` 等，但是没有成功。
+
+最终的成果，运用到了 3 处：
+1. 脚注的序号现在是一个三选一的命令了，可以选择 **pifont** 或者 **圆圈** 或者 **无修饰**。
+2. subparagraph 的序号现在是圆圈数字了。
+3. 行内列表的编号。
+
+
 ## 列表样式
 
 利用 `{enumitem}` 宏包预定义了有序列表、无序列表和关键词列表的样式，包括缩进、标签样式和对齐。
@@ -615,13 +644,19 @@ footskip=5.4mm,
 
 2. 样式定义，方法同 `section` 等，不再赘述。
 
-   1. paragraph 的样式延续各级 section，但是不像 section 那样继承上级编号。
-   2. subparagraph 的样式同正文，只是多了一个自动编号的功能。
+   * paragraph （4级）
+      + 样式延续各级 section：黑体、顶格。
+      + 编号不含上级，仅为全角括号与一个阿拉伯数字。
 
-不过，觉得 `paragraph` 和 `subparagraph` 的等级太详细了、且样式上跟列表环境有相似。
-尝试过用字体（黑体、楷体）以示与正文列表的宋体字体区分。
+   * subparagraph （5级）
+      + 样式同正文，宋体，缩进2字符。
+      + 编号是圆圈数字。
 
-> TODO：等论文写完了，做最后排版再说吧，说不定根本用不到。
+以前就觉得 `paragraph` 和 `subparagraph` 的等级太详细了、且样式上跟列表环境有相似。
+曾用字体（黑体、楷体）以示与正文列表的宋体字体区分，但仍然不尽人意。
+
+现在，编号方式像老板编写的教材中的编号习惯看齐，应该没有问题了吧？
+> 区别在于 paragraph 等级我仍然采用了黑体字体，老板用得已经是正文宋体字体了。
 
 # 分章节编译问题
 
