@@ -66,8 +66,6 @@
   % 如果没有调用\raggedbottom，那么tex就会尽量使得所有page的bottom margins相等。
   % 而这个命令就是告诉tex不要这么搞，即允许不同page的不一样，方便一大段材料跨页排版。
 \DeclareBoolOption{raggedbottom}
-% 在脚注标记中使用 \pkg{pifont} 的带圈数字（默认打开），此选项生成的带圈数字更漂亮。
-\DeclareBoolOption{pifootnote}
 % 参数传递给 ctexbook 模版
 \DeclareDefaultOption{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 % 设置以下参数的默认值为true。
@@ -142,7 +140,7 @@
     footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
     }
 % 页眉页脚\pkg{fancyhdr} 设置
-\RequirePackage{fancyhdr}% 定义三种页眉页脚格式：
+\RequirePackage{fancyhdr}% 定义种页眉页脚格式：
   % {tongji@empty}：页眉页脚都没有
   % {tongji@plain}：只显示页脚的页码
   % {tongji@headings}：页眉页脚同时显示
@@ -164,6 +162,14 @@
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.4pt}
     \renewcommand{\footrulewidth}{0pt}}
+  \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
+    \fancyhead{}
+    \fancyhead[RO,LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
+    \fancyfoot{}
+    \fancyfoot[C]{\songti\wuhao\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\footrulewidth}{0pt}
+}
 % 论文整体版面布置分为三部分
 \renewcommand\frontmatter{%
   \tjclearpage
@@ -888,14 +894,6 @@
 \newcommand\printTJbibliography{\printbibliography[heading=bibintoc]\clearpage}
 
 %% 附录
-\fancypagestyle{tongji@appendix@heading}{% 附录页眉样式
-  \fancyhead{}
-  \fancyhead[RO,LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
-  \fancyfoot{}
-  \fancyfoot[C]{\songti\wuhao\thepage}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \renewcommand{\footrulewidth}{0pt}
-}
 \let\tongji@appendix\appendix
 \renewenvironment{appendix}{% 附录环境
   \ctexset{% 附录仍属于mainmattertrue才能正确编号成附录A的形式。
