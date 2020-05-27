@@ -198,8 +198,8 @@
 % \setmainfont{Source Serif Pro}
 % \setsansfont{Source Sans Pro}
 % \setmonofont{Source Code Pro}
-% \setCJKmainfont{Source Serif Pro}
-% \setCJKsansfont{Source Han Sans SC}
+% \setCJKmainfont{Adobe Song Std}
+% \setCJKsansfont{Noto Sans CJK SC}
 % 特别地，设置章节标题中的编号字体
 \def\tongji@title@font{% 在 \ctexset 的 numberformat 中调用
   \iftongji@rmtitlenum\rmfamily\else% 常用的 Roman 衬线字体
