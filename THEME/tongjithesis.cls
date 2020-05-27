@@ -71,7 +71,6 @@
 % 设置以下参数的默认值为true。
 \kvsetkeys{tongji}{
   raggedbottom,
-  pifootnote,
   }% 未加入的参数，\DeclareBoolOption 导致其默认false
 \ProcessKeyvalOptions*
 
@@ -196,6 +195,11 @@
 
 %% 字体
 %% 中文字体已经由ctexbook文档类型接管（调用 xeCJK）
+% \setmainfont{Source Serif Pro}
+% \setsansfont{Source Sans Pro}
+% \setmonofont{Source Code Pro}
+% \setCJKmainfont{Source Serif Pro}
+% \setCJKsansfont{Source Han Sans SC}
 % 特别地，设置章节标题中的编号字体
 \def\tongji@title@font{% 在 \ctexset 的 numberformat 中调用
   \iftongji@rmtitlenum\rmfamily\else% 常用的 Roman 衬线字体
