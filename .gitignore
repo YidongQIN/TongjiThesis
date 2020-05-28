@@ -1,5 +1,6 @@
 # VS Code Workspace settings
 .vscode/
+body/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux

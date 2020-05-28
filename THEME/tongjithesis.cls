@@ -195,12 +195,11 @@
 
 %% 字体
 %% 中文字体已经由ctexbook文档类型接管（调用 xeCJK）
-% \setmainfont{}
-% \setsansfont{}
-% \setmonofont{}
-% \setCJKmainfont{}
-% \setCJKsansfont{}
-% \setCJKmonofont{}
+% \setmainfont{Source Serif Pro}% 只是展示和测试字体命令
+% \setsansfont{Source Sans Pro}% 建议用 ctex 的功能成体系地更改字体
+% \setmonofont{Source Code Pro}% 不建议手动单独更改
+% \setCJKmainfont{思源宋体 CN}% 思源字体与常用 Word 中易字体差距很大
+% \setCJKsansfont{思源黑体}% 且多种字重很复杂
 % 特别地，设置章节标题中的编号字体
 \def\tongji@title@font{% 在 \ctexset 的 numberformat 中调用
   \iftongji@rmtitlenum\rmfamily\else% 常用的 Roman 衬线字体
