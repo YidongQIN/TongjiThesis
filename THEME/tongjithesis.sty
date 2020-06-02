@@ -266,7 +266,7 @@
   \else\iftongji@circle
     \tikzcircnum{\arabic{#1}}% 采用 Tikz 在外侧绘制圆形
   \else\iftongji@normal
-    \xiaoliu\arabic{#1}% 原始类型
+    \footnotesize\arabic{#1}% 原始类型
   \fi
   \fi
   \fi
@@ -288,3 +288,4 @@
 \apptocmd{\@makefntext}{\let\@makefnmark\tongji@makefnmark}{}{}
 
 \endinput
+%% End of file `tongjithesis.sty'.

@@ -359,9 +359,7 @@
 \DeclareRobustCommand{\tikzcircnum}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.5pt] (char) {#1};}}% 绘制圆
 \let\textcircled@old\textcircled
 \RenewDocumentCommand\textcircled{s m}{% 带*则替换为新 Tikz 命令
-  \IfBooleanTF{#1}
-  {\tikzcircnum{#2}}
-  {\textcircled@old{#2}}
+  \IfBooleanTF{#1} {\tikzcircnum{#2}} {\textcircled@old{#2}}
   }
 
 \AtBeginDocument{%
