@@ -447,6 +447,10 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
   需要把宏包的调用移至 `ctex` 之前，即可避免出错。
 
+## 微分符号
+
+根据 [这篇帖子](https://liam.page/2017/05/01/the-correct-way-to-use-differential-operator/) 为微积分中的 $d$ 符号设定了“左侧有间距、直立体”的命令 `\dif`。
+
 # Geometry 页面尺寸、页眉页脚尺寸
 
 ## 页眉尺寸
