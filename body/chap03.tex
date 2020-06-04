@@ -79,7 +79,7 @@
 故还是把最低层级的 subparagraph 样式给定义了。
 
 \subparagraph{五级标题即子段落。}
-五级标题形如“（1）xxx”。
+五级标题形如 \tvt{\textcircled*{1}xxx}。
 
 最初设定格式为：楷书，小四号，左侧空两格，单倍行距，段前 6 磅，段后 0 磅，序号与题名间没有空。
 其中，用命令 \verb|\chinese{}| 产生汉字数字，并用命令 \verb|\setcounter{secnumdepth}{5}| 把目录编号深度更改为 subparagraph 对应的等级 5。
@@ -216,26 +216,26 @@ branch
 
 先填充一些废话。\zhlipsum[6]
 
-可以参见第~\ref{ssc:git-workflow}节的例子，也可以看下面这个。
-区别在于，本小节的例子完全展示了\emph{默认参数}情况下的样式。
+本小节的例子完全展示了 \emph{默认参数} 情况下的样式。
 
 首先是有序列表。
 \begin{enumerate}
   \item 介绍了时间序列分析的相关概念与理论。
-  \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
+  \item 重点对时间序列的平稳性特点
+  \item 检验方法及平稳模型体系做了详细阐述。
   \begin{enumerate}
-    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。
+    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的
     \item 对建模过程中的平稳性检验、模型建立步骤、定阶、参数估计以及检验进行了系统的阐述，
   \end{enumerate}
-  \item 并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。
-  \item 结果表明季节 ARIMA 模型能较好地模拟监测序列的变化趋势，预测精度较高。
+  \item 并对大桥某监测测点的实测数据进行了
+  \item 结果表明
   \begin{enumerate}
     \item 用力地嵌套列表。
     \begin{enumerate}
       \item 针对监测序列中某些测点间具有较高的相似性，
-      \item 探讨了滞后协整分析的参数估计、模型检验等方法，
+      \item 探讨了滞后协整分析的参数估计
     \end{enumerate}
-    \item 最后建立了支座位移与温度间的 ADL 与 ECM 模型，
+    \item 最后建立了支座位移与温度间的
     \item 结果表明该模型具有良好的拟合精度与预测效果。
   \end{enumerate}
 \end{enumerate}
@@ -243,20 +243,21 @@ branch
 然后是无序列表的。
 \begin{itemize}
   \item 介绍了时间序列分析的相关概念与理论。
-  \item 重点对时间序列的平稳性特点、检验方法及平稳模型体系做了详细阐述。
+  \item 重点对时间序列的平稳性特点
+  \item 检验方法及平稳模型体系做了详细阐述。
   \begin{itemize}
-    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的季节 ARIMA 模型分析方法。
+    \item 为充分反映出监测序列的季节周期性，建立了一套基于单测点监测序列的
     \item 对建模过程中的平稳性检验、模型建立步骤、定阶、参数估计以及检验进行了系统的阐述，
   \end{itemize}
-  \item 并对玉峰大桥某监测测点的实测数据进行了季节 ARIMA 建模与预测分析。
-  \item 结果表明季节 ARIMA 模型能较好地模拟监测序列的变化趋势，预测精度较高。
+  \item 并对大桥某监测测点的实测数据进行了
+  \item 结果表明
   \begin{itemize}
     \item 用力地嵌套列表。
     \begin{itemize}
       \item 针对监测序列中某些测点间具有较高的相似性，
-      \item 探讨了滞后协整分析的参数估计、模型检验等方法，
+      \item 探讨了滞后协整分析的参数估计
     \end{itemize}
-    \item 最后建立了支座位移与温度间的 ADL 与 ECM 模型，
+    \item 最后建立了支座位移与温度间的
     \item 结果表明该模型具有良好的拟合精度与预测效果。
   \end{itemize}
 \end{itemize}
@@ -264,11 +265,11 @@ branch
 下面是一个description列表，不知道中文叫什么。
 
 \begin{description}
-  \item [linxdcn] (在github.com linxdcn TongjiThesis)同学汇总的wildwolf、
-  \item [svandex] 在github.com svandex masthesis)、
+  \item [linxdcn] 在github.com linxdcn 同学汇总的、
+  \item [svandex] 在 github.com svandex masthesis、
   \begin{description}
-    \item [zhao-chen] 在github.com zhao-chen TongjiThesis)的版本。
-    \item [收藏有本硕博模板的zhouyuan版] 在github.com zhouyuan/tongjithesis)。
+    \item [zhao-chen] 在 github.com zhao-chen TongjiThesis 的版本。
+    \item [收藏有本硕博模板的zhouyuan版] 在 github.com zhouyuan tongjithesis。
   \end{description}
 \end{description}
 
@@ -296,20 +297,20 @@ branch
 
   \item 工作区 -> 暂存区：add添加（也叫stage）
     \begin{enumerate}[A.]
-      \item 保存修改并添加文件到暂存区（index，或叫staging area)
+      \item 保存修改并添加文件到暂存区（index，或叫 staging area）
 
       \verb| git add <文件名> |
 
       常用简化命令如下：
         \begin{itemize}[\textbullet]
-          \item \verb| git add -A % 所有更改 |
-          \item \verb| git add .  % 新增、修改，不含删除 |
-          \item \verb| git add -u % 修改、删除，不含新增 |
+          \item \verb| git add -A | 所有更改
+          \item \verb| git add .  | 新增、修改，不含删除
+          \item \verb| git add -u | 修改、删除，不含新增
         \end{itemize}
 
       \item 或者查看区别
 
-      \verb!git diff!
+      \verb! git diff !
     \end{enumerate}
 
   \item 暂存区 -> 版本库：commit提交
@@ -318,7 +319,8 @@ branch
 
   其中，-a 表示全部 -m 添加一个留言。
   \begin{enumerate}[(a)]
-    \item 如果弹出了vim截面，则用i命令进入编辑模式，输入完成后，esc退回到命令模式，
+    \item 如果弹出了vim截面，则用i命令进入编辑模式，
+    \item 输入完成后，esc退回到命令模式，
     \item 然后：wq保存并退出vim，即可回到git命令窗口。
   \end{enumerate}
 
@@ -607,13 +609,14 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 圆圈序号1是这样的\textcircled{1}，圆圈序号2是这样的\textcircled{2}，圆圈序号3是这样的\textcircled{3}，圆圈序号4是这样的\textcircled{4}，可见并不美观\footnote{用 Tikz 绘制的}。
 
 传统方法是利用 Pifont 宏包。
-圆圈序号1是这样的\ding{172}，圆圈序号2是这样的\ding{173}，圆圈序号3是这样的\ding{174}，圆圈序号4是这样的\ding{175}，可见并不美观\footnote{pi font 的衬线命令}。
+圆圈序号1是这样的\ding{172}，圆圈序号2是这样的\ding{173}，圆圈序号3是这样的\ding{174}，圆圈序号4是这样的\ding{175}，可见比较美观\footnote{pi font 的衬线命令}。
 
-圆圈序号1是这样的\ding{192}，圆圈序号2是这样的\ding{193}，圆圈序号3是这样的\ding{194}，圆圈序号4是这样的\ding{195}，可见并不美观\footnote{pi font 的非衬线衬线命令}。
+也可以用无衬线的数字。
+圆圈序号1是这样的\ding{192}，圆圈序号2是这样的\ding{193}，圆圈序号3是这样的\ding{194}，圆圈序号4是这样的\ding{195}，可见也算美观\footnote{pi font 的非衬线衬线命令}。
 
 投机的方法是用 Tikz 宏包。
-圆圈序号1是这样的\tikzcircnum{1}，圆圈序号2是这样的\tikzcircnum{2}，圆圈序号3是这样的\tikzcircnum{3}，圆圈序号4是这样的\tikzcircnum{4}，可见并不美观\footnote{用 Tikz 绘制的}。
+圆圈序号1是这样的\tikzcircnum{1}，圆圈序号2是这样的\tikzcircnum{2}，圆圈序号3是这样的\tikzcircnum{3}，圆圈序号4是这样的\tikzcircnum{4}，可见也不错的\footnote{用 Tikz 绘制的}。
 
-圆形命令带星号则转化为 Tikz 方法。圆圈序号1是这样的\textcircled*{1}，圆圈序号2是这样的\textcircled*{2}，圆圈序号3是这样的\textcircled*{3}，圆圈序号4是这样的\textcircled*{4}，可见并不美观\footnote{原生命令}。
+圆形命令带星号则转化为 Tikz 方法。圆圈序号1是这样的\textcircled*{1}，圆圈序号2是这样的\textcircled*{2}，圆圈序号3是这样的\textcircled*{3}，圆圈序号4是这样的\textcircled*{4}，总之看得还行\footnote{原生命令}。
 
 \end{document}
