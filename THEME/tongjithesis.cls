@@ -887,7 +887,7 @@
 %% 参考文献
 % 兼容参考文献的老命令
 \let\inlinecite\parencite
-% 全局字体
+% 参考文献字体
 \renewcommand{\bibfont}{\wuhao[1.6]\songti}% 宋体五号
 % \setlength{\bibitemsep}{0ex}
 \setlength{\bibnamesep}{0ex}
