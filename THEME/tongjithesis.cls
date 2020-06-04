@@ -276,6 +276,8 @@
 % 允许太长的公式断行、分页等。
 \allowdisplaybreaks[4]
 \renewcommand\theequation{\ifnum \c@chapter>\z@ \thechapter.\fi\@arabic\c@equation}
+% 美化的微分符号 d <https://liam.page/2017/05/01/the-correct-way-to-use-differential-operator/>
+\newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 
 % 定理环境，启用 amsmath 选项确保兼容性
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}

@@ -10,7 +10,7 @@
 
 当然，不变的是满纸荒唐言，用于填充内容\cite{HowDigital}。
 
-只不过偷了个懒：用\textsf{zhlipsum} 宏包填充废话充篇幅。
+只不过偷了个懒：用 \verb|zhlipsum| 宏包填充废话充篇幅。
 
 \section{多级标题} \label{sec:seclv}
 
@@ -19,27 +19,27 @@
 \subsection{多级标题样式修正}
 \label{ssc:titles-style}
 
-问题描述：原本的 \textsf{romantitle} 命令没有用。
+问题描述：原本的 \verb|romantitle| 命令没有用。
 
-验证发现，是因为 \textsf{CTeX} 宏包中的字体命令（\textsf{$\backslash$songti}、\textsf{$\backslash$heiti}、\textsf{$\backslash$fangsong}、\textsf{$\backslash$lishu}）等，只对汉字字体生效。
-究其原因，因为是 \textsf{xeCJK} 宏包的设计，使得CJK的字体可以独立于英语字体设置。
+验证发现，是因为 \verb|CTeX| 宏包中的字体命令（\verb|\songti|、\verb|\heiti|、\verb|\fangsong|、\verb|\lishu|）等，只对汉字字体生效。
+究其原因，因为是 \verb|xeCJK| 宏包的设计，使得CJK的字体可以独立于英语字体设置。
 
 于是，重写了控制章节标题的数字编号的命令。
 具体修改见 \tvt{README.md} 文件中的章节。
-现在，可以在 \textbackslash documentclass[titlenum=XXX] 中启用不同的编号字体。
+现在，可以在 \texttt{\textbackslash documentclass[titlenum=XXX]} 中启用不同的编号字体。
 其中XXX可以选择如表~\ref{tab:title-number-format}所示。
 
 \begin{table}[htbp]
 \centering
 \caption{\tongjithesis 章节编号样式选项}
 \label{tab:title-number-format}
-\begin{tabular}[c]{lll}
+\begin{tabular}[c]{>{\ttfamily}lll}
   \toprule[1.5pt]
   选项 & 编号字体 & 备注 \\ % title row
   \midrule[1pt]
-  \texttt{rmtitlenum} & 衬线（Times New Roman） & 本模板默认选项 \\
-  \texttt{sftitlenum} & 无衬线（Arial） & 原模版默认选项 \\
-  \texttt{heititlenum} & 黑体 & 严格按照校方模板 \\
+  rmtitlenum & 衬线（Times New Roman） & 本模板默认选项 \\
+  sftitlenum & 无衬线（Arial） & 原模版默认选项 \\
+  heititlenum & 黑体 & 严格按照校方模板 \\
   \bottomrule[1.5pt]
 \end{tabular}
 \end{table}
@@ -86,7 +86,7 @@
 
 \subparagraph{但是样式过多也不好。}
 应该不会用到这么多层级吧？
-一个比较明显的问题就是 \textsf{paragraph} 和 \textsf{subparagraph} 的样式，难以与各类列表高效区分。
+一个比较明显的问题就是 \verb|paragraph| 和 \verb|subparagraph| 的样式，难以与各类列表高效区分。
 \footnote{所以如果内容不多，推荐采用列表，见第~\ref{sec:list}节的展示。}
 
 所以选择了一个方案，其实就是避免与正文（列表）采用同样的字体。
