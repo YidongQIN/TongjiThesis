@@ -191,28 +191,29 @@
 % \RequirePackage{fullwidth} % 提供一个用于放置浮动体的环境，方便进行上下左右的边距控制
 % \RequirePackage{tcolorbox} % 彩色盒子，但也可以用于浮动体控制
 
+% 表格内部换行：宏包{makecell}或{multirow}或自定义的\tabincell{}{}命令
+\RequirePackage{multirow}% 表格中支持跨多行
+\newcommand{\tabincell}[2]{% 两个参数是 {对齐方式}{单元格内容}
+  \begin{tabular}{@{}#1@{}}#2\end{tabular}}
 % array宏包定义三种新的column对齐格式，允许使用L C R的带长度的表格列
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
-% 表格内部换行，可以用自定义的\tabincell，或者宏包{multirow}或{makecell}
-\newcommand{\tabincell}[2]{%参数：{对齐方式}{单元格内容}
-  \begin{tabular}{@{}#1@{}}#2\end{tabular}}
-\RequirePackage{multirow}% 表格中支持跨行
-\RequirePackage{diagbox}% 表格中的反斜线
-\RequirePackage{slashbox}% 表格中的反斜线
-\RequirePackage{tabularx}% 固定宽度的表格
-% 定义 tabularx 的三种新的列对齐模式，跟一个{}参数可以控制列宽分配比例
+% 固定宽度的表格
+\RequirePackage{tabularx}% 定义 tabularx 的三种新的列对齐模式，参数控制列宽分配比例
 \newcolumntype{a}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}% 左对齐
 \newcolumntype{d}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}% 右对齐
 \newcolumntype{s}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}% 居中
+% 表格中的反斜线
+\RequirePackage{diagbox}% 表格中的反斜线
+\RequirePackage{slashbox}% 表格中的反斜线
 \RequirePackage{dcolumn}% 表格中数字按小数点对齐
 \newcolumntype{i}[1]{D{.}{.}{#1}}% 接受一个整数控制小数点后位数，负数则居中
-% 长表格跨页：\pkg{longtable} \pkg{supertabular} 二选一即可
+% 长表格跨页 \pkg{longtable} \pkg{supertabular} 二选一即可
 \RequirePackage{longtable}
-  % longtable 的 default font size
-  \let\tongji@LT@array\LT@array
-  \def\LT@array{\wuhao[1.5]\tongji@LT@array}
+% longtable 的 default font size
+\let\tongji@LT@array\LT@array
+\def\LT@array{\wuhao[1.5]\tongji@LT@array}
 \RequirePackage{supertabular}
 % 简单三线表推荐用 \cs{hlinewd}% 被 booktabs 代替故取消
 % \def\hlinewd#1{% 参数是厚度
