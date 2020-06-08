@@ -56,10 +56,8 @@
   \tongji@circlefalse
   \tongji@normalfalse
   \expandafter\csname tongji@#1true\endcsname}
-% 封面的electronic选项（打印时删除）
+% 封面的 electronic 选项（打印时删除）且尽量避免空白页
 \DeclareBoolOption{electronic}
-% 草稿的紧凑版本会尽量避免空白页
-\DeclareBoolOption{draft}
 % 论文是否保密
 \DeclareBoolOption{secret}
 % bottom margins 选项
@@ -189,7 +187,7 @@
 % 创建空白页的宏包
 \RequirePackage{emptypage}
 \newcommand{\tjclearpage}% 如果是紧凑版，则尽量少空页
-  {\iftongji@draft{\clearpage}\else{\cleardoublepage}\fi}
+  {\iftongji@electronic{\clearpage}\else{\cleardoublepage}\fi}
 % Tikz 绘制的封面中的同济 Logo
 \RequirePackage{tjlogo}
 
@@ -582,9 +580,7 @@
     \iftongji@electronic{% 是否电子版
       {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype（打印时删除）}}
     \fi
-    \iftongji@draft{% 是否紧凑布局
-      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype（电子版）}}
-    \fi\hfill
+    \hfill
     \iftongji@secret{% 是否保密
       \fbox{\sanhao\tongji@secret@title}}
     \fi

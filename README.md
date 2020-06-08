@@ -115,10 +115,12 @@
 
 ## 紧凑布局模式
 
-仅为了自己写大纲用的，创建了一套更加紧凑的布局，命名为 `draft` 草稿选项。
+仅为了自己写大纲用的，创建了一套更加紧凑的布局。
+原本命名为 `draft` 草稿选项，但是发现这是个冲突的选项。
+考虑到 `electronic` 也是个没有用的选项，于是就合并了。
 
 具体使用方法是：
-1. 开启文档类型中的一个新增的参数 `draft=true`，它会使得原本的多处 `\cleardoublepage` 变为 `\clearpage`。
+1. 开启文档类型中的一个新增的参数 `electronic=true`，它会使得原本的多处 `\cleardoublepage` 变为 `\clearpage`。
 2. 使用 `\makecover*{}` 则不生成书脊，或覆盖封面页面 `\begin{titlepage}\chncover\end{titlepage}` 连英文封面也不产生。
 3. 不调用`\makeauthorizationpage` 或 `\makedeclarepage`，即不生成声明页面。
 4. 后续部分根据要求取舍，比如索引、致谢等。
