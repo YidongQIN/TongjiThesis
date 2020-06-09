@@ -181,9 +181,9 @@
 %\RequirePackage{mathrsfs}
 
 % 浮动图形控制
-% 确定浮动对象的位置，可以使用 H，强制将浮动对象放到这里（可能效果很差）
-% \RequirePackage{float} % 允许上一个 section 的浮动图形出现在下一个 section 的开始部分
-% \RequirePackage[below]{placeins} % 提供\FloatBarrier命令，使所有未处理的浮动图形立即被处理。
+% 确定浮动对象的位置，（可能效果很差）
+\RequirePackage{float} % 可以使用 [H] 强制将浮动对象放到这里
+\RequirePackage[section]{placeins} % 提供\FloatBarrier 命令使所有未处理的浮动图形立即被处理。
 % \RequirePackage{floatflt} % 图文混排用宏包
 % \RequirePackage{rotating} % 图形和表格的控制旋转
 
