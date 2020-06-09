@@ -406,8 +406,8 @@
     afterskip={6bp \@plus .2ex},
   },
   subsubsection={
-    format=\heiti\xiaosi[1],
-    nameformat=\tongji@title@font\xiaosi,% 默认为空，改为比中文小一号
+    format=\heiti\xiaosi[1],% 即 normalsize
+    nameformat=\tongji@title@font\dawu,% 默认为空，改为比中文小一号
     aftername=\hspace{\ccwd},% 章节编号与标题内容间距一个汉字
     afterindent=true,
     beforeskip={12bp \@plus 1ex \@minus .2ex},
@@ -417,8 +417,8 @@
   paragraph={
     name={（,）},
     number=\arabic{paragraph},
-    format=\heiti\normalsize,
-    nameformat=\tongji@title@font\wuhao,
+    format=\heiti\normalsize,% 即小四
+    nameformat=\tongji@title@font\dawu,
     aftername=\hspace{0pt},
     titleformat={},
     runin=false,
@@ -429,6 +429,7 @@
   subparagraph={
     format=\normalsize,
     number=\tikzcircnum{\arabic{subparagraph}},%\circlerm{subparagraph},% pifont 有点小
+    nameformat=\tongji@title@font\dawu,
     aftername=\hspace{0.5em},
     aftertitle=\hspace{0pt},
     runin=true,
