@@ -106,7 +106,7 @@
 % 其他引擎下没有这个问题，这一行会被无视。
 \PassOptionsToPackage{no-math}{fontspec}
 % 将伪粗体与伪斜体的选项传递给xeCJK package
-\PassOptionsToPackage{AutoFakeBold=false,AutoFakeSlant}{xeCJK}
+\PassOptionsToPackage{AutoFakeBold=1.2,AutoFakeSlant}{xeCJK}
 % 使用 CTeX 宏包的默认中文字体配置，支持不同引擎
 \LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
 % 判断是否运行在xetex模式。
