@@ -184,8 +184,10 @@
 % 确定浮动对象的位置，（可能效果很差）
 \RequirePackage{float} % 可以使用 [H] 强制将浮动对象放到这里
 \RequirePackage[section]{placeins} % 提供\FloatBarrier 命令使所有未处理的浮动图形立即被处理。
-% \RequirePackage{floatflt} % 图文混排用宏包
-% \RequirePackage{rotating} % 图形和表格的控制旋转
+% \RequirePackage{wrapfig} % 图文绕排
+% \RequirePackage{floatflt} % 图文绕排
+\RequirePackage{lscape}% 横置页面，可配合 longtable
+% \RequirePackage{rotating} % 功能相似于 lscape 但是可以改方向
 
 % 辅助控制浮动体边距
 % \RequirePackage{fullwidth} % 提供一个用于放置浮动体的环境，方便进行上下左右的边距控制
@@ -218,9 +220,6 @@
 % 简单三线表推荐用 \cs{hlinewd}% 被 booktabs 代替故取消
 % \def\hlinewd#1{% 参数是厚度
 %   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
-
-% 横置页面，用于宽表
-\RequirePackage{lscape}
 
 % 原样抄写加引号% 不用 \verb 因其不能断行
 \newcommand{\tvt}[1]{“\texttt{#1}”}% quoTation marks
