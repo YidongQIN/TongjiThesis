@@ -180,15 +180,17 @@
 % 不同于 \mathcal 或 \mathfrak 的英文花体字体`
 %\RequirePackage{mathrsfs}
 
-% 浮动图形控制
-% 确定浮动对象的位置，（可能效果很差）
+% 浮动对象的位置控制
 \RequirePackage{float} % 可以使用 [H] 强制将浮动对象放到这里
 \RequirePackage[section]{placeins} % 提供\FloatBarrier 命令使所有未处理的浮动图形立即被处理。
+
 % \RequirePackage{wrapfig} % 图文绕排
 % \RequirePackage{floatflt} % 图文绕排
-% \RequirePackage{lscape}% 横置页面，可配合 longtable
-\RequirePackage{pdflscape}% 横置页面，可配合 longtable
-% \RequirePackage{rotating} % 功能相似于 lscape 但是可以改方向
+
+% 横置内容的页面
+% \RequirePackage{lscape}% 产生横置内容的页面
+\RequirePackage{pdflscape}% 横置内容的页面并旋转为适合阅读的方向
+% \RequirePackage{rotating} % 功能相似于 lscape
 
 % 辅助控制浮动体边距
 % \RequirePackage{fullwidth} % 提供一个用于放置浮动体的环境，方便进行上下左右的边距控制
@@ -198,26 +200,31 @@
 \RequirePackage{multirow}% 表格中支持跨多行
 \newcommand{\tabincell}[2]{% 两个参数是 {对齐方式}{单元格内容}
   \begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
 % array宏包定义三种新的column对齐格式，允许使用L C R的带长度的表格列
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
 % 固定宽度的表格
 \RequirePackage{tabularx}% 定义 tabularx 的三种新的列对齐模式，参数控制列宽分配比例
 \newcolumntype{a}[1]{>{\hsize=#1\hsize\raggedright\arraybackslash}X}% 左对齐
 \newcolumntype{d}[1]{>{\hsize=#1\hsize\raggedleft\arraybackslash}X}% 右对齐
 \newcolumntype{s}[1]{>{\hsize=#1\hsize\centering\arraybackslash}X}% 居中
+
 % 表格中的反斜线
 \RequirePackage{diagbox}% 表格中的反斜线
 \RequirePackage{slashbox}% 表格中的反斜线
 \RequirePackage{dcolumn}% 表格中数字按小数点对齐
 \newcolumntype{i}[1]{D{.}{.}{#1}}% 接受一个整数控制小数点后位数，负数则居中
+
 % 长表格跨页 \pkg{longtable} \pkg{supertabular} 二选一即可
 \RequirePackage{longtable}
 % longtable 的 default font size
 \let\tongji@LT@array\LT@array
 \def\LT@array{\wuhao[1.5]\tongji@LT@array}
 \RequirePackage{supertabular}
+
 % 简单三线表推荐用 \cs{hlinewd}% 被 booktabs 代替故取消
 % \def\hlinewd#1{% 参数是厚度
 %   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
@@ -227,8 +234,11 @@
 % 原样抄写加小括号
 \newcommand{\pvp}[1]{（\texttt{#1}）}% Parentheses
 
-% 彩色展示网页
+% 下划线
 \RequirePackage[normalem]{ulem}
+\RequirePackage{xeCJKfntef}% 汉字下划线、波浪线、加点等标记
+
+% 彩色展示网页
 \newcommand{\colorurl}[1]{<\uline{\color{darkblue}\ttfamily\url{#1}}>}
 
 % 交叉引用的命令
@@ -245,11 +255,6 @@
 
 % 多级公式输入时修改分子分母字母大小
 \newcommand{\FRAC}[2]{\displaystyle\frac{#1}{#2}}
-
-% \pkg{CJKfntef} 实现汉字的下划线和盒子内两段对齐，并可以避免cs{makebox}\oarg{width}\oarg{s} 可能产生的 underful boxes。
-% \RequirePackage{CJKfntef}
-% 下划线
-% \newcommand\tongji@underline[2][6em]{\hspace{1pt}\underline{\hb@xt@ #1{\hss#2\hss}}\hspace{3pt}}
 
 % 脚注美化 https://en.wikibooks.org/wiki/LaTeX/Footnotes_and_Margin_Notes
 % 脚注按页编号
