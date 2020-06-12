@@ -90,7 +90,7 @@
 \footnote{所以如果内容不多，推荐采用列表，见第~\ref{sec:list}节的展示。}
 
 所以选择了一个方案，其实就是避免与正文（列表）采用同样的字体。
-四级标题的黑体是继承自校方模板的前几级标题设置，而五级标题的楷体参考了国家公文写作的有关规范\cite{GBT9704}。
+四级标题的黑体是继承自校方模板的前几级标题设置，而五级标题的楷体参考了国家公文写作的有关规范 \cite{GBT9704}。
 
 \subparagraph{更新子段落样式。}
 这是考虑到两方面原因：
@@ -373,9 +373,9 @@ branch
 \centering
 \caption{tabularx}
 \label{tab:tabularx}
-\begin{tabularx}{0.7\textwidth}{>{\raggedleft\arraybackslash}X|>{\raggedleft\arraybackslash}X|>{\centering\arraybackslash}X}
+\begin{tabularx}{0.7\textwidth}{>{\raggedleft\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\centering\arraybackslash}X}
   \toprule[1.5pt]
-  0 & 1 & 2 \\ % title row
+  raggedleft X & raggedright X & centering X \\ % title row
   \midrule[1pt]
   0 & 1 & 2 \\
   0 & 1 & 2 \\
@@ -393,12 +393,16 @@ branch
   \caption{Fixed width table}
   \begin{tabularx}{\linewidth}{X|a{0.6}|s{1.5}|d{0.9}}
     \toprule[1.5pt]
-    1 & 1 & 1 & 4 \\ % title row
-    \midrule[1pt]
-    1 & 1 & 1 & 4 \\
+    X & a\{0.6\} & s\{1.5\} & d\{0.9\} \\ % title row
+    \hline
+    1 & 2 & 3 & 4 \\
+    2 & 3 & 3 & 4 \\
     \bottomrule[1.5pt]
   \end{tabularx}
   \end{table}
+
+上述两个 tabularx 的例子中，划出了竖向分割线，是为了更直观地展示列宽分布。
+同时也展示了 \tvt{\textbackslash midrule[xpt]} 会截断竖向分割线，而 \tvt{\textbackslash hline} 不会。
 
 \section{代码环境}
 \label{sec:code}
