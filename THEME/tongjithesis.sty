@@ -208,9 +208,9 @@
 
 % 固定宽度的表格
 \RequirePackage{tabularx}% 定义 tabularx 的三种新的列对齐模式
-\newcolumntype{a}{>{\raggedright\arraybackslash}X}% 左对齐
-\newcolumntype{d}{>{\raggedleft\arraybackslash}X}% 右对齐
-\newcolumntype{s}{>{\centering\arraybackslash}X}% 居中
+\newcolumntype{a}[1]{>{\raggedright\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 左对齐
+\newcolumntype{d}[1]{>{\raggedleft\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 右对齐
+\newcolumntype{s}[1]{>{\centering\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 居中
 
 % 表格中的反斜线
 \RequirePackage{diagbox}% 表格中的反斜线

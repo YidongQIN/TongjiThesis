@@ -12,19 +12,6 @@
 
 只不过偷了个懒：用 \verb|zhlipsum| 宏包填充废话充篇幅。
 
-\begin{table}[htbp]
-\centering
-\caption{Fixed width table}
-\begin{tabularx}{\linewidth}{Xasd}
-  \toprule[1.5pt]
-  1 & 1 & 1 & 4 \\ % title row
-  \midrule[1pt]
-  1 & 1 & 1 & 4 \\
-  \bottomrule[1.5pt]
-\end{tabularx}
-\end{table}
-
-
 \section{多级标题} \label{sec:seclv}
 
 先填充一些废话。\zhlipsum[4]
@@ -379,13 +366,14 @@ branch
 
 先填充一些废话。\zhlipsum[7]
 
-在这里学习一下新定义的列形式。
+在这里学习一下新定义的表格形式。
+利用宏包 tabularx 产生的表格，需要一个参数指定总宽度，列定义时用 \tvt{X} 表示平均分配列宽的列。
 
 \begin{table}[htb]
 \centering
 \caption{tabularx}
 \label{tab:tabularx}
-\begin{tabularx}{0.7\textwidth}{>{\raggedleft\arraybackslash}X>{\raggedleft\arraybackslash}X>{\centering\arraybackslash}X}
+\begin{tabularx}{0.7\textwidth}{>{\raggedleft\arraybackslash}X|>{\raggedleft\arraybackslash}X|>{\centering\arraybackslash}X}
   \toprule[1.5pt]
   0 & 1 & 2 \\ % title row
   \midrule[1pt]
@@ -394,6 +382,23 @@ branch
   \bottomrule[1.5pt]
 \end{tabularx}
 \end{table}
+
+当然，可以用 \tvt{>{}} 和 \tvt{<{}} 命令更改对齐方式、或者列宽分配比例。
+在宏包文件中把它们定义成了单独的列样式。
+分别用 a、s 和 d 表示左对齐、居中对齐和右对齐。
+此外，还必须参数 \tvt{{n}} 参数设置列宽分配比例。
+
+\begin{table}[htbp]
+  \centering
+  \caption{Fixed width table}
+  \begin{tabularx}{\linewidth}{X|a{0.6}|s{1.5}|d{0.9}}
+    \toprule[1.5pt]
+    1 & 1 & 1 & 4 \\ % title row
+    \midrule[1pt]
+    1 & 1 & 1 & 4 \\
+    \bottomrule[1.5pt]
+  \end{tabularx}
+  \end{table}
 
 \section{代码环境}
 \label{sec:code}
