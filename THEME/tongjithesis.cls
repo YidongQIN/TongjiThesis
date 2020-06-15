@@ -723,9 +723,9 @@
     \noindent\hfill% 边框左右各有一个hfill保证framebox居中
     \phantomsection%
     \setlength{\fboxrule}{1pt}%
-    \framebox[2em]{%
-      \hspace{0.5em}% 旋转导致基线偏移
-      \rotatebox[origin=rc]{-90}{% 旋转
+    \framebox{%
+      \hspace{0.65em}% 旋转导致基线偏移
+      \rotatebox[origin=lt]{-90}{% 旋转
         \makebox[\textheight]{%
           \sihao\fangsong\bfseries% 四号 仿宋 加粗
           \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
@@ -737,15 +737,13 @@
             \hspace{2em}%
             #3% 学校名
             \hspace{3cm \@plus 2cm \@minus 1cm}%
-          }%
+            }%
         }%
       }%
     \hfill% 文本框framebox右边的hfill以居中排布
     \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
     \tjclearpage\normalsize\restoregeometry%
 }
-% 遗留问题：标题中出现英文的情况跟汉字无法对齐。
-% 可能方法：单独生成书脊，并且用\raisebox{0.35em}{text}手动调整上下。
 
 %% 组装中英文封面与书脊
 \NewDocumentCommand{\makecover}{s m}{
