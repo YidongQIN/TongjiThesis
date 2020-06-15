@@ -719,21 +719,30 @@
 % 重做书脊，有外框线和三个默认参数（标题 作者 “同济大学”）
 \NewDocumentCommand{\bookspine}{
   O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{
-    % 书脊采用适用于页眉 heading 中的、不会换行标题
-    \newpage\newgeometry{top=5mm,bottom=5mm,headheight=0mm,headsep=0mm,footskip=0mm}
-    % 根据标题长度情况决定是否采用这种几乎没有页边距的页面排版
+    \newpage\newgeometry{vmargin=1cm,hmargin=3cm}%
     \noindent\hfill% 边框左右各有一个hfill保证framebox居中
-    \fangsong\sihao\bfseries\ziju{0.4}% 书脊仿宋，四号，加粗
-    \addCJKfontfeatures{RawFeature={vertical:+vert}}
-    \setlength{\fboxrule}{1pt}
-    \framebox[2em][c]{%
-      \hspace{1em}% 盒子两字符宽，平移一个字符使居中
-      \rotatebox{-90}{% 旋转
-        \hspace{5cm}#1\hspace{2em}\hfill#2\hspace{2em}\hfill#3\hspace{5cm}}
-      }
-    \phantomsection
+    \phantomsection%
+    \setlength{\fboxrule}{1pt}%
+    \framebox[2em]{%
+      \hspace{0.5em}% 旋转导致基线偏移
+      \rotatebox[origin=rc]{-90}{% 旋转
+        \makebox[\textheight]{%
+          \sihao\fangsong\bfseries% 四号 仿宋 加粗
+          \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
+          \addCJKfontfeatures*{RawFeature={vertical}}
+            \hspace{3cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
+            #1% 页眉 heading 中的标题（不可换行）
+            \hspace{2em}%
+            #2% 作者
+            \hspace{2em}%
+            #3% 学校名
+            \hspace{3cm \@plus 2cm \@minus 1cm}%
+          }%
+        }%
+      }%
     \hfill% 文本框framebox右边的hfill以居中排布
-    \tjclearpage\normalsize\restoregeometry
+    \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
+    \tjclearpage\normalsize\restoregeometry%
 }
 % 遗留问题：标题中出现英文的情况跟汉字无法对齐。
 % 可能方法：单独生成书脊，并且用\raisebox{0.35em}{text}手动调整上下。
@@ -756,7 +765,7 @@
     \engcover
     \bookmark[dest=\HyperLocalCurrentHref, level=0]{Cover}
     % 不带星则生成书脊（旧式\shuji 新式\bookspine），带星则无书脊
-    \IfBooleanTF#1{\relax}{\bookspine\bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}}
+    \IfBooleanTF#1{\relax}{\bookspine}
   \end{titlepage}
   \let\@tabular\tongji@tabular
 }

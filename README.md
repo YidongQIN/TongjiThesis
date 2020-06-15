@@ -93,6 +93,25 @@
 
 原 `\shuji` 命令不删除，因为要用它生成**真**书脊（没有边框的样式）。
 
+特别地，书脊中使用了自行旋转机制。
+然而，最初在排版时就发现，旋转后的基线对齐是有问题的。
+实际上，这个问题已经有人提出了，而且也是 `XeLaTeX` 的底层问题。
+
+![](https://i.stack.imgur.com/vbiGK.png)
+
+* [Adjust position of vertical text for better alignment](https://sourceforge.net/p/xetex/bugs/164/)
+* [XeTeX 是如何旋转字形的，是否实现有误？](https://github.com/CTeX-org/forum/issues/93)
+
+之前通过目测，认为偏移大概是半个字符；
+现在可以得知，汉字旋转后，以行基线 baseline 居中对齐。
+所以，手动加入 `\hspace{0.5em}` 使其居中。
+
+![](https://i.stack.imgur.com/UrLrp.png)
+
+不过，如果同时出现旋转和非旋转的字体，那么这个偏移问题还是没有解决。
+最明显的例子，就是标题中的汉字旋转后，与 $\LaTeX{}$ 符号，有明显的上下偏移。
+因为基线与底线的偏移量与字体相关，比如中易宋体 SimSun 基线与底线偏移 $36/256$，而思源宋体 Source Sans 基线与底线偏移 $120/1000$。
+
 ## 声明页
 
 原创性声明和授权书页面从 `\makecover` 中移除，现在需要手动执行。
