@@ -72,37 +72,6 @@
   xleftmargin=2em,
   xrightmargin=2em,
 }
-% Listings styles
-\lstdefinestyle{monocolor}{% black and white
-  backgroundcolor=\color{white},
-  basicstyle=\small\ttfamily,
-  showstringspaces=false,
-}
-\lstdefinestyle{inline}{% inline normal size font
-  basicstyle=\normalsize\ttfamily,
-  showstringspaces=false,
-}
-\lstdefinestyle{colored}{% basic color theme, works without Package color
-  basicstyle=\small\ttfamily,
-  backgroundcolor=\color{white},
-  commentstyle=\color{green}\itshape,% may use darkgreen for better visual effects
-  keywordstyle=\color{blue}\bfseries\itshape,
-  stringstyle=\color{red},
-  showstringspaces=false,
-}
-\lstdefinestyle{colorEX}{% more colorful style
-  basicstyle=\small\ttfamily,
-  backgroundcolor=\color{white},
-  commentstyle=\color{darkgreen}\slshape,
-  keywordstyle=\color{darkblue}\bfseries\itshape,
-  keywordstyle=[2]\color{blue}\bfseries,
-  keywordstyle=[3]\color{grass},
-  keywordstyle=[4]\color{red},
-  keywordstyle=[5]\color{orange},
-  stringstyle=\color{darkred},
-  emphstyle=\color{pink}\underbar,
-  showstringspaces=false,
-}
 % Python Listings syntax and styles
 \lstdefinelanguage{PythonPlus}[]{Python}{% prefined Python sty is not complete
   morekeywords=[1]{,as,assert,nonlocal,with,yield,self,True,False,None,} % Python builtin
@@ -124,33 +93,12 @@
   morecomment=[s]{!--}{--},
   morecomment=[l]{!DOCTYPE},
 }
-% XML in Firefox
-\lstdefinestyle{Firefox_XML}{
-  basicstyle=\small\ttfamily,
-  backgroundcolor=\color{white},
-  showstringspaces=false,
-  identifierstyle=\bfseries\color{darkred},% tag name
-  keywordstyle=\bfseries\color{red},% attribute's key
-  stringstyle=\color{blue},% attribute's value
-  keywordstyle=[3]\color{black},% text
-  commentstyle=\itshape\color{darkgreen},
-}
-% OpenBrIM Listings syntax and styles
-\lstdefinelanguage{ParamML}{
+% OpenBrIM Listings syntax
+\lstdefinelanguage{ParamML}[]{XML}{
   morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
   morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
   morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
   morekeywords={Lng,Lat,Elev,P1,P2,P3,},
-  morestring=[s][\color{blue}]{"}{"},
-  morestring=[s][\color{black}]{>}{<},
-  morecomment=[s][\color{green}]{<!--}{-->},
-  basicstyle=\small\ttfamily,
-  backgroundcolor=\color{white},
-  commentstyle=\color{green}\itshape,
-  identifierstyle=\color{darkred}\bfseries,
-  keywordstyle=\color{red},
-  stringstyle=\color{black},
-  showstringspaces=false,
 }
 % EXPRESS-G syntax and styles
 \lstdefinelanguage{EXPRESS}{
@@ -160,6 +108,54 @@
   morestring=[s]{\ \ }{:\ },% attribute's key
   morecomment=[s]{--}{;},
   showstringspaces=false,
+}
+% Listings styles
+\lstdefinestyle{monocolor}{% black and white
+  backgroundcolor=\color{white},
+  basicstyle=\small\ttfamily,
+  showstringspaces=false,
+}
+\lstdefinestyle{colored}{% basic color theme, works without Package color
+  backgroundcolor=\color{white},
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{green}\itshape,% may use darkgreen for better visual effects
+  keywordstyle=\color{blue}\bfseries\itshape,
+  stringstyle=\color{red},
+  showstringspaces=false,
+}
+\lstdefinestyle{colorEX}{% more colorful style
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  commentstyle=\color{darkgreen}\slshape,
+  keywordstyle=\color{darkblue}\bfseries\itshape,
+  keywordstyle=[2]\color{blue}\bfseries,
+  keywordstyle=[3]\color{grass},
+  keywordstyle=[4]\color{red},
+  keywordstyle=[5]\color{orange},
+  stringstyle=\color{darkred},
+  emphstyle=\color{pink}\underbar,
+  showstringspaces=false,
+}
+% XML in Firefox
+\lstdefinestyle{Firefox_XML}{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  commentstyle=\itshape\color{darkgreen},
+  identifierstyle=\bfseries\color{darkred},% tag name
+  keywordstyle=\bfseries\color{red},% attribute's key
+  stringstyle=\color{blue},% attribute's value
+  % stringstyle=\color{black},% text style is remained to black
+}
+% OpenBrIM App Platform Listings styles
+\lstdefinestyle{OpenBrIM}{
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  showstringspaces=false,
+  commentstyle=\color{green}\itshape,
+  identifierstyle=\color{darkred}\bfseries,
+  keywordstyle=\color{red},
+  stringstyle=\color{blue},
 }
 % settings of `list of Listings'
 \renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"
