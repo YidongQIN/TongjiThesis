@@ -1,10 +1,14 @@
 % !TEX program = xelatex
 \documentclass[degree=doctor,electronic=true]{tongjithesis}
 \usepackage{tongjithesis}
+
 \begin{document}
+% 输入基本信息
 \input{../pages/cover.tex}
+% 默认使用封面内容生成
 \shuji%
 \bookspine%
+% 如果标题文字中英文混排，需要用手动对齐
 \shuji[同济大学 \LaTeX{} 模板书脊测试中文与 \raisebox{-0.35em}{english text \LaTeX} 混排 ENGlish 的对齐]%
-\bookspine[同济大学 \LaTeX{} 模板书脊测试中文与 \raisebox{-0.35em}{english text \LaTeX} 混排 ENGlish 的对齐]
+\bookspine[同济大学 \LaTeX{} 模板书脊测试中文与 \raisebox{-0.35em}{english text \LaTeX} 混排 ENGlish 的对齐]%
 \end{document}

@@ -24,22 +24,22 @@
 \graphicspath{{../figures/}}
 
 \begin{document}
-%
+%%% 生成特殊页面
 \makecover{../pages/cover}% 中英文封面，带*则无书脊
 \makeauthorizationpage%[../pages/scanauth.pdf]% 授权书
 \makedeclarepage%[../pages/scandecl.pdf]% 原创声明
-%
-\frontmatter%%% 论文前段
+%%% 论文前段
+\frontmatter%
 \input{../pages/abstract}% 中英文摘要
 \tableofcontents% 目录
 \input{../pages/denotation}% 符号对照表
-%
-\mainmatter%%% 正文
+%%% 正文
+\mainmatter%
 \subfile{../body/chap01}
 \subfile{../body/chap02}
 \subfile{../body/chap03}
-%
-\backmatter%%% 其它部分
+%%% 其它部分
+\backmatter%
 \input{../pages/ack}% 致谢
 %% 索引，星号影响是否出现在目录页中
 \listoffigures%*% 插图索引
