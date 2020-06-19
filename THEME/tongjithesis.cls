@@ -576,6 +576,7 @@
 % 其中的生成给定长度的一个水平盒子 \hb@xt@ = \hbox to
 \newcommand{\chncover}{
   \phantomsection
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{封面}
   \centering\noindent\normalsize
   \parbox[b][36bp][t]{\textwidth}{% 左上角电子标识、右上角的保密标识，通常无用
     \iftongji@electronic{% 是否电子版
@@ -659,6 +660,7 @@
 %% English Cover 英文封面页面
 \newcommand{\engcover}{
   \phantomsection
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{Cover}
   \centering\noindent\normalsize
   \vspace*{24bp}% labels on top
 
@@ -701,7 +703,7 @@
   }
 
   \vfill
-  \sanhao\tongji@edate% date
+  \sanhao\rmfamily\tongji@edate% date
   \tjclearpage
 }% end of english cover
 
@@ -759,9 +761,7 @@
     \hbadness=10000% 改变警报等级
     \vbadness=10000
     \chncover
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{封面}
     \engcover
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{Cover}
     % 不带星则生成书脊（旧式\shuji 新式\bookspine），带星则无书脊
     \IfBooleanTF#1{\relax}{\bookspine}
   \end{titlepage}

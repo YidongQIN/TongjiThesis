@@ -117,7 +117,7 @@
 不过，如果同时出现旋转和非旋转的字体，那么这个偏移问题还是没有解决。
 最明显的例子，就是标题中的汉字旋转后，与英文字母或模板中的 $\LaTeX{}$ 符号，有明显的上下偏移。
 因为基线与底线的偏移量与字体相关，比如中易宋体 SimSun 基线与底线偏移 $36/256$，而思源宋体 Source Sans 基线与底线偏移 $120/1000$。
-可能需要独生成书脊的命令，并且用 `\raisebox{0.35em}{chn text}` 手动调整上下。
+需要独立调用书脊的命令 `\bookspine[]` 输入标题参数（定义时可选参数要用 `[]` 输入），并且用 `\raisebox{-0.35em}{eng text}` 手动移动英文部分的对齐。
 ![](https://i.stack.imgur.com/UrLrp.png)
 
 ## 声明页
@@ -392,7 +392,7 @@
 
    参照 <https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting> 。
 
-3. 专用`ParamML` 语言。
+3. 专用 `ParamML` 语言。
 
    因为通用的 `XML` 在高亮属性的键时，会把作为分界符的`=`一起高亮，效果不甚满意。
    所以，没有从 `XML` 继承定义 `ParamML`，而是重新定义了一种语言及其配套的高亮（仿照OpenBrIM平台样式）。
