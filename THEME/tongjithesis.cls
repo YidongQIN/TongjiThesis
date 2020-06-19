@@ -707,44 +707,58 @@
   \tjclearpage
 }% end of english cover
 
-%% 书脊页面
-\NewDocumentCommand{\shuji}{O{\tongji@ctitle} O{\tongji@cauthor}}
-{% 单独使用书脊命令会在新的一页产生竖排书脊，无边框。
-  \newpage\thispagestyle{empty}
+%% 书脊页面，无外框线，含三个默认参数（标题 作者 “同济大学”）
+\NewDocumentCommand{\shuji}{%
+  O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{%
+  \noindent\hfill
   \phantomsection
-  \bfseries\fangsong\sihao\ziju{0.4}
-  \ifxetex\addCJKfontfeatures{RawFeature={vertical:}}\fi
-  \noindent\hfill\rotatebox[origin=lt]{-90}
-  {\makebox[\textheight]{\hspace{5cm}#1\hfill#2\hspace{5cm}}}
-  \songti\sihao\ziju{0}
-  }
-% 重做书脊，有外框线和三个默认参数（标题 作者 “同济大学”）
-\NewDocumentCommand{\bookspine}{
-  O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{
-    \newpage\newgeometry{vmargin=1cm,hmargin=3cm}%
-    \noindent\hfill% 边框左右各有一个hfill保证framebox居中
-    \phantomsection%
-    \setlength{\fboxrule}{1pt}%
-    \framebox{%
-      \hspace{0.65em}% 旋转导致基线偏移
-      \rotatebox[origin=lt]{-90}{% 旋转
-        \makebox[\textheight]{%
-          \sihao\fangsong\bfseries% 四号 仿宋 加粗
-          \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
-          \addCJKfontfeatures*{RawFeature={vertical}}
-            \hspace{3cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
-            #1% 页眉 heading 中的标题（不可换行）
-            \hspace{2em}%
-            #2% 作者
-            \hspace{2em}%
-            #3% 学校名
-            \hspace{3cm \@plus 2cm \@minus 1cm}%
-            }%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
+  \hspace{0.65em}% 旋转导致基线偏移
+  \rotatebox[origin=lt]{-90}{% 旋转
+    \makebox[\textheight]{%
+      \sihao\fangsong\bfseries% 四号 仿宋 加粗
+      \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
+      \ifxetex\addCJKfontfeatures{RawFeature={vertical:}}\fi
+        \hspace{4cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
+        #1% 页眉 heading 中的标题（不可换行）
+        \hspace{2em}%
+        #2% 作者
+        \hspace{2em}%
+        #3% 学校名
+        \hspace{4cm \@plus 2cm \@minus 1cm}%
         }%
-      }%
+    }%
     \hfill% 文本框framebox右边的hfill以居中排布
-    \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
-    \tjclearpage\normalsize\restoregeometry%
+    \tjclearpage%
+  }
+% 重做书脊，有外框线，三个默认参数（标题 作者 “同济大学”）
+\NewDocumentCommand{\bookspine}{%
+  O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{%
+  \newgeometry{vmargin=1cm,hmargin=3cm}%
+  \noindent\hfill% 边框左右各有一个hfill保证framebox居中
+  \phantomsection%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊框}%
+  \setlength{\fboxrule}{1pt}%
+  \framebox{%
+    \hspace{0.65em}% 旋转导致基线偏移
+    \rotatebox[origin=lt]{-90}{% 旋转
+      \makebox[276mm]{% 不能撑满页面，会导致多余空白页
+        \sihao\fangsong\bfseries% 四号 仿宋 加粗
+        \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
+        \addCJKfontfeatures*{RawFeature={vertical}}%
+          \hspace{3cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
+          #1% 页眉 heading 中的标题（不可换行）
+          \hspace{2em}%
+          #2% 作者
+          \hspace{2em}%
+          #3% 学校名
+          \hspace{3cm \@plus 2cm \@minus 1cm}%
+          }%
+      }%
+    }%
+  \hfill% 文本框framebox右边的hfill以居中排布
+  \restoregeometry%
+  \tjclearpage
 }
 
 %% 组装中英文封面与书脊
@@ -758,12 +772,11 @@
     pdfproducer={\tongjithesis}}
   \begin{titlepage}% 生成封面页
     % \tolerance=10000% 改变排版容忍度
-    \hbadness=10000% 改变警报等级
-    \vbadness=10000
-    \chncover
-    \engcover
-    % 不带星则生成书脊（旧式\shuji 新式\bookspine），带星则无书脊
-    \IfBooleanTF#1{\relax}{\bookspine}
+    \hbadness=10000% 改变水平排版警报等级
+    \vbadness=10000% 改变竖向排版警报等级
+    \chncover% 中文封面
+    \engcover% English Cover
+    \IfBooleanTF#1{\relax}{\bookspine}% 不带星则生成书脊（默认带框书脊），带星则无书脊
   \end{titlepage}
   \let\@tabular\tongji@tabular
 }
