@@ -719,13 +719,13 @@
       \sihao\fangsong\bfseries% 四号 仿宋 加粗
       \ziju{0.14}% 字距 1.14*14=15.96≈16 相当于行距
       \ifxetex\addCJKfontfeatures{RawFeature={vertical:}}\fi
-        \hspace{4cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
+        \hspace{3cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
         #1% 页眉 heading 中的标题（不可换行）
-        \hspace{2em}%
+        \hspace{2em \@plus 2em}%
         #2% 作者
-        \hspace{2em}%
+        \hspace{2em \@plus 2em}%
         #3% 学校名
-        \hspace{4cm \@plus 2cm \@minus 1cm}%
+        \hspace{3cm \@plus 2cm \@minus 1cm}%
         }%
     }%
     \hfill% 文本框framebox右边的hfill以居中排布
@@ -748,9 +748,9 @@
         \addCJKfontfeatures*{RawFeature={vertical}}%
           \hspace{3cm \@plus 2cm \@minus 1cm}%上下边距5cm可能导致无法完成排版
           #1% 页眉 heading 中的标题（不可换行）
-          \hspace{2em}%
+          \hspace{2em \@plus 2em}%
           #2% 作者
-          \hspace{2em}%
+          \hspace{2em \@plus 2em}%
           #3% 学校名
           \hspace{3cm \@plus 2cm \@minus 1cm}%
           }%
