@@ -3,6 +3,7 @@
 [2019/06/21 Tongji University Thesis Template modified by YidongQIN]
 \hyphenation{Tongji-Thesis}
 \def\tongjithesis{\textsc{Tongji~\LaTeX{}~Thesis}}
+\def\tongjiname{\raisebox{-0.1em}{\TJTextLogo[black]{1em}}}
 \def\version{3}
 
 %% 参数前缀
