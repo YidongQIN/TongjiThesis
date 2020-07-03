@@ -64,11 +64,8 @@
   belowcaptionskip=0bp,
   escapeinside={\%*}{*)},
   numbers=left,
-  numbersep=15pt,
   numberstyle=\tiny\color{gray},
   tabsize=2,
-  xleftmargin=2em,
-  xrightmargin=2em,
 }
 % Python Listings syntax and styles
 \lstdefinelanguage{PythonPlus}[]{Python}{% prefined Python sty is not complete
@@ -86,17 +83,32 @@
   % tag is identifier
   moredelim=[s][keywordstyle]{\ }{=},% attribute's key
   morestring=[s]{"}{"},% attribute's value
-  morestring=[s][]{>}{<},% text
+  morestring=[s][]{>}{<},% text in elements
   morecomment=[s]{?}{?},
   morecomment=[s]{!--}{--},
   morecomment=[l]{!DOCTYPE},
 }
-% OpenBrIM Listings syntax
+% OpenBrIM ParamML Listings syntax
 \lstdefinelanguage{ParamML}[]{XML}{
   morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
   morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
   morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
   morekeywords={Lng,Lat,Elev,P1,P2,P3,},
+}
+\lstdefinelanguage{OBrIM_ParamML}{% combination of ParamML (Language) and OpenBrIM (APP style)
+  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
+  morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
+  morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
+  morekeywords={Lng,Lat,Elev,P1,P2,P3,},
+  moredelim=[s][keywordstyle]{\ }{=},% attribute's key
+  morestring=[s][\color{blue}]{"}{"},
+  morestring=[s][\color{black}]{>}{<},
+  morecomment=[s][\color{green}\itshape]{!--}{--},
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{white},
+  identifierstyle=\color{darkred}\bfseries,
+  keywordstyle=\color{red},
+  showstringspaces=false,
 }
 % EXPRESS-G syntax and styles
 \lstdefinelanguage{EXPRESS}{
@@ -138,22 +150,22 @@
 \lstdefinestyle{Firefox_XML}{
   basicstyle=\small\ttfamily,
   backgroundcolor=\color{white},
-  showstringspaces=false,
   commentstyle=\itshape\color{darkgreen},
   identifierstyle=\bfseries\color{darkred},% tag name
   keywordstyle=\bfseries\color{red},% attribute's key
   stringstyle=\color{blue},% attribute's value
-  % stringstyle=\color{black},% text style is remained to black
+  % text style is remained to black
+  showstringspaces=false,
 }
 % OpenBrIM App Platform Listings styles
 \lstdefinestyle{OpenBrIM}{
   basicstyle=\small\ttfamily,
   backgroundcolor=\color{white},
-  showstringspaces=false,
   commentstyle=\color{green}\itshape,
-  identifierstyle=\color{darkred}\bfseries,
+  identifierstyle=\bfseries\color{darkred},
   keywordstyle=\color{red},
   stringstyle=\color{blue},
+  showstringspaces=false,
 }
 % settings of `list of Listings'
 \renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"

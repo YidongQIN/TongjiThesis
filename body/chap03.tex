@@ -429,8 +429,21 @@ branch
 \begin{lstlisting}[
   language=ParamML,
   style=Firefox_XML,
-  % caption=,
-  % label=lst:,
+  title= ParamML 在 Firefox 中的渲染,
+  ]
+<O  N="C4000Psi"  T="Material"  D="Concrete">
+  <P N="d"  V="0.0000002248"  D="Density"/>
+  <P N="E"  V="3604.9965"  D="Modulus of Elasticity"/>
+  <P N="Fc28"  V="4"  D="Concrete Compressive Strength"/>
+</O>
+<!-- comment -->
+\end{lstlisting}
+
+\begin{lstlisting}[
+  language=OBrIM_ParamML,
+  % language=ParamML,
+  % style=OpenBrIM,
+  title= ParamML 在 OpenBrIM APP 中的渲染,
   ]
 <O  N="C4000Psi"  T="Material"  D="Concrete">
   <P N="d"  V="0.0000002248"  D="Density"/>
@@ -443,6 +456,46 @@ branch
 不同于tabled 表~\ref{tab:fig}，源代码的展示用\ref{lst:inp}不会显示开头。
 好吧，是我错了。都是需要手动指定其是“图”、“表”、“代码”或“章节”。\textbackslash ref 命令只显示编号。
 仔细一想，这样也好，只做最小程度的工作，格式完全可以 \textbackslash newcommand 或者用 VSCode 脚本辅助。
+
+测试把 ParamML 的分离语言定义和样式定义。
+有一些几个小技巧需要注意。
+结尾处的 \texttt{>} 不能与前面的字符串有空格，否则会解析错误，导致全部以 keyword 形式高亮。
+如果属性之间间距不够空格不够，可以尝试在代码中用四个空格间隔。
+浮动体内的代码左侧最好不要缩进，以免高亮错误。
+
+\begin{lstlisting}[
+  language=ParamML,
+  style=OpenBrIM,
+  % caption=,
+  % label=lst:,
+  ]
+<O  N="FEA Surface"  T="Project">
+  <O  N="N1"  T="Node"/>
+  <O  N="N2"  T="Node"  X="5" Y="0"/>
+  <O  N="N3"  T="Node"  X="5" Y="5"/>
+  <O  N="N4"  T="Node"  X="0" Y="5"/>
+  <O  N="N5"  T="Node"  Z="5"/>
+  <O  N="N6"  T="Node"  Rx="5"  Ry="0"  Rz="5"/>
+  <O  N="N7"  T="Node"  Tx="5"  Ty="5"  Tz="5"/>
+  <O  N="N8"  T="Node"  C="0"  R="5"/>
+  <O  T="FELine"  Node1="N1"  Node2="N5"/>
+  <O  T="FELine"  Node3="N2"  Node4="N6"/>
+  <O  T="FELine"  Factor="N3"  Case="N7"/>
+  <O  T="FELine"  Extends="N4"  Role="N8"/>
+  <O  N="S1"  T="FESurface">
+    <P  N="Node1"  V="N5"  T="Node"/>
+    <P  N="Node2"  V="N6"  T="Node"/>
+    <P  N="Node3"  V="N7"  T="Node"/>
+    <P  N="Node4"  V="N8"  T="Node"/>
+    <P  N="Thickness"  V="0.5"/>
+  </O>
+  <O  N="LLE"  P1="0"  P2="0"  P3="0">
+    <P  Lng="0"  Lat="1"  Elev="2"/>
+  </O>
+</O>
+\end{lstlisting}
+
+测试 Python 的语法高亮。
 
 \begin{lstlisting}[language=Python,
   caption=Second CODE Block,
