@@ -7,42 +7,14 @@
 
 之前的两章都是原同济LaTeX模板中的内容。
 这一章开始，就是修改、或新加内容的测试\cite{mohrssBIM}。
+完整的修改思路和参考资料都在 \texttt{README.md} 文件中，这一章仅仅是是用于测试的部分修改的实际效果，比如多级列表等。
 
-当然，不变的是满纸荒唐言，用于填充内容\cite{HowDigital}。
-
-只不过偷了个懒：用 \verb|zhlipsum| 宏包填充废话充篇幅。
+只不过偷了个懒：用 \verb|zhlipsum| 宏包填充废话充篇幅 \cite{HowDigital}。
+否则，如果段内字数太少，有时候不利于演示效果。
 
 \section{多级标题} \label{sec:seclv}
 
 先填充一些废话。\zhlipsum[4]
-
-\subsection{多级标题样式修正}
-\label{ssc:titles-style}
-
-问题描述：原本的 \verb|romantitle| 命令没有用。
-
-验证发现，是因为 \verb|CTeX| 宏包中的字体命令（\verb|\songti|、\verb|\heiti|、\verb|\fangsong|、\verb|\lishu|）等，只对汉字字体生效。
-究其原因，因为是 \verb|xeCJK| 宏包的设计，使得CJK的字体可以独立于英语字体设置。
-
-于是，重写了控制章节标题的数字编号的命令。
-具体修改见 \tvt{README.md} 文件中的章节。
-现在，可以在 \texttt{\textbackslash documentclass[titlenum=XXX]} 中启用不同的编号字体。
-其中XXX可以选择如表~\ref{tab:title-number-format}所示。
-
-\begin{table}[htbp]
-\centering
-\caption{\tongjithesis 章节编号样式选项}
-\label{tab:title-number-format}
-\begin{tabular}[c]{>{\ttfamily}lll}
-  \toprule[1.5pt]
-  选项 & 编号字体 & 备注 \\ % title row
-  \midrule[1pt]
-  rmtitlenum & 衬线（Times New Roman） & 本模板默认选项 \\
-  sftitlenum & 无衬线（Arial） & 原模版默认选项 \\
-  heititlenum & 黑体 & 严格按照校方模板 \\
-  \bottomrule[1.5pt]
-\end{tabular}
-\end{table}
 
 \subsection{二级节标题} \label{ssc:subsec2}
 
