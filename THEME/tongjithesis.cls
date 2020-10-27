@@ -131,8 +131,9 @@
     hcentering,% 将hmarginratio设为1:1，即left=right
     left=31.7mm,% 注意left=right
     includehead=true,% body 部分包含top
-    top=20.00mm,% Word 模板页眉顶端距离20mm
+    top=20.0mm,% Word 模板页眉顶端距离20mm
     headheight=5.4mm,% 上缘页边距25.4mm-top=5.4mm
+    headsep=0.0mm,
     includefoot=false,% body部分不包含bottom
     bottom=25.4mm,% 校方模板底面页边距
     footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
@@ -158,14 +159,14 @@
     \fancyhead[LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@cheadingtitle}
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
-    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}}
   \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
     \fancyhead{}
     \fancyhead[RO,LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
-    \renewcommand{\headrulewidth}{0.4pt}
+    \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}
 }
 % 论文整体版面布置分为三部分
@@ -490,7 +491,7 @@
         \fancyhead[RO,LE]{#4}
         \fancyfoot{}
         \fancyfoot[C]{\songti\wuhao\thepage}
-        \renewcommand{\headrulewidth}{0.4pt}
+        \renewcommand{\headrulewidth}{0.5pt}
         \renewcommand{\footrulewidth}{0pt}
         }
       }
@@ -500,7 +501,7 @@
       \fancyhead[RO,LE]{#3}
       \fancyfoot{}
       \fancyfoot[C]{\songti\wuhao\thepage}
-      \renewcommand{\headrulewidth}{0.4pt}
+      \renewcommand{\headrulewidth}{0.5pt}
       \renewcommand{\footrulewidth}{0pt}
     }
 }
