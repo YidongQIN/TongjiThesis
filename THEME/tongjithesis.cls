@@ -124,7 +124,7 @@
 
 %% Layout布局设置
 % 页面纸张设置
-\RequirePackage{geometry}
+\RequirePackage{geometry}% [showframe]
   \geometry{
     a4paper,% 210 * 297mm
     nomarginpar,% 即\marginparwidth=0pt and \marginparsep=0pt
@@ -133,7 +133,7 @@
     includehead=true,% body 部分包含top
     top=20.0mm,% Word 模板页眉顶端距离20mm
     headheight=5.4mm,% 上缘页边距25.4mm-top=5.4mm
-    headsep=0.0mm,
+    headsep=14bp,% 文本距离页眉底线0.7行=14bp
     includefoot=false,% body部分不包含bottom
     bottom=25.4mm,% 校方模板底面页边距
     footskip=5.4mm,% \footskip指的是baseline of last line of text and baseline of footer的距离
@@ -377,16 +377,16 @@
   autoindent=true,% 首行缩进 2 字符
   chapter={% 章标题
     name={第,章},
-    format=\centering\heiti\bfseries\sanhao[1],% format 控制章节标题的全局格式，作用域为章节名字和随后的标题内容。
+    format=\centering\heiti\bfseries\sanhao[1],% format 章节标题的全局格式，作用域为章节名字和随后的标题内容。
     nameformat={},% 默认\huge\bfseries，需要取消
     numberformat=\tongji@title@font\xiaosan,% 默认为\huge，改为比中文小一号
     aftername=\hspace{\ccwd},% 章编号与标题内容间距一个汉字
     titleformat={},% 默认\Huge\bfseries，需要取消
     afterindent=true,% afterindent 选项用于设置章节标题后首段的缩进。
-    beforeskip={24bp},% 设置章节标题前的垂直间距
-    afterskip={18bp},% 控制章节标题与后面下方之间的距离
-    lofskip=0pt,% 控制插图目录（.lof）中，章之间的插图标题的距离
-    lotskip=0pt,% 控制表格目录（.lot）中，章之间的表格标题的距离
+    beforeskip={10bp},% 章节标题前的垂直间距 24bp 扣除 headsep=14bp
+    afterskip={18bp},% 章节标题与后面下方之间的距离
+    lofskip=0pt,% 插图目录（.lof）章之间的插图标题的距离
+    lotskip=0pt,% 表格目录（.lot）章之间的表格标题的距离
     pagestyle={tongji@headings},% 这句用来保证章首页的页眉正确
   },
   section={% 一级节标题
