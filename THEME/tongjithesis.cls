@@ -579,7 +579,7 @@
 % 为了简化操作界面，提供一个 \cs{tongjisetup} 命令支持 key/value 的方式来设置。
 % key 就是前面各个设置项的名字。
 % 只能设置普通项，不支持环境项，
-% 如 \texttt{cabstract} 和 \texttt{eabstract}。
+% 如 \texttt{chabstract} 和 \texttt{enabstract}。
 % 由于这些设置项被 \cs{makecover} 调用，所以此命令需要其之前被调用。
 \def\tongjisetup{\kvsetkeys{tongji}}
 
@@ -851,10 +851,10 @@
 %% 摘要
   % 摘要以环境的形式，保存内容留待以后使用。
   % 使用 \pkg{environ} 的\cs{Collect@Body} 来实现。
-  \newcommand{\tongji@@cabstract}[1]{\long\gdef\tongji@cabstract{#1}}
-  \newenvironment{cabstract}{\Collect@Body\tongji@@cabstract}{}
-  \newcommand{\tongji@@eabstract}[1]{\long\gdef\tongji@eabstract{#1}}
-  \newenvironment{eabstract}{\Collect@Body\tongji@@eabstract}{}
+  \newcommand{\tongji@@ch@abstract}[1]{\long\gdef\tongji@ch@abstract{#1}}
+  \newenvironment{chabstract}{\Collect@Body\tongji@@ch@abstract}{}
+  \newcommand{\tongji@@en@abstract}[1]{\long\gdef\tongji@eabstract{#1}}
+  \newenvironment{enabstract}{\Collect@Body\tongji@@en@abstract}{}
   % 中英文关键词分别用 \cs{ckeywords} 和 \cs{ekeywords} 收集
   \def\tongji@parse@keywords#1{
     \define@key{tongji}{#1}{\csname #1\endcsname{##1}}
@@ -875,7 +875,7 @@
 \newcommand{\makeabstract}{%
   \tjclearpage\normalsize% always openright for Abstract
   \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract]
-  \tongji@cabstract
+  \tongji@ch@abstract
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries\tongji@ch@label@keywords}}
   \noindent\hangindent\wd0\hangafter1
