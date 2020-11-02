@@ -194,15 +194,15 @@
 % \RequirePackage{floatflt} % 图文绕排
 
 % 横置内容的页面
-% \RequirePackage{lscape}% 产生横置内容的页面
 \RequirePackage{pdflscape}% 横置内容的页面并旋转为适合阅读的方向
+% \RequirePackage{lscape}% 产生横置内容的页面
 % \RequirePackage{rotating} % 功能相似于 lscape
 
 % 辅助控制浮动体边距
 % \RequirePackage{fullwidth} % 提供一个用于放置浮动体的环境，方便进行上下左右的边距控制
 % \RequirePackage{tcolorbox} % 彩色盒子，但也可以用于浮动体控制
 
-% 表格内部换行：宏包{makecell}或{multirow}或自定义的\tabincell{}{}命令
+% 表格内部换行
 \RequirePackage{multirow}% 表格中支持跨多行
 \newcommand{\tabincell}[2]{% 两个参数是 {对齐方式}{单元格内容}
   \begin{tabular}{@{}#1@{}}#2\end{tabular}}
@@ -215,8 +215,8 @@
 % 固定宽度的表格
 \RequirePackage{tabularx}% 定义 tabularx 的三种新的列对齐模式
 \newcolumntype{a}[1]{>{\raggedright\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 左对齐
-\newcolumntype{d}[1]{>{\raggedleft\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 右对齐
 \newcolumntype{s}[1]{>{\centering\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 居中
+\newcolumntype{d}[1]{>{\raggedleft\arraybackslash\hsize=#1\hsize\linewidth=\hsize}X}% 右对齐
 
 % 表格中的反斜线
 \RequirePackage{diagbox}% 表格中的反斜线
@@ -235,17 +235,17 @@
 % \def\hlinewd#1{% 参数是厚度
 %   \noalign{\ifnum0=`}\fi\hrule \@height #1 \futurelet\reserved@a\@xhline}
 
-% 原样抄写加引号% 不用 \verb 因其不能断行
-\newcommand{\tvt}[1]{“\texttt{#1}”}% quoTation marks
-% 原样抄写加小括号
-\newcommand{\pvp}[1]{（\texttt{#1}）}% Parentheses
-
 % 下划线
 \RequirePackage[normalem]{ulem}
 \RequirePackage{xeCJKfntef}% 汉字下划线、波浪线、加点等标记
 
 % 彩色展示网页
 \newcommand{\colorurl}[2][darkblue]{{\color{#1}\ttfamily<\uline{\url{#2}}>}}
+
+% 原样抄写加引号% 不用 \verb 因其不能断行
+\newcommand{\tvt}[1]{“\texttt{#1}”}% quoTation marks
+% 原样抄写加小括号
+\newcommand{\pvp}[1]{（\texttt{#1}）}% Parentheses
 
 % 交叉引用的命令
 \newcommand*{\reftab}[1]{\tablename~\ref{#1}}

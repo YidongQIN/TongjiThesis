@@ -591,7 +591,7 @@
   \centering\noindent\normalsize
   \parbox[b][36bp][t]{\textwidth}{% 左上角电子标识、右上角的保密标识，通常无用
     \iftongji@electronic{% 是否电子版
-      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype（打印时删除）}}
+      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype\tongji@electronictitle}}
     \fi
     \hfill
     \iftongji@secret{% 是否保密
@@ -645,20 +645,20 @@
     \fi
     \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
     \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
-      姓名 & \tongji@cauthor \\
-      学号 & \tongji@studentnumber \\
-      所在院系 & \tongji@cdepartment \\
+      \tongji@cauthortitle & \tongji@cauthor \\
+      \tongji@cstudentnumbertitle & \tongji@studentnumber \\
+      \tongji@cdepartmenttitle & \tongji@cdepartment \\
       \iftongji@profession% 专业型仅中间两行是例外
-        专业学位名称 & \tongji@cmajorfirst \\
-        专业领域  & \tongji@cmajorsecond \\
+        \tongji@cmajorfirsttitleprofession & \tongji@cmajorfirst \\
+        \tongji@cmajorsecondtitleprofession  & \tongji@cmajorsecond \\
       \else
-        学科门类 & \tongji@cmajorfirst \\
-        学科专业 & \tongji@cmajorsecond \\
+        \tongji@cmajorfirsttitle & \tongji@cmajorfirst \\
+        \tongji@cmajorsecondtitle & \tongji@cmajorsecond \\
       \fi
-      指导教师 & \tongji@csupervisor \\
+      \tongji@csupervisortitle & \tongji@csupervisor \\
       \ifx\tongji@cassosupervisor\@empty% 若是空，没有任何命令
       \else% 若有副指导
-        副指导教师 & \tongji@cassosupervisor \\
+        \tongji@cassosupertitle & \tongji@cassosupervisor \\
       \fi
       \end{tabular}
   }
