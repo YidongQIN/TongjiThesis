@@ -1007,31 +1007,31 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 1. 中文摘要
 
-   `\tongji@chapter*[]{\cabstractname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\cabstractname] `
+   `\tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract] `
 
     | 参数  | 内容                          | 解释                   |
     | :---: | :---------------------------- | :--------------------- |
     |   s   | `*`                           | 确认带星号             |
     |   o   | `[]`                          | 有且为空，不出现在目录 |
-    |   m   | `{\cabstractname}`            | “摘要”二字             |
-    |   o   | `[\wuhao ... \cabstractname]` | 摘要的页眉             |
+    |   m   | `{\tongji@ch@name@abstract}`            | “摘要”二字             |
+    |   o   | `[\wuhao ... \tongji@ch@name@abstract]` | 摘要的页眉             |
 
    英文摘要、目录同理。
 
 2. 致谢
 
-   `\tongji@chapter*[\tongji@ackname]{\tongji@ackname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@ackname]`
+   `\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@ackn]`
 
     | 参数  | 内容                           | 解释                                                            |
     | :---: | :----------------------------- | :-------------------------------------------------------------- |
     |   s   | `*`                            | 确认带星号                                                      |
-    |   o   | `[\tongji@ackname]`            | 有且不为空，出现在目录中显示 `\tongji@ackname` 对应的“致谢”二字 |
-    |   m   | `{\tongji@ackname}`            | “致谢”二字                                                      |
-    |   o   | `[\wuhao ... \tongji@ackname]` | 致谢的页眉                                                      |
+    |   o   | `[\tongji@ch@name@ackn]`            | 有且不为空，出现在目录中显示 `\tongji@ch@name@ackn` 对应的“致谢”二字 |
+    |   m   | `{\tongji@ch@name@ackn}`            | “致谢”二字                                                      |
+    |   o   | `[\wuhao ... \tongji@ch@name@ackn]` | 致谢的页眉                                                      |
 
 3. 不带星号的 `\listof`
 
-   `\tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]`
+   `\tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]`
 
     | 参数  | 内容                             | 解释                            |
     | :---: | :------------------------------- | :------------------------------ |

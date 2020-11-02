@@ -1261,7 +1261,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   中文摘要
 
-  \texttt{\textbackslash{}tongji@chapter*{[}{]}\{\textbackslash{}cabstractname\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@schoolname\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}cabstractname{]}}
+  \texttt{\textbackslash{}tongji@chapter*{[}{]}\{\textbackslash{}tongji@ch@name@abstract\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}tongji@ch@name@abstract{]}}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule
@@ -1270,10 +1270,10 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   \endhead
   s & \texttt{*} & 确认带星号\tabularnewline
   o & \texttt{{[}{]}} & 有且为空，不出现在目录\tabularnewline
-  m & \texttt{\{\textbackslash{}cabstractname\}} &
+  m & \texttt{\{\textbackslash{}tongji@ch@name@abstract\}} &
   ``摘要''二字\tabularnewline
   o &
-  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}cabstractname{]}}
+  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract{]}}
   & 摘要的页眉\tabularnewline
   \bottomrule
   \end{longtable}
@@ -1282,7 +1282,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   致谢
 
-  \texttt{\textbackslash{}tongji@chapter*{[}\textbackslash{}tongji@ackname{]}\{\textbackslash{}tongji@ackname\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@schoolname\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}tongji@ackname{]}}
+  \texttt{\textbackslash{}tongji@chapter*{[}\textbackslash{}tongji@ch@name@ackn{]}\{\textbackslash{}tongji@ch@name@ackn\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}tongji@ch@name@ackn{]}}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule
@@ -1290,20 +1290,20 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   \midrule
   \endhead
   s & \texttt{*} & 确认带星号\tabularnewline
-  o & \texttt{{[}\textbackslash{}tongji@ackname{]}} &
-  有且不为空，出现在目录中显示 \texttt{\textbackslash{}tongji@ackname}
+  o & \texttt{{[}\textbackslash{}tongji@ch@name@ackn{]}} &
+  有且不为空，出现在目录中显示 \texttt{\textbackslash{}tongji@ch@name@ackn}
   对应的``致谢''二字\tabularnewline
-  m & \texttt{\{\textbackslash{}tongji@ackname\}} &
+  m & \texttt{\{\textbackslash{}tongji@ch@name@ackn\}} &
   ``致谢''二字\tabularnewline
   o &
-  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ackname{]}}
+  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@ackn{]}}
   & 致谢的页眉\tabularnewline
   \bottomrule
   \end{longtable}
 \item
   不带星号的 \texttt{\textbackslash{}listof}
 
-  \texttt{\textbackslash{}tongji@chapter*\{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@schoolname\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}csname\ list\#2name\textbackslash{}endcsname{]}}
+  \texttt{\textbackslash{}tongji@chapter*\{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}csname\ list\#2name\textbackslash{}endcsname{]}}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule

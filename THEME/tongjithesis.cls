@@ -156,14 +156,14 @@
   \fancypagestyle{tongji@headings}{%
     \fancyhead{}
     \fancyhead[RO]{\wuhao\songti\leftmark}
-    \fancyhead[LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@cheadingtitle}
+    \fancyhead[LE]{\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@head@title}
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}}
   \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
     \fancyhead{}
-    \fancyhead[RO,LE]{\wuhao\songti\tongji@schoolname~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
+    \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
@@ -459,6 +459,7 @@
   indexname=索引,
 }%
 \newcommand{\equationname}{公式}% 补充公式的汉化
+\newcommand{\listequationname}{公式索引}
 
 %% 章节标题命令，可以更方便地设置是否出现在目录
 % \NewDocumentCommand旨在替代\newcommand，由xparse宏包提供。
@@ -539,34 +540,34 @@
   \tongji@def@term{secretlevel}
   \tongji@def@term{secretyear}
   % 论文中英文题目
-  \tongji@def@term{ctitle}
-  \tongji@def@term{cheadingtitle}
-  \tongji@def@term{etitle}
+  \tongji@def@term{ch@title}
+  \tongji@def@term{ch@head@title}
+  \tongji@def@term{en@title}
   % 作者、导师、副导师（校外）老师。
-  \tongji@def@term{cauthor}
-  \tongji@def@term{csupervisor}
-  \tongji@def@term{cassosupervisor}
-  \tongji@def@term{eauthor}
-  \tongji@def@term{esupervisor}
-  \tongji@def@term{eassosupervisor}
+  \tongji@def@term{ch@author}
+  \tongji@def@term{ch@supervisor}
+  \tongji@def@term{ch@supervisor@as}
+  \tongji@def@term{en@author}
+  \tongji@def@term{en@supervisor}
+  \tongji@def@term{en@supervisor@as}
   % 学位中英文
-  \tongji@def@term{cdegree}
-  \tongji@def@term{edegree}
+  \tongji@def@term{ch@degree}
+  \tongji@def@term{en@degree}
   % 院系中英文名称。
-  \tongji@def@term{cdepartment}
-  \tongji@def@term{edepartment}
+  \tongji@def@term{ch@department}
+  \tongji@def@term{en@department}
   % 学位中英文名称。
-  \tongji@def@term{cmajor}
-  \tongji@def@term{emajor}
+  \tongji@def@term{ch@major}
+  \tongji@def@term{en@major}
   % 论文成文日期。
-  \tongji@def@term{cdate}
-  \tongji@def@term{edate}
+  \tongji@def@term{ch@date}
+  \tongji@def@term{en@date}
   % 为了兼容老版本同济模板的封面定义,仍然使用majorfirst，majorsecond
   % 这里majorfirst表示学科门类如工学、理学，majorsecond表示一级学科或二级学科。
-  \tongji@def@term{cmajorfirst}
-  \tongji@def@term{cmajorsecond}
-  \tongji@def@term{emajorfirst}
-  \tongji@def@term{emajorsecond}
+  \tongji@def@term{ch@majorfirst}
+  \tongji@def@term{ch@majorsecond}
+  \tongji@def@term{en@majorfirst}
+  \tongji@def@term{en@majorsecond}
   % 定义基金支持
   \tongji@def@term{cfunds}
   \tongji@def@term{efunds}
@@ -592,7 +593,7 @@
   \centering\noindent\normalsize
   \parbox[b][36bp][t]{\textwidth}{% 左上角电子标识、右上角的保密标识，通常无用
     \iftongji@electronic{% 是否电子版
-      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype\tongji@electronictitle}}
+      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype\tongji@electronich@title}}
     \fi
     \hfill
     \iftongji@secret{% 是否保密
@@ -626,7 +627,7 @@
 
   \parbox[t][6cm][t]{\textwidth}{% 标题与基金
     \centering
-    {\erhao[1]\bfseries\heiti\tongji@ctitle}% 中文题目
+    {\erhao[1]\bfseries\heiti\tongji@ch@title}% 中文题目
     \par \vspace{12bp}
     \ifx\cfunds\@empty% 基金，若有
       \else{\xiaosi\tongji@cfunds}
@@ -638,7 +639,7 @@
     \setlength{\extrarowheight}{4pt}
     \iftongji@profession% 确定第一列的宽度
       \setlength{\tongji@title@width}{6em}
-      \else \ifx\tongji@cassosupervisor\@empty
+      \else \ifx\tongji@ch@supervisor@as\@empty
         \setlength{\tongji@title@width}{4em}
       \else
         \setlength{\tongji@title@width}{5em}
@@ -646,26 +647,26 @@
     \fi
     \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
     \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
-      \tongji@cauthortitle & \tongji@cauthor \\
+      \tongji@ch@authortitle & \tongji@ch@author \\
       \tongji@cstudentnumbertitle & \tongji@studentnumber \\
-      \tongji@cdepartmenttitle & \tongji@cdepartment \\
+      \tongji@ch@departmenttitle & \tongji@ch@department \\
       \iftongji@profession% 专业型仅中间两行是例外
-        \tongji@cmajorfirsttitleprofession & \tongji@cmajorfirst \\
-        \tongji@cmajorsecondtitleprofession  & \tongji@cmajorsecond \\
+        \tongji@ch@majorfirsttitleprofession & \tongji@ch@majorfirst \\
+        \tongji@ch@majorsecondtitleprofession  & \tongji@ch@majorsecond \\
       \else
-        \tongji@cmajorfirsttitle & \tongji@cmajorfirst \\
-        \tongji@cmajorsecondtitle & \tongji@cmajorsecond \\
+        \tongji@ch@majorfirsttitle & \tongji@ch@majorfirst \\
+        \tongji@ch@majorsecondtitle & \tongji@ch@majorsecond \\
       \fi
-      \tongji@csupervisortitle & \tongji@csupervisor \\
-      \ifx\tongji@cassosupervisor\@empty% 若是空，没有任何命令
+      \tongji@ch@supervisortitle & \tongji@ch@supervisor \\
+      \ifx\tongji@ch@supervisor@as\@empty% 若是空，没有任何命令
       \else% 若有副指导
-        \tongji@cassosupertitle & \tongji@cassosupervisor \\
+        \tongji@cassosupertitle & \tongji@ch@supervisor@as \\
       \fi
       \end{tabular}
   }
 
   \vfill
-  \sanhao\songti\tongji@cdate% 日期
+  \sanhao\songti\tongji@ch@date% 日期
   \tjclearpage
 }% 结束中文封面页
 
@@ -692,7 +693,7 @@
 
   \parbox[t][6cm][t]{\textwidth}{% title and fund
     \centering
-    \xiaoer{\bfseries\sffamily\tongji@etitle}% Eng title
+    \xiaoer{\bfseries\sffamily\tongji@en@title}% Eng title
     \par \vspace{12bp}
     \ifx\efunds\@empty\else% fund
       \xiaosi[1.3]{\tongji@efunds}
@@ -702,26 +703,26 @@
   \parbox[t][8.5cm][t]{\textwidth}{% candidate's info
     \sanhao[1.75]\centering% \hspace{4.5em}% 若按照校方模版的要求缩进4.5字符，则太偏右
     \begin{tabular}{l<{:}l}
-      Candidate         & \tongji@eauthor       \\
+      Candidate         & \tongji@en@author       \\
       Student Number    & \tongji@studentnumber \\
-      School/Department & \tongji@edepartment   \\
-      Discipline        & \tongji@emajorfirst   \\
-      Major             & \tongji@emajorsecond  \\
-      Supervisor        & \tongji@esupervisor \\
-      \ifx\tongji@eassosupervisor\@empty\else
-        Associate Supervisor & \tongji@eassosupervisor \\
+      School/Department & \tongji@en@department   \\
+      Discipline        & \tongji@en@majorfirst   \\
+      Major             & \tongji@en@majorsecond  \\
+      Supervisor        & \tongji@en@supervisor \\
+      \ifx\tongji@en@supervisor@as\@empty\else
+        Associate Supervisor & \tongji@en@supervisor@as \\
       \fi
     \end{tabular}
   }
 
   \vfill
-  \sanhao\rmfamily\tongji@edate% date
+  \sanhao\rmfamily\tongji@en@date% date
   \tjclearpage
 }% end of english cover
 
 %% 书脊页面，无外框线，含三个默认参数（标题 作者 “同济大学”）
 \NewDocumentCommand{\shuji}{%
-  O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{%
+  O{\tongji@ch@head@title} O{\tongji@ch@author} O{\tongji@ch@name@school}}{%
   \noindent\hfill
   \phantomsection
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
@@ -745,7 +746,7 @@
   }
 % 重做书脊，有外框线，三个默认参数（标题 作者 “同济大学”）
 \NewDocumentCommand{\bookspine}{%
-  O{\tongji@cheadingtitle} O{\tongji@cauthor} O{\tongji@schoolname}}{%
+  O{\tongji@ch@head@title} O{\tongji@ch@author} O{\tongji@ch@name@school}}{%
   \newgeometry{vmargin=1cm,hmargin=3cm}%
   \noindent\hfill% 边框左右各有一个hfill保证framebox居中
   \phantomsection%
@@ -777,10 +778,10 @@
 \NewDocumentCommand{\makecover}{s m}{
   \input{#2}% 首先读取 cover.tex 中的标题、作者等信息
   \hypersetup{% 设置PDF属性为文档元数据
-    pdftitle={\tongji@cheadingtitle},
-    pdfauthor={\tongji@cauthor},
-    pdfsubject={\tongji@schoolname\tongji@capply},
-    pdfcreator={\tongji@eauthor},
+    pdftitle={\tongji@ch@head@title},
+    pdfauthor={\tongji@ch@author},
+    pdfsubject={\tongji@ch@name@school\tongji@capply},
+    pdfcreator={\tongji@en@author},
     pdfproducer={\tongjithesis}}
   \begin{titlepage}% 生成封面页
     % \tolerance=10000% 改变排版容忍度
@@ -797,13 +798,13 @@
 \NewDocumentCommand{\makedeclarepage}{o}{
   \phantomsection
   \IfNoValueTF{#1}
-    {\tongji@declareshortname@mk}% 没有PDF就生成电子版
+    {\tongji@ch@name@decl@mk}% 没有PDF就生成电子版
     {\includepdf{#1}} % 有PDF就导入扫描页
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@declarename}
   \tjclearpage
 }
 % 电子版原创性声明页面
-\newcommand{\tongji@declareshortname@mk}{%
+\newcommand{\tongji@ch@name@decl@mk}{%
   \vspace*{18pt}
   \begin{center}
     \xiaoer\heiti\bfseries\tongji@declarename
@@ -873,16 +874,16 @@
 % 原本摘要命令\tongji@makeabstract独立
 \newcommand{\makeabstract}{%
   \tjclearpage\normalsize% always openright for Abstract
-  \tongji@chapter*[]{\cabstractname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\cabstractname]
+  \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract]
   \tongji@cabstract
   \vspace*{12bp}\par
-  \setbox0=\hbox{{\bfseries\tongji@ckeywords@title}}
+  \setbox0=\hbox{{\bfseries\tongji@ch@label@keywords}}
   \noindent\hangindent\wd0\hangafter1
   \box0\tongji@ckeywords% 结束中文摘要，以下 Abstract
-  \tongji@chapter*[]{\eabstractname}[\wuhao\tongji@eschoolname~\tongji@edegree~\eabstractname]
+  \tongji@chapter*[]{\tongji@en@name@abstract}[\wuhao\tongji@en@name@school~\tongji@en@degree~\tongji@en@name@abstract]
   \tongji@eabstract
   \vspace*{12bp}\par
-  \setbox0=\hbox{{\bfseries Key Words:\enskip}}
+  \setbox0=\hbox{{\bfseries\tongji@en@label@keywords\enskip}}
   \noindent\hangindent\wd0\hangafter1
   \box0\tongji@ekeywords
 }
@@ -895,7 +896,7 @@
 % 目录生成
 % 减小目录项中的导引小点跟页码之间的留白
 \renewcommand\tableofcontents{%
-  \tongji@chapter*[]{\contentsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\contentsname]
+  \tongji@chapter*[]{\contentsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\contentsname]
   \xiaosi[1.5]\@starttoc{toc}\normalsize\clearpage}
 % 同济要求目录的行距为18磅 = 1.5 * 16(16是小四的默认行距)
 \RequirePackage{titletoc}
@@ -911,7 +912,7 @@
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
-\tongji@chapter*[\tongji@ackname]{\tongji@ackname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@ackname]
+\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@ackn]
 \fangsong\xiaosi[1.5]}{\clearpage\normalsize}
 
 %% 参考文献
@@ -939,7 +940,7 @@
 
 %% 个人简历
 \newenvironment{resume}{%
-  \tongji@chapter*{\tongji@resume@title}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@resume@title]
+  \tongji@chapter*{\tongji@ch@name@resume}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@resume]
   \wuhao[1.6]
   \setlength{\parindent}{0em}
   \setlist[enumerate,1]{label=[\arabic*], labelindent=*, leftmargin=2em}
@@ -949,8 +950,8 @@
 %% 可选索引：符号说明（主要符号对照表）、图索引、表索引、公式索引
 % 主要符号对照表
 \newenvironment{denotation}[1][2cm]{
-  % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@denotation@name}
-  \tongji@chapter*[]{\tongji@denotation@name}[\wuhao\songti\tongji@schoolname~\tongji@capply~\tongji@denotation@name]
+  % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@ch@name@denotation}
+  \tongji@chapter*[]{\tongji@ch@name@denotation}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@denotation]
   \vspace*{18bp}\xiaosi[2]
   \begin{tongji@denotation}[labelwidth=#1]
   }{%
@@ -977,11 +978,11 @@
 \NewDocumentCommand\tongji@listof{s m}{
   \IfBooleanTF#1
   {% 带星 \listof* 的不加入目录
-    \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]
+    \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
   {% 不带星 \listof 加入目录
-    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@schoolname~\tongji@capply~\csname list#2name\endcsname]
+    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
   }
