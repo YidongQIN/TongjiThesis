@@ -855,7 +855,7 @@
   \newenvironment{chabstract}{\Collect@Body\tongji@@ch@abstract}{}
   \newcommand{\tongji@@en@abstract}[1]{\long\gdef\tongji@eabstract{#1}}
   \newenvironment{enabstract}{\Collect@Body\tongji@@en@abstract}{}
-  % 中英文关键词分别用 \cs{ckeywords} 和 \cs{ekeywords} 收集
+  % 中英文关键词分别用 \cs{chinesekeywords} 和 \cs{englishkeywords} 收集
   \def\tongji@parse@keywords#1{
     \define@key{tongji}{#1}{\csname #1\endcsname{##1}}
     \expandafter\gdef\csname tongji@#1\endcsname{}
@@ -867,9 +867,9 @@
         \fi
         \expandafter\expandafter\expandafter\g@addto@macro%
           \expandafter\csname tongji@#1\expandafter\endcsname\expandafter{\reserved@a}}}}
-  % 文档内部通过 \cs{tongji@ckeywords} 和 \cs{tongji@ekeywords} 引用
-  \tongji@parse@keywords{ckeywords}
-  \tongji@parse@keywords{ekeywords}
+  % 文档内部通过 \cs{tongji@chinesekeywords} 和 \cs{tongji@englishkeywords} 引用
+  \tongji@parse@keywords{chinesekeywords}
+  \tongji@parse@keywords{englishkeywords}
 
 % 原本摘要命令\tongji@makeabstract独立
 \newcommand{\makeabstract}{%
@@ -879,13 +879,13 @@
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries\tongji@ch@label@keywords}}
   \noindent\hangindent\wd0\hangafter1
-  \box0\tongji@ckeywords% 结束中文摘要，以下 Abstract
+  \box0\tongji@chinesekeywords% 结束中文摘要，以下 Abstract
   \tongji@chapter*[]{\tongji@en@name@abstract}[\wuhao\tongji@en@name@school~\tongji@en@degree~\tongji@en@name@abstract]
   \tongji@eabstract
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries\tongji@en@label@keywords\enskip}}
   \noindent\hangindent\wd0\hangafter1
-  \box0\tongji@ekeywords
+  \box0\tongji@englishkeywords
 }
 
 %% 目录
