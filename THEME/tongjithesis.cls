@@ -301,21 +301,30 @@
 % 后续选项 isbn 和 doi 选项同理
 
 % PDF书签
-\RequirePackage{hyperref}
-\hypersetup{% 设置PDF电子书签格式
-  CJKbookmarks=true,% 删除原\ifxetex判断，CJKbookmark并入下方统一设置
+\RequirePackage[% 设置 PDF 电子书签格式
+  CJKbookmarks=true,% 删除原 \ifxetex 判断
   linktoc=all,
   bookmarksnumbered=true,
   bookmarksopen=true,
   bookmarksopenlevel=1,
   breaklinks=true,
-  colorlinks=false,
   plainpages=false,
-  % pdfpagelabels,% 将\thepage写入pdf，使得阅读器显示‘ii (4 of 40)’
-  pdfborder=0 0 0,% 移除超链接的 color box 边框
+  pdfpagelabels=true,
+  ]{hyperref}
+\iftongji@electronic
+  \hypersetup{% 电子版彩色超链接
+    colorlinks=true,
+    linkcolor=blue,
   }
-\urlstyle{same}% 四选一设置 \url{} 的字体样式 tt/rm/sf/same（与前文保持一致）
-% \def\UrlFont{\ttfamily\small}% 可以用此命令精确设定 URL 的字体样式
+\else
+  \hypersetup{% 付印版黑色超链接
+    colorlinks=false,
+    pdfborder=0 0 0,% 移除超链接的 color box 边框
+  }
+\fi
+% 超链接URL的字体格式设置
+% \urlstyle{tt}% 四选一设置 \url{} 的字体样式 tt/rm/sf/same（与前文保持一致）
+\def\UrlFont{\ttfamily\small}% 可以用此命令精确设定 URL 的字体样式
 \RequirePackage{bookmark}% 生成 PDF 电子书签
 
 %% 浮动对象和文字之间的距离
