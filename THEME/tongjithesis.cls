@@ -898,16 +898,15 @@
   \xiaosi[1.5]\@starttoc{toc}\normalsize\clearpage}
 % 同济要求目录的行距为18磅 = 1.5 * 16(16是小四的默认行距)
 \RequirePackage{titletoc}
-\contentsmargin{0em}
-\titlecontents{chapter}[0em]{\filright}%
-  {\xiaosi\songti\thecontentslabel\enspace}%
+\titlecontents{chapter}[0em]{\addvspace{4pt}\filright}%
+  {\xiaosi[1.5]\songti\thecontentslabel\enspace}%
   {\xiaosi[1.5]\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 \titlecontents{section}[1em]{\addvspace{0pt}}%
-  {\xiaosi\songti\thecontentslabel\enspace}%
-  {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
+  {\xiaosi[1.5]\songti\thecontentslabel\enspace}%
+  {\xiaosi[1.5]\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 \titlecontents{subsection}[2em]{\addvspace{0pt}}%
-  {\xiaosi\songti\thecontentslabel\enspace}%
-  {\xiaosi\songti}{\dotfill\contentspage}[\addvspace{0pt}]
+  {\xiaosi[1.5]\songti\thecontentslabel\enspace}%
+  {\xiaosi[1.5]\songti}{\dotfill\contentspage}[\addvspace{0pt}]
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
