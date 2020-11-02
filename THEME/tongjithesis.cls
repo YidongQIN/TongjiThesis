@@ -458,6 +458,7 @@
   bibname=参考文献,
   indexname=索引,
 }%
+\newcommand{\equationname}{公式}% 补充公式的汉化
 
 %% 章节标题命令，可以更方便地设置是否出现在目录
 % \NewDocumentCommand旨在替代\newcommand，由xparse宏包提供。
