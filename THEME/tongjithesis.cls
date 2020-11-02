@@ -569,8 +569,8 @@
   \tongji@def@term{en@majorfirst}
   \tongji@def@term{en@majorsecond}
   % 定义基金支持
-  \tongji@def@term{cfunds}
-  \tongji@def@term{efunds}
+  \tongji@def@term{ch@fund}
+  \tongji@def@term{en@fund}
   % 学号
   \tongji@def@term{studentnumber}
   % 校名变量 schoolname & eschoolname 已经写入了 .cfg 文件
@@ -629,8 +629,8 @@
     \centering
     {\erhao[1]\bfseries\heiti\tongji@ch@title}% 中文题目
     \par \vspace{12bp}
-    \ifx\cfunds\@empty% 基金，若有
-      \else{\xiaosi\tongji@cfunds}
+    \ifx\ch@fund\@empty% 基金，若有
+      \else{\xiaosi\tongji@ch@fund}
     \fi
   }
 
@@ -695,8 +695,8 @@
     \centering
     \xiaoer{\bfseries\sffamily\tongji@en@title}% Eng title
     \par \vspace{12bp}
-    \ifx\efunds\@empty\else% fund
-      \xiaosi[1.3]{\tongji@efunds}
+    \ifx\en@fund\@empty\else% fund
+      \xiaosi[1.3]{\tongji@en@fund}
       \fi
     }
 
