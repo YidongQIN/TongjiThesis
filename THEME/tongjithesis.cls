@@ -562,12 +562,11 @@
   % 论文成文日期。
   \tongji@def@term{ch@date}
   \tongji@def@term{en@date}
-  % 为了兼容老版本同济模板的封面定义,仍然使用majorfirst，majorsecond
-  % 这里majorfirst表示学科门类如工学、理学，majorsecond表示一级学科或二级学科。
-  \tongji@def@term{ch@majorfirst}
-  \tongji@def@term{ch@majorsecond}
-  \tongji@def@term{en@majorfirst}
-  \tongji@def@term{en@majorsecond}
+  % 这里discipline表示学科门类如工学、理学，major表示一级学科或二级学科。
+  \tongji@def@term{ch@discipline}
+  \tongji@def@term{ch@major}
+  \tongji@def@term{en@discipline}
+  \tongji@def@term{en@major}
   % 定义基金支持
   \tongji@def@term{ch@fund}
   \tongji@def@term{en@fund}
@@ -646,21 +645,21 @@
       \fi
     \fi
     \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
-    \begin{tabular}{W{s}{\tongji@title@width}@{}>{\tongji@ch@label@sep\,}l}
-      \tongji@ch@label@author & \tongji@ch@author \\
-      \tongji@ch@label@studentnumber & \tongji@studentnumber \\
-      \tongji@ch@label@department & \tongji@ch@department \\
+    \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
+      姓名 & \tongji@ch@author \\
+      学号 & \tongji@studentnumber \\
+      所在院系 & \tongji@ch@department \\
       \iftongji@profession% 专业型仅中间两行是例外
-        \tongji@ch@label@discipline@profession & \tongji@ch@majorfirst \\
-        \tongji@ch@label@major@profession  & \tongji@ch@majorsecond \\
+      专业学位名称 & \tongji@ch@discipline \\
+      专业领域  & \tongji@ch@major \\
       \else
-        \tongji@ch@label@discipline & \tongji@ch@majorfirst \\
-        \tongji@ch@label@major & \tongji@ch@majorsecond \\
+        学科门类 & \tongji@ch@discipline \\
+        学科专业 & \tongji@ch@major \\
       \fi
-      \tongji@ch@label@supervisor & \tongji@ch@supervisor \\
+      指导教师 & \tongji@ch@supervisor \\
       \ifx\tongji@ch@supervisor@as\@empty% 若是空，没有任何命令
       \else% 若有副指导
-        \tongji@ch@label@supervisor@as & \tongji@ch@supervisor@as \\
+        副指导教师 & \tongji@ch@supervisor@as \\
       \fi
       \end{tabular}
   }
@@ -702,12 +701,12 @@
 
   \parbox[t][8.5cm][t]{\textwidth}{% candidate's info
     \sanhao[1.75]\centering% \hspace{4.5em}% 若按照校方模版的要求缩进4.5字符，则太偏右
-    \begin{tabular}{l<{\tongji@en@label@sep}l}
+    \begin{tabular}{l<{:}l}
       Candidate         & \tongji@en@author       \\
       Student Number    & \tongji@studentnumber \\
       School/Department & \tongji@en@department   \\
-      Discipline        & \tongji@en@majorfirst   \\
-      Major             & \tongji@en@majorsecond  \\
+      Discipline        & \tongji@en@discipline   \\
+      Major             & \tongji@en@major  \\
       Supervisor        & \tongji@en@supervisor \\
       \ifx\tongji@en@supervisor@as\@empty\else
         Associate Supervisor & \tongji@en@supervisor@as \\
@@ -725,7 +724,7 @@
   O{\tongji@ch@head@title} O{\tongji@ch@author} O{\tongji@ch@name@school}}{%
   \noindent\hfill
   \phantomsection
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@shuji}%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
   \hspace{0.65em}% 旋转导致基线偏移
   \rotatebox[origin=lt]{-90}{% 旋转
     \makebox[\textheight]{%
@@ -750,7 +749,7 @@
   \newgeometry{vmargin=1cm,hmargin=3cm}%
   \noindent\hfill% 边框左右各有一个hfill保证framebox居中
   \phantomsection%
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@bookspine}%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊框}%
   \setlength{\fboxrule}{1pt}%
   \framebox{%
     \hspace{0.65em}% 旋转导致基线偏移
@@ -816,8 +815,8 @@
   \vspace*{8.9cm}
   \begingroup
     \parindent0pt\xiaosi
-    \hspace*{5.5cm}\tongji@ch@sign@label\relax\hspace*{1cm}\\
-    \hspace*{9.5cm}\tongji@ch@sign@date\relax\hspace*{1cm}
+    \hspace*{5.5cm}\tongji@ch@label@sign\relax\hspace*{1cm}\\
+    \hspace*{9.5cm}\tongji@ch@date@sign\relax\hspace*{1cm}
   \endgroup
 }
 
@@ -843,8 +842,8 @@
   \vspace*{7.9cm}
   \begingroup
     \parindent0pt\xiaosi
-    \hspace*{5.5cm}\tongji@ch@sign@label\relax\hspace*{1cm}\\
-    \hspace*{9.5cm}\tongji@ch@sign@date\relax\hspace*{1cm}
+    \hspace*{5.5cm}\tongji@ch@label@sign\relax\hspace*{1cm}\\
+    \hspace*{9.5cm}\tongji@ch@date@sign\relax\hspace*{1cm}
   \endgroup
 }
 
@@ -877,13 +876,13 @@
   \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract]
   \tongji@ch@abstract
   \vspace*{12bp}\par
-  \setbox0=\hbox{{\bfseries\tongji@ch@label@keywords}}
+  \setbox0=\hbox{{\bfseries 关键词：}}
   \noindent\hangindent\wd0\hangafter1
   \box0\tongji@chinesekeywords% 结束中文摘要，以下 Abstract
   \tongji@chapter*[]{\tongji@en@name@abstract}[\wuhao\tongji@en@name@school~\tongji@en@degree~\tongji@en@name@abstract]
   \tongji@eabstract
   \vspace*{12bp}\par
-  \setbox0=\hbox{{\bfseries\tongji@en@label@keywords\enskip}}
+  \setbox0=\hbox{{\bfseries Key Words:\enskip}}
   \noindent\hangindent\wd0\hangafter1
   \box0\tongji@englishkeywords
 }
