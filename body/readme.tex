@@ -210,13 +210,6 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
   \texttt{\textbackslash{}makedeclarepage\ 不导入扫描页则生成电子版}
 \end{itemize}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\textbackslash{}makeauthorizationpage}\CommentTok{% 生成电子版授权书}
-\FunctionTok{\textbackslash{}makedeclarepage}\NormalTok{[../data/scandecl.pdf]}\CommentTok{% 插入扫描版的《原创声明》PDF文件}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{PDF 元数据}
 
 用 \texttt{\textbackslash{}hypersetup\{\textbackslash{}pdftitle=\{\}\}}
@@ -258,59 +251,19 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 \texttt{\textasciitilde{}}
 连接，以避免不良的分行，打断了``图''、``表''、``第''等前缀词、编号数字和可能的后缀``节''、``章''。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{% 交叉引用的命令}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}reftab}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}tablename}\NormalTok{~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}reffig}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}figurename}\NormalTok{~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}refalg}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}ALG@name}\NormalTok{~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}reflst}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}lstlistingname}\NormalTok{~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}refequ}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}equationname}\NormalTok{（}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}）\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}refsec}\NormalTok{\}[1]\{第~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}~节\}}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}refcha}\NormalTok{\}[1]\{第~}\KeywordTok{\textbackslash{}ref}\NormalTok{\{}\ExtensionTok{#1}\NormalTok{\}~章\}}
-\end{Highlighting}
-\end{Shaded}
-
 比如说，\texttt{见\textbackslash{}refsec\{\}。}
-可以直接生成``见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS
-Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到
-label。
+可以直接生成``见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到 label。
 
 为了配合它的使用，还在 VS Code 中制定了一个 \texttt{tjref} 的 snippet。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\ErrorTok{"TJ} \ErrorTok{Ref} \ErrorTok{with} \ErrorTok{Prefix":} \FunctionTok{\{}
-  \DataTypeTok{"prefix"}\FunctionTok{:} \StringTok{"tjref"}\FunctionTok{,}
-  \DataTypeTok{"body"}\FunctionTok{:} \OtherTok{[}
-    \StringTok{"}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{ref$\{1|tab,fig,sec,cha,alg,lst,equ|\}\{$1:$2\}"}
-  \OtherTok{]}\FunctionTok{,}
-  \DataTypeTok{"description"}\FunctionTok{:} \StringTok{"TJ Ref with Prefix"}
-\FunctionTok{\}}\ErrorTok{,}
-\end{Highlighting}
-\end{Shaded}
 
 但是此时发现，这个功能直接用 snippet 完成仿佛更加合适、灵巧。
 因此又放弃了这些命令。
 
 附上取而代之的 snippet。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ErrorTok{"Ref} \ErrorTok{with} \ErrorTok{Prefix":} \FunctionTok{\{}
-    \DataTypeTok{"prefix"}\FunctionTok{:} \StringTok{"pref"}\FunctionTok{,}
-    \DataTypeTok{"body"}\FunctionTok{:} \OtherTok{[}
-        \StringTok{"$\{1|第,图,表,公式,算法,代码|\}~}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{ref\{$0\}$\{2|~,所示,~节,~章|\}"}
-    \OtherTok{]}\FunctionTok{,}
-    \DataTypeTok{"description"}\FunctionTok{:} \StringTok{"Ref with Prefix"}
-\FunctionTok{\}}\ErrorTok{,}
-\end{Highlighting}
-\end{Shaded}
-
 \subsection{模板结构调整}
 
-按照
-\href{http://texdoc.net/texmf-dist/doc/latex/base/clsguide.pdf}{clsguide}
+按照 \href{http://texdoc.net/texmf-dist/doc/latex/base/clsguide.pdf}{clsguide}
 的理解，宏包 package 是更加具有通用性的文件，而 cls
 类文件仅仅对一类文档有用。 所以，按照自己的思路重新调整了cls和sty文件。
 
@@ -394,6 +347,10 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 
 本模板新定义了命令 \texttt{\textbackslash{}colorurl}，用于展示 URL。
 
+\colorurl{http://softlab.sdut.edu.cn/blog/subaochen/2017/07/}
+
+\colorurl[red]{http://softlab.sdut.edu.cn/blog/subaochen/2017/07/}
+
 \subsection{圆圈序号}
 
 之前一直困于多级列表与段落的样式过于重合，想寻找中文中常用的、更多的序号样式。
@@ -431,16 +388,6 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
     \end{enumerate}
   \end{enumerate}
 \end{enumerate}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{% 方案 1 利用 Tikz}
-\FunctionTok{\textbackslash{}newcommand*}\NormalTok{\{}\ExtensionTok{\textbackslash{}circled}\NormalTok{\}[1]\{}\FunctionTok{\textbackslash{}lower}\NormalTok{.7ex}\FunctionTok{\textbackslash{}hbox}\NormalTok{\{}\FunctionTok{\textbackslash{}tikz\textbackslash{}draw}\NormalTok{ (0pt, 0pt) circle (.5em) node \{}\FunctionTok{\textbackslash{}makebox}\NormalTok{[1em][c]\{}\FunctionTok{\textbackslash{}small}\NormalTok{ #1\}\};\}\}}
-\FunctionTok{\textbackslash{}robustify}\NormalTok{\{}\FunctionTok{\textbackslash{}circled}\NormalTok{\}}\CommentTok{% 依赖于 pkg\{etoolbox\} 的命令}
-\CommentTok{% 方案 2 利用 Tikz}
-\FunctionTok{\textbackslash{}newcommand*\textbackslash{}circled}\NormalTok{[1]\{}\FunctionTok{\textbackslash{}tikz}\NormalTok{[baseline=(char.base)]\{}\FunctionTok{\textbackslash{}node}\NormalTok{[shape=circle,draw,inner sep=2pt] (char) \{#1\};\}\}}
-\end{Highlighting}
-\end{Shaded}
 
 此外，还有提到用 \texttt{addfontfeatures\{Annotation=2\}}
 等，但是没有成功。
@@ -616,29 +563,9 @@ name 并列入索引。
 \item
   在原模板的基础上，微调尺寸参数。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{ignoreall,}
-\DataTypeTok{top}\OtherTok{=}\FloatTok{30.34}\StringTok{mm,}
-\DataTypeTok{headsep}\OtherTok{=}\FloatTok{4.94}\StringTok{mm,}
-\DataTypeTok{headheight}\OtherTok{=}\FloatTok{24.81}\StringTok{mm,}
-\DataTypeTok{bottom}\OtherTok{=}\FloatTok{25.4}\StringTok{mm,}
-\DataTypeTok{footskip}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\end{Highlighting}
-\end{Shaded}
 \item
   打开 \texttt{includehead} 选项。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{includehead}\OtherTok{=}\KeywordTok{true}\StringTok{,}
-\DataTypeTok{top}\OtherTok{=}\FloatTok{20.00}\StringTok{mm,}
-\DataTypeTok{headheight}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\DataTypeTok{includefoot}\OtherTok{=}\KeywordTok{false}\StringTok{,}
-\DataTypeTok{bottom}\OtherTok{=}\FloatTok{25.4}\StringTok{mm,}
-\DataTypeTok{footskip}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\end{Highlighting}
-\end{Shaded}
 \end{itemize}
 
 详细解释见
@@ -663,24 +590,6 @@ name 并列入索引。
 提出，这个问题还与字体选择有关。
 Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华文的字体都会出错。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{% 选用 Adobe 字体}
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[fontset=windows]\{}\ExtensionTok{ctexbook}\NormalTok{\}}
-\CommentTok{% 或者依次手动设定 Adobe 字体}
-\FunctionTok{\textbackslash{}setCJKmainfont}\NormalTok{[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]\{AdobeSongStd-Light\}}
-\FunctionTok{\textbackslash{}setCJKsansfont}\NormalTok{[AutoFakeBold]\{AdobeHeitiStd-Regular\}}
-\FunctionTok{\textbackslash{}setCJKmonofont}\NormalTok{\{AdobeFangsongStd-Regular\}}
-
-\CommentTok{% 选用 Fandol 字体 （缺少生僻字，慎用）}
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[fontset=fandol]\{}\ExtensionTok{ctexbook}\NormalTok{\}}
-\CommentTok{% 或者依次手动设定 Fandol 字体}
-\FunctionTok{\textbackslash{}setCJKmainfont}\NormalTok{[AutoFakeBold]\{FandolSong\}}
-\FunctionTok{\textbackslash{}setCJKsansfont}\NormalTok{[AutoFakeBold]\{FandolHei\}}
-\FunctionTok{\textbackslash{}setCJKmonofont}\NormalTok{\{FandolFang\}}
-\end{Highlighting}
-\end{Shaded}
-
 上述字体不一定在系统中安装了，采用前需要确认一下本机的字体库。
 
 按照 \texttt{xeCJK} 文档给出的方法，可以用
@@ -695,7 +604,7 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 \subsection{移除 amssymb 包}
 
 在更新了 Tex Live 2020 之后，发现了
-\texttt{Command\ \textasciigrave{}\textbackslash{}Bbbk\textquotesingle{}\ already\ defined.}
+\texttt{\textbackslash Bbbk already\ defined.}
 的报错。
 
 原因是 \texttt{XeLaTeX} 与 \texttt{amsfont} 中有了重复定义。 查阅 AMS
@@ -728,13 +637,6 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 如果按照原 \LaTeX 模板的设置，那么页眉\textbf{底缘横线}的位置距离纸张顶部
 top-headsep=20mm。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{top}\OtherTok{=}\FloatTok{25.4}\StringTok{mm,}
-\DataTypeTok{headheight}\OtherTok{=}\StringTok{20mm,}
-\DataTypeTok{headsep}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\end{Highlighting}
-\end{Shaded}
 
 所以跟校方模板的要求相差一个页眉行高。
 
@@ -742,13 +644,6 @@ top-headsep=20mm。
 false）情况下，
 若要求排版效果跟校方模版的样本（而不是跟其描述内容）一致，需要如下设置。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{top}\OtherTok{=}\FloatTok{30.34}\StringTok{mm,}
-\DataTypeTok{headsep}\OtherTok{=}\FloatTok{4.94}\StringTok{mm,}
-\DataTypeTok{headheight}\OtherTok{=}\FloatTok{24.81}\StringTok{mm,}
-\end{Highlighting}
-\end{Shaded}
 
 其中，\texttt{top} 需要加上 0.7行的高度。
 \(top = 2.54cm + 0.7*20bp = 25.4mm + 14*(25.4mm/72) = 30.34mm\)
@@ -774,17 +669,6 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 
 但是如上处理，发现页眉相关尺寸参数比较``奇怪''，可能回给后续修改者带来困惑。
 一个稍微清晰的方案是打开页眉的 \texttt{includehead} 选项。
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DataTypeTok{includehead}\OtherTok{=}\KeywordTok{true}\StringTok{,}
-\DataTypeTok{top}\OtherTok{=}\FloatTok{20.00}\StringTok{mm,}
-\DataTypeTok{headheight}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\DataTypeTok{includefoot}\OtherTok{=}\KeywordTok{false}\StringTok{,}
-\DataTypeTok{bottom}\OtherTok{=}\FloatTok{25.4}\StringTok{mm,}
-\DataTypeTok{footskip}\OtherTok{=}\FloatTok{5.4}\StringTok{mm,}
-\end{Highlighting}
-\end{Shaded}
 
 这其实是因为不同的测量点。
 
@@ -835,18 +719,6 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 需要先清空 \texttt{nameformat} 和 \texttt{titleformat} 的设置：
 \end{quote}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[zihao=-4]\{}\ExtensionTok{ctexbook}\NormalTok{\}}
-\FunctionTok{\textbackslash{}ctexset}\NormalTok{\{}
-\NormalTok{    chapter/format      = }\FunctionTok{\textbackslash{}zihao}\NormalTok{\{4\}}\FunctionTok{\textbackslash{}bfseries}\NormalTok{,}
-\NormalTok{    chapter/nameformat  = \{\},}
-\NormalTok{    chapter/titleformat = \{\},}
-\NormalTok{    section/format      = }\FunctionTok{\textbackslash{}zihao}\NormalTok{\{4\},}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
-
 \begin{quote}
 两种不同排版方案的实现方法不统一，优先级的问题。
 
@@ -861,18 +733,6 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 简单解决方法：\texttt{scheme=plain} 时，根据需要清空 \texttt{nameformat}
 或 \texttt{titleformat。}
 \end{quote}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[scheme=plain]\{}\ExtensionTok{ctexbook}\NormalTok{\}}
-\FunctionTok{\textbackslash{}ctexset}\NormalTok{\{}
-\NormalTok{  chapter=\{}
-\NormalTok{    format=}\FunctionTok{\textbackslash{}small}\NormalTok{,}
-\NormalTok{    titleformat=\{\},}
-\NormalTok{  \}}
-\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
 此外，在 \url{https://github.com/CTeX-org/ctex-kit/issues/422}
 的后续回答中，提到中英文字体不同。
@@ -896,15 +756,6 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 命令，分别定义中西字体切换命令，然后一起使用。
 \end{quote}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{% def}
-\FunctionTok{\textbackslash{}newfontfamily\textbackslash{}useSomeEnFont}\NormalTok{\{<font name 1>\}}
-\FunctionTok{\textbackslash{}newCJKfontfamily\textbackslash{}useSomeEnFont}\NormalTok{\{<font name 2>\}}
-\CommentTok{% use}
-\FunctionTok{\textbackslash{}normalfont\textbackslash{}useSomeEnFont\textbackslash{}useSomeEnFont}
-\end{Highlighting}
-\end{Shaded}
 
 \subsection{处理}
 
@@ -1102,16 +953,6 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 各种路径都要先用\texttt{../}回到上一层、然后再指定平级目录、最后指定文件。
 虽然这种操作不是很常见，但是相比正常路径，也就多了\texttt{../}这一步，算是可以接受。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[bibtype=numeric]\{}\ExtensionTok{../THEME/tongjithesis}\NormalTok{\} }\CommentTok{% 1. 文档类型}
-\BuiltInTok{\textbackslash{}usepackage}\NormalTok{\{}\ExtensionTok{../THEME/tongjithesis}\NormalTok{\} }\CommentTok{% 2. 宏包}
-\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{document}\NormalTok{\}}
-\NormalTok{  ...}
-  \FunctionTok{\textbackslash{}subfile}\NormalTok{\{../body/chapter.tex\} }\CommentTok{% 3. 章节文件}
-\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{document}\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
 \subsubsection{在子文件 chapter.tex
 中的调整}
@@ -1119,14 +960,6 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 子文件中按照 subfile 的要求即可，不需要
 \textbackslash usepackage，然后用\{document\}环境包围正文代码。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{\textbackslash{}documentclass}\NormalTok{[../main/BMS_BIM.tex]\{}\ExtensionTok{subfiles}\NormalTok{\} }\CommentTok{% 1. 文档类型选项}
-\KeywordTok{\textbackslash{}begin}\NormalTok{\{}\ExtensionTok{document}\NormalTok{\}}
-\NormalTok{  ...}
-\KeywordTok{\textbackslash{}end}\NormalTok{\{}\ExtensionTok{document}\NormalTok{\}}
-\end{Highlighting}
-\end{Shaded}
 
 \subsubsection{在模板文件中的调整}
 
@@ -1139,12 +972,6 @@ You have requested document class `../THEME/tongjithesis',
 
 可以在模板文件中修改 \texttt{.cls} 和 \texttt{.sty} 引用名。
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{\textbackslash{}ProvidesClass}\NormalTok{\{../THEME/tongjithesis\}}
-\FunctionTok{\textbackslash{}ProvidesPackage}\NormalTok{\{../THEME/tongjithesis\}}
-\end{Highlighting}
-\end{Shaded}
 
 \subsection{处理（改良）}
 

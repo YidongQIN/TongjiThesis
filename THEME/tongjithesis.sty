@@ -245,7 +245,7 @@
 \RequirePackage{xeCJKfntef}% 汉字下划线、波浪线、加点等标记
 
 % 彩色展示网页
-\newcommand{\colorurl}[1]{<\uline{\color{darkblue}\ttfamily\url{#1}}>}
+\newcommand{\colorurl}[2][darkblue]{{\color{#1}\ttfamily<\uline{\url{#2}}>}}
 
 % 交叉引用的命令
 \newcommand*{\reftab}[1]{\tablename~\ref{#1}}
