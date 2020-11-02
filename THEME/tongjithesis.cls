@@ -725,7 +725,7 @@
   O{\tongji@ch@head@title} O{\tongji@ch@author} O{\tongji@ch@name@school}}{%
   \noindent\hfill
   \phantomsection
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊}%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@shuji}%
   \hspace{0.65em}% 旋转导致基线偏移
   \rotatebox[origin=lt]{-90}{% 旋转
     \makebox[\textheight]{%
@@ -750,7 +750,7 @@
   \newgeometry{vmargin=1cm,hmargin=3cm}%
   \noindent\hfill% 边框左右各有一个hfill保证framebox居中
   \phantomsection%
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊框}%
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@bookspine}%
   \setlength{\fboxrule}{1pt}%
   \framebox{%
     \hspace{0.65em}% 旋转导致基线偏移
