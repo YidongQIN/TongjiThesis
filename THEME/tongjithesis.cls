@@ -593,7 +593,7 @@
   \centering\noindent\normalsize
   \parbox[b][36bp][t]{\textwidth}{% 左上角电子标识、右上角的保密标识，通常无用
     \iftongji@electronic{% 是否电子版
-      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype\tongji@electronich@title}}
+      {\kaishu\xiaosi\bfseries\itshape\tongji@thesistype\tongji@ch@flag@electronic}}
     \fi
     \hfill
     \iftongji@secret{% 是否保密
@@ -646,21 +646,21 @@
       \fi
     \fi
     \centering% \hspace{4.5em}% 校方模版要求的缩进 4.5em 是相对其文本框
-    \begin{tabular}{W{s}{\tongji@title@width}@{}>{：\,}l}
-      \tongji@ch@authortitle & \tongji@ch@author \\
-      \tongji@cstudentnumbertitle & \tongji@studentnumber \\
-      \tongji@ch@departmenttitle & \tongji@ch@department \\
+    \begin{tabular}{W{s}{\tongji@title@width}@{}>{\tongji@ch@label@sep\,}l}
+      \tongji@ch@label@author & \tongji@ch@author \\
+      \tongji@ch@label@studentnumber & \tongji@studentnumber \\
+      \tongji@ch@label@department & \tongji@ch@department \\
       \iftongji@profession% 专业型仅中间两行是例外
-        \tongji@ch@majorfirsttitleprofession & \tongji@ch@majorfirst \\
-        \tongji@ch@majorsecondtitleprofession  & \tongji@ch@majorsecond \\
+        \tongji@ch@label@discipline@profession & \tongji@ch@majorfirst \\
+        \tongji@ch@label@major@profession  & \tongji@ch@majorsecond \\
       \else
-        \tongji@ch@majorfirsttitle & \tongji@ch@majorfirst \\
-        \tongji@ch@majorsecondtitle & \tongji@ch@majorsecond \\
+        \tongji@ch@label@discipline & \tongji@ch@majorfirst \\
+        \tongji@ch@label@major & \tongji@ch@majorsecond \\
       \fi
-      \tongji@ch@supervisortitle & \tongji@ch@supervisor \\
+      \tongji@ch@label@supervisor & \tongji@ch@supervisor \\
       \ifx\tongji@ch@supervisor@as\@empty% 若是空，没有任何命令
       \else% 若有副指导
-        \tongji@cassosupertitle & \tongji@ch@supervisor@as \\
+        \tongji@ch@label@supervisor@as & \tongji@ch@supervisor@as \\
       \fi
       \end{tabular}
   }
@@ -702,7 +702,7 @@
 
   \parbox[t][8.5cm][t]{\textwidth}{% candidate's info
     \sanhao[1.75]\centering% \hspace{4.5em}% 若按照校方模版的要求缩进4.5字符，则太偏右
-    \begin{tabular}{l<{:}l}
+    \begin{tabular}{l<{\tongji@en@label@sep}l}
       Candidate         & \tongji@en@author       \\
       Student Number    & \tongji@studentnumber \\
       School/Department & \tongji@en@department   \\
@@ -798,26 +798,26 @@
 \NewDocumentCommand{\makedeclarepage}{o}{
   \phantomsection
   \IfNoValueTF{#1}
-    {\tongji@ch@name@decl@mk}% 没有PDF就生成电子版
+    {\tongji@make@declare}% 没有PDF就生成电子版
     {\includepdf{#1}} % 有PDF就导入扫描页
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@declarename}
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@declare}
   \tjclearpage
 }
 % 电子版原创性声明页面
-\newcommand{\tongji@ch@name@decl@mk}{%
+\newcommand{\tongji@make@declare}{%
   \vspace*{18pt}
   \begin{center}
-    \xiaoer\heiti\bfseries\tongji@declarename
+    \xiaoer\heiti\bfseries\tongji@ch@name@declare
   \end{center}
 
   \vspace*{18pt}
-  \sihao[2.03]\tongji@declaretext
+  \sihao[2.03]\tongji@ch@text@declare
 
   \vspace*{8.9cm}
   \begingroup
     \parindent0pt\xiaosi
-    \hspace*{5.5cm}\tongji@authorsig\relax\hspace*{1cm}\\
-    \hspace*{9.5cm}\tongji@date\relax\hspace*{1cm}
+    \hspace*{5.5cm}\tongji@ch@sign@label\relax\hspace*{1cm}\\
+    \hspace*{9.5cm}\tongji@ch@sign@date\relax\hspace*{1cm}
   \endgroup
 }
 
@@ -825,26 +825,26 @@
 \NewDocumentCommand{\makeauthorizationpage}{o}{
   \phantomsection
   \IfNoValueTF{#1}
-    {\tongji@authorization@mk}% 没有PDF就生成电子版
+    {\tongji@make@authorization}% 没有PDF就生成电子版
     {\includepdf{#1}}% 有PDF就导入扫描页
-  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@authtitle}
+  \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@authorization}
   \tjclearpage
 }
 % 电子版授权页面
-\newcommand{\tongji@authorization@mk}{%
+\newcommand{\tongji@make@authorization}{%
   \vspace*{18pt}
   \begin{center}
-    \xiaoer\heiti\bfseries\tongji@authtitle
+    \xiaoer\heiti\bfseries\tongji@ch@name@authorization
   \end{center}
 
   \vspace*{18pt}
-  \sihao[2.03]\tongji@authorization
+  \sihao[2.03]\tongji@ch@text@authorization
 
   \vspace*{7.9cm}
   \begingroup
     \parindent0pt\xiaosi
-    \hspace*{5.5cm}\tongji@authorsig\relax\hspace*{1cm}\\
-    \hspace*{9.5cm}\tongji@date\relax\hspace*{1cm}
+    \hspace*{5.5cm}\tongji@ch@sign@label\relax\hspace*{1cm}\\
+    \hspace*{9.5cm}\tongji@ch@sign@date\relax\hspace*{1cm}
   \endgroup
 }
 
