@@ -852,7 +852,7 @@
   % 使用 \pkg{environ} 的\cs{Collect@Body} 来实现。
   \newcommand{\tongji@@ch@abstract}[1]{\long\gdef\tongji@ch@abstract{#1}}
   \newenvironment{chabstract}{\Collect@Body\tongji@@ch@abstract}{}
-  \newcommand{\tongji@@en@abstract}[1]{\long\gdef\tongji@eabstract{#1}}
+  \newcommand{\tongji@@en@abstract}[1]{\long\gdef\tongji@en@abstract{#1}}
   \newenvironment{enabstract}{\Collect@Body\tongji@@en@abstract}{}
   % 中英文关键词分别用 \cs{chinesekeywords} 和 \cs{englishkeywords} 收集
   \def\tongji@parse@keywords#1{
@@ -874,13 +874,17 @@
 \newcommand{\makeabstract}{%
   \tjclearpage\normalsize% always openright for Abstract
   \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract]
-  \tongji@ch@abstract
-  \vspace*{12bp}\par
-  \setbox0=\hbox{{\bfseries 关键词：}}
-  \noindent\hangindent\wd0\hangafter1
-  \box0\tongji@chinesekeywords% 结束中文摘要，以下 Abstract
+  \tongji@ch@abstract% 收集了中文摘要正文内容
+  \vspace*{12bp}\par% 结束摘要正文，空白段落，开始关键词
+  \setbox0=\hbox{{\bfseries 关键词：}}% 输出“关键词：”并将其数值记录在 box0
+  \noindent% 取消默认缩进
+  \hangindent\wd0% 缩进距离相当于 box0 的宽度
+  \hangafter1% 从第1行之后，即第2行开始缩进
+  \box0% 清空 box0 的设置
+  \tongji@chinesekeywords%输出中文关键词
+  % 结束中文摘要，以下 Abstract。代码涵义不再解析。
   \tongji@chapter*[]{\tongji@en@name@abstract}[\wuhao\tongji@en@name@school~\tongji@en@degree~\tongji@en@name@abstract]
-  \tongji@eabstract
+  \tongji@en@abstract% ABSTRACT text
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries Key Words:\enskip}}
   \noindent\hangindent\wd0\hangafter1
