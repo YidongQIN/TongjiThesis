@@ -586,7 +586,7 @@
 \newlength{\tongji@title@width}% 用于计算申请人信息首列宽度
 % \def\tongji@put@title#1{\makebox{\hb@xt@\tongji@title@width{#1}}}% 用于分散对齐
 % 其中的生成给定长度的一个水平盒子 \hb@xt@ = \hbox to
-\newcommand{\chncover}{
+\newcommand{\chcover}{
   \phantomsection
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{封面}
   \centering\noindent\normalsize
@@ -670,7 +670,7 @@
 }% 结束中文封面页
 
 %% English Cover 英文封面页面
-\newcommand{\engcover}{
+\newcommand{\encover}{
   \phantomsection
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{Cover}
   \centering\noindent\normalsize
@@ -786,8 +786,8 @@
     % \tolerance=10000% 改变排版容忍度
     \hbadness=10000% 改变水平排版警报等级
     \vbadness=10000% 改变竖向排版警报等级
-    \chncover% 中文封面
-    \engcover% English Cover
+    \chcover% 中文封面
+    \encover% English Cover
     \IfBooleanTF#1{\relax}{\bookspine}% 不带星则生成书脊（默认带框书脊），带星则无书脊
   \end{titlepage}
   \let\@tabular\tongji@tabular

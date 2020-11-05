@@ -170,7 +170,7 @@
 
 具体使用方法是：
 1. 开启文档类型中的一个新增的参数 `electronic=true`，它会使得原本的多处 `\cleardoublepage` 变为 `\clearpage`。
-2. 使用 `\makecover*{}` 则不生成书脊，或覆盖封面页面 `\begin{titlepage}\chncover\end{titlepage}` 连英文封面也不产生。
+2. 使用 `\makecover*{}` 则不生成书脊，或覆盖封面页面 `\begin{titlepage}\chcover\end{titlepage}` 连英文封面也不产生。
 3. 根据布尔值更改宏包 `hyperref` 的超链接颜色：
    1. 在电子版中，超链接是彩色，而且原本默认的红色内部链接改为蓝色。
    2. 在非电子的付印版中，所有链接是黑色，方便打印。
