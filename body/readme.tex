@@ -80,7 +80,7 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
   \begin{itemize}
   \item
     分散对齐，普遍采用
-    \texttt{\textbackslash{}makebox{[}width{]}{[}s{]}\{...text...\}}
+    \texttt{\textbackslash{}makebox[width][s]\{...text...\}}
     命令。
   \item
     删除了原本的 \texttt{\textbackslash{}tongji@put@title\{\}} 方案。
@@ -186,8 +186,8 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 
 不过，如果同时出现旋转和非旋转的字体，那么这个偏移问题还是没有解决。
 最明显的例子，就是标题中的汉字旋转后，与英文字母或模板中的 \LaTeX 符号，有明显的上下偏移。 需要独立调用书脊的命令
-\texttt{\textbackslash{}bookspine{[}{]}}
-输入标题参数（定义时可选参数要用 \texttt{{[}{]}} 输入），并且用
+\texttt{\textbackslash{}bookspine[]}
+输入标题参数（定义时可选参数要用 \texttt{[]} 输入），并且用
 \texttt{\textbackslash{}raisebox\{-0.35em\}\{eng\ text\}}
 手动移动英文部分的对齐。
 
@@ -205,7 +205,7 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 
 \begin{itemize}
 \item
-  \texttt{\textbackslash{}makeauthorizationpage{[}../pages/scan.pdf{]}\%\ 可导入扫描页}
+  \texttt{\textbackslash{}makeauthorizationpage[../pages/scan.pdf]\%\ 可导入扫描页}
 \item
   \texttt{\textbackslash{}makedeclarepage\ 不导入扫描页则生成电子版}
 \end{itemize}
@@ -381,7 +381,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
     \begin{enumerate}
     \def\labelenumiii{\arabic{enumiii}.}
     \item
-      用 \texttt{{[}baseline=(char.base){]}} 定位，而不是手动的
+      用 \texttt{[baseline=(char.base)]} 定位，而不是手动的
       \(0.7ex\) 上下调整。
     \item
       评论区建议了 \texttt{\textbackslash{}DeclareRobustCommand} 定义。
@@ -416,7 +416,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
   \end{itemize}
 \end{itemize}
 
-特别地，简历页面有序列表形式预设为 \texttt{{[}1{]}.} 。
+特别地，简历页面有序列表形式预设为 \texttt{[1].} 。
 
 \subsection{表格样式}
 
@@ -487,7 +487,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 的方式统一设置了布局、对齐、边框和标题位置等通用格式。
 
 用
-\texttt{\textbackslash{}lstdefinelanguage\{NewLanguageName\}{[}dialect{]}\{BasedLanguage\}\{key=value\}}
+\texttt{\textbackslash{}lstdefinelanguage\{NewLanguageName\}[dialect]\{BasedLanguage\}\{key=value\}}
 的方法，扩展了 Python
 的关键词列表，并据其继续包装了一个可供自定义的语言；同理，把
 \texttt{OpenBrIM} 设定为一个语言。
@@ -540,7 +540,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 用 \texttt{\textbackslash{}lstlistoflisting}
 可以生成一个代码索引，类似于 \texttt{list\ of\ tables} 之类。 * 设置了
 \texttt{nolol} 的代码不会进入索引。 * 可用下面的命令更改对齐和样式：
-\texttt{\textbackslash{}renewcommand\textbackslash{}l@lstlisting{[}2{]}\{\textbackslash{}@dottedtocline\{1\}\{0em\}\{2em\}\{\textbackslash{}lstlistingname\textasciitilde{}\#1\}\{\#2\}\}}。
+\texttt{\textbackslash{}renewcommand\textbackslash{}l@lstlisting[2]\{\textbackslash{}@dottedtocline\{1\}\{0em\}\{2em\}\{\textbackslash{}lstlistingname\textasciitilde{}\#1\}\{\#2\}\}}。
 * 定制了 \texttt{listings} 索引页面的页眉、页脚样式。
 
 值得一提的是，在代码块中设置 \texttt{name=} 而不设置
@@ -747,12 +747,12 @@ RuixiZhang42：可以用 \texttt{\textbackslash{}heiti}
 文字上。不过这样西文跟中文不太协调，建议谨慎使用
 
 muzimuzhi：字体切换功能，是利用了 xetex 引擎的 char class
-机制。粗暴理解，把所有字符按中西文分类，遇到「中-西」边界就切换到西文字体，遇到「西-中」边界就切换到中文字体。{[}1,
-Sec. 3{]} 里有一个简单的例子。
+机制。粗暴理解，把所有字符按中西文分类，遇到「中-西」边界就切换到西文字体，遇到「西-中」边界就切换到中文字体。[1,
+Sec. 3] 里有一个简单的例子。
 
 muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案是，通过
 \texttt{fontspec} 和 \texttt{xeCJK} 的
-\texttt{\textbackslash{}new{[}CJK{]}fontfamily}
+\texttt{\textbackslash{}new[CJK]fontfamily}
 命令，分别定义中西字体切换命令，然后一起使用。
 \end{quote}
 
@@ -1076,7 +1076,8 @@ cls 文件}
 报错提醒如下。
 
 \begin{verbatim}
-Package xkeyval Error: `gbnamefmt` undefined in families `blx@opt@pre`.
+Package xkeyval Error: `gbnamefmt`
+undefined in families `blx@opt@pre`.
 % 其中`gbnamefmt`也可会是`urldate`等其他信息
 ...
 \blx@processoptions
@@ -1099,13 +1100,13 @@ gb7714-2015-gbk.def 文件。
 
 \subsection{处理}
 
-下载四个文件，并替换
-\texttt{\$TexLive\$/texmf-dist/tex/latex.biblatex-gb7714-2015/}
+下载四个文件，并替换 \texttt{\$TexLive\$/texmf-dist/tex/latex/
+biblatex-gb7714-2015/}
 文件夹内原有内容。 * gb7714-2015.bbx * gb7714-2015ay.bbx *
 gb7714-2015.cbx * gb7714-2015ay.cbx
 
 原README也指出了这个问题。 此外，如下论坛帖也有详细说明。
-https://blog.genkun.me/post/xjtu-undergraduate-thesis/
+\url{https://blog.genkun.me/post/xjtu-undergraduate-thesis/}
 
 \section{Biber 版本错误}
 
@@ -1114,8 +1115,10 @@ https://blog.genkun.me/post/xjtu-undergraduate-thesis/
 报错提醒如下。
 
 \begin{verbatim}
-ERROR - Error: Found biblatex control file version 3.4, expected version 3.5.
-This means that your biber (2.12) and biblatex (3.11) versions are incompatible.
+ERROR - Error: Found biblatex control file version 3.4,
+expected version 3.5.
+This means that your biber (2.12) and biblatex (3.11)
+versions are incompatible.
 See compat matrix in biblatex or biber PDF documentation.
 \end{verbatim}
 
@@ -1123,7 +1126,7 @@ See compat matrix in biblatex or biber PDF documentation.
 3.12 不能兼容。
 
 其官方论坛也承认了这个bug，且唯一办法就是 (downgrade
-biber){[}https://bugs.archlinux.org/task/60844{]}。
+biber)[https://bugs.archlinux.org/task/60844]。
 
 \subsection{答疑}
 
@@ -1197,7 +1200,7 @@ https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.11/
 \subsection{制作电子书签}
 
 原模版的 PDF 书签采用 \texttt{hyperref} 宏包的
-\texttt{\textbackslash{}pdfbookmark{[}level{]}\{text\}\{name\}} 命令，为
+\texttt{\textbackslash{}pdfbookmark[level]\{text\}\{name\}} 命令，为
 PDF 文档生成与文档目录部分内容和结构相同的书签。
 
 使用方法可以参考 \url{https://zhuanlan.zhihu.com/p/59655379}
@@ -1224,13 +1227,13 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   \texttt{s}，用于提醒此新命令与原生命令的必须区别，不会实际更改目录或者电子书签的内容或格式。
 \item
   第二个是可选参数 \texttt{o}，表示
-  \texttt{{[}tocline{]}}，是出现在目录中的条目。
+  \texttt{[tocline]}，是出现在目录中的条目。
 
   \begin{itemize}
   \item
-    如果有、且为空 \texttt{{[}{]}}，则此章节不出现在目录中；
+    如果有、且为空 \texttt{[]}，则此章节不出现在目录中；
   \item
-    如果有、且不为空 \texttt{{[}mark{]}}，则在电子书签中显示为
+    如果有、且不为空 \texttt{[mark]}，则在电子书签中显示为
     \texttt{mark}；
   \item
     如果没有，表示在电子书签中显示 \texttt{\{title\}}。
@@ -1240,7 +1243,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   \texttt{\textbackslash{}chapter\{\}} 括号中的内容。
 \item
   第四个是可选参数 \texttt{o}，表示
-  \texttt{{[}header{]}}，即页眉出现的标题。
+  \texttt{[header]}，即页眉出现的标题。
 
   \begin{itemize}
   \item
@@ -1257,32 +1260,54 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 几个用法举例。
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  中文摘要
 
-  \texttt{\textbackslash{}tongji@chapter*{[}{]}\{\textbackslash{}tongji@ch@name@abstract\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}tongji@ch@name@abstract{]}}
+  \item 中文摘要
+
+\begin{lstlisting}[language=TeX, style=colored]
+\tongji@chapter*[]
+  {
+    \tongji@ch@name@abstract
+  }
+  [
+    \wuhao\songti
+    \tongji@ch@name@school~
+    \tongji@capply~\tongji@ch@name@abstract
+  ]
+\end{lstlisting}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule
   参数 & 内容 & 解释\tabularnewline
   \midrule
   \endhead
-  s & \texttt{*} & 确认带星号\tabularnewline
-  o & \texttt{{[}{]}} & 有且为空，不出现在目录\tabularnewline
+  s & \texttt{*} & 确认带星号 \tabularnewline
+  o & \texttt{[]} & 有且为空，不出现在目录 \tabularnewline
   m & \texttt{\{\textbackslash{}tongji@ch@name@abstract\}} &
-  ``摘要''二字\tabularnewline
+  ``摘要''二字 \tabularnewline
   o &
-  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract{]}}
+  \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract]}
   & 摘要的页眉\tabularnewline
   \bottomrule
   \end{longtable}
 
   英文摘要、目录同理。
-\item
-  致谢
 
-  \texttt{\textbackslash{}tongji@chapter*{[}\textbackslash{}tongji@ch@name@ackn{]}\{\textbackslash{}tongji@ch@name@ackn\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}tongji@ch@name@ackn{]}}
+  \item 致谢
+
+\begin{lstlisting}[language=TeX, style=colorEX]
+\tongji@chapter*
+  [
+    \tongji@ch@name@ackn
+  ]
+  {
+    \tongji@ch@name@ackn
+  }
+  [
+    \wuhao\songti
+    \tongji@ch@name@school~
+    \tongji@capply~\tongji@ch@name@ackn
+  ]
+\end{lstlisting}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule
@@ -1290,20 +1315,30 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   \midrule
   \endhead
   s & \texttt{*} & 确认带星号\tabularnewline
-  o & \texttt{{[}\textbackslash{}tongji@ch@name@ackn{]}} &
-  有且不为空，出现在目录中显示 \texttt{\textbackslash{}tongji@ch@name@ackn}
-  对应的``致谢''二字\tabularnewline
+  o & \texttt{[\textbackslash{}tongji@ch@name@ackn]} &
+  在目录中显示 “致谢” \tabularnewline
   m & \texttt{\{\textbackslash{}tongji@ch@name@ackn\}} &
-  ``致谢''二字\tabularnewline
+  “致谢”二字\tabularnewline
   o &
-  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@ackn{]}}
+  \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@ackn]}
   & 致谢的页眉\tabularnewline
   \bottomrule
   \end{longtable}
-\item
-  不带星号的 \texttt{\textbackslash{}listof}
 
-  \texttt{\textbackslash{}tongji@chapter*\{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname\}{[}\textbackslash{}wuhao\textbackslash{}songti\textbackslash{}tongji@ch@name@school\textasciitilde{}\textbackslash{}tongji@capply\textasciitilde{}\textbackslash{}csname\ list\#2name\textbackslash{}endcsname{]}}
+\item 不带星号的 \texttt{\textbackslash{}listof}
+
+\begin{lstlisting}[language=TeX, style=colored]
+\tongji@chapter*
+  {
+    \csname list#2name\endcsname
+  }
+  [
+    \wuhao\songti
+    \tongji@ch@name@school~
+    \tongji@capply~
+    \csname list#2name\endcsname
+  ]
+\end{lstlisting}
 
   \begin{longtable}[]{@{}cll@{}}
   \toprule
@@ -1314,9 +1349,9 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   o & & 没有，在目录显示 \texttt{m} 参数的文字\tabularnewline
   m &
   \texttt{\{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname\}}
-  & 对应的``索引''名字\tabularnewline
+  & 对应的“索引”名字\tabularnewline
   o &
-  \texttt{{[}\textbackslash{}wuhao\ ...\ \textbackslash{}endcsname{]}} &
+  \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}endcsname]} &
   索引的页眉\tabularnewline
   \bottomrule
   \end{longtable}
@@ -1338,7 +1373,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   如果是不在 \texttt{toc} 中的章节，在其章节命令
   \texttt{\textbackslash{}chapter*\{\}} 之后用
-  \texttt{\textbackslash{}bookmark{[}dest=\textbackslash{}HyperLocalCurrentHref,\ level={]}\{title\}}
+  \texttt{\textbackslash{}bookmark[dest=\textbackslash{}HyperLocalCurrentHref,\ level=]\{title\}}
   设定其在电子书签中的级别和标题内容即可。
 \end{itemize}
 
@@ -1378,7 +1413,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   原理仍有待探究。
 
   现在的解决方法是把中文封面的段落盒子高度增加为
-  \texttt{\textbackslash{}parbox{[}t{]}{[}36bp{]}{[}t{]}\{\textbackslash{}textwidth\}\{...\}}；
+  \texttt{\textbackslash{}parbox[t][36bp][t]\{\textbackslash{}textwidth\}\{...\}}；
   而英文封面中没有这些元素，用 \texttt{\textbackslash{}vspace*\{24bp\}}
   跳过。 则两种封面的其他元素可以顺利对齐。
 \item
