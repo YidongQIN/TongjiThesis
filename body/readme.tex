@@ -1263,8 +1263,9 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
   \item 中文摘要
 
-\begin{lstlisting}[language=TeX, style=colored]
-\tongji@chapter*[]
+\begin{lstlisting}[language={[LaTeX]TeX},style=colored]
+\tongji@chapter*
+  []
   {
     \tongji@ch@name@abstract
   }
@@ -1273,6 +1274,11 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
     \tongji@ch@name@school~
     \tongji@capply~\tongji@ch@name@abstract
   ]
+  % 以下用于测试，上方命令需要新定义命令
+  \section{foobar}
+  \cite{something}
+  \clearpage
+  \bfseries
 \end{lstlisting}
 
   \begin{longtable}[]{@{}cll@{}}
@@ -1294,7 +1300,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
   \item 致谢
 
-\begin{lstlisting}[language=TeX, style=colorEX]
+\begin{lstlisting}[language={[LaTeX]TeX}, style=colorEX]
 \tongji@chapter*
   [
     \tongji@ch@name@ackn
@@ -1327,7 +1333,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
 \item 不带星号的 \texttt{\textbackslash{}listof}
 
-\begin{lstlisting}[language=TeX, style=colored]
+\begin{lstlisting}[language={[LaTeX]TeX}, style=colored]
 \tongji@chapter*
   {
     \csname list#2name\endcsname
