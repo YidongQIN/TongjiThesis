@@ -1,6 +1,7 @@
 # VS Code Workspace settings
-.vscode/
+# sub PDF
 body/*.pdf
+# Word 文档
 同济大学学位论文规范 格式要求/
 
 ## Core latex/pdflatex auxiliary files:
