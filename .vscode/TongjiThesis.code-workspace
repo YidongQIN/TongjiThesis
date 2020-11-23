@@ -124,8 +124,9 @@
 	},
 	"extensions": {
 		"recommendations": [
-		  "james-yu.latex-workshop",
-		  "gruntfuggly.todo-tree",
+			"james-yu.latex-workshop",
+			"gruntfuggly.todo-tree",
+			"coenraads.bracket-pair-colorizer-2",
 		]
-	  }
+	}
 }
