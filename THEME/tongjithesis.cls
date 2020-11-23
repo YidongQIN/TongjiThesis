@@ -156,14 +156,14 @@
   \fancypagestyle{tongji@headings}{%
     \fancyhead{}
     \fancyhead[RO]{\wuhao\songti\leftmark}
-    \fancyhead[LE]{\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@head@title}
+    \fancyhead[LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@head@title}
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}}
   \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
     \fancyhead{}
-    \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@capply~\appendixname}% 不确定页眉是否左右一致
+    \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\appendixname}% 不确定页眉是否左右一致
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
@@ -611,7 +611,7 @@
 
   \vspace*{14bp}% \\[14bp]%二号字段前0.5行=0.5*22*1.3
   \parbox[t][3cm][t]{\textwidth}{% 学位类型
-    \centering{\erhao[1]\lishu\tongji@capply}% 硕/博学位类型
+    \centering{\erhao[1]\lishu\tongji@ch@type@apply}% 硕/博学位类型
     \iftongji@academic{\empty}% 学位类型补充
       \else \iftongji@profession{
         \par \vspace*{0.4cm} {\sihao[1]\bfseries\lishu（专业学位）}
@@ -687,7 +687,7 @@
 
   \vspace*{14bp}% \\[14bp]% 二号字段前0.5行=0.5*22*1.3
   \parbox[t][3cm][t]{\textwidth}{% Eng degree type
-    \centering\sihao\tongji@eapply
+    \centering\sihao\tongji@en@type@apply
     }
 
   \parbox[t][6cm][t]{\textwidth}{% title and fund
@@ -779,7 +779,7 @@
   \hypersetup{% 设置PDF属性为文档元数据
     pdftitle={\tongji@ch@head@title},
     pdfauthor={\tongji@ch@author},
-    pdfsubject={\tongji@ch@name@school\tongji@capply},
+    pdfsubject={\tongji@ch@name@school\tongji@ch@type@apply},
     pdfcreator={\tongji@en@author},
     pdfproducer={\tongjithesis}}
   \begin{titlepage}% 生成封面页
@@ -873,7 +873,7 @@
 % 原本摘要命令\tongji@makeabstract独立
 \newcommand{\makeabstract}{%
   \tjclearpage\normalsize% always openright for Abstract
-  \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract]
+  \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@abstract]
   \tongji@ch@abstract% 收集了中文摘要正文内容
   \vspace*{12bp}\par% 结束摘要正文，空白段落，开始关键词
   \setbox0=\hbox{{\bfseries 关键词：}}% 输出“关键词：”并将其数值记录在 box0
@@ -899,7 +899,7 @@
 % 目录生成
 % 减小目录项中的导引小点跟页码之间的留白
 \renewcommand\tableofcontents{%
-  \tongji@chapter*[]{\contentsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\contentsname]
+  \tongji@chapter*[]{\contentsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\contentsname]
   \xiaosi[1.5]\@starttoc{toc}\normalsize\clearpage}
 % 同济要求目录的行距为18磅 = 1.5 * 16(16是小四的默认行距)
 \RequirePackage{titletoc}
@@ -915,7 +915,7 @@
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
-\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@ackn]
+\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
 \fangsong\xiaosi[1.5]}{\clearpage\normalsize}
 
 %% 参考文献
@@ -943,7 +943,7 @@
 
 %% 个人简历
 \newenvironment{resume}{%
-  \tongji@chapter*{\tongji@ch@name@resume}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@resume]
+  \tongji@chapter*{\tongji@ch@name@resume}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@resume]
   \wuhao[1.6]
   \setlength{\parindent}{0em}
   \setlist[enumerate,1]{label=[\arabic*], labelindent=*, leftmargin=2em}
@@ -954,7 +954,7 @@
 % 主要符号对照表
 \newenvironment{denotation}[1][2cm]{
   % 若需对照表出现在目录中则 \tongji@chapter*{\tongji@ch@name@denotation}
-  \tongji@chapter*[]{\tongji@ch@name@denotation}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@denotation]
+  \tongji@chapter*[]{\tongji@ch@name@denotation}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@denotation]
   \vspace*{18bp}\xiaosi[2]
   \begin{tongji@denotation}[labelwidth=#1]
   }{%
@@ -981,11 +981,11 @@
 \NewDocumentCommand\tongji@listof{s m}{
   \IfBooleanTF#1
   {% 带星 \listof* 的不加入目录
-    \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]
+    \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
   {% 不带星 \listof 加入目录
-    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]
+    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]
     \tongji@starttoc{#2}
     \clearpage}
   }

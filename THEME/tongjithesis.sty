@@ -23,18 +23,6 @@
 \setlist[inline,1]{label=(\arabic*)}
 \setlist[inline,2]{label=\roman*.}
 
-% 算法环境
-\RequirePackage{algorithm}
-\RequirePackage{algorithmic}
-\algsetup{
-  linenodelimiter=.,
-  % indent=4em,
-  linenosize=\small,
-  }
-\renewcommand{\ALG@name}{算法}% \floatname{algorithm}{算法}% 两种重命名方法等效
-\renewcommand{\algorithmicrequire}{\textbf{输入}}
-\renewcommand{\algorithmicensure}{\textbf{输出}}
-
 % 颜色，主要用于代码展示
 \RequirePackage{color}
 \definecolor{darkred}{rgb}{0.6,0.0,0.0}
@@ -127,8 +115,8 @@
     tongji@secret@title,
     tongji@secretlevel,
     tongji@secretyear,
-    tongji@capply,
-    tongji@eapply,
+    tongji@ch@type@apply,
+    tongji@en@type@apply,
     tongji@ch@type@academic,
     tongji@ch@type@profession,
     tongji@ch@type@equaled,
@@ -251,7 +239,7 @@
   \lstlistoflistings
   \thispagestyle{fancy}
   \fancyhead{}
-  \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@capply~\lstlistlistingname}
+  \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\lstlistlistingname}
   \fancyfoot{}
   \fancyfoot[C]{\songti\wuhao\thepage}
   \addcontentsline{toc}{chapter}{\lstlistlistingname}

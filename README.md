@@ -1027,7 +1027,7 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 1. 中文摘要
 
-   `\tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@abstract] `
+   `\tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@abstract] `
 
     | 参数  | 内容                                    | 解释                   |
     | :---: | :-------------------------------------- | :--------------------- |
@@ -1040,7 +1040,7 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 2. 致谢
 
-   `\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\tongji@ch@name@ackn]`
+   `\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]`
 
     | 参数  | 内容                                | 解释                                                                 |
     | :---: | :---------------------------------- | :------------------------------------------------------------------- |
@@ -1051,7 +1051,7 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 3. 不带星号的 `\listof`
 
-   `\tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@capply~\csname list#2name\endcsname]`
+   `\tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]`
 
     | 参数  | 内容                             | 解释                            |
     | :---: | :------------------------------- | :------------------------------ |
