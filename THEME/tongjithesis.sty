@@ -38,6 +38,16 @@
 \definecolor{bluegray}{rgb}{0.81,0.86,0.91}
 \definecolor{pythonblue}{rgb}{0.168,0.353,0.514}
 
+% 算法环境 推荐 algorithm2e
+\RequirePackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+\setlength{\algomargin}{2em}
+\renewcommand{\algorithmcfname}{算法}
+\renewcommand{\listalgorithmcfname}{算法索引}
+\SetAlgoCaptionSeparator{.}% caption 的分隔符
+\SetAlCapSkip{6bp}% 代码与 caption 的竖向间距
+\SetNlSty{small}{}{.}
+\SetNlSkip{0.5em}
+
 % 代码展示
 \RequirePackage{listings}
 % General Settings
