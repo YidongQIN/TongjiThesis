@@ -24,7 +24,7 @@
 \setlist[inline,2]{label=\roman*.}
 
 % 颜色，主要用于代码展示
-\RequirePackage{color}
+\RequirePackage{xcolor}
 \definecolor{darkred}{rgb}{0.6,0.0,0.0}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
 \definecolor{darkgreen}{rgb}{0,0.50,0}
@@ -47,6 +47,7 @@
 \SetAlCapSkip{6bp}% 代码与 caption 的竖向间距
 \SetNlSty{small}{}{.}
 \SetNlSkip{0.5em}
+\SetAlFnt{\small\ttfamily}
 
 % 代码展示
 \RequirePackage{listings}
@@ -244,16 +245,16 @@
 % settings of `list of Listings'
 \renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"
 \renewcommand{\lstlistlistingname}{代码索引}
-\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}}% 代码索引的对齐样式
-\newcommand{\lisfoflistings}{
+\renewcommand\l@lstlisting[2]{% 代码索引的对齐样式
+  \@dottedtocline{1}{0em}{2em}{\vspace{3bp}\lstlistingname~#1}{#2}}
+\NewDocumentCommand\lisfoflistings{s}{
+  \IfBooleanTF#1{% 带星 \listof* 的不加入目录
   \lstlistoflistings
-  \thispagestyle{fancy}
-  \fancyhead{}
-  \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\lstlistlistingname}
-  \fancyfoot{}
-  \fancyfoot[C]{\songti\wuhao\thepage}
+  }{% 不带星 \listof 加入目录
+  \lstlistoflistings
   \addcontentsline{toc}{chapter}{\lstlistlistingname}
   }
+}
 
 % 处理数学公式中的黑斜体的宏包
 %\RequirePackage{bm}
@@ -324,7 +325,7 @@
 % 交叉引用的命令
 \newcommand*{\reftab}[1]{\tablename~\ref{#1}}
 \newcommand*{\reffig}[1]{\figurename~\ref{#1}}
-\newcommand*{\refalg}[1]{\ALG@name~\ref{#1}}
+\newcommand*{\refalg}[1]{\algorithmcfname~\ref{#1}}
 \newcommand*{\reflst}[1]{\lstlistingname~\ref{#1}}
 \newcommand*{\refequ}[1]{\equationname（\ref{#1}）}
 \newcommand*{\refsec}[1]{第~\ref{#1}~节}

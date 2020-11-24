@@ -303,11 +303,12 @@
 
 % PDF书签
 \RequirePackage[% 设置 PDF 电子书签格式
-  CJKbookmarks=true,% 删除原 \ifxetex 判断
+  % CJKbookmarks=true,% 删除原 \ifxetex 判断
   linktoc=all,
-  bookmarksnumbered=true,
-  bookmarksopen=true,
-  bookmarksopenlevel=1,
+  % bookmarksnumbered=true,
+  % bookmarksopen=true,
+  % bookmarksopenlevel=1,
+  bookmarks=false,
   breaklinks=true,
   plainpages=false,
   pdfpagelabels=true,
@@ -924,7 +925,7 @@
 \let\inlinecite\parencite
 % 参考文献字体
 \renewcommand{\bibfont}{\wuhao[1.6]\songti}% 宋体五号
-% \setlength{\bibitemsep}{0ex}
+\setlength{\bibitemsep}{0ex}
 \setlength{\bibnamesep}{0ex}
 \setlength{\bibinitsep}{0ex}
 % 解决参考文献页眉问题（当存在附录时，参考文献页眉会出问题）

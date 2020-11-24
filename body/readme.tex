@@ -487,7 +487,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 的方式统一设置了布局、对齐、边框和标题位置等通用格式。
 
 用
-\texttt{\textbackslash{}lstdefinelanguage\{NewLanguageName\}[dialect]\{BasedLanguage\}\{key=value\}}
+\texttt{\textbackslash{}lstdefinelanguage \{NewLanguageName\} [dialect] \{BasedLanguage\} \{key=value\}}
 的方法，扩展了 Python
 的关键词列表，并据其继续包装了一个可供自定义的语言；同理，把
 \texttt{OpenBrIM} 设定为一个语言。
@@ -522,9 +522,9 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 \item
   仿照 Firefox 浏览器的样式，定义了 \texttt{XML} 的高亮格式。
 
-  参照
-  \url{https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting}
-  。
+  参照 Stack Exchange 的这个回答 \footnote{
+    \url{https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting}
+  } 。
 \item
   专用 \texttt{ParamML} 语言。
 
@@ -922,7 +922,8 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 \begin{verbatim}
 ..  % 主文件夹 Master Folder
 |-- appendix\ % 附录
-    |-- appendix.tex % 附录章节，可以在一个.tex文件中分\chapter，也可以每章一个.tex文件。
+    |-- appendix.tex % 附录章节
+        （可以在一个.tex文件中分 chapter，也可以每章一个.tex文件）
 |-- body\ % 正文
     |-- chapter1.tex % 单独章节
     |-- chapter2.tex
@@ -933,7 +934,7 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
     |-- abstract.tex % 摘要，以{environment}形式
     |-- acknowledge.tex % 致谢，以{environment}形式
     |-- cover.tex % 封面信息，填表
-    |-- denotation.tex % 符号对照表，以{environment}形式（description列表）
+    |-- denotation.tex % 符号对照表，以 {environment} 形式
     |-- resume.tex % 个人简历，以{environment}形式
 |-- main\
     |-- Thesis.tex % 组装成完整的论文

@@ -562,39 +562,34 @@ def incmatrix(genl1,genl2):
 
 先填充一些废话。\zhlipsum[7]
 
-\begin{minipage}{0.75\textwidth}
+目前，推荐采用 algorithm2e 宏包，因为它更新，设置更加方便。
+原本的 algorithms 宏包已被注释掉了。
 
-\begin{algorithm}[H]
-  \caption{测试算法}
-  \label{alg:test}
-    \begin{algorithmic}[1]
-      \REQUIRE PDf
-      \ENSURE xelatex biber xelatex*2
-      \IF{some condition is true}
-      \STATE do some processing
-      \ELSIF{some other condition is true}
-      \STATE do some different processing
-      \ELSIF{some even more bizarre condition is met}
-      \STATE do something else
-      \ELSE
-      \STATE do the default actions
-      \ENDIF
-    \end{algorithmic}
-  \end{algorithm}
+\begin{algorithm}[htbp]
+  \SetAlgoLined
+  \KwData{this text}
+  \KwResult{how to write algorithm with \LaTeX2e }
+  \KwIn{A list $[a_i]$, $i=1, 2, \cdots, n$, where each element is an
+integer.}
+  \KwOut{Processed list.}
+  initialization\;
+  \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+  go to next section\;
+  current section becomes this one\;
+  }{
+  go back to the beginning of current section\;
+  }
+  }
+  \caption{How to write algorithms}
+\end{algorithm}
 
-\end{minipage}
-\newline
+传统的方法采用的是 algorithms 宏包，它其实是两个宏包 algorithm 与 algorithmic 的合集。
+其中，algorithm 是个 float 环境，相当于 table。
+algorithmic 负责生成内容，相当于 tabular。
 
-但是好像用上的机会不多。
-
-algorithm 是个 float 环境，相当于 table。
-其宽度用 minipage 可以调整宽度，但是会取消 \textbackslash intextsep 导致上下间距过小。
-
-\begin{enumerate}[(1)]
-  \item 偷懒的方案是手动加竖向间距。
-  \item 更好的方案是用另一个可以接受宽度的的浮动体包围、algorithm 以选项 H 放置其中。
-  比如 tcolorbox、fullwidth 等。
-\end{enumerate}
+总体来说，algorithms 比较简单，功能较少。比如，如果要调整其宽度，需要用 minipage 手动计算，而且会取消 \textbackslash intextsep 导致上下间距过小。
 
 \section{特殊标记方式}
 \label{sec:mark-methods}
