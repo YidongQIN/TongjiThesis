@@ -248,7 +248,8 @@
 \renewcommand\l@lstlisting[2]{% 代码索引的对齐样式
   \@dottedtocline{1}{0em}{2em}{\vspace{3bp}\lstlistingname~#1}{#2}}
 \NewDocumentCommand\lisfoflistings{s}{
-  \IfBooleanTF#1{% 带星 \listof* 的不加入目录
+  \IfBooleanTF#1
+  {% 带星 \listof* 的不加入目录
   \lstlistoflistings
   }{% 不带星 \listof 加入目录
   \lstlistoflistings
