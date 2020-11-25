@@ -303,12 +303,11 @@
 
 % PDF书签
 \RequirePackage[% 设置 PDF 电子书签格式
-  % CJKbookmarks=true,% 删除原 \ifxetex 判断
+  CJKbookmarks=true,% 删除原 \ifxetex 判断
   linktoc=all,
-  % bookmarksnumbered=true,
-  % bookmarksopen=true,
-  % bookmarksopenlevel=1,
-  bookmarks=false,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=0,
   breaklinks=true,
   plainpages=false,
   pdfpagelabels=true,
