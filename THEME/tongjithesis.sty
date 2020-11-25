@@ -247,19 +247,25 @@
 \renewcommand{\lstlistlistingname}{代码索引}
 \renewcommand\l@lstlisting[2]{% 代码索引的对齐样式
   \@dottedtocline{1}{0em}{2em}{\vspace{3bp}\lstlistingname~#1}{#2}}
-\NewDocumentCommand\lisfoflistings{s}{
-  \IfBooleanTF#1
-  {% 带星 \listof* 的不加入目录
-  \lstlistoflistings
-  }{% 不带星 \listof 加入目录
+\newcommand\lisfoflistings{% 需要手动删除冗余的“代码片段”电子书签
   \lstlistoflistings
   \addcontentsline{toc}{chapter}{\lstlistlistingname}
+}
+\NewDocumentCommand{\listofcode}{s}{
+  \IfBooleanTF#1{
+    \tongji@chapter*[]{\lstlistlistingname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\lstlistlistingname]
+    \@starttoc{lol}
+    \clearpage
+  }{
+    \tongji@chapter*{\lstlistlistingname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\lstlistlistingname]
+    \@starttoc{lol}
+    \clearpage
   }
 }
 
 % 处理数学公式中的黑斜体的宏包
 %\RequirePackage{bm}
-% 不同于 \mathcal 或 \mathfrak 的英文花体字体`
+% 不同于 \mathcal 或 \mathfrak 的英文花体字体
 %\RequirePackage{mathrsfs}
 
 % 浮动对象的位置控制

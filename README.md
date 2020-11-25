@@ -960,6 +960,52 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 他们定义了一个新命令 `\equcaption{}` 用来标定重要公式，然后 `\listofequations` 只列出这些被标记的公式。
 通常，建议用 `amsmath` 宏包提供的 `\tag` 命令一起使用。
 
+# Listings 索引
+
+宏包 `{Listings}` 提供了命令 `\lstlistoflistings` 产生代码块的索引。效果类似于 `\listoffigures` 和 `\listoftables` 命令。
+
+但是，它默认是加入电子书签、却不加入 ToC 目录的。
+
+如果手动使用 `\addcontentsline` 使其加入目录，则会导致电子书签产生重复：一次由命令本身加入，一次由 `bookmarks` 宏包自动从目录中读取产生。
+一个稍微复杂的方案，是手动用 Acrobat 或者 Foxit 阅读器删除一个多余的“代码片段”电子书签。
+
+或者，重新定义这个代码索引生成方法。
+
+```latex
+% listings.sty 中的定义
+\lst@UserCommand\lstlistoflistings{
+    \bgroup
+        \let\contentsname\lstlistlistingname
+        \let\lst@temp\@starttoc
+        \def\@starttoc##1{
+            \lst@temp{lol}
+            }%
+        \tableofcontents
+    \egroup
+    }
+```
+
+查看原本 `\lstlistoflistings` 的定义，主要是两个步骤：
+1. 用 `\starttoc{lol}` 读取 `.lol` 文件的记录。
+2. 用 `\tableofcontents` 生成“目录”，即代码索引。
+
+其中，目录页面其实就是不被编号的一个章节。
+比如默认的目录，是 `\section*` 节等级的一页。
+
+```latex
+% tableofcontents 命令原本的命令
+\newcommand\tableofcontents{%
+    \section*{\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \@starttoc{toc}%
+    }
+```
+
+仿照这个思路，则新编写了 `\listofcode` 命令。
+1. 用 `\tongji@chapter*` 生成单独一页。它加入目录和电子书签的处理方法与其它“章”是一样的。
+2. 用 `\@starttoc{lol}` 生成代码块的内容。
+
 # 电子书签
 
 目录和电子书签不同，许多章节不会加入目录，但是为了方便通常会加入电子书签，以便跳转。
@@ -1126,11 +1172,6 @@ TODO：对于分章节编译，需要盖棺论定。
 等到论文写完，对比过程中分章节编译的优劣势。
 因为 `latexmk` 好像可以加速编译，所以如果单章节的编译与总编译的时间相差不多，那么分章节的优势可能就仅在于“方便分章节检查”这样的了——然而有同步、有电子书签的情况下，也没那么大优势。
 
-## Listings 电子书签
-
-宏包 `{Listings}` 提供了命令 `\lstlistoflistings` 产生代码块的索引。效果类似于 `\listoffigures` 和 `\listoftables` 命令。
-但是，它默认是加入电子书签、却不加入 ToC 目录的。
-如果手动使用 `\addcontentsline` 使其加入目录，则会导致电子书签产生重复：一次由命令本身加入，一次由 `bookmarks` 宏包自动从目录中读取产生。
 
 # 原版说明文件
 
