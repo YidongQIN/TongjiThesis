@@ -246,7 +246,7 @@
 \renewcommand{\lstlistingname}{代码片段}% 原"Listing"改为"代码片段"
 \renewcommand{\lstlistlistingname}{代码索引}
 \renewcommand\l@lstlisting[2]{% 代码索引的对齐样式
-  \@dottedtocline{1}{0em}{2em}{\vspace{3bp}\lstlistingname~#1}{#2}}
+  \@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}}
 \newcommand\lisfoflistings{% 需要手动删除冗余的“代码片段”电子书签
   \lstlistoflistings
   \addcontentsline{toc}{chapter}{\lstlistlistingname}
