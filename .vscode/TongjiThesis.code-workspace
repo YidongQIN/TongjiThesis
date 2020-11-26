@@ -71,6 +71,7 @@
 			"lstlistingname",
 			"lstlistlistingname",
 			"lstlistoflisting",
+			"lstlistoflistings",
 			"marquistj",
 			"mkboth",
 			"morecomment",
@@ -127,6 +128,7 @@
 			"james-yu.latex-workshop",
 			"gruntfuggly.todo-tree",
 			"coenraads.bracket-pair-colorizer-2",
+			"ibm.output-colorizer",
 		]
 	}
 }

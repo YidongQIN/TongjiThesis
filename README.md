@@ -401,49 +401,13 @@ __以前 CAD 课的要求“数字要比汉字小一号”，算是一个纪念�
 
 用 `\lstset{}` 的方式统一设置了布局、对齐、边框和标题位置等通用格式。
 
-用 `\lstdefinelanguage{NewLanguageName}[dialect]{BasedLanguage}{key=value}` 的方法，扩展了 Python 的关键词列表，并据其继续包装了一个可供自定义的语言；同理，把 `OpenBrIM` 设定为一个语言。
-
+用 `\lstdefinelanguage{NewLanguageName}[dialect]{BasedLanguage}{key=value}` 的方法，扩展了 Python 的关键词列表，并据其继续包装了一个可供自定义的语言；
+同理，把 `OpenBrIM` 和 `TongjiThesis` 设定为新语言，定义了新的关键词等。
 
 可用 `lstdefinestyle={}` 以值对的方式定义样式，即关键词、字符串等不同类型代码的高亮颜色、字体样式等：
 1. 基础样式 `monocolor` 是只有黑白，依靠字体区分关键词；
 2. 样式 `colored` 是基本的配色方案，可以不依靠宏包 `{color}` 使用，也可以把其中“注释”类型的绿色改为深绿色，以求美观；
 3. 针对扩展过后的 Python 建成了一个相对色彩丰富的样式 `colorEX`。
-
-> 不能把 `OpenBrIM` 建立在 XML 之上，否则 tag 不能正常显示 `identifierstyle` 样式。
-> 原因是：`listings` 宏包的 XML 语言尚未完成。
-
-所以针对需要的 `OpenBrIM`，特意完成了相关的环境定义：
-1. 通用的 `XML` 语言，包括：
-
-   1. tag 用 identifier 实现高亮，
-   2. attribute key 用`空格`和`=`作为前后边界定义，高亮形式为 `keyworldstyle`，
-   3. attribute value 定义为字符串，
-   4. text 信息定义为没有格式的字符串。
-
-2. 仿照 Firefox 浏览器的样式，定义了 `XML` 的高亮格式。
-
-   参照 <https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting> 。
-
-3. 专用 `ParamML` 语言。
-
-   因为通用的 `XML` 在高亮属性的键时，会把作为分界符的`=`一起高亮，效果不甚满意。
-   所以，没有从 `XML` 继承定义 `ParamML`，而是重新定义了一种语言及其配套的高亮（仿照OpenBrIM平台样式）。
-
-重定义 `\lstlistingname` 和 `\lstlistlistingname` 以更改环境名。
-
-用 `\lstlistoflisting` 可以生成一个代码索引，类似于 `list of tables` 之类。
-* 设置了 `nolol` 的代码不会进入索引。
-* 可用下面的命令更改对齐和样式：
-  `\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}} `。
-* 定制了 `listings` 索引页面的页眉、页脚样式。
-
-值得一提的是，在代码块中设置 `name=` 而不设置 `caption=`，则代码索引中就不出现这一项编号了、但仍保留 name。
-或许代码不需要全部罗列，那么这可能是更好的解决方案——只有关键代码给出 name 并列入索引。
-
-另外，有几点 tips 值得值得注意：
-* 结尾处的 `>` 不能与前面的字符串有空格，否则会解析错误，导致全部以 keyword 形式高亮。
-* 如果属性之间间距不够空格不够，可以尝试在代码中用四个空格间隔。
-* 浮动体内的代码左侧最好不要缩进，以免高亮错误。
 
 宏包 `{Listings}` 文档 <http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf>。
 
@@ -962,14 +926,64 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 # Listings 索引
 
-宏包 `{Listings}` 提供了命令 `\lstlistoflistings` 产生代码块的索引。效果类似于 `\listoffigures` 和 `\listoftables` 命令。
+## 语法高亮
 
-但是，它默认是加入电子书签、却不加入 ToC 目录的。
+不能把 `OpenBrIM` 建立在 XML 之上，否则 tag 不能正常显示 `identifierstyle` 样式。
+原因是 `listings` 宏包的 XML 语言尚未完成。
 
-如果手动使用 `\addcontentsline` 使其加入目录，则会导致电子书签产生重复：一次由命令本身加入，一次由 `bookmarks` 宏包自动从目录中读取产生。
-一个稍微复杂的方案，是手动用 Acrobat 或者 Foxit 阅读器删除一个多余的“代码片段”电子书签。
+所以针对需要的 `OpenBrIM`，特意完善了相关的环境定义。
 
+1. 通用的 `XML` 语言，包括：
+
+   1. tag 用 `identifier` 方法实现高亮，
+   2. attribute key 用 `空格` 和 `=` 作为前后边界定义，高亮形式为 `keyworldstyle`，
+   3. attribute value 定义为字符串，
+   4. text 信息定义为没有格式的字符串。
+
+2. 仿照 Firefox 浏览器的样式，定义了 `XML` 的高亮格式。
+
+   参照 <https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting> 。
+
+3. 专用 `ParamML` 语言。
+
+   因为通用的 `XML` 在高亮属性的键时，会把作为分界符的`=`一起高亮，效果不甚满意。
+   所以，没有从 `XML` 继承定义 `ParamML`，而是重新定义了一种语言及其配套的高亮（仿照OpenBrIM平台样式）。
+
+同理，可以设置 `TongjiThesis` 本模板的 $\LaTeX{}$ 语法高亮格式，不再赘述。
+
+## 代码浮动体
+
+值得一提的是，在代码块中设置 `name=` 而不设置 `caption=`，则代码索引中就不出现这一项编号了、但仍保留 name。
+或许代码不需要全部罗列，那么这可能是更好的解决方案——只有关键代码给出 name 并列入索引。
+
+## 代码索引
+
+宏包 `{Listings}` 提供了命令 `\lstlistoflistings` 产生代码块的索引。
+效果类似于 `\listoffigures` 和 `\listoftables` 命令。
+
+重定义 `\lstlistingname` 和 `\lstlistlistingname` 以更改环境名。
+
+对索引样式重定义，从而更改了对齐和样式。
+```latex
+\renewcommand\l@lstlisting[2]{
+  \@dottedtocline{1}{0em}{4em}{\lstlistingname~#1}{#2}}
+```
+
+~~定制了 `listings` 索引页面的页眉、页脚样式。~~
+因为处于 `\backmatter` 中，所以不需要重新定义页眉、页脚样式，自动继承了之前的设置。
+
+## 代码索引的目录和书签
+
+在代码索引生成中，遇到的主要问题是目录与书签的不同步。
+* 代码索引默认是加入电子书签、却不加入 ToC 目录的。
+* 如果手动使用 `\addcontentsline` 使其加入目录，则会导致电子书签产生重复：
+  + 一次由命令本身加入，
+  + 一次由 `bookmarks` 宏包自动从目录中读取产生。
+
+一个稍微复杂的方案，是手动用 Acrobat 或者其他阅读器删除一个多余的“代码片段”电子书签。
 或者，重新定义这个代码索引生成方法。
+
+首先，查看 `\lstlistoflistings` 的定义方式。
 
 ```latex
 % listings.sty 中的定义
@@ -985,12 +999,15 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
     }
 ```
 
-查看原本 `\lstlistoflistings` 的定义，主要是两个步骤：
-1. 用 `\starttoc{lol}` 读取 `.lol` 文件的记录。
-2. 用 `\tableofcontents` 生成“目录”，即代码索引。
+通过研究原 `\lstlistoflistings` 的定义，发现分为 3 个步骤：
+1. 重命名了“目录”标题为 `\lstlistlistingname`。
+2. 复制并重定义了 `\starttoc{lol}` 命令，用于读取 `.lol` 文件的记录。
+   此步骤意义不明。
+2. 调用 `\tableofcontents` 生成“目录”，即代码索引。
 
-其中，目录页面其实就是不被编号的一个章节。
-比如默认的目录，是 `\section*` 节等级的一页。
+进一步查看 `\tableofcontents` 的定义方式，发现目录、或者说索引页面的生成：
+1. 一个不被编号的章节，其默认是 `\section*`、即“节”等级。
+2. 调用 `\@starttoc` 读取特定后缀的临时文件，形成条目。
 
 ```latex
 % tableofcontents 命令原本的命令
@@ -1002,9 +1019,18 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
     }
 ```
 
-仿照这个思路，则新编写了 `\listofcode` 命令。
-1. 用 `\tongji@chapter*` 生成单独一页。它加入目录和电子书签的处理方法与其它“章”是一样的。
+仿照这个思路，编写了适用于本模板的 `\listofcode` 命令。
+1. 用 `\tongji@chapter*` 生成单独一页。
+   它加入目录和电子书签的处理方法与 `\listoftables`是一样的。
 2. 用 `\@starttoc{lol}` 生成代码块的内容。
+
+## 其它 Tips
+
+* XML 结尾处的 `>` 不能与前面的字符串有空格，否则会解析错误，导致全部以 keyword 形式高亮。
+* 如果 XML 属性之间间距不够、空格不显示，可以尝试在代码中用四个空格间隔。
+* 浮动体内的代码**左侧最好不要缩进**，以免高亮错误。
+* 设置了 `nolol` 的代码不会进入索引。
+
 
 # 电子书签
 
