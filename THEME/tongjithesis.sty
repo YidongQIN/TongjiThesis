@@ -53,18 +53,25 @@
 \RequirePackage{listings}
 % General Settings
 \lstset{
-  float=htbp,
-  breaklines=true,
-  frame=single,
-  aboveskip={12bp \@plus2pt \@minus2pt},
-  belowskip={12bp \@plus2pt \@minus2pt},
-  captionpos=b,
   abovecaptionskip=0bp,
+  aboveskip={12bp \@plus2pt \@minus2pt},
   belowcaptionskip=0bp,
+  belowskip={12bp \@plus2pt \@minus2pt},
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
   escapeinside={\%*}{*)},
+  float=htbp,
+  frame=single,
   numbers=left,
+  numbersep=5pt,
   numberstyle=\tiny\color{gray},
+  showspaces=false,
   tabsize=2,
+  extendedchars=false,
+  mathescape=true,
+  xleftmargin=2em,
+  xrightmargin=2em,
 }
 % Tongji Thesis LaTeX syntex
 \lstdefinelanguage{TongjiLaTeX}[LaTeX]{TeX}{
@@ -92,8 +99,19 @@
     xiaoliu,
     qihao,
     bahao,
-  },
+  },% LaTeX CN
   morekeywords=[2]{,
+    @dottedtocline,
+    contentsname,
+    @starttoc,
+    tableofcontents,
+  },% Special LaTeX commands
+  morekeywords=[3]{,
+    l@lstlisting,
+    lst@UserCommand,
+    lstlistlistingname,
+  },% Package commands
+  morekeywords=[5]{,
     degree,
     bibtype,
     degreetype,
@@ -102,14 +120,12 @@
     secret,
     raggedbottom,
     footnotenum,
-  },% cls Options
-  morekeywords=[3]{,
     tongji@chapter,
     makecover,
     makedeclarepage,
     makeauthorizationpage,
     makeabstract,
-  },
+  },% Tongji LaTeX Thesis
   emph={,
     tongji@ch@name@abstract,
     tongji@chinesekeywords@separator,

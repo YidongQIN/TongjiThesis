@@ -24,8 +24,8 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 也即：丢失了调整过程的步骤，没有 commit 历史可供参考。
 
 \begin{quote}
-以下称同济大学研究生院的《同济大学学位论文写作示例（2017）》与《同济大学研究生学位论文写作规范（试行）（2017）》为``校方模版''；
-称 marquistj13 的 TongjiThesis 模版为``原模版''。
+以下称同济大学研究生院的《同济大学学位论文写作示例（2017）》与《同济大学研究生学位论文写作规范（试行）（2017）》为\texttt{}校方模版''；
+称 marquistj13 的 TongjiThesis 模版为\texttt{}原模版''。
 \end{quote}
 
 本节总述了本模板相较于原模版的修改。
@@ -62,14 +62,14 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
   不过，其中的距离尺寸都是手动测量的，与校方模板终归有偏差。 原
   \texttt{\textbackslash{}includegraphics} 仍予以保留。
 \item
-  各个元素之间的间距没有出确定值，只是大概的``换一行''、``空半行''。
+  各个元素之间的间距没有出确定值，只是大概的\texttt{}换一行''、\texttt{}空半行''。
 \item
   封面内容的行距被 Word
-  的``对齐到网格''控制，导致展示的样式与本模板有偏差。
+  的\texttt{}对齐到网格''控制，导致展示的样式与本模板有偏差。
 
   比如申请人个人信息表格的行距明显不是单倍，根据目测调整为 1.75 倍。
 \item
-  申请人个人信息表格要求``左侧缩进 4.5
+  申请人个人信息表格要求\texttt{}左侧缩进 4.5
   字符''，竟然是相对于一个文本框、并不是页面位置。
   于是也只能通过目测，设置表格为居中。
 \item
@@ -100,7 +100,7 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 
   \begin{itemize}
   \item
-    主要处于代码美观简介考虑，因为``姓名''、``学号''和``指导教师''等文字并不会复用，所以没必要用变量替代。
+    主要处于代码美观简介考虑，因为\texttt{}姓名''、\texttt{}学号''和\texttt{}指导教师''等文字并不会复用，所以没必要用变量替代。
   \item
     冒号作为分隔符，可以在列定义的时候用 \texttt{\textgreater{}\{：\}l}
     语法插入右列，不需要单独一列 \texttt{c} 放置。
@@ -249,10 +249,10 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 
 交叉引用时，前缀与编号之间通常建议用不中断空格
 \texttt{\textasciitilde{}}
-连接，以避免不良的分行，打断了``图''、``表''、``第''等前缀词、编号数字和可能的后缀``节''、``章''。
+连接，以避免不良的分行，打断了\texttt{}图''、\texttt{}表''、\texttt{}第''等前缀词、编号数字和可能的后缀\texttt{}节''、\texttt{}章''。
 
 比如说，\texttt{见\textbackslash{}refsec\{\}。}
-可以直接生成``见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到 label。
+可以直接生成\texttt{}见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到 label。
 
 为了配合它的使用，还在 VS Code 中制定了一个 \texttt{tjref} 的 snippet。
 
@@ -300,7 +300,7 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 出于个人审美，章节名称中的数字编号比汉字小一号。
 
 \begin{quote}
-以前 CAD 课的要求``数字要比汉字小一号''，算是一个纪念画图日子的小彩蛋。
+以前 CAD 课的要求\texttt{}数字要比汉字小一号''，算是一个纪念画图日子的小彩蛋。
 \end{quote}
 
 章节名称中的数字字体可利用宏包 \texttt{\{fontspec\}} 控制，将原
@@ -405,9 +405,9 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 
 \begin{itemize}
 \item
-  inline 是用 ``(1)''进行编号的。
+  inline 是用 \texttt{}(1)''进行编号的。
 \item
-  inlinecn 是用``第一''进行编号的。
+  inlinecn 是用\texttt{}第一''进行编号的。
 
   \begin{itemize}
   \item
@@ -496,7 +496,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 以值对的方式定义样式，即关键词、字符串等不同类型代码的高亮颜色、字体样式等：
 1. 基础样式 \texttt{monocolor} 是只有黑白，依靠字体区分关键词； 2. 样式
 \texttt{colored} 是基本的配色方案，可以不依靠宏包 \texttt{\{color\}}
-使用，也可以把其中``注释''类型的绿色改为深绿色，以求美观； 3.
+使用，也可以把其中\texttt{}注释''类型的绿色改为深绿色，以求美观； 3.
 针对扩展过后的 Python 建成了一个相对色彩丰富的样式 \texttt{colorEX}。
 
 \begin{quote}
@@ -553,7 +553,7 @@ name 并列入索引。
 
 \subsection{页面布置}
 
-学校的版面设置要求是``上、下 2.54cm，左、右 3.17cm，页眉、页脚
+学校的版面设置要求是\texttt{}上、下 2.54cm，左、右 3.17cm，页眉、页脚
 2.0cm，装订线 0 cm''。 然而，宏包 \texttt{\{geometry\}}
 中的参数定义方式和 MS Office Word 有区别。
 
@@ -623,7 +623,7 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
 根据
 \href{https://liam.page/2017/05/01/the-correct-way-to-use-differential-operator/}{这篇帖子}
-为微积分中的 \(d\) 符号设定了``左侧有间距、直立体''的命令
+为微积分中的 \(d\) 符号设定了\texttt{}左侧有间距、直立体''的命令
 \texttt{\textbackslash{}dif}。
 
 \section{Geometry
@@ -648,7 +648,7 @@ false）情况下，
 其中，\texttt{top} 需要加上 0.7行的高度。
 \(top = 2.54cm + 0.7*20bp = 25.4mm + 14*(25.4mm/72) = 30.34mm\)
 
-用 \texttt{headsep} 把页眉``顶''上去。 \(headsep = 0.7*20bp = 4.94mm\)。
+用 \texttt{headsep} 把页眉\texttt{}顶''上去。 \(headsep = 0.7*20bp = 4.94mm\)。
 
 \texttt{headheight}
 计算页眉行行底到页面上边缘距离，需要页眉顶端距离是加上页眉的行高：
@@ -667,7 +667,7 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 
 \subsection{更加优雅的方案}
 
-但是如上处理，发现页眉相关尺寸参数比较``奇怪''，可能回给后续修改者带来困惑。
+但是如上处理，发现页眉相关尺寸参数比较\texttt{}奇怪''，可能回给后续修改者带来困惑。
 一个稍微清晰的方案是打开页眉的 \texttt{includehead} 选项。
 
 这其实是因为不同的测量点。
@@ -677,15 +677,15 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 页码是五号字，即 \(10.5/72*25.4 = 3.70mm\) 左右。
 所以说，这样的设置留给页码上边缘和正文下边缘的距离不足 2mm。
 
-校方模板中，这个``紧凑''的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
+校方模板中，这个\texttt{}紧凑''的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
 从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过
 \(25.4mm + 20bp = 3cm\)；
 换句话说，如果全用正文字体多填充几页，就很容易发现这个边距其实挺小的。
 
-页眉部分同理，在 word 中控制``页面上边距 2.54cm，页眉
+页眉部分同理，在 word 中控制\texttt{}页面上边距 2.54cm，页眉
 2.0cm''并且多用正文填充几页，也可以发现，页眉、分割线和正文会挤在一起。
 
-校方的``模板''有的细节经不起推敲，自己取舍吧。
+校方的\texttt{}模板''有的细节经不起推敲，自己取舍吧。
 
 \section{章节标题样式设置}
 
@@ -785,7 +785,7 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
     尤其明显地，章节编号的分隔符（.号）变为全角宽度。
   \end{itemize}
 \item
-  如果放弃``黑体''，可以选择``雅黑''等针对中英文混排优化过的无衬线字体。
+  如果放弃\texttt{}黑体''，可以选择\texttt{}雅黑''等针对中英文混排优化过的无衬线字体。
 \item
   然而，即使在 MS Office 中，常用的处理方案也是用有衬线字体。
 
@@ -828,13 +828,13 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 所以，设置 \texttt{numberformat=\{\}}，统一在 \texttt{nameformat}
 中设置格式。 可以在
 \texttt{ctexset=\{chapter/name=\{第\textbackslash{},,章\}\}}
-中的``第''字之后手动加一个六分之一小空格 \texttt{\textbackslash{},}
+中的\texttt{}第''字之后手动加一个六分之一小空格 \texttt{\textbackslash{},}
 以规避 \texttt{xeCJK} 自作主张的小聪明。
 
 \subsection{强迫症的补完}
 
 \texttt{ctex} 提供的章节标题命令最小是
-\texttt{\textbackslash{}subparagraph}、即5级标题，形如``x.x.x.x.x.x''共6个数字。
+\texttt{\textbackslash{}subparagraph}、即5级标题，形如\texttt{}x.x.x.x.x.x''共6个数字。
 
 出于强迫症考虑，把所有的样式都统一定义了。
 
@@ -1077,9 +1077,9 @@ cls 文件}
 报错提醒如下。
 
 \begin{verbatim}
-Package xkeyval Error: `gbnamefmt`
-undefined in families `blx@opt@pre`.
-% 其中`gbnamefmt`也可会是`urldate`等其他信息
+Package xkeyval Error: \texttt{gbnamefmt}
+undefined in families \texttt{blx@opt@pre}.
+% 其中\texttt{gbnamefmt}也可会是\texttt{urldate}等其他信息
 ...
 \blx@processoptions
 \end{verbatim}
@@ -1146,7 +1146,7 @@ https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.11/
 
 \section{公式索引}
 
-\LaTeX 原生没有``公式索引''这样的命令，所以是从清华的模板中学到的命令。
+\LaTeX 原生没有\texttt{}公式索引''这样的命令，所以是从清华的模板中学到的命令。
 
 因为公式数量庞大，所以罗列所有公式通常不是什么好的决定。
 所以清华方法只会把指定公式列入索引。
@@ -1290,7 +1290,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   s & \texttt{*} & 确认带星号 \tabularnewline
   o & \texttt{[]} & 有且为空，不出现在目录 \tabularnewline
   m & \texttt{\{\textbackslash{}tongji@ch@name@abstract\}} &
-  ``摘要''二字 \tabularnewline
+  \texttt{}摘要''二字 \tabularnewline
   o &
   \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract]}
   & 摘要的页眉\tabularnewline
@@ -1366,6 +1366,136 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   正文的章节都是这种类型。
 \end{enumerate}
 
+\section{Listings 索引}
+
+\subsection{语法高亮}
+
+不能把 \texttt{OpenBrIM} 建立在 XML 之上，否则 tag 不能正常显示 \texttt{identifierstyle} 样式。
+原因是 \texttt{listings} 宏包的 XML 语言尚未完成。
+
+所以针对需要的 \texttt{OpenBrIM}，特意完善了相关的环境定义。
+
+\paragraph{通用的 \texttt{XML} 语言，包括：}
+\begin{enumerate}[(a)]
+  \item tag 用 \texttt{identifier} 方法实现高亮，
+  \item attribute key 用 \texttt{空格} 和 \texttt{=} 作为前后边界定义，高亮形式为 \texttt{keyworldstyle}，
+  \item attribute value 定义为字符串，
+  \item text 信息定义为没有格式的字符串。
+\end{enumerate}
+
+\paragraph{仿照 Firefox 浏览器的样式，定义了 \texttt{XML} 的高亮格式。}
+
+参照 \url{https://tex.stackexchange.com/questions/10255/xml-syntax-highlighting} 。
+
+\paragraph{专用 \texttt{ParamML} 语言。}
+
+因为通用的 \texttt{XML} 在高亮属性的键时，会把作为分界符的\texttt{=}一起高亮，效果不甚满意。
+所以，没有从 \texttt{XML} 继承定义 \texttt{ParamML}，而是重新定义了一种语言及其配套的高亮（仿照OpenBrIM平台样式）。
+
+同理，可以设置 \tongjithesis 本模板的 \LaTeX{} 语法高亮格式，不再赘述。
+
+\subsection{代码浮动体}
+
+值得一提的是，在代码块中设置 \texttt{name=} 而不设置 \texttt{caption=}，则代码索引中就不出现这一项编号了、但仍保留 name。
+或许代码不需要全部罗列，那么这可能是更好的解决方案——只有关键代码给出 name 并列入索引。
+
+\subsection{代码索引}
+
+宏包 \texttt{Listings} 提供了命令 \texttt{\textbackslash lstlistoflistings} 产生代码块的索引。
+效果类似于 \texttt{\textbackslash listoffigures} 和 \texttt{\textbackslash listoftables} 命令。
+
+重定义 \texttt{\textbackslash lstlistingname} 和 \texttt{\textbackslash lstlistlistingname} 以更改环境名。
+
+对索引样式重定义，从而更改了对齐和样式。
+
+\begin{lstlisting}[language=TongjiLaTeX,
+  style=colorEX]
+\renewcommand\l@lstlisting[2]{
+  \@dottedtocline{1}{0em}{4em}{\lstlistingname~#1}{#2}
+}
+\end{lstlisting}
+
+\sout{定制了 \texttt{listings} 索引页面的页眉、页脚样式。}
+因为处于 \texttt{\textbackslash backmatter} 中，所以不需要重新定义页眉、页脚样式，自动继承了之前的设置。
+
+\subsection{代码索引的目录和书签}
+
+在代码索引生成中，遇到的主要问题是目录与书签的不同步。
+\begin{itemize}[\textbullet]
+  \item 代码索引默认是加入电子书签、却不加入 ToC 目录的。
+  \item 如果手动使用 \texttt{\textbackslash addcontentsline} 使其加入目录，则会导致电子书签产生重复：
+  \begin{itemize}[$\circ$]
+    \item 一次由命令本身加入，
+    \item 一次由 \texttt{bookmarks} 宏包自动从目录中读取产生。
+  \end{itemize}
+\end{itemize}
+
+一个稍微复杂的方案，是手动用 Acrobat 或者其他阅读器删除一个多余的“代码片段”电子书签。
+或者，重新定义这个代码索引生成方法。
+
+首先，查看 \texttt{\textbackslash lstlistoflistings} 的定义方式。
+
+\begin{lstlisting}[language=TongjiLaTeX,
+  caption=原 lstlistoflistings 定义,
+  style=colorEX]
+% listings.sty 中的定义
+\lst@UserCommand\lstlistoflistings{
+    \bgroup
+        \let\contentsname\lstlistlistingname
+        \let\lst@temp\@starttoc
+        \def\@starttoc##1{
+            \lst@temp{lol}
+        }%
+        \tableofcontents
+    \egroup
+    }
+\end{lstlisting}
+
+通过研究原 \texttt{\textbackslash lstlistoflistings} 的定义，发现分为 3 个步骤：
+\begin{enumerate}[(1)]
+  \item 重命名了“目录”标题为 \texttt{\textbackslash lstlistlistingname}。
+  \item 复制并重定义了 \texttt{\textbackslash starttoc{lol}} 命令，用于读取 \texttt{.lol} 文件的记录。此步骤意义不明。
+  \item 调用 \texttt{\textbackslash tableofcontents} 生成“目录”，即代码索引。
+\end{enumerate}
+
+进一步查看 \texttt{\textbackslash tableofcontents} 的定义方式，发现目录、或者说索引页面的生成：
+\begin{enumerate}[(1)]
+  \item 一个不被编号的章节，其默认是 \texttt{\textbackslash section*}、即“节”等级。
+  \item 调用 \texttt{\textbackslash @starttoc} 读取特定后缀的临时文件，形成条目。
+\end{enumerate}
+
+\begin{lstlisting}[language=TongjiLaTeX,
+  caption=目录页的定义,
+  style=colorEX]
+% tableofcontents 命令原本的命令
+\newcommand\tableofcontents{%
+    \section*{
+        \contentsname
+        \@mkboth{%
+            \MakeUppercase\contentsname
+        }{
+            \MakeUppercase\contentsname
+        }
+        }%
+    \@starttoc{toc}%
+    }
+\end{lstlisting}
+
+仿照这个思路，编写了适用于本模板的 \texttt{\textbackslash listofcode} 命令。
+\begin{enumerate}[(1)]
+  \item 用 \texttt{\textbackslash tongji@chapter*} 生成单独一页。
+  它加入目录和电子书签的处理方法与 \texttt{\textbackslash listoftables}是一样的。
+  \item 用 \texttt{\@starttoc{lol}} 生成代码块的内容。
+\end{enumerate}
+
+\subsection{其它 Tips}
+\begin{itemize}[\textbullet]
+  \item XML 结尾处的 \texttt{>} 不能与前面的字符串有空格，否则会解析错误，导致全部以 keyword 形式高亮。
+  \item 如果 XML 属性之间间距不够、空格不显示，可以尝试在代码中用四个空格间隔。
+  \item 浮动体内的代码**左侧最好不要缩进**，以免高亮错误。
+  \item 设置了 \texttt{nolol} 的代码不会进入索引。
+\end{itemize}
+
 \subsection{优化电子书签}
 
 \url{https://zhuanlan.zhihu.com/p/66434387} 指出，在 \texttt{hyperref}
@@ -1411,7 +1541,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   顶部标签影响竖向布局
 
-  中文封面中，如果最上方添加了``打印时删除''``电子版''或者``保密''的标签字样时候，原本的
+  中文封面中，如果最上方添加了\texttt{}打印时删除''\texttt{}电子版''或者\texttt{}保密''的标签字样时候，原本的
   \texttt{\textbackslash{}parbox} 的 24bp 的高度设置会被改变。
   与不添加这些标签字样相比，相差了 12bp 的高度。
 
@@ -1426,7 +1556,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   封面表格 \texttt{Underfull\ \textbackslash{}hbox} 提醒
 
-  中文封面的申请人信息表格，第一、二行``姓名''、``学号''因为字数太少，会有
+  中文封面的申请人信息表格，第一、二行\texttt{}姓名''、\texttt{}学号''因为字数太少，会有
   \texttt{Underfull\ \textbackslash{}hbox} 的提醒。 所以在 \texttt{.cfg}
   文件中两个汉字之间手动加入了 \texttt{\textbackslash{}hfill}
   命令用于扩充，并取消了这两行原本的
@@ -1434,7 +1564,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
   \begin{itemize}
   \item
-    当然，如果是有副导师的情况，则``所在院系''``学科门类''等四字列仍然会有
+    当然，如果是有副导师的情况，则\texttt{}所在院系''\texttt{}学科门类''等四字列仍然会有
     \texttt{Underfull} 的提醒，所以不必担心。
   \end{itemize}
 \end{itemize}
@@ -1463,7 +1593,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
 TODO：对于分章节编译，需要盖棺论定。
 等到论文写完，对比过程中分章节编译的优劣势。 因为 \texttt{latexmk}
-好像可以加速编译，所以如果单章节的编译与总编译的时间相差不多，那么分章节的优势可能就仅在于``方便分章节检查''这样的了------然而有同步、有电子书签的情况下，也没那么大优势。
+好像可以加速编译，所以如果单章节的编译与总编译的时间相差不多，那么分章节的优势可能就仅在于\texttt{}方便分章节检查''这样的了------然而有同步、有电子书签的情况下，也没那么大优势。
 
 \section{原版说明文件}
 
