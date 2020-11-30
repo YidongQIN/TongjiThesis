@@ -1438,59 +1438,50 @@ See compat matrix in biblatex or biber PDF documentation.
 
 \subsection{封面样式}
 
-\begin{itemize}
-\item
-  顶部标签影响竖向布局
+\paragraph{顶部标签影响竖向布局}
 
-  中文封面中，如果最上方添加了打印时删除''电子版''或者保密''的标签字样时候，原本的
-  \texttt{\textbackslash{}parbox} 的 24bp 的高度设置会被改变。
-  与不添加这些标签字样相比，相差了 12bp 的高度。
 
-  尝试更改字体的行间距，无效。
+中文封面中，如果最上方添加了打印时删除''电子版''或者保密''的标签字样时候，原本的
+\texttt{\textbackslash{}parbox} 的 24bp 的高度设置会被改变。
+与不添加这些标签字样相比，相差了 12bp 的高度。
 
-  原理仍有待探究。
+尝试更改字体的行间距，无效。
 
-  现在的解决方法是把中文封面的段落盒子高度增加为
-  \texttt{\textbackslash{}parbox[t][36bp][t]\{\textbackslash{}textwidth\}\{...\}}；
-  而英文封面中没有这些元素，用 \texttt{\textbackslash{}vspace*\{24bp\}}
-  跳过。 则两种封面的其他元素可以顺利对齐。
-\item
-  封面表格 \texttt{Underfull\ \textbackslash{}hbox} 提醒
+原理仍有待探究。
 
-  中文封面的申请人信息表格，第一、二行姓名''、学号''因为字数太少，会有
-  \texttt{Underfull\ \textbackslash{}hbox} 的提醒。 所以在 \texttt{.cfg}
-  文件中两个汉字之间手动加入了 \texttt{\textbackslash{}hfill}
-  命令用于扩充，并取消了这两行原本的
-  \texttt{\textbackslash{}tongji@put@title\{\}} 命令。
+现在的解决方法是把中文封面的段落盒子高度增加为
+\texttt{\textbackslash{}parbox[t][36bp][t]\{\textbackslash{}textwidth\}\{...\}}；
+而英文封面中没有这些元素，用 \texttt{\textbackslash{}vspace*\{24bp\}}
+跳过。 则两种封面的其他元素可以顺利对齐。
 
-  \begin{itemize}
-  \item
-    当然，如果是有副导师的情况，则所在院系''学科门类''等四字列仍然会有
-    \texttt{Underfull} 的提醒，所以不必担心。
-  \end{itemize}
-\end{itemize}
+\paragraph{封面表格 \texttt{Underfull\ \textbackslash{}hbox} 提醒}
+
+中文封面的申请人信息表格，第一、二行姓名''、学号''因为字数太少，会有
+\texttt{Underfull\ \textbackslash{}hbox} 的提醒。 所以在 \texttt{.cfg}
+文件中两个汉字之间手动加入了 \texttt{\textbackslash{}hfill}
+命令用于扩充，并取消了这两行原本的
+\texttt{\textbackslash{}tongji@put@title\{\}} 命令。
+
+当然，如果是有副导师的情况，则所在院系''学科门类''等四字列仍然会有 \texttt{Underfull} 的提醒，所以不必担心。
 
 \subsection{分章节编译产生的问题}
 
 分章节的编译方法好像没有产生太大的好处，而且在使用过程中还遇到了更多的问题。
 
-\begin{itemize}
-\item
-  必须 magic comment
+\paragraph{必须 magic comment}
 
-  需要在章文件开头添加 \texttt{\%\ !TEX\ program\ =\ xelatex} 才能使
-  \texttt{latexmk} 顺利编译单独章节，否则会调用默认的 \texttt{pdflatex}
-  编译。
+需要在章文件开头添加 \texttt{\%\ !TEX\ program\ =\ xelatex} 才能使
+\texttt{latexmk} 顺利编译单独章节，否则会调用默认的 \texttt{pdflatex}
+编译。
 
-  可以在章文件开头添加 \texttt{\%\ !TeX\ root\ =\ ../Main/final.tex}
-  使得 \texttt{latexmk} 自动进行根目录的编译。
-\item
-  表格中字号错误
+可以在章文件开头添加 \texttt{\%\ !TeX\ root\ =\ ../Main/final.tex}
+使得 \texttt{latexmk} 自动进行根目录的编译。
 
-  单章编译时，表格字号不是在 \texttt{.cls}
-  中定义的字号（五号），而是成为正文字号；
-  然而，如果回到整合的文件编译，则不会出现这种状况，表格文字被顺利的缩小为五号。
-\end{itemize}
+\paragraph{表格中字号错误}
+
+单章编译时，表格字号不是在 \texttt{.cls}
+中定义的字号（五号），而是成为正文字号；
+然而，如果回到整合的文件编译，则不会出现这种状况，表格文字被顺利的缩小为五号。
 
 TODO：对于分章节编译，需要盖棺论定。
 等到论文写完，对比过程中分章节编译的优劣势。 因为 \texttt{latexmk}
