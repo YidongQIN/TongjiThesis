@@ -23,6 +23,15 @@
 \setlist[inline,1]{label=(\arabic*)}
 \setlist[inline,2]{label=\roman*.}
 
+% Quote 环境字体
+\AtBeginEnvironment{quote}{\sffamily\kaishu\normalsize}% 英文字体命令可能覆盖 CTeX 中文字体命令
+\AtBeginEnvironment{quotation}{\sffamily\kaishu\normalsize}% 所以需要先指定英文字体、再指定中文字体
+% 仔细控制中西文字体，则仍需要手动设置一种字体到中西文字体族名
+% \newfontfamily\quoteenfont{Adobe Kaiti Std}
+% \newCJKfontfamily\quotechfont{Adobe Kaiti Std}% 选择一种兼容中西文的字体
+% \AtBeginEnvironment{quote}{\quoteenfont\quotechfont\normalsize}
+% \AtBeginEnvironment{quotation}{\quoteenfont\quotechfont\normalsize}
+
 % 颜色，主要用于代码展示
 \RequirePackage{xcolor}
 \definecolor{darkred}{rgb}{0.6,0.0,0.0}
@@ -109,6 +118,7 @@
   morekeywords=[3]{,
     l@lstlisting,
     lst@UserCommand,
+    lstlistingname,
     lstlistlistingname,
   },% Package commands
   morekeywords=[5]{,

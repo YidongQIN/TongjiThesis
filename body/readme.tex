@@ -24,8 +24,8 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 也即：丢失了调整过程的步骤，没有 commit 历史可供参考。
 
 \begin{quote}
-以下称同济大学研究生院的《同济大学学位论文写作示例（2017）》与《同济大学研究生学位论文写作规范（试行）（2017）》为\texttt{}校方模版''；
-称 marquistj13 的 TongjiThesis 模版为\texttt{}原模版''。
+以下称同济大学研究生院的《同济大学学位论文写作示例（2017）》与《同济大学研究生学位论文写作规范（试行）（2017）》为校方模版''；
+称 marquistj13 的 TongjiThesis 模版为原模版''。
 \end{quote}
 
 本节总述了本模板相较于原模版的修改。
@@ -50,7 +50,6 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 微调了封面的布局。 但是校方模板中也有不少含糊，所以最终效果必有纰漏。
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
   校方模版中校徽都不舍得提供向量图。
 
@@ -62,14 +61,14 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
   不过，其中的距离尺寸都是手动测量的，与校方模板终归有偏差。 原
   \texttt{\textbackslash{}includegraphics} 仍予以保留。
 \item
-  各个元素之间的间距没有出确定值，只是大概的\texttt{}换一行''、\texttt{}空半行''。
+  各个元素之间的间距没有出确定值，只是大概的换一行''、空半行''。
 \item
   封面内容的行距被 Word
-  的\texttt{}对齐到网格''控制，导致展示的样式与本模板有偏差。
+  的对齐到网格''控制，导致展示的样式与本模板有偏差。
 
   比如申请人个人信息表格的行距明显不是单倍，根据目测调整为 1.75 倍。
 \item
-  申请人个人信息表格要求\texttt{}左侧缩进 4.5
+  申请人个人信息表格要求左侧缩进 4.5
   字符''，竟然是相对于一个文本框、并不是页面位置。
   于是也只能通过目测，设置表格为居中。
 \item
@@ -100,7 +99,7 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 
   \begin{itemize}
   \item
-    主要处于代码美观简介考虑，因为\texttt{}姓名''、\texttt{}学号''和\texttt{}指导教师''等文字并不会复用，所以没必要用变量替代。
+    主要处于代码美观简介考虑，因为姓名''、学号''和指导教师''等文字并不会复用，所以没必要用变量替代。
   \item
     冒号作为分隔符，可以在列定义的时候用 \texttt{\textgreater{}\{：\}l}
     语法插入右列，不需要单独一列 \texttt{c} 放置。
@@ -249,10 +248,10 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 
 交叉引用时，前缀与编号之间通常建议用不中断空格
 \texttt{\textasciitilde{}}
-连接，以避免不良的分行，打断了\texttt{}图''、\texttt{}表''、\texttt{}第''等前缀词、编号数字和可能的后缀\texttt{}节''、\texttt{}章''。
+连接，以避免不良的分行，打断了图''、表''、第''等前缀词、编号数字和可能的后缀节''、章''。
 
 比如说，\texttt{见\textbackslash{}refsec\{\}。}
-可以直接生成\texttt{}见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到 label。
+可以直接生成见第\textsubscript{X.X}节。''这样的语句。 而且，好处是 VS Code 依然识别这个命令是 \texttt{\textbackslash{}ref}，可以自动联想到 label。
 
 为了配合它的使用，还在 VS Code 中制定了一个 \texttt{tjref} 的 snippet。
 
@@ -300,7 +299,7 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 出于个人审美，章节名称中的数字编号比汉字小一号。
 
 \begin{quote}
-以前 CAD 课的要求\texttt{}数字要比汉字小一号''，算是一个纪念画图日子的小彩蛋。
+以前 CAD 课的要求数字要比汉字小一号''，算是一个纪念画图日子的小彩蛋。
 \end{quote}
 
 章节名称中的数字字体可利用宏包 \texttt{\{fontspec\}} 控制，将原
@@ -360,7 +359,6 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 也是为了跟老板编的教材保持一致。
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
   传统方法是利用 \texttt{pifont} 宏包，它封装了很多PostScript
   字体。这也是原模板采用的美化方法。
@@ -405,9 +403,9 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 
 \begin{itemize}
 \item
-  inline 是用 \texttt{}(1)''进行编号的。
+  inline 是用 (1)''进行编号的。
 \item
-  inlinecn 是用\texttt{}第一''进行编号的。
+  inlinecn 是用第一''进行编号的。
 
   \begin{itemize}
   \item
@@ -496,7 +494,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 以值对的方式定义样式，即关键词、字符串等不同类型代码的高亮颜色、字体样式等：
 1. 基础样式 \texttt{monocolor} 是只有黑白，依靠字体区分关键词； 2. 样式
 \texttt{colored} 是基本的配色方案，可以不依靠宏包 \texttt{\{color\}}
-使用，也可以把其中\texttt{}注释''类型的绿色改为深绿色，以求美观； 3.
+使用，也可以把其中注释''类型的绿色改为深绿色，以求美观； 3.
 针对扩展过后的 Python 建成了一个相对色彩丰富的样式 \texttt{colorEX}。
 
 \begin{quote}
@@ -509,7 +507,6 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 \texttt{XML} 语言，包括：
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
   tag 用 identifier 实现高亮，
 \item
@@ -553,7 +550,7 @@ name 并列入索引。
 
 \subsection{页面布置}
 
-学校的版面设置要求是\texttt{}上、下 2.54cm，左、右 3.17cm，页眉、页脚
+学校的版面设置要求是上、下 2.54cm，左、右 3.17cm，页眉、页脚
 2.0cm，装订线 0 cm''。 然而，宏包 \texttt{\{geometry\}}
 中的参数定义方式和 MS Office Word 有区别。
 
@@ -623,7 +620,7 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
 根据
 \href{https://liam.page/2017/05/01/the-correct-way-to-use-differential-operator/}{这篇帖子}
-为微积分中的 \(d\) 符号设定了\texttt{}左侧有间距、直立体''的命令
+为微积分中的 \(d\) 符号设定了左侧有间距、直立体''的命令
 \texttt{\textbackslash{}dif}。
 
 \section{Geometry
@@ -648,7 +645,7 @@ false）情况下，
 其中，\texttt{top} 需要加上 0.7行的高度。
 \(top = 2.54cm + 0.7*20bp = 25.4mm + 14*(25.4mm/72) = 30.34mm\)
 
-用 \texttt{headsep} 把页眉\texttt{}顶''上去。 \(headsep = 0.7*20bp = 4.94mm\)。
+用 \texttt{headsep} 把页眉顶''上去。 \(headsep = 0.7*20bp = 4.94mm\)。
 
 \texttt{headheight}
 计算页眉行行底到页面上边缘距离，需要页眉顶端距离是加上页眉的行高：
@@ -667,7 +664,7 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 
 \subsection{更加优雅的方案}
 
-但是如上处理，发现页眉相关尺寸参数比较\texttt{}奇怪''，可能回给后续修改者带来困惑。
+但是如上处理，发现页眉相关尺寸参数比较奇怪''，可能回给后续修改者带来困惑。
 一个稍微清晰的方案是打开页眉的 \texttt{includehead} 选项。
 
 这其实是因为不同的测量点。
@@ -677,15 +674,15 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 页码是五号字，即 \(10.5/72*25.4 = 3.70mm\) 左右。
 所以说，这样的设置留给页码上边缘和正文下边缘的距离不足 2mm。
 
-校方模板中，这个\texttt{}紧凑''的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
+校方模板中，这个紧凑''的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
 从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过
 \(25.4mm + 20bp = 3cm\)；
 换句话说，如果全用正文字体多填充几页，就很容易发现这个边距其实挺小的。
 
-页眉部分同理，在 word 中控制\texttt{}页面上边距 2.54cm，页眉
+页眉部分同理，在 word 中控制页面上边距 2.54cm，页眉
 2.0cm''并且多用正文填充几页，也可以发现，页眉、分割线和正文会挤在一起。
 
-校方的\texttt{}模板''有的细节经不起推敲，自己取舍吧。
+校方的模板''有的细节经不起推敲，自己取舍吧。
 
 \section{章节标题样式设置}
 
@@ -738,41 +735,26 @@ and baseline of footer 的距离。 按照要求，正好就是页边距减去�
 的后续回答中，提到中英文字体不同。
 
 \begin{quote}
-mohuangrui： 请教一下，对于章节标题，是否可能通过 \texttt{format} 实现
-中文 调用 \texttt{\textbackslash{}sffamily} 而 英文和数字 调用
-\texttt{\textbackslash{}rmfamily}？
+mohuangrui： 请教一下，对于章节标题，是否可能通过 \texttt{format} 实现 中文 调用 \texttt{\textbackslash{}sffamily} 而 英文和数字 调用 \texttt{\textbackslash{}rmfamily}？
 
-RuixiZhang42：可以用 \texttt{\textbackslash{}heiti}
-这样的命令，因为只作用于 CJK
-文字上。不过这样西文跟中文不太协调，建议谨慎使用
+RuixiZhang42：可以用 \texttt{\textbackslash{}heiti} 这样的命令，因为只作用于 CJK 文字上。不过这样西文跟中文不太协调，建议谨慎使用
 
-muzimuzhi：字体切换功能，是利用了 xetex 引擎的 char class
-机制。粗暴理解，把所有字符按中西文分类，遇到「中-西」边界就切换到西文字体，遇到「西-中」边界就切换到中文字体。[1,
-Sec. 3] 里有一个简单的例子。
+muzimuzhi：字体切换功能，是利用了 xetex 引擎的 char class 机制。粗暴理解，把所有字符按中西文分类，遇到「中-西」边界就切换到西文字体，遇到「西-中」边界就切换到中文字体。[1, Sec. 3] 里有一个简单的例子。
 
-muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案是，通过
-\texttt{fontspec} 和 \texttt{xeCJK} 的
-\texttt{\textbackslash{}new[CJK]fontfamily}
-命令，分别定义中西字体切换命令，然后一起使用。
+muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案是，通过 \texttt{fontspec} 和 \texttt{xeCJK} 的
+\texttt{\textbackslash{}new[CJK]fontfamily} 命令，分别定义中西字体切换命令，然后一起使用。
 \end{quote}
-
 
 \subsection{处理}
 
-在 \texttt{ctexset} 中，章节标题在不同 schema
-下已经有默认值，如果不取消则会继承，所以如果要定制章节标题样式，需要记得取消默认设置。
-* 通常，\texttt{\textbackslash{}section}
-以下的默认设置均为空（\texttt{=\{\}}），比较省心。
+在 \texttt{ctexset} 中，章节标题在不同 schema 下已经有默认值，如果不取消则会继承，所以如果要定制章节标题样式，需要记得取消默认设置。
+通常，\texttt{\textbackslash{}section} 以下的默认设置均为空（\texttt{=\{\}}），比较省心。
 
-对于，ctex 的中文字体命令调用了的还是 xeCJK，其\textbf{只}对 CJK
-中日韩文字有效果，而对英文和数字不起效果。所以采用 \texttt{ctex} 提供的
-\texttt{\textbackslash{}songti}，\texttt{\textbackslash{}heiti}
-等命令均不会影响英文字母和数字的字体。
+对于，ctex 的中文字体命令调用了的还是 xeCJK，其\textbf{只}对 CJK 中日韩文字有效果，而对英文和数字不起效果。所以采用 \texttt{ctex} 提供的 \texttt{\textbackslash{}songti}，\texttt{\textbackslash{}heiti} 等命令均不会影响英文字母和数字的字体。
 
 如果必要调整字体，可以用宏包 \texttt{\{fontspec\}} 处理。
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{enumerate}[a.]
 \item
   最简单的方法是，直接设置全文的 \texttt{\textbackslash{}sffamily}
   字体为黑体，即添加 \texttt{\textbackslash{}setsansfont\{SimHei\}}
@@ -785,7 +767,7 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
     尤其明显地，章节编号的分隔符（.号）变为全角宽度。
   \end{itemize}
 \item
-  如果放弃\texttt{}黑体''，可以选择\texttt{}雅黑''等针对中英文混排优化过的无衬线字体。
+  如果放弃 黑体，可以选择 雅黑 等针对中英文混排优化过的无衬线字体。
 \item
   然而，即使在 MS Office 中，常用的处理方案也是用有衬线字体。
 
@@ -795,25 +777,17 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
   \end{itemize}
 \end{enumerate}
 
-最终，删除了原 \texttt{romantitle} 布尔型选项，仿照 \texttt{degreetype}
-新增了名为 \texttt{titlenum} 的三选一方案（意为 \emph{title}
-\emph{num}ber）。
+最终，删除了原 \texttt{romantitle} 布尔型选项，仿照 \texttt{degreetype} 新增了名为 \texttt{titlenum} 的三选一方案（意为 \textbf{title} \textbf{num}ber）。
 
 \begin{itemize}
-\item
-  默认值 \texttt{rmtitlenum} 即采用 Times New Roman
-  衬线字体（\texttt{\textbackslash{}rmfamily}）；
-\item
-  可以选择 \texttt{sftitlenum}
-  即无衬线的半角字体（\texttt{\textbackslash{}sffamily}）；
-\item
-  可以选择 \texttt{heititlenum}
-  校方模版要求的黑体（\texttt{SimHei}，不是
-  \texttt{\textbackslash{}heiti}），
+\item 默认值 \texttt{rmtitlenum} 即采用 Times New Roman 衬线字体（\texttt{\textbackslash{}rmfamily}）；
+\item 可以选择 \texttt{sftitlenum} 即无衬线的半角字体（\texttt{\textbackslash{}sffamily}）；
+\item 可以选择 \texttt{heititlenum} 校方模版要求的黑体（\texttt{SimHei}，不是 \texttt{\textbackslash{}heiti}），
 \end{itemize}
 
 \begin{quote}
 说实话，个人认为黑体数字编号确实不如衬线字体好看；
+
 而且分割号（实心圆点）是全角字符，也有点别扭。
 \end{quote}
 
@@ -821,65 +795,42 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 
 有时候标题 \texttt{第1章} 或 \texttt{（1）} 中数字并不居中。
 
-如果前后字体不一样，例如 \texttt{nameformat} 与 \texttt{numberformat}
-分别选用无衬线和衬线字体，或者进行中英文混排时， 好像会触发
-\texttt{xeCJK} 的 \texttt{CJKecglue} 设置，使其自动追加空格。
+如果前后字体不一样，例如 \texttt{nameformat} 与 \texttt{numberformat} 分别选用无衬线和衬线字体，或者进行中英文混排时， 好像会触发 \texttt{xeCJK} 的 \texttt{CJKecglue} 设置，使其自动追加空格。
 
-所以，设置 \texttt{numberformat=\{\}}，统一在 \texttt{nameformat}
-中设置格式。 可以在
-\texttt{ctexset=\{chapter/name=\{第\textbackslash{},,章\}\}}
-中的\texttt{}第''字之后手动加一个六分之一小空格 \texttt{\textbackslash{},}
-以规避 \texttt{xeCJK} 自作主张的小聪明。
+所以，设置 \texttt{numberformat=\{\}}，统一在 \texttt{nameformat} 中设置格式。 可以在 \texttt{ctexset=\{chapter/name=\{第\textbackslash{},,章\}\}} 中的“第”字之后手动加一个六分之一小空格 \texttt{\textbackslash{},} 以规避 \texttt{xeCJK} 自作主张的小聪明。
 
 \subsection{强迫症的补完}
 
-\texttt{ctex} 提供的章节标题命令最小是
-\texttt{\textbackslash{}subparagraph}、即5级标题，形如\texttt{}x.x.x.x.x.x''共6个数字。
+\texttt{ctex} 提供的章节标题命令最小是 \texttt{\textbackslash{}subparagraph}、即5级标题，形如 x.x.x.x.x.x 共6个数字。
 
 出于强迫症考虑，把所有的样式都统一定义了。
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\item
-  开启 5 级标题编号：
-
-  \begin{enumerate}
+\item 开启 5 级标题编号：
+\begin{enumerate}
   \def\labelenumii{\arabic{enumii}.}
-  \item
-    必须设置章节编号深度
+  \item 必须设置章节编号深度
     \texttt{\textbackslash{}setcounter\{secnumdepth\}=5}。
-  \item
-    可以在 \texttt{\textbackslash{}LoadClass} 时，为 \texttt{ctex}
-    添加上 \texttt{sub4section}
-    选项（没有true/false值）。但是默认效果不好，还是需要详细设置。
+  \item 可以在 \texttt{\textbackslash{}LoadClass} 时，为 \texttt{ctex} 添加上 \texttt{sub4section} 选项（没有true/false值）。
+    但是默认效果不好，还是需要详细设置。
   \end{enumerate}
-\item
-  样式定义，方法同 \texttt{section} 等，不再赘述。
+\item 样式定义，方法同 \texttt{section} 等，不再赘述。
 
   \begin{itemize}
-  \item
-    paragraph （4级）形如 \texttt{（1）\ 段落名}。
-
+  \item paragraph （4级）形如 \texttt{（1）\ 段落名}。
     \begin{itemize}
-    \item
-      样式延续各级 section：黑体、顶格。
-    \item
-      编号不含上级，仅为全角括号与一个阿拉伯数字。
+      \item 样式延续各级 section：黑体、顶格。
+      \item 编号不含上级，仅为全角括号与一个阿拉伯数字。
     \end{itemize}
-  \item
-    subparagraph （5级）形如 \texttt{①\ 子段落名}。
-
+  \item subparagraph （5级）形如 \texttt{①\ 子段落名}。
     \begin{itemize}
-    \item
-      样式同正文，宋体，缩进2字符。
-    \item
-      编号是圆圈数字。
+    \item 样式同正文，宋体，缩进2字符。
+    \item 编号是圆圈数字。
     \end{itemize}
   \end{itemize}
 \end{enumerate}
 
-以前就觉得 \texttt{paragraph} 和 \texttt{subparagraph}
-的等级太详细了、且样式上跟列表环境有相似。
+以前就觉得 \texttt{paragraph} 和 \texttt{subparagraph} 的等级太详细了、且样式上跟列表环境有相似。
 曾用字体（黑体、楷体）以示与正文列表的宋体字体区分，但仍然不尽人意。
 
 现在，编号方式向老板编写的教材中的编号习惯看齐，应该没有问题了吧？
@@ -891,10 +842,9 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 \section{分章节编译问题}
 
 \textbf{前排提示}：
-这项修改纯属本人对于文件夹的某种奇怪强迫症而已，望同学们不要模仿------这项功能毫无意义。
+这项修改纯属本人对于文件夹的某种奇怪强迫症而已，望同学们不要模仿 —— 这项功能毫无意义。
 
-分章节独立编译常用宏包是 \texttt{\{subfiles\}} 和
-\texttt{\{standalone\}} 两个。
+分章节独立编译常用宏包是 \texttt{\{subfiles\}} 和 \texttt{\{standalone\}} 两个。
 前者更加简单；后者提供了更多的控制选项，代价是更复杂一些。
 
 宏包 \texttt{\{subfiles\}} 文档
@@ -902,16 +852,12 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 
 \subsection{状况描述}
 
-如果把章节 .tex
-文档放到另一个文件夹中，则宏包、参考文献和图片的路径相对位置是不同的。
+如果把章节 .tex 文档放到另一个文件夹中，则宏包、参考文献和图片的路径相对位置是不同的。
 会编译报错，比如找不到文件。
 
 \subsection{答疑}
 
-可以把 main.tex 文件也放到一个子文件夹内，则
-\texttt{\textbackslash{}documentclass\{\}} 和
-\texttt{\textbackslash{}usepackage\{\}} 的都可以采用 \texttt{../xxx}
-的相对路径。
+可以把 main.tex 文件也放到一个子文件夹内，则 \texttt{\textbackslash{}documentclass\{\}} 和 \texttt{\textbackslash{}usepackage\{\}} 的都可以采用 \texttt{../xxx} 的相对路径。
 
 \subsection{处理}
 
@@ -923,7 +869,6 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 ..  % 主文件夹 Master Folder
 |-- appendix\ % 附录
     |-- appendix.tex % 附录章节
-        （可以在一个.tex文件中分 chapter，也可以每章一个.tex文件）
 |-- body\ % 正文
     |-- chapter1.tex % 单独章节
     |-- chapter2.tex
@@ -984,7 +929,6 @@ cls 文件}
 \subsubsection{主要步骤}
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
 \item
   打开终端
 
@@ -1126,132 +1070,89 @@ See compat matrix in biblatex or biber PDF documentation.
 本项目编译时(2019年3月)，TexLive 提供的的最新版本 biber 2.1 与 biblatex
 3.12 不能兼容。
 
-其官方论坛也承认了这个bug，且唯一办法就是 (downgrade
-biber)[https://bugs.archlinux.org/task/60844]。
+其官方论坛也承认了这个bug，且唯一办法就是 ``downgrade biber'' \footnote{\colorurl{https://bugs.archlinux.org/task/60844}}。
 
 \subsection{答疑}
 
-根据biblatex.pdf的Table.1说明，下载了biber2.1并覆盖到
-TexLive安装\textbackslash bin\textbackslash win32下。
+根据biblatex.pdf的Table.1说明，下载了biber2.1并覆盖到 TexLive安装\textbackslash bin\textbackslash win32下。
 （GT的电脑是 c:\textbackslash Program Files\textbackslash texlive\textbackslash 2018\textbackslash bin\textbackslash win32 ）
 
 \begin{quote}
-可在cmd中用 \texttt{where\ biber} 查询biber的位置，也可以搜索biber.exe
-定位。
+可在cmd中用 \texttt{where\ biber} 查询biber的位置，也可以搜索biber.exe 定位。
 \end{quote}
 
 \subsubsection{biber历史版本下载}
 
-https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.11/
+\url{https://sourceforge.net/projects/biblatex-biber/files/biblatex-biber/2.11/}
 
 \section{公式索引}
 
-\LaTeX 原生没有\texttt{}公式索引''这样的命令，所以是从清华的模板中学到的命令。
+\LaTeX 原生没有“公式索引”这样的命令，所以是从清华的模板中学到的命令。
 
 因为公式数量庞大，所以罗列所有公式通常不是什么好的决定。
 所以清华方法只会把指定公式列入索引。
 
-他们定义了一个新命令 \texttt{\textbackslash{}equcaption\{\}}
-用来标定重要公式，然后 \texttt{\textbackslash{}listofequations}
-只列出这些被标记的公式。 通常，建议用 \texttt{amsmath} 宏包提供的
-\texttt{\textbackslash{}tag} 命令一起使用。
+他们定义了一个新命令 \texttt{\textbackslash{}equcaption\{\}} 用来标定重要公式，然后 \texttt{\textbackslash{}listofequations} 只列出这些被标记的公式。
+通常，建议用 \texttt{amsmath} 宏包提供的 \texttt{\textbackslash{}tag} 命令一起使用。
 
 \section{电子书签}
 
 目录和电子书签不同，许多章节不会加入目录，但是为了方便通常会加入电子书签，以便跳转。
 
-\begin{itemize}
-\item
-  【目录】 是会被打印出来的目录，包括 \texttt{mainmatter} 和
-  \texttt{backmatter}。 在文档中由
-  \texttt{\textbackslash{}tableofcontents} 命令生成，由
-  \texttt{titletoc} 宏包控制样式。
-\item
-  【PDF电子书签】 是用 PDF
-  阅读器打开的电子版文件才出现的目录，可以更全面。
-\end{itemize}
+\begin{description}[style=nextline]
+  \item[目录] 是会被打印出来的目录，包括 \texttt{mainmatter} 和 \texttt{backmatter}。
+  在文档中由 \texttt{\textbackslash{}tableofcontents} 命令生成，由 \texttt{titletoc} 宏包控制样式。
+  \item [PDF电子书签] 是用 PDF 阅读器打开的电子版文件才出现的目录，可以更全面。
+\end{description}
 
 \subsection{添加目录项}
 
 通常的章节命令会自动加入目录，不赘述。
 
-为了把不编号章节同时加入目录和 PDF
-电子书签，需要在章节标题命令\textbf{之后}手动添加
-\texttt{\textbackslash{}addcontentsline\{ext\}\{depth\}\{title\}} 命令。
+为了把不编号章节同时加入目录和 PDF 电子书签，需要在章节标题命令\textbf{之后}手动添加 \texttt{\textbackslash{}addcontentsline\{ext\}\{depth\}\{title\}} 命令。
 
 \begin{itemize}
-\item
-  第一个参数 \texttt{ext} 表示加入目录或者索引。 可选为：
-
-  \begin{itemize}
-  \item
-    目录 \texttt{toc} (table of contents)，
-  \item
-    图片索引 \texttt{lof} (list of figures)，
-  \item
-    表格索引 \texttt{lot} (list of tables)。
-  \end{itemize}
-\item
-  第二个参数 \texttt{depth} 表示添加后的等级（层次、或称深度），比如
-  \texttt{part}、\texttt{chapter}、\texttt{section}等；
-\item
-  第三个参数 \texttt{title} 表示它在目录 / 索引中的展示的标题名字。
+    \item 第一个参数 \texttt{ext} 表示加入目录或者索引。 可选为：
+    \begin{itemize}
+        \item 目录 \texttt{toc} (table of contents)，
+        \item 图片索引 \texttt{lof} (list of figures)，
+        \item 表格索引 \texttt{lot} (list of tables)。
+    \end{itemize}
+    \item 第二个参数 \texttt{depth} 表示添加后的等级（层次、或称深度），比如 \texttt{part}、\texttt{chapter}、\texttt{section}等；
+    \item 第三个参数 \texttt{title} 表示它在目录 / 索引中的展示的标题名字。
 \end{itemize}
 
 \subsection{制作电子书签}
 
-原模版的 PDF 书签采用 \texttt{hyperref} 宏包的
-\texttt{\textbackslash{}pdfbookmark[level]\{text\}\{name\}} 命令，为
-PDF 文档生成与文档目录部分内容和结构相同的书签。
+原模版的 PDF 书签采用 \texttt{hyperref} 宏包的 \texttt{\textbackslash{}pdfbookmark [level] \{text\} \{name\}} 命令，为 PDF 文档生成与文档目录部分内容和结构相同的书签。
 
-使用方法可以参考 \url{https://zhuanlan.zhihu.com/p/59655379}
-一文，需要控制书签所在的层次、书签的标题、书签的跳转目标三个参数。
+使用方法可以参考 \url{https://zhuanlan.zhihu.com/p/59655379} 一文，需要控制书签所在的层次、书签的标题、书签的跳转目标三个参数。
 同样，这个命令与必须跟随在章节标题命令\textbf{之后}。
 
-然而，直接手动添加的书签，经常跳转目标不准确。 如果要正确跳转，先
-\texttt{\textbackslash{}phantomsection} 产生一个虚假的章节，之后添加
-\texttt{\textbackslash{}pdfbookmark}。
+然而，直接手动添加的书签，经常跳转目标不准确。 如果要正确跳转，先 \texttt{\textbackslash{}phantomsection} 产生一个虚假的章节，之后添加 \texttt{\textbackslash{}pdfbookmark}。
 而且，这种方式需要编译两次才能出现电子书签。
 
 \subsection{自定义的命令}
 
-正如开始所说，章节在文章目录 \texttt{TOC} 和 PDF
-电子书签中的应当分离控制。
+正如开始所说，章节在文章目录 \texttt{TOC} 和 PDF 电子书签中的应当分离控制。
 比如封面、目录本身、授权页面等不出现在目录，但最好出现在电子书签。
 
-原模版借鉴了清华模版，采用了带有的四个参数自定义\textbf{章}标题命令
-\texttt{\textbackslash{}tongji@chapter\{s\ o\ m\ o\}}，从而更加自由灵活地控制目录和书签的展示行为。
+原模版借鉴了清华模版，采用了带有的四个参数自定义\textbf{章}标题命令 \texttt{\textbackslash{}tongji@chapter \{s\ o\ m\ o\}}，从而更加自由灵活地控制目录和书签的展示行为。
 
 \begin{itemize}
-\item
-  第一个是星号参数
-  \texttt{s}，用于提醒此新命令与原生命令的必须区别，不会实际更改目录或者电子书签的内容或格式。
-\item
-  第二个是可选参数 \texttt{o}，表示
-  \texttt{[tocline]}，是出现在目录中的条目。
-
-  \begin{itemize}
-  \item
-    如果有、且为空 \texttt{[]}，则此章节不出现在目录中；
-  \item
-    如果有、且不为空 \texttt{[mark]}，则在电子书签中显示为
-    \texttt{mark}；
-  \item
-    如果没有，表示在电子书签中显示 \texttt{\{title\}}。
+\item 第一个是星号参数 \texttt{s}，用于提醒此新命令与原生命令的必须区别，不会实际更改目录或者电子书签的内容或格式。
+\item 第二个是可选参数 \texttt{o}，表示 \texttt{[tocline]}，是出现在目录中的条目。
+\begin{itemize}
+  \item 如果有、且为空 \texttt{[]}，则此章节不出现在目录中；
+  \item 如果有、且不为空 \texttt{[mark]}，则在电子书签中显示为 \texttt{mark}；
+  \item 如果没有，表示在电子书签中显示 \texttt{\{title\}}。
   \end{itemize}
-\item
-  第三个是必需参数 \texttt{m}，表示 \texttt{\{title\}}，即章标题
-  \texttt{\textbackslash{}chapter\{\}} 括号中的内容。
-\item
-  第四个是可选参数 \texttt{o}，表示
-  \texttt{[header]}，即页眉出现的标题。
-
-  \begin{itemize}
-  \item
-    如果有，则成为页眉；
-  \item
-    如果没有，则取 \texttt{\{title\}}作为页眉。
-  \end{itemize}
+\item 第三个是必需参数 \texttt{m}，表示 \texttt{\{title\}}，即章标题 \texttt{\textbackslash{}chapter\{\}} 括号中的内容。
+\item 第四个是可选参数 \texttt{o}，表示 \texttt{[header]}，即页眉出现的标题。
+\begin{itemize}
+  \item 如果有，则成为页眉；
+  \item 如果没有，则取 \texttt{\{title\}}作为页眉。
+\end{itemize}
 \end{itemize}
 
 总结来说， 第一个参数要求必须以 \texttt{\textbackslash{}tongji@chapter*}
@@ -1290,7 +1191,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
   s & \texttt{*} & 确认带星号 \tabularnewline
   o & \texttt{[]} & 有且为空，不出现在目录 \tabularnewline
   m & \texttt{\{\textbackslash{}tongji@ch@name@abstract\}} &
-  \texttt{}摘要''二字 \tabularnewline
+  摘要''二字 \tabularnewline
   o &
   \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract]}
   & 摘要的页眉\tabularnewline
@@ -1411,7 +1312,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \begin{lstlisting}[language=TongjiLaTeX,
   style=colorEX]
 \renewcommand\l@lstlisting[2]{
-  \@dottedtocline{1}{0em}{4em}{\lstlistingname~#1}{#2}
+  \@dottedtocline{1}{0em}{4em}{\lstlistingname ~ #1}{#2}
 }
 \end{lstlisting}
 
@@ -1541,7 +1442,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   顶部标签影响竖向布局
 
-  中文封面中，如果最上方添加了\texttt{}打印时删除''\texttt{}电子版''或者\texttt{}保密''的标签字样时候，原本的
+  中文封面中，如果最上方添加了打印时删除''电子版''或者保密''的标签字样时候，原本的
   \texttt{\textbackslash{}parbox} 的 24bp 的高度设置会被改变。
   与不添加这些标签字样相比，相差了 12bp 的高度。
 
@@ -1556,7 +1457,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 \item
   封面表格 \texttt{Underfull\ \textbackslash{}hbox} 提醒
 
-  中文封面的申请人信息表格，第一、二行\texttt{}姓名''、\texttt{}学号''因为字数太少，会有
+  中文封面的申请人信息表格，第一、二行姓名''、学号''因为字数太少，会有
   \texttt{Underfull\ \textbackslash{}hbox} 的提醒。 所以在 \texttt{.cfg}
   文件中两个汉字之间手动加入了 \texttt{\textbackslash{}hfill}
   命令用于扩充，并取消了这两行原本的
@@ -1564,7 +1465,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
   \begin{itemize}
   \item
-    当然，如果是有副导师的情况，则\texttt{}所在院系''\texttt{}学科门类''等四字列仍然会有
+    当然，如果是有副导师的情况，则所在院系''学科门类''等四字列仍然会有
     \texttt{Underfull} 的提醒，所以不必担心。
   \end{itemize}
 \end{itemize}
@@ -1593,7 +1494,7 @@ PDF 文档生成与文档目录部分内容和结构相同的书签。
 
 TODO：对于分章节编译，需要盖棺论定。
 等到论文写完，对比过程中分章节编译的优劣势。 因为 \texttt{latexmk}
-好像可以加速编译，所以如果单章节的编译与总编译的时间相差不多，那么分章节的优势可能就仅在于\texttt{}方便分章节检查''这样的了------然而有同步、有电子书签的情况下，也没那么大优势。
+好像可以加速编译，所以如果单章节的编译与总编译的时间相差不多，那么分章节的优势可能就仅在于方便分章节检查''这样的了------然而有同步、有电子书签的情况下，也没那么大优势。
 
 \section{原版说明文件}
 
