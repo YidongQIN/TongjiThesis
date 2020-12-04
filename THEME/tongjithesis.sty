@@ -78,7 +78,7 @@
   showspaces=false,
   tabsize=2,
   extendedchars=false,
-  mathescape=true,
+  mathescape=false,
   xleftmargin=2em,
   xrightmargin=2em,
 }
@@ -215,8 +215,10 @@
 \lstdefinelanguage{EXPRESS}{
   morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,},
   morekeywords=[2]{,STRING,BINARY,LOGICAL,BOOLEAN,NUMBER,INTEGER,REAL,LIST,},
+  morekeywords=[3]{,DIMENSIONAL_EXPONENTS,CONTEXT_DEPENDENT_UNIT,SECTION_PROFILE,COORD_SYSTEM_CARTESIAN_3D,AXIS2_PLACEMENT_3D,CARTESIAN_POINT,DIRECTION,ASSEMBLY_DESIGN_STRUCTURAL_MEMBER_LINEAR,DESIGN_PART,PART_PRISMATIC_SIMPLE,POSITIVE_LENGTH_MEASURE_WITH_UNIT,},
   emph={,OPTIONAL,SUBTYPE,SUPERTYPE,OF,DERIVE,WHERE,},
   morestring=[s]{\ \ }{:\ },% attribute's key
+  morestring=[s]{\#}{\ },% #No.
   morecomment=[s]{--}{;},
   showstringspaces=false,
 }
