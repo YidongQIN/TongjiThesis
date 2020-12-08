@@ -548,16 +548,16 @@ END_ENTITY;
   style=colorEX]
 #1 = DIMENSIONAL_EXPONENTS (1.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0 , 0.0);
 #2 = (CONTEXT_DEPENDENT_UNIT ('INCH') LENGTH_UNIT ().. NAMED_UNIT ( #1 ));
-......
+--......;
 ;*escape $a_i \neq b_j$ *; // Escaped
 #959 = SECTION_PROFILE (2 , 'W14X53' , $ , $ , 5 , .F.);
-......
+--......;
 #3096 = COORD_SYSTEM_CARTESIAN_3D ('Design Part' , 'Design Part Coordinate System' , $ , 3 , #3097 );
 #3097 = AXIS2_PLACEMENT_3D ('Axid3d' , #3098 , #3099 , #3100 );
 #3098 = CARTESIAN_POINT ('Origin' , ( -40.237139504348 , -505.625249238341 , 168. );
 #3099 = DIRECTION ('Orientation' , (0. , 1. , 0.));
 #3100 = DIRECTION ('Direction' , (0. , 0. , -1.));
-......
+--......;
 #3102 = ASSEMBLY_DESIGN_STRUCTURAL_MEMBER_LINEAR (5 , '5' , $ , $ , 0 , .LOW. , .F. , F. , () , () , $ , .UNDEFINED_ROLE , UNDEFINED_CLASS. , .UNDEFINED.);
 #3103 = DESIGN_PART ('' , #3104 , ( #3102 ) , ( #3096 ));
 #3104 = PART_PRISMATIC_SIMPLE (5 , 'PP5' , $ , $ , .UNDEFINED. , $ , #959 , #3105 , $ , $);
