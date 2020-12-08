@@ -69,7 +69,7 @@
   breakatwhitespace=false,
   breaklines=true,
   captionpos=b,
-  escapeinside={\%*}{*)},
+  escapeinside={;*}{*;},% 离开 Listings 进入 LaTeX 模式用于输入数学公式等
   float=htbp,
   frame=single,
   numbers=left,
@@ -78,7 +78,7 @@
   showspaces=false,
   tabsize=2,
   extendedchars=false,
-  mathescape=false,
+  mathescape=false,% 保证 $ 符号不会被认为是数学公式而导致报错
   xleftmargin=2em,
   xrightmargin=2em,
 }
