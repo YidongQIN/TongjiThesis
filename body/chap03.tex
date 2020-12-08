@@ -536,10 +536,10 @@ ENTITY IfcLine
   Pnt : IfcCartesianPoint;
   Dir : IfcVector;
   WHERE SameDim : Dir.Dim = Pnt.Dim;
-  ;; escape ;; // Escaped
-  ;* escape $a_i \neq b_j$ *; // Escaped
-  %* escape $a_i \neq b_j$ *% // Escaped
 END_ENTITY;
+;; escape ;; // Escaped
+;* escape $a_i \neq b_j$ *; // Escaped
+%* escape $a_i \neq b_j$ *% // Escaped
 \end{lstlisting}
 
 \begin{lstlisting}[language=EXPRESS,

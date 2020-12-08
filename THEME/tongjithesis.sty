@@ -213,12 +213,13 @@
 }
 % EXPRESS-G syntax and styles
 \lstdefinelanguage{EXPRESS}{
-  morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,},
+  morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,TYPE,END_TYPE,},
   morekeywords=[2]{,STRING,BINARY,LOGICAL,BOOLEAN,NUMBER,INTEGER,REAL,LIST,},
   morekeywords=[3]{,DIMENSIONAL_EXPONENTS,CONTEXT_DEPENDENT_UNIT,SECTION_PROFILE,COORD_SYSTEM_CARTESIAN_3D,AXIS2_PLACEMENT_3D,CARTESIAN_POINT,DIRECTION,ASSEMBLY_DESIGN_STRUCTURAL_MEMBER_LINEAR,DESIGN_PART,PART_PRISMATIC_SIMPLE,POSITIVE_LENGTH_MEASURE_WITH_UNIT,},
   emph={,OPTIONAL,SUBTYPE,SUPERTYPE,OF,DERIVE,WHERE,},
-  morestring=[s]{\ \ }{:\ },% attribute's key
-  morestring=[s]{\#}{\ },% #No.
+  morestring=[s][keywordstyle]{\#}{\ },% # Entity No.
+  morestring=[s]{\ \ }{\ :\ },% attribute key
+  morestring=[s]{'}{'},% string in attribute
   morecomment=[s]{--}{;},
   showstringspaces=false,
 }
@@ -231,7 +232,7 @@
 \lstdefinestyle{colored}{% basic color theme, works without Package color
   backgroundcolor=\color{white},
   basicstyle=\small\ttfamily,
-  commentstyle=\color{green}\itshape,% may use darkgreen for better visual effects
+  commentstyle=\color{darkgreen}\itshape,
   keywordstyle=\color{blue}\bfseries\itshape,
   stringstyle=\color{red},
   showstringspaces=false,
@@ -242,7 +243,7 @@
   commentstyle=\color{darkgreen}\slshape,
   keywordstyle=\color{darkblue}\bfseries\itshape,
   keywordstyle=[2]\color{blue}\bfseries,
-  keywordstyle=[3]\color{grass},
+  keywordstyle=[3]\color{darkgreen},
   keywordstyle=[4]\color{red},
   keywordstyle=[5]\color{orange},
   stringstyle=\color{darkred},
