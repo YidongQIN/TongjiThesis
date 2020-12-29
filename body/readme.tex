@@ -535,15 +535,17 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 \texttt{\textbackslash{}lstlistlistingname} 以更改环境名。
 
 用 \texttt{\textbackslash{}lstlistoflisting}
-可以生成一个代码索引，类似于 \texttt{list\ of\ tables} 之类。 * 设置了
-\texttt{nolol} 的代码不会进入索引。 * 可用下面的命令更改对齐和样式：
-\texttt{\textbackslash{}renewcommand\textbackslash{}l@lstlisting[2]\{\textbackslash{}@dottedtocline\{1\}\{0em\}\{2em\}\{\textbackslash{}lstlistingname\textasciitilde{}\#1\}\{\#2\}\}}。
-* 定制了 \texttt{listings} 索引页面的页眉、页脚样式。
+可以生成一个代码索引，类似于 \texttt{list of tables} 之类。
+\begin{itemize}[$\bullet$]
+  \item 设置了 \texttt{nolol} 的代码不会进入索引。
+  \item 可用下面的命令更改对齐和样式：
+  \lstinline[language=TongjiLaTeX,
+    style=colorEX]|\renewcommand\l@lstlisting[2]{\@dottedtocline{1}{0em}{2em}{\lstlistingname~#1}{#2}}|。
+  \item 定制了 \texttt{listings} 索引页面的页眉、页脚样式。
+\end{itemize}
 
-值得一提的是，在代码块中设置 \texttt{name=} 而不设置
-\texttt{caption=}，则代码索引中就不出现这一项编号了、但仍保留 name。
-或许代码不需要全部罗列，那么这可能是更好的解决方案------只有关键代码给出
-name 并列入索引。
+值得一提的是，在代码块中设置 \texttt{name=} 而不设置\texttt{caption=}，则代码索引中就不出现这一项编号了、但仍保留 name。
+或许代码不需要全部罗列，那么这可能是更好的解决方案 —— 只有关键代码给出 name 并列入索引。
 
 宏包 \texttt{\{Listings\}} 文档
 \url{http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf}。

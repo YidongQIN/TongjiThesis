@@ -1,0 +1,31 @@
+{
+    // only for Tongji Thesis, led by TJ@, following TeX Namespace.
+    "TJ New Chapter": {
+        "prefix": "tj@NewChapter",
+        "body": [
+            "% !TEX program = xelatex",
+            "\\documentclass[../Main/${1:final}.tex]{subfiles}",
+            "\\begin{document}",
+            "\\chapter{$2}",
+            "\\label{chp:$3}",
+            "$0",
+            "\\end{document}"
+        ],
+        "description": "Create a new chapter as subfile for Tongji Thesis."
+    },
+    "TJ Sub Chapter": {
+        "prefix": "tj@InputSubfile",
+        "body": [
+            "\\subfile{../body/$1}",
+            "$0"
+        ],
+        "description": "input a subfile chapter for Tongji Thesis."
+    },
+    "TJ Ref with Prefix": {
+        "prefix": "tjref",
+        "body": [
+            "\\ref${1|tab,fig,sec,cha,alg,lst,equ|}{$1:$2}"
+        ],
+        "description": "TJ Ref with Prefix"
+    },
+}

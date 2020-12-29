@@ -670,7 +670,7 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 
 交叉引用命令 \textbackslash ref 是非常有用的，但是格式上有一个注意点：
 最好在命令的前后用“不可分割空格”（即$\sim$）连接关键文字，以避免换行。
-比如\tvt{图 ~ \textbackslash 1.1 ~}
+比如\tvt{图~\textbackslash 1.1 ~}
 
 本次添加了关于“图”、“表”、“章节”等常用的交叉引用命令，方便调用。
 
@@ -705,7 +705,7 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 投机的方法是用 Tikz 宏包。
 圆圈序号1是这样的\tikzcircnum{1}，圆圈序号2是这样的\tikzcircnum{2}，圆圈序号3是这样的\tikzcircnum{3}，圆圈序号4是这样的\tikzcircnum{4}，可见也不错的\footnote{用 Tikz 绘制的}。
 
-圆形命令带星号则转化为 Tikz 方法。圆圈序号1是这样的\textcircled*{1}，圆圈序号2是这样的\textcircled*{2}，圆圈序号3是这样的\textcircled*{3}，圆圈序号4是这样的\textcircled*{4}，总之看得还行\footnote{原生命令}。
+原生命令带星号则转化为 Tikz 方法。圆圈序号1是这样的\textcircled*{1}，圆圈序号2是这样的\textcircled*{2}，圆圈序号3是这样的\textcircled*{3}，圆圈序号4是这样的\textcircled*{4}，总之看得还行\footnote{原生命令重定义了，在本模板中调用的是 Tikz 方法，目的是兼容正文的字体样式}。
 
 \subsection{特殊标记}
 校友利用 Tikz 宏包绘制了同济的 logo。
