@@ -6,22 +6,22 @@
 \newcommand{\chn}{中华人民共和国}
 
 % 设置各级列表的样式，依赖于 enumitem 宏包
-\setlist[1]{labelindent=\parindent,leftmargin=\parindent}
-\setlist[2]{labelindent=1em,leftmargin=\parindent}
-\setlist[3]{labelindent=1em,leftmargin=\parindent}
-\setlist[enumerate,1]{label=(\arabic*), ref = \arabic*}
-\setlist[enumerate,2]{label=(\alph*), ref=\theenumi.\alph*}
-\setlist[enumerate,3]{label=(\roman*),ref=\theenumii.\roman*}
-\setlist[itemize,1]{label=$\bullet$}
-\setlist[itemize,2]{label=$\circ$}
-\setlist[itemize,3]{label=\tiny$\blacksquare$}
+\setlist[1]{labelindent=\parindent, leftmargin=\parindent}
+\setlist[2]{labelindent=1em, leftmargin=\parindent}
+\setlist[3]{labelindent=1em, leftmargin=\parindent}
+\setlist[enumerate, 1]{label=(\arabic*), ref = \arabic*}
+\setlist[enumerate, 2]{label=(\alph*), ref=\theenumi.\alph*}
+\setlist[enumerate, 3]{label=(\roman*), ref=\theenumii.\roman*}
+\setlist[itemize, 1]{label=$\bullet$}
+\setlist[itemize, 2]{label=$\circ$}
+\setlist[itemize, 3]{label=\tiny$\blacksquare$}
 \setlist[description]{font=\heiti}
 \newlist{inlinecn}{enumerate*}{1}
-\setlist[inlinecn,1]{label=\tikzcircnum{\arabic*}}
-\setlist[inlinecn,2]{label= 第\chinese{inlinecni}，}
+\setlist[inlinecn, 1]{label=\tikzcircnum{\arabic*}}
+\setlist[inlinecn, 2]{label= 第\chinese{inlinecni}，}
 \newlist{inline}{enumerate*}{2}
-\setlist[inline,1]{label=(\arabic*)}
-\setlist[inline,2]{label=\roman*.}
+\setlist[inline, 1]{label=(\arabic*)}
+\setlist[inline, 2]{label=\roman*.}
 
 % Quote 环境字体
 \AtBeginEnvironment{quote}{\sffamily\kaishu\normalsize}% 英文字体命令可能覆盖 CTeX 中文字体命令
@@ -34,21 +34,21 @@
 
 % 颜色，主要用于代码展示
 \RequirePackage{xcolor}
-\definecolor{darkred}{rgb}{0.6,0.0,0.0}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-\definecolor{darkgreen}{rgb}{0,0.50,0}
-\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
-\definecolor{lightblue}{rgb}{0.0,0.42,0.91}
-\definecolor{cyan}{rgb}{0.0,0.6,0.6}
-\definecolor{orange}{rgb}{0.99,0.48,0.13}
-\definecolor{grass}{rgb}{0.18,0.80,0.18}
-\definecolor{pink}{rgb}{0.97,0.15,0.45}
-\definecolor{gray}{rgb}{0.4,0.4,0.4}
-\definecolor{bluegray}{rgb}{0.81,0.86,0.91}
-\definecolor{pythonblue}{rgb}{0.168,0.353,0.514}
+\definecolor{darkred}{rgb}{0.6, 0.0, 0.0}
+\definecolor{mauve}{rgb}{0.58, 0, 0.82}
+\definecolor{darkgreen}{rgb}{0, 0.50, 0}
+\definecolor{darkblue}{rgb}{0.0, 0.0, 0.6}
+\definecolor{lightblue}{rgb}{0.0, 0.42, 0.91}
+\definecolor{cyan}{rgb}{0.0, 0.6, 0.6}
+\definecolor{orange}{rgb}{0.99, 0.48, 0.13}
+\definecolor{grass}{rgb}{0.18, 0.80, 0.18}
+\definecolor{pink}{rgb}{0.97, 0.15, 0.45}
+\definecolor{gray}{rgb}{0.4, 0.4, 0.4}
+\definecolor{bluegray}{rgb}{0.81, 0.86, 0.91}
+\definecolor{pythonblue}{rgb}{0.168, 0.353, 0.514}
 
 % 算法环境 推荐 algorithm2e
-\RequirePackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
+\RequirePackage[linesnumbered, lined, boxed, commentsnumbered]{algorithm2e}
 \setlength{\algomargin}{2em}
 \renewcommand{\algorithmcfname}{算法}
 \renewcommand{\listalgorithmcfname}{算法索引}
@@ -170,14 +170,14 @@
 }
 % Python Listings syntax and styles
 \lstdefinelanguage{PythonPlus}[]{Python}{% prefined Python sty is not complete
-  morekeywords=[1]{,as,assert,nonlocal,with,yield,self,True,False,None,} % Python builtin
-  morekeywords=[2]{,__init__,__add__,__mul__,__div__,__sub__,__call__,__getitem__,__setitem__,__eq__,__ne__,__nonzero__,__rmul__,__radd__,__repr__,__str__,__get__,__truediv__,__pow__,__name__,__future__,__all__,}, % magic methods
-  morekeywords=[3]{,object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,len,dict,tuple,range,xrange,append,execfile,real,imag,reduce,str,repr,}, % common functions
-  morekeywords=[4]{,Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError,}, % errors
-  morekeywords=[5]{,ode,fsolve,sqrt,exp,sin,cos,arctan,arctan2,arccos,pi, array,norm,solve,dot,arange,isscalar,max,sum,flatten,shape,reshape,find,any,all,abs,plot,linspace,legend,quad,polyval,polyfit,hstack,concatenate,vstack,column_stack,empty,zeros,ones,rand,vander,grid,pcolor,eig,eigs,eigvals,svd,qr,tan,det,logspace,roll,min,mean,cumsum,cumprod,diff,vectorize,lstsq,cla,eye,xlabel,ylabel,squeeze,},% numpy / math
+  morekeywords=[1]{, as, assert, nonlocal, with, yield, self, True, False, None,} % Python builtin
+  morekeywords=[2]{, __init__, __add__, __mul__, __div__, __sub__, __call__, __getitem__, __setitem__, __eq__, __ne__, __nonzero__, __rmul__, __radd__, __repr__, __str__, __get__, __truediv__, __pow__, __name__, __future__, __all__,}, % magic methods
+  morekeywords=[3]{, object, type, isinstance, copy, deepcopy, zip, enumerate, reversed, list, set, len, dict, tuple, range, xrange, append, execfile, real, imag, reduce, str, repr,}, % common functions
+  morekeywords=[4]{, Exception, NameError, IndexError, SyntaxError, TypeError, ValueError, OverflowError, ZeroDivisionError,}, % errors
+  morekeywords=[5]{, ode, fsolve, sqrt, exp, sin, cos, arctan, arctan2, arccos, pi, array, norm, solve, dot, arange, isscalar, max, sum, flatten, shape, reshape, find, any, all, abs, plot, linspace, legend, quad, polyval, polyfit, hstack, concatenate, vstack, column_stack, empty, zeros, ones, rand, vander, grid, pcolor, eig, eigs, eigvals, svd, qr, tan, det, logspace, roll, min, mean, cumsum, cumprod, diff, vectorize, lstsq, cla, eye, xlabel, ylabel, squeeze,},% numpy / math
 }
 \lstdefinelanguage{PyBrIM}[]{PythonPlus}{% extend Python with user-defined keywords
-  emph={d,E,a,Fc28,Fy,Fu,D,des,supplier,Material,Rectangle,PyELMT}, % add word you want to highlight
+  emph={d, E, a, Fc28, Fy, Fu, D, des, supplier, Material, Rectangle, PyELMT}, % add word you want to highlight
   }
 % XML syntax and styles (To replace the predefined Listings.XML, which is preliminary)
 \lstdefinelanguage{XML}{
@@ -191,16 +191,16 @@
 }
 % OpenBrIM ParamML Listings syntax
 \lstdefinelanguage{ParamML}[]{XML}{
-  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
-  morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
-  morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
-  morekeywords={Lng,Lat,Elev,P1,P2,P3,},
+  morekeywords={X, Y, Z, Rx, Ry, Rz, Tx, Ty, Tz, C, R,},
+  morekeywords={Node1, Node2, Node3, Node4, Factor, Case,},
+  morekeywords={N, V, T, Type, D, Extends, Role, UT, UC,},
+  morekeywords={Lng, Lat, Elev, P1, P2, P3,},
 }
 \lstdefinelanguage{OBrIM_ParamML}{% combination of ParamML (Language) and OpenBrIM (APP style)
-  morekeywords={X,Y,Z,Rx,Ry,Rz,Tx,Ty,Tz,C,R,},
-  morekeywords={Node1,Node2,Node3,Node4,Factor,Case,},
-  morekeywords={N,V,T,Type,D,Extends,Role,UT,UC,},
-  morekeywords={Lng,Lat,Elev,P1,P2,P3,},
+  morekeywords={X, Y, Z, Rx, Ry, Rz, Tx, Ty, Tz, C, R,},
+  morekeywords={Node1, Node2, Node3, Node4, Factor, Case,},
+  morekeywords={N, V, T, Type, D, Extends, Role, UT, UC,},
+  morekeywords={Lng, Lat, Elev, P1, P2, P3,},
   moredelim=[s][keywordstyle]{\ }{=},% attribute's key
   morestring=[s][\color{blue}]{"}{"},
   morestring=[s][\color{black}]{>}{<},
@@ -213,10 +213,10 @@
 }
 % EXPRESS-G syntax and styles
 \lstdefinelanguage{EXPRESS}{
-  morekeywords=[1]{,SCHEMA,END_SCHEMA,ENTITY,END_ENTITY,TYPE,END_TYPE,},
-  morekeywords=[2]{,STRING,BINARY,LOGICAL,BOOLEAN,NUMBER,INTEGER,REAL,LIST,},
-  morekeywords=[3]{,DIMENSIONAL_EXPONENTS,CONTEXT_DEPENDENT_UNIT,SECTION_PROFILE,COORD_SYSTEM_CARTESIAN_3D,AXIS2_PLACEMENT_3D,CARTESIAN_POINT,DIRECTION,ASSEMBLY_DESIGN_STRUCTURAL_MEMBER_LINEAR,DESIGN_PART,PART_PRISMATIC_SIMPLE,POSITIVE_LENGTH_MEASURE_WITH_UNIT,},
-  emph={,OPTIONAL,SUBTYPE,SUPERTYPE,OF,DERIVE,WHERE,},
+  morekeywords=[1]{, SCHEMA, END_SCHEMA, ENTITY, END_ENTITY, TYPE, END_TYPE,},
+  morekeywords=[2]{, STRING, BINARY, LOGICAL, BOOLEAN, NUMBER, INTEGER, REAL, LIST,},
+  morekeywords=[3]{, DIMENSIONAL_EXPONENTS, CONTEXT_DEPENDENT_UNIT, SECTION_PROFILE, COORD_SYSTEM_CARTESIAN_3D, AXIS2_PLACEMENT_3D, CARTESIAN_POINT, DIRECTION, ASSEMBLY_DESIGN_STRUCTURAL_MEMBER_LINEAR, DESIGN_PART, PART_PRISMATIC_SIMPLE, POSITIVE_LENGTH_MEASURE_WITH_UNIT,},
+  emph={, OPTIONAL, SUBTYPE, SUPERTYPE, OF, DERIVE, WHERE,},
   morestring=[s][keywordstyle]{\#}{\ },% # Entity No.
   morestring=[s]{\ \ }{\ :\ },% attribute key
   morestring=[s]{'}{'},% string in attribute
@@ -376,9 +376,9 @@
 % 脚注美化 https://en.wikibooks.org/wiki/LaTeX/Footnotes_and_Margin_Notes
 % 脚注按页编号
 \iftongji@raggedbottom
-  \RequirePackage[bottom,perpage,hang]{footmisc}% \raggedbottom
+  \RequirePackage[bottom, perpage, hang]{footmisc}% \raggedbottom
 \else
-  \RequirePackage[perpage,hang]{footmisc}
+  \RequirePackage[perpage, hang]{footmisc}
 \fi
 % 定义脚注用的带圈数字
 \def\tongji@ftntnum#1{%

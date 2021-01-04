@@ -107,9 +107,9 @@
 % 其他引擎下没有这个问题，这一行会被无视。
 \PassOptionsToPackage{no-math}{fontspec}
 % 将伪粗体与伪斜体的选项传递给xeCJK package
-\PassOptionsToPackage{AutoFakeBold=1.2,AutoFakeSlant}{xeCJK}
+\PassOptionsToPackage{AutoFakeBold=1.2, AutoFakeSlant}{xeCJK}
 % 使用 CTeX 宏包的默认中文字体配置，支持不同引擎
-\LoadClass[a4paper,openany,UTF8,zihao=-4,scheme=plain]{ctexbook}
+\LoadClass[a4paper, openany, UTF8, zihao=-4, scheme=plain]{ctexbook}
 % 判断是否运行在xetex模式。
 \RequirePackage{ifxetex}
 \ifxetex\relax\else\ClassWarning{TongjiThesis}{XeLaTex Compiler Required \MessageBreak Without XeLaTeX, somefeatures like addCJKfontfeatures and hyperref won't work}{}\fi
@@ -163,7 +163,7 @@
     \renewcommand{\footrulewidth}{0pt}}
   \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
     \fancyhead{}
-    \fancyhead[RO,LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\appendixname}% 不确定页眉是否左右一致
+    \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\appendixname}% 不确定页眉是否左右一致
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
@@ -281,7 +281,7 @@
 \newcommand*{\dif}{\mathop{}\!\mathrm{d}}
 
 % 定理环境，启用 amsmath 选项确保兼容性
-\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
+\RequirePackage[amsmath, thmmarks, hyperref]{ntheorem}
 
 % 列表
 \RequirePackage[shortlabels]{enumitem}
@@ -293,9 +293,9 @@
 
 % 参考文献使用 biblatex 宏包执行 gb7714-2015 格式
 \iftongji@numeric
-  \RequirePackage[backend=biber,style=gb7714-2015,gbpub=false,isbn=false,doi=false,gbtitlelink=true,url=false,sortlocale=zh__pinyin,gbnamefmt=lowercase]{biblatex}
+  \RequirePackage[backend=biber, style=gb7714-2015, gbpub=false, isbn=false, doi=false, gbtitlelink=true, url=false, sortlocale=zh__pinyin, gbnamefmt=lowercase]{biblatex}
 \else\iftongji@authoryear% 若需author-year格式，style选择为gb7714-2015ay
-    \RequirePackage[backend=biber,style=gb7714-2015ay,gbpub=false,isbn=false,doi=false,gbtitlelink=true,url=false,sortlocale=zh__pinyin,gbnamefmt=lowercase]{biblatex}
+    \RequirePackage[backend=biber, style=gb7714-2015ay, gbpub=false, isbn=false, doi=false, gbtitlelink=true, url=false, sortlocale=zh__pinyin, gbnamefmt=lowercase]{biblatex}
   \fi
 \fi
 % 选项 gbpub=false 用于去除参考文献中的出版地不详
@@ -354,12 +354,12 @@
 % 图序与图名文字之间空一个汉字符宽度。
 \DeclareCaptionLabelSeparator{tongji}{\hspace{1em}}
 \DeclareCaptionFont{tongji}{\wuhao[1]}
-\captionsetup{labelformat=tongji,labelsep=tongji,font=tongji}
+\captionsetup{labelformat=tongji, labelsep=tongji, font=tongji}
 % 图：caption 在下，段前空 6 磅，段后空 12 磅，单倍行距
-\captionsetup[table]{position=top,aboveskip=6bp,belowskip={12bp-\intextsep}}
+\captionsetup[table]{position=top, aboveskip=6bp, belowskip={12bp-\intextsep}}
 % 表：caption 在上，段前空 6 磅，段后空 6 磅，单倍行距
-\captionsetup[figure]{position=bottom,aboveskip=6bp,belowskip={6bp-\intextsep}}
-\captionsetup[sub]{font=tongji,aboveskip=6bp,belowskip=6bp}
+\captionsetup[figure]{position=bottom, aboveskip=6bp, belowskip={6bp-\intextsep}}
+\captionsetup[sub]{font=tongji, aboveskip=6bp, belowskip=6bp}
 \renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.a, 1.b
 \renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.a, 1.b
 
@@ -368,7 +368,7 @@
 \newcommand{\circlerm}[1]{\ding{\numexpr\value{#1}+171\relax}}% 衬线字体数字
 \newcommand{\circlesf}[1]{\ding{\numexpr\value{#1}+191\relax}}% 非衬线字体数字
 \RequirePackage{tikz}% 绘图方案 pkg{Tikz}
-\DeclareRobustCommand{\tikzcircnum}[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=0.5pt] (char) {#1};}}% 绘制圆
+\DeclareRobustCommand{\tikzcircnum}[1]{\tikz[baseline=(char.base)]{\node[shape=circle, draw, inner sep=0.5pt] (char) {#1};}}% 绘制圆
 \let\textcircled@old\textcircled
 \RenewDocumentCommand\textcircled{s m}{% 带*则替换为新 Tikz 命令
   \IfBooleanTF{#1} {\tikzcircnum{#2}} {\textcircled@old{#2}}
@@ -500,7 +500,7 @@
       {% #4 不为空，则成为页眉
         \thispagestyle{fancy}
         \fancyhead{}
-        \fancyhead[RO,LE]{#4}
+        \fancyhead[RO, LE]{#4}
         \fancyfoot{}
         \fancyfoot[C]{\songti\wuhao\thepage}
         \renewcommand{\headrulewidth}{0.5pt}
@@ -510,7 +510,7 @@
     {% 如果没有提供 #4 即 header 参数，则取 title 作为页眉 header 出现的标题，
       \thispagestyle{fancy}
       \fancyhead{}
-      \fancyhead[RO,LE]{#3}
+      \fancyhead[RO, LE]{#3}
       \fancyfoot{}
       \fancyfoot[C]{\songti\wuhao\thepage}
       \renewcommand{\headrulewidth}{0.5pt}
@@ -747,7 +747,7 @@
 % 重做书脊，有外框线，三个默认参数（标题 作者 “同济大学”）
 \NewDocumentCommand{\bookspine}{%
   O{\tongji@ch@head@title} O{\tongji@ch@author} O{\tongji@ch@name@school}}{%
-  \newgeometry{vmargin=1cm,hmargin=3cm}%
+  \newgeometry{vmargin=1cm, hmargin=3cm}%
   \noindent\hfill% 边框左右各有一个hfill保证framebox居中
   \phantomsection%
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{书脊框}%
@@ -947,7 +947,7 @@
   \tongji@chapter*{\tongji@ch@name@resume}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@resume]
   \wuhao[1.6]
   \setlength{\parindent}{0em}
-  \setlist[enumerate,1]{label=[\arabic*], labelindent=*, leftmargin=2em}
+  \setlist[enumerate, 1]{label=[\arabic*], labelindent=*, leftmargin=2em}
   }{\clearpage}
 \newcommand{\resumesect}[1]{\vspace{2em}{\bfseries\wuhao\heiti{#1}}}
 
