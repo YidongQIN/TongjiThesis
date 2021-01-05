@@ -185,22 +185,20 @@ branch
   \item[Wenda] 在github.com Williamwenda
 \end{description}
 
-\begin{description}
+\begin{description}[style=nextline]
 
   \item[概念 concept] 每一个概念包含GUID （Globally Unique Identifier，全局唯一标识符）、名字 （name）、描述 （description）三个部分。
-
-  % 其中一个概念只对应一个全球唯一的GUID；对应多种名字，如混凝土这个概念可对应“混凝土”、“轮”、“concrete”等；对应多种描述，对混凝土可描述其材料组成、力学性质等在信息交换时，各计算机系统只需交换GUID便完成了该概念涉及信息的交换。
+  其中一个概念只对应一个全球唯一的GUID；对应多种名字，如混凝土这个概念可对应“混凝土”、“轮”、“concrete”等；
+  对应多种描述，对混凝土可描述其材料组成、力学性质等在信息交换时，各计算机系统只需交换GUID便完成了该概念涉及信息的交换。
 
   \item[关系 （relationship）] 概念与概念间存在各种关系，如组成关系、父子类关系等。
     \footnote{例子来自 NBIMS-US V3 2.5 IFD Library BSDD Page9 Figure 2.5-2}
-
-  % 以围框内的关系为例，该关系表示门由门扇与门框组成。
+  以围框内的关系为例，该关系表示门由门扇与门框组成。
 
   \item[过滤 （filtering）] 对概念体系的过滤是基于一定标准的，即背景 （context）。
 
-  % 背景是一系列关系的集合，用以表示整个概念体系的一部分。
-
-  % 例如基于某背景过滤IFD形成的概念体系可与前面介绍的OmniClass相对应。
+  背景是一系列关系的集合，用以表示整个概念体系的一部分。
+  例如基于某背景过滤IFD形成的概念体系可与前面介绍的OmniClass相对应。
 
 \end{description}
 
