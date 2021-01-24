@@ -17,7 +17,6 @@ NAIVE，身边也没有人能传授排版的经验，最终也只能做了一点
 但学到了一项新技能也足以让人感到 EXCITED！
 
 \section{主要改动 CHANGES}
-\label{ux4e3bux8981ux6539ux52a8-changes}
 
 因为模板调整与论文撰写同时进行，而自己的大论文放在了 private repo
 中，所以这个仓库是粗暴地把我所采用样式相关文件复制了出来而已。
@@ -200,7 +199,7 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 原创性声明和授权书页面从 \texttt{\textbackslash{}makecover}
 中移除，现在需要手动执行。
 
-并利用宏包 \texttt{\{pdfpages\}} 使其可以接收一个 PDF 扫描件替换电子版。
+并利用宏包 \texttt{pdfpages} 使其可以接收一个 PDF 扫描件替换电子版。
 
 \begin{itemize}
 \item
@@ -302,7 +301,7 @@ framebox 的中央。 猜测是跟仿宋字体的宽高比 \(0.7\) 有关。 四
 以前 CAD 课的要求数字要比汉字小一号''，算是一个纪念画图日子的小彩蛋。
 \end{quote}
 
-章节名称中的数字字体可利用宏包 \texttt{\{fontspec\}} 控制，将原
+章节名称中的数字字体可利用宏包 \texttt{fontspec} 控制，将原
 \texttt{romantitle} 布尔型选项改为可以三选一的 \texttt{titlenum} 选项：
 * \texttt{\textbackslash{}rmfamily} * \texttt{\textbackslash{}sffamily}
 * \texttt{SimHei}
@@ -342,7 +341,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 \texttt{\textbackslash{}def\textbackslash{}UrlFont\{\textbackslash{}ttfamily\}}
 设置更多样式
 
-后者的样式定义，则在 \texttt{\{text\}} 中指定即可。
+后者的样式定义，则在 \texttt{text} 中指定即可。
 
 本模板新定义了命令 \texttt{\textbackslash{}colorurl}，用于展示 URL。
 
@@ -397,7 +396,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 
 \subsection{列表样式}
 
-利用 \texttt{\{enumitem\}}
+利用 \texttt{enumitem}
 宏包预定义了有序列表、无序列表和关键词列表的样式，包括缩进、标签样式和对齐。
 还定义了两种行内列表，即不会换行的水平列表。
 
@@ -423,11 +422,11 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 如果表格较多的情况下，统一表格尺寸可能更加美观。原生命令是
 \texttt{tabular*} 环境，然而其功能较弱。
 
-所以，用宏包 \texttt{\{tabularx\}} 的 \texttt{tabularx}
+所以，用宏包 \texttt{tabularx} 的 \texttt{tabularx}
 表格环境实现固定宽度的表格。 其提供了 \texttt{l\ c\ r\ p} 之外的对齐样式
 \texttt{X}，会平均分配列宽，列内默认左对齐。
 
-此外，利用宏包 \texttt{\{array\}} 在 \texttt{.sty}
+此外，利用宏包 \texttt{array} 在 \texttt{.sty}
 中新定义了三种列对齐方式： * \texttt{a\{1\}} 左对齐 * \texttt{s\{1\}}
 居中 * \texttt{d\{1\}} 右对齐
 
@@ -443,26 +442,26 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 
 \subsection{横置页面}
 
-宏包 \texttt{\{lscape\}} 和 \texttt{\{pdflscape\}}
+宏包 \texttt{lscape\}} 和 \texttt{\{pdflscape}
 可以产生内容横置的页面。区别是后者会把页面旋转，方便阅读。
 
-此外，宏包 \texttt{\{rotating\}} 可以产生特定的图片或表格环境。
+此外，宏包 \texttt{rotating} 可以产生特定的图片或表格环境。
 
 \subsection{下划线}
 
 原生的下划线命令 \texttt{\textbackslash{}underline}
-是不能换行的，很多时候不方便使用。 通常，采用 \texttt{\{ulem\}}
+是不能换行的，很多时候不方便使用。 通常，采用 \texttt{ulem}
 宏包提供的下划线更加使用，还有波浪线等多种样式可以选择。
 
-在 \texttt{\{ulem\}} 宏包基础上，还有针对中文汉字的
-\texttt{\{xeCJKfntef\}} 宏包可用。
+在 \texttt{ulem} 宏包基础上，还有针对中文汉字的
+\texttt{xeCJKfntef} 宏包可用。
 它增加了对汉字的识别能力，可以在标点符号处自动断开。 原模版的
-\texttt{\{CJKfntef\}} 已经失效。
+\texttt{CJKfntef} 已经失效。
 
 \subsection{新增环境类型：算法（伪代码）}
 
-采用宏包 \texttt{\{algorithms\}}，它其实是两个宏包
-\texttt{\{algorithm\}} 与 \texttt{\{algorithmic\}}
+采用宏包 \texttt{algorithms}，它其实是两个宏包
+\texttt{algorithm\}} 与 \texttt{\{algorithmic}
 的合集，是最基础的算法排版宏包。
 
 \begin{itemize}
@@ -474,7 +473,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
   后者类似于 \texttt{tabular} 环境，生成算法内容。
 \end{itemize}
 
-宏包 \texttt{\{algorithm\}} 文档
+宏包 \texttt{algorithm} 文档
 \url{http://mirrors.rit.edu/CTAN/macros/latex/contrib/algorithms/algorithms.pdf}。
 
 \subsection{新增环境类型：源代码}
@@ -493,7 +492,7 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 可用 \texttt{lstdefinestyle=\{\}}
 以值对的方式定义样式，即关键词、字符串等不同类型代码的高亮颜色、字体样式等：
 1. 基础样式 \texttt{monocolor} 是只有黑白，依靠字体区分关键词； 2. 样式
-\texttt{colored} 是基本的配色方案，可以不依靠宏包 \texttt{\{color\}}
+\texttt{colored} 是基本的配色方案，可以不依靠宏包 \texttt{color}
 使用，也可以把其中注释''类型的绿色改为深绿色，以求美观； 3.
 针对扩展过后的 Python 建成了一个相对色彩丰富的样式 \texttt{colorEX}。
 
@@ -547,13 +546,13 @@ rm 使用衬线字体 * sf 使用非衬线字体 * same 跟上文字体保持一
 值得一提的是，在代码块中设置 \texttt{name=} 而不设置\texttt{caption=}，则代码索引中就不出现这一项编号了、但仍保留 name。
 或许代码不需要全部罗列，那么这可能是更好的解决方案 —— 只有关键代码给出 name 并列入索引。
 
-宏包 \texttt{\{Listings\}} 文档
+宏包 \texttt{Listings} 文档
 \url{http://texdoc.net/texmf-dist/doc/latex/listings/listings.pdf}。
 
 \subsection{页面布置}
 
 学校的版面设置要求是上、下 2.54cm，左、右 3.17cm，页眉、页脚
-2.0cm，装订线 0 cm''。 然而，宏包 \texttt{\{geometry\}}
+2.0cm，装订线 0 cm''。 然而，宏包 \texttt{geometry}
 中的参数定义方式和 MS Office Word 有区别。
 
 有两套处理思路：
@@ -754,7 +753,7 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 
 对于，ctex 的中文字体命令调用了的还是 xeCJK，其\textbf{只}对 CJK 中日韩文字有效果，而对英文和数字不起效果。所以采用 \texttt{ctex} 提供的 \texttt{\textbackslash{}songti}，\texttt{\textbackslash{}heiti} 等命令均不会影响英文字母和数字的字体。
 
-如果必要调整字体，可以用宏包 \texttt{\{fontspec\}} 处理。
+如果必要调整字体，可以用宏包 \texttt{fontspec} 处理。
 
 \begin{enumerate}[a.]
 \item
@@ -846,10 +845,10 @@ muzimuzhi：zepinglee 提供的建议是正确且有效的。更一般的方案�
 \textbf{前排提示}：
 这项修改纯属本人对于文件夹的某种奇怪强迫症而已，望同学们不要模仿 —— 这项功能毫无意义。
 
-分章节独立编译常用宏包是 \texttt{\{subfiles\}} 和 \texttt{\{standalone\}} 两个。
+分章节独立编译常用宏包是 \texttt{subfiles\}} 和 \texttt{\{standalone} 两个。
 前者更加简单；后者提供了更多的控制选项，代价是更复杂一些。
 
-宏包 \texttt{\{subfiles\}} 文档
+宏包 \texttt{subfiles} 文档
 \url{http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/subfiles/subfiles.pdf}。
 
 \subsection{状况描述}
@@ -1147,13 +1146,13 @@ See compat matrix in biblatex or biber PDF documentation.
 \begin{itemize}
   \item 如果有、且为空 \texttt{[]}，则此章节不出现在目录中；
   \item 如果有、且不为空 \texttt{[mark]}，则在电子书签中显示为 \texttt{mark}；
-  \item 如果没有，表示在电子书签中显示 \texttt{\{title\}}。
+  \item 如果没有，表示在电子书签中显示 \texttt{title}。
   \end{itemize}
-\item 第三个是必需参数 \texttt{m}，表示 \texttt{\{title\}}，即章标题 \texttt{\textbackslash{}chapter\{\}} 括号中的内容。
+\item 第三个是必需参数 \texttt{m}，表示 \texttt{title\}}，即章标题 \texttt{\textbackslash{}chapter\{} 括号中的内容。
 \item 第四个是可选参数 \texttt{o}，表示 \texttt{[header]}，即页眉出现的标题。
 \begin{itemize}
   \item 如果有，则成为页眉；
-  \item 如果没有，则取 \texttt{\{title\}}作为页眉。
+  \item 如果没有，则取 \texttt{title}作为页眉。
 \end{itemize}
 \end{itemize}
 
@@ -1192,7 +1191,7 @@ See compat matrix in biblatex or biber PDF documentation.
   \endhead
   s & \texttt{*} & 确认带星号 \tabularnewline
   o & \texttt{[]} & 有且为空，不出现在目录 \tabularnewline
-  m & \texttt{\{\textbackslash{}tongji@ch@name@abstract\}} &
+  m & \texttt{\textbackslash{}tongji@ch@name@abstract} &
   摘要''二字 \tabularnewline
   o &
   \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@abstract]}
@@ -1227,7 +1226,7 @@ See compat matrix in biblatex or biber PDF documentation.
   s & \texttt{*} & 确认带星号\tabularnewline
   o & \texttt{[\textbackslash{}tongji@ch@name@ackn]} &
   在目录中显示 “致谢” \tabularnewline
-  m & \texttt{\{\textbackslash{}tongji@ch@name@ackn\}} &
+  m & \texttt{\textbackslash{}tongji@ch@name@ackn} &
   “致谢”二字\tabularnewline
   o &
   \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}tongji@ch@name@ackn]}
@@ -1258,7 +1257,7 @@ See compat matrix in biblatex or biber PDF documentation.
   s & & 确认带星号\tabularnewline
   o & & 没有，在目录显示 \texttt{m} 参数的文字\tabularnewline
   m &
-  \texttt{\{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname\}}
+  \texttt{\textbackslash{}csname\ list\#2name\textbackslash{}endcsname}
   & 对应的“索引”名字\tabularnewline
   o &
   \texttt{[\textbackslash{}wuhao\ ...\ \textbackslash{}endcsname]} &
