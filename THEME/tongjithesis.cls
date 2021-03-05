@@ -359,9 +359,9 @@
 \captionsetup[table]{position=top, aboveskip=6bp, belowskip={12bp-\intextsep}}
 % 表：caption 在上，段前空 6 磅，段后空 6 磅，单倍行距
 \captionsetup[figure]{position=bottom, aboveskip=6bp, belowskip={6bp-\intextsep}}
-\captionsetup[sub]{font=tongji, aboveskip=6bp, belowskip=6bp}
-\renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.a, 1.b
-\renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.a, 1.b
+\captionsetup[sub]{font=tongji, labelsep=space, aboveskip=6bp, belowskip=6bp}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}% 子图编号是 1.2(a), 1.2(b)
+\renewcommand{\thesubtable}{(\alph{subtable})}% 子表编号是 1.2(a), 1.2(b)
 
 % 圆圈数字序号 \textcircled 的美化
 \RequirePackage{pifont}% 传统方案 pkg{pifont}
