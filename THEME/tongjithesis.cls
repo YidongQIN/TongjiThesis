@@ -316,8 +316,8 @@
   \hypersetup{% 电子版彩色超链接
     colorlinks=true,
     linkcolor=darkgray,
-    anchorcolor=darkred,
     citecolor=darkgreen,
+    urlcolor=darkblue,
   }
 \else
   \hypersetup{% 付印版黑色超链接
