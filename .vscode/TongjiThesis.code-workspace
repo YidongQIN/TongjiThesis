@@ -11,7 +11,6 @@
 			"tab.activeBackground": "#006097ad"
 		},
 		"latex-workshop.latex.autoBuild.run": "onFileChange",
-		"latex-workshop.latex.autoClean.run": "onBuilt",
 		"cSpell.words": [
 			"ARIMA",
 			"CNchence",

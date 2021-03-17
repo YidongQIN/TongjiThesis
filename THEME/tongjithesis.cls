@@ -315,7 +315,9 @@
 \iftongji@electronic
   \hypersetup{% 电子版彩色超链接
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=darkgray,
+    anchorcolor=darkred,
+    citecolor=darkgreen,
   }
 \else
   \hypersetup{% 付印版黑色超链接
