@@ -168,15 +168,20 @@
 原本命名为 `draft` 草稿选项，但是发现这是个与 `ctex` 冲突的选项。
 考虑到 `electronic` 也是个没有用的选项，于是就合并了。
 
-具体使用方法是：
-1. 开启文档类型中的一个新增的参数 `electronic=true`，它会使得原本的多处 `\cleardoublepage` 变为 `\clearpage`。
-2. 使用 `\makecover*{}` 则不生成书脊，或覆盖封面页面 `\begin{titlepage}\chcover\end{titlepage}` 连英文封面也不产生。
-3. 根据布尔值更改宏包 `hyperref` 的超链接颜色：
-   1. 在电子版中，超链接是彩色，而且原本默认的红色内部链接改为蓝色。
-   2. 在非电子的付印版中，所有链接是黑色，方便打印。
-4. 不自动调用`\makeauthorizationpage` 或 `\makedeclarepage`，即不生成声明页面。
-   1. 需要在正式 `.tex` 文件中，在 `\makecover` 命令之后手动调用。
-   2. 同理，后续部分根据要求取舍，比如索引、致谢等。
+开启文档类型中的参数 `electronic=true` 时，具体效果包括：
+1. 封面显示本模板的适用类型，以及 `（打印时删除）` 字样。
+2. 原本的多处 `\cleardoublepage` 变为 `\clearpage`，节约了可能的空白页面。
+3. 开启宏包 `hyperref` 的超链接颜色：
+   1. 内部链接默认是红色，改为深灰色。
+   2. 引用数字改为深绿色。
+   3. URL 链接改为深蓝色。
+
+此外，需要手动操作的部分包括：
+1. 使用 `\makecover*{}` 则不生成书脊。
+   或更进一步，采用 `\begin{titlepage}\chcover\end{titlepage}` 连英文封面也不产生。
+2. 封面不再自动调用`\makeauthorizationpage` 或 `\makedeclarepage`，即不生成声明页面。
+   需要手动生成空白的电子页面、会加入扫面页面。
+3. 同理，后续部分根据要求取舍，比如索引、致谢等。
 
 > 这些特殊页面的生成命令的解耦就是为了能够更加自由的控制。
 > 当然，代价就是新使用者可能会觉得麻烦。
