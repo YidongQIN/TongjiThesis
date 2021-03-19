@@ -681,33 +681,6 @@ CIS/2标准使用\tvt{*.stp}中性格式文件保存数据模型的数据。
 名称属性 \pvp{N} 必须是文本格式、且不允许空格或特殊字符。
 值属性 \pvp{V} 可以是常数、文本、函数表达式，或者引用其他的 对象元素。
 
-\subsection{交叉引用}
-\label{ssc:cross-ref-cmd}
-
-先填充一些废话。\zhlipsum[10]
-
-交叉引用命令 \textbackslash ref 是非常有用的，但是格式上有一个注意点：
-最好在命令的前后用“不可分割空格”（即$\sim$）连接关键文字，以避免换行。
-比如\tvt{图~\textbackslash 1.1 ~}
-
-本次添加了关于“图”、“表”、“章节”等常用的交叉引用命令，方便调用。
-
-然后测试一下新添加的交叉引用命令。
-\begin{itemize}[\textbullet]
-  \item \reftab{tab:tabularx}
-  \item \reffig{fig:ken}
-  \item \refalg{alg:test}
-  \item \reflst{lst:outer}
-  \item \refequ{eq:B}
-  \item \refsec{ssc:cross-ref-cmd}
-  \item \refcha{cha:intro}
-\end{itemize}
-
-好处是，VS Code 依然可以识别这些命令是交叉引用，所以括号内的自动补全是 label 没错。
-
-但是，这种命令还不如直接用 snippet 完成呢，snippet 更具有灵活性。
-所以，未来的版本可能会抛弃这个功能吧。
-
 \subsection{圆圈序号}
 这里是几个圆圈序号测试。
 
