@@ -7,8 +7,9 @@
 	"settings": {
 		"workbench.colorCustomizations": {
 			"titleBar.activeBackground": "#006097",
+			"tab.activeBackground": "#006097ad",
 			"statusBar.background": "#006097",
-			"tab.activeBackground": "#006097ad"
+			"statusBarItem.remoteBackground": "#006097"
 		},
 		"latex-workshop.latex.autoBuild.run": "onFileChange",
 		"cSpell.words": [
