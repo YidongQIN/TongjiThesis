@@ -427,23 +427,23 @@ __以前 CAD 课的要求“数字要比汉字小一号”，算是一个纪念�
 
   ```ini
   ignoreall,
-  top=30.34mm,
-  headsep=4.94mm,
-  headheight=24.81mm,
-  bottom=25.4mm,
-  footskip=5.4mm,
+  top = 30.34 mm,
+  headsep = 4.94 mm,
+  headheight = 24.81 mm,
+  bottom = 25.4 mm,
+  footskip = 5.4 mm,
   ```
 
 * 打开 `includehead` 选项。
 
   ```ini
-  includehead=true,
-  top=20.00mm,
-  headheight=5.4mm,
-  headsep=14bp,
-  includefoot=false,
-  bottom=25.4mm,
-  footskip=5.4mm,
+  includehead = true,
+  top = 20.00 mm,
+  headheight = 5.4 mm,
+  headsep = 14 bp,
+  includefoot = false,
+  bottom = 25.4 mm,
+  footskip = 5.4 mm,
   ```
 
 详细解释见 [页面尺寸、页眉页脚尺寸](#geometry-%e9%a1%b5%e9%9d%a2%e5%b0%ba%e5%af%b8%e9%a1%b5%e7%9c%89%e9%a1%b5%e8%84%9a%e5%b0%ba%e5%af%b8) 一节。
@@ -501,16 +501,16 @@ Adobe、Fandol、思源黑体/宋体是可以正确复制的，而方正、华�
 
 ## 页眉尺寸
 校方模板页眉部分设置有3个参数：
-* 页边距 25.4mm
-* 页眉顶端距离 20mm
-* 正文距离页眉底端 0.7行、即 14bp
+* 页边距 $25.4 mm$
+* 页眉顶端距离 $20 mm$
+* 正文距离页眉底端 $0.7$ 行、即 $14 bp$
 
 如果按照原 $\LaTeX$ 模板的设置，那么页眉**底缘横线**的位置距离纸张顶部 $top-headsep=20mm$。
 
 ```ini
-top=25.4mm,
-headheight=20mm,
-headsep=5.4mm,
+top = 25.4 mm,
+headheight = 20 mm,
+headsep = 5.4 mm,
 ```
 
 所以跟校方模板的要求相差一个页眉行高。
@@ -519,27 +519,27 @@ headsep=5.4mm,
 若要求排版效果跟校方模版的样本（而不是跟其描述内容）一致，需要如下设置。
 
 ```ini
-top=30.34mm,
-headsep=4.94mm,
-headheight=24.81mm,
+top = 30.34 mm,
+headsep = 4.94 mm,
+headheight = 24.81 mm,
 ```
 
-其中，`top` 需要加上 0.7行的高度。
-$top = 2.54cm + 0.7*20bp = 25.4mm + 14*(25.4mm/72) = 30.34mm$
+其中，`top` 需要加上 0.7 行的高度。
+$top = 2.54 cm + 0.7 * 20 bp = 25.4 mm + 14 * (25.4 mm / 72) = 30.34 mm$
 
 用 `headsep` 把页眉“顶”上去。
-$headsep = 0.7*20bp = 14bp = 4.94mm$。
+$headsep = 0.7*20 bp = 14 bp = 4.94 mm$。
 
 `headheight` 计算页眉行行底到页面上边缘距离，需要页眉顶端距离是加上页眉的行高：
-$headheight = 20mm + 10.5bp*1.3 = 24.81mm$。
+$headheight = 20 mm + 1.3 * 10.5 bp = 24.81 mm$。
 
 ## 页脚设置
 校方模板页脚（页码）部分设置有2个参数：
-* 页边距 25.4mm
-* 页脚底端距离 20mm
+* 页边距 25.4 mm
+* 页脚底端距离 20 mm
 
 `\footskip` 指的是 baseline of last line of text and baseline of footer 的距离。
-按照要求，正好就是页边距减去页码边距 $25.4mm - 20.0mm = 5.4mm$。
+按照要求，正好就是页边距减去页码边距 $25.4 mm - 20.0 mm = 5.4 mm$。
 
 ## 更加优雅的方案
 
@@ -548,33 +548,33 @@ $headheight = 20mm + 10.5bp*1.3 = 24.81mm$。
 其实就是更改了测量点。
 
 ```ini
-includehead=true,
-top=20.00mm,
-headheight=5.4mm,
-headsep=14bp,
-includefoot=false,
-bottom=25.4mm,
-footskip=5.4mm,
+includehead = true,
+top = 20.00 mm,
+headheight = 5.4 mm,
+headsep = 14bp,
+includefoot = false,
+bottom = 25.4 mm,
+footskip = 5.4 mm,
 ```
 
 其中，`headsep` 参数控制了页眉底线与正文之间的距离。
 在校方模板中，这个距离是 $0.7$ 倍行高，即$20bp*0.7=14bp$。
 
 同时，观察到每一章都会另起一页，章标题之前的“段前24磅”与此间距叠加，导致空白过大。
-出于美观考虑，在 `ctexset` 中，`chapter` 的 `aboveskip` 设置为 $24bp - 14bp = 10bp$。
-这样，章标题上方距离页眉底端的总距离仍然是 $10+14=24bp$，保持与模板一致。
+出于美观考虑，在 `ctexset` 中，`chapter` 的 `aboveskip` 设置为 $24 bp - 14 bp = 10 bp$。
+这样，章标题上方距离页眉底端的总距离仍然是 $10 + 14 = 24 bp$，保持与模板一致。
 如此，另起一页和居中的标题，也不会降低新一章的辨识度。
 
 ## 吐槽
 
-页码是五号字，即 $10.5/72*25.4 = 3.70mm$ 左右。
-所以说，这样的设置留给页码上边缘和正文下边缘的距离不足 $2mm$。
+页码是五号字，即 $ 10.5 / 72 * 25.4 = 3.70 mm$ 左右。
+所以说，这样的设置留给页码上边缘和正文下边缘的距离不足 $2 mm$。
 
 校方模板中，这个“紧凑”的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
-从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过 $25.4mm + 20bp = 3cm$；
+从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过 $25.4 mm + 20 bp = 3cm$；
 换句话说，如果全用正文字体多填充几页，就很容易发现这个边距其实挺小的。
 
-页眉部分同理，在 word 中控制“页面上边距 $2.54cm$，页眉 $2.0cm$”并且多用正文填充几页，也可以发现，页眉、分割线和正文会挤在一起。
+页眉部分同理，在 MS Word 中控制“页面上边距 $2.54 cm$，页眉 $2.0 cm$”并且多用正文填充几页，也可以发现，页眉、分割线和正文会挤在一起。
 
 校方的“模板”有的细节经不起推敲，自己取舍吧。
 
