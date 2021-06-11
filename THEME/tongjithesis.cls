@@ -109,7 +109,7 @@
 % 将伪粗体与伪斜体的选项传递给xeCJK package
 \PassOptionsToPackage{AutoFakeBold=1.2, AutoFakeSlant}{xeCJK}
 % 使用 CTeX 宏包的默认中文字体配置，支持不同引擎
-\LoadClass[a4paper, openany, UTF8, zihao=-4, scheme=plain]{ctexbook}
+\LoadClass[a4paper, UTF8, zihao=-4, scheme=plain]{ctexbook}
 % 判断是否运行在xetex模式。
 \RequirePackage{ifxetex}
 \ifxetex\relax\else\ClassWarning{TongjiThesis}{XeLaTex Compiler Required \MessageBreak Without XeLaTeX, somefeatures like addCJKfontfeatures and hyperref won't work}{}\fi
@@ -187,7 +187,7 @@
   \@mainmattertrue
 }
 % 创建空白页的宏包
-\RequirePackage{emptypage}
+% \RequirePackage{emptypage}% 导致 cleardoublepage 时完全空白
 \newcommand{\tjclearpage}% 如果是紧凑版，则尽量少空页
   {\iftongji@electronic{\clearpage}\else{\cleardoublepage}\fi}
 % Tikz 绘制的封面中的同济 Logo
@@ -478,7 +478,7 @@
   \IfBooleanF{#1}{% 如果调用的时候不带*，那么 #1 = \BooleanFalse
     \ClassError{tongjithesis}{You have to use the star form: \string\tongji@chapter*}{}
   }% 在cls中的\chapter命令必须带*号。
-  \clearpage
+  \tjclearpage
   \chapter*{#3}% 生成不计入目录的章节标题，后续手动控制它是否加入目录或电子书签
   % \IfValueTF {<argument>} {<true code>} {<false code>}
   \IfValueTF{#2}{% 若第一个o对应的可选参数没有提供，那么#2=-NoValue-,此判断为false。
