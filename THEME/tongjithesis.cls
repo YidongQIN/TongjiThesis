@@ -161,9 +161,9 @@
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}}
-  \fancypagestyle{tongji@appendix@heading}{% 附录页眉样式类似 headings
+  \fancypagestyle{tongji@both@heading}{% 页眉左右一致
     \fancyhead{}
-    \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\appendixname}% 不确定页眉是否左右一致
+    \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\leftmark}% 不确定页眉是否左右一致
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
@@ -185,6 +185,7 @@
 \renewcommand\backmatter{%
   \tjclearpage
   \@mainmattertrue
+  \pagestyle{tongji@both@heading}
 }
 % 创建空白页的宏包
 % \RequirePackage{emptypage}% 导致 cleardoublepage 时完全空白
@@ -497,7 +498,7 @@
     \ifthenelse{\equal{#4}{}}
       {\@mkboth{}{}}% #4=空，则左、右页眉为空、为空
       % 此命令等同于\markboth{left}{right}
-      % 也就是定义一个“left-hand heading” 和“righthand heading”
+      % 也就是定义一个“left-hand heading” 和“right-hand heading”
       % 这样，\leftmark读出来的就是设的left，\rightmark就是设的right
       {% #4 不为空，则成为页眉
         \thispagestyle{fancy}
@@ -930,16 +931,18 @@
 \setlength{\bibnamesep}{0ex}
 \setlength{\bibinitsep}{0ex}
 % 解决参考文献页眉问题（当存在附录时，参考文献页眉会出问题）
-\newcommand\printTJbibliography{\printbibliography[heading=bibintoc]\clearpage}
+\newcommand\printTJbibliography{
+  \ctexset{chapter/pagestyle={tongji@both@heading}}
+  \printbibliography[heading=bibintoc]\clearpage}
 
 %% 附录
 \let\tongji@appendix\appendix
 \renewenvironment{appendix}{% 附录环境
   \ctexset{% 附录仍属于mainmattertrue才能正确编号成附录A的形式。
     % 因此，此处的pagestyle仍然会沿用前面设的chapter的pagestyle，而需要更改附录的页眉，即需要重新设置一下页眉。
-    chapter/pagestyle={tongji@appendix@heading}% 这句用来保证章首页的页眉正确
+    chapter/pagestyle={tongji@both@heading}% 这句用来保证章首页的页眉正确
     }
-  \pagestyle{tongji@appendix@heading}% 这一句是保证附录非章首页的其他页面的页眉正确。
+  \pagestyle{tongji@both@heading}% 这一句是保证附录非章首页的其他页面的页眉正确。
   \let\title\tongji@appendix@title
   \tongji@appendix}{%
   \let\title\@gobble\clearpage}
