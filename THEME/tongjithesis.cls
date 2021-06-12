@@ -152,7 +152,8 @@
     \fancyhead{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0pt}
-    \renewcommand{\footrulewidth}{0pt}}
+    \renewcommand{\footrulewidth}{0pt}
+    }
   \fancypagestyle{tongji@headings}{%
     \fancyhead{}
     \fancyhead[RO]{\wuhao\songti\leftmark}
@@ -185,7 +186,6 @@
 \renewcommand\backmatter{%
   \tjclearpage
   \@mainmattertrue
-  \pagestyle{tongji@back@heading}
 }
 
 \newcommand{\tjclearpage}% 如果是紧凑版，则尽量少空页
@@ -918,7 +918,7 @@
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
-\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
+\tongji@chapter*[]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
 \fangsong\xiaosi[1.5]}{\clearpage\normalsize}
 
 %% 参考文献
