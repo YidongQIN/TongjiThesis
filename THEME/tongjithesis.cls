@@ -161,7 +161,7 @@
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
     \renewcommand{\footrulewidth}{0pt}}
-  \fancypagestyle{tongji@both@heading}{% 页眉左右一致
+  \fancypagestyle{tongji@back@heading}{% 页眉左右一致
     \fancyhead{}
     \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\leftmark}% 不确定页眉是否左右一致
     \fancyfoot{}
@@ -185,10 +185,9 @@
 \renewcommand\backmatter{%
   \tjclearpage
   \@mainmattertrue
-  \pagestyle{tongji@both@heading}
+  \pagestyle{tongji@back@heading}
 }
-% 创建空白页的宏包
-% \RequirePackage{emptypage}% 导致 cleardoublepage 时完全空白
+
 \newcommand{\tjclearpage}% 如果是紧凑版，则尽量少空页
   {\iftongji@electronic{\clearpage}\else{\cleardoublepage}\fi}
 % Tikz 绘制的封面中的同济 Logo
@@ -932,7 +931,7 @@
 \setlength{\bibinitsep}{0ex}
 % 解决参考文献页眉问题（当存在附录时，参考文献页眉会出问题）
 \newcommand\printTJbibliography{
-  \ctexset{chapter/pagestyle={tongji@both@heading}}
+  \ctexset{chapter/pagestyle={tongji@back@heading}}
   \printbibliography[heading=bibintoc]\clearpage}
 
 %% 附录
@@ -940,9 +939,9 @@
 \renewenvironment{appendix}{% 附录环境
   \ctexset{% 附录仍属于mainmattertrue才能正确编号成附录A的形式。
     % 因此，此处的pagestyle仍然会沿用前面设的chapter的pagestyle，而需要更改附录的页眉，即需要重新设置一下页眉。
-    chapter/pagestyle={tongji@both@heading}% 这句用来保证章首页的页眉正确
+    chapter/pagestyle={tongji@back@heading}% 这句用来保证章首页的页眉正确
     }
-  \pagestyle{tongji@both@heading}% 这一句是保证附录非章首页的其他页面的页眉正确。
+  \pagestyle{tongji@back@heading}% 这一句是保证附录非章首页的其他页面的页眉正确。
   \let\title\tongji@appendix@title
   \tongji@appendix}{%
   \let\title\@gobble\clearpage}
