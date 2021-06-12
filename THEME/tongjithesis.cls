@@ -164,7 +164,7 @@
     \renewcommand{\footrulewidth}{0pt}}
   \fancypagestyle{tongji@back@heading}{% 页眉左右一致
     \fancyhead{}
-    \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\leftmark}% 不确定页眉是否左右一致
+    \fancyhead[RO, LE]{\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\leftmark}%
     \fancyfoot{}
     \fancyfoot[C]{\songti\wuhao\thepage}
     \renewcommand{\headrulewidth}{0.5pt}
@@ -918,8 +918,10 @@
 
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
-\tongji@chapter*[]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
-\fangsong\xiaosi[1.5]}{\clearpage\normalsize}
+  \ctexset{chapter/pagestyle={tongji@back@heading}}
+  \pagestyle{tongji@back@heading}
+  \tongji@chapter*[]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
+  \fangsong\xiaosi[1.5]}{\clearpage\normalsize}
 
 %% 参考文献
 % 兼容参考文献的老命令
@@ -932,7 +934,9 @@
 % 解决参考文献页眉问题（当存在附录时，参考文献页眉会出问题）
 \newcommand\printTJbibliography{
   \ctexset{chapter/pagestyle={tongji@back@heading}}
-  \printbibliography[heading=bibintoc]\clearpage}
+  \pagestyle{tongji@back@heading}
+  \printbibliography[heading=bibintoc]
+  \clearpage}
 
 %% 附录
 \let\tongji@appendix\appendix
