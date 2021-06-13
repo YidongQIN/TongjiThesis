@@ -197,12 +197,17 @@
 
 ## 奇数页开始
 
-原模版中向 `ctex` 传入了 `openany` 选项，意思是可以在单数或双数页码开始新的章节。
-其实 book 类型的文档格式，默认设置是 `openright` 即从打开的书册右边、即奇数页开始。
+其实 `ctexbook` 类型的文档格式，默认设置是 `openright` 即从打开的书册右边、即奇数页开始。
+前面“电子版布局模式” 减少空白页，需要向 `ctexbook` 传入了 `openany` 选项，意思是可以在单数或双数页码开始新的章节。
 
-最初为了从奇数页开始新的章，所以取消了这个参数。
+新定义了命令 `\tjclearpage` 用于分割页面。
+根据 `electronic` 模板选项的 True/False 分为两种定义：
+1. 正常版，要从奇数页开始新的 chapter，则相当于 `\cleardoublepage`。
+2. 电子版，要避免空白页，则新相当于 `\clearpage`。
 
-后来开发了 `electronic` 模板选项后，需要分情况是否插入空白页调整章的开始位置，所以需要传入 `openany` 参数。
+模板中新建 chapter 的方法有两种，所以有两种处理方式：
+1. `ctexbook` 的 `openany` 和 `openright` 设置，影响了常规 chapter 的行为。
+2. 自定义的 `\tongji@chapter*` 中 `\clearpage` 设置，影响了自定义的章节（致谢、简历、摘要）等的行为。
 
 取消了宏包 `{emptypage}` 方式填充的空白页导致页眉、页码失效。
 
