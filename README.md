@@ -187,10 +187,19 @@
 > 当然，代价就是新使用者可能会觉得麻烦。
 
 ## 奇数页开始
+
 原模版中向 `ctex` 传入了 `openany` 选项，意思是可以在单数或双数页码开始新的章节。
 其实 book 类型的文档格式，默认设置是 `openright` 即从打开的书册右边、即奇数页开始。
 
-取消了这个参数，于是默认从奇数页开始新的章。
+最初为了从奇数页开始新的章，所以取消了这个参数。
+
+后来开发了 `electronic` 模板选项后，需要分情况是否插入空白页调整章的开始位置，所以需要传入 `openany` 参数。
+同时用自定义的 `\tjclearpage` 手动控制是否从奇数页开始。
+1. 当 `electronic=true` 时，只用 `\clearpage`。
+2. 当 `electronic=false` 时，用 `\cleardoubelpage` 保证每一章从奇数页开始。
+   * 需要在两类地方确保 `\tjclearpage` 的设置。
+   * 一类，调用模板新定义 `\tongji@chapter` 生成的章节，比如致谢、个人简历。
+   * 另一类，是模板 `{ctexbook}` 中的设置，需要用 `break+=` 手动插入一个 `\tjclearpage`。
 
 取消了宏包 `{emptypage}` 方式填充的空白页导致页眉、页码失效。
 
@@ -1122,31 +1131,33 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
     |   m   | `{\tongji@ch@name@abstract}`            | “摘要”二字             |
     |   o   | `[\wuhao ... \tongji@ch@name@abstract]` | 摘要的页眉             |
 
-   英文摘要、目录同理。
+  英文摘要、目录同理。
 
 2. 致谢
 
    `\tongji@chapter*[\tongji@ch@name@ackn]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]`
 
-    | 参数  | 内容                                | 解释                                                                 |
-    | :---: | :---------------------------------- | :------------------------------------------------------------------- |
-    |   s   | `*`                                 | 确认带星号                                                           |
-    |   o   | `[\tongji@ch@name@ackn]`            | 有且不为空，出现在目录中显示 `\tongji@ch@name@ackn` 对应的“致谢”二字 |
-    |   m   | `{\tongji@ch@name@ackn}`            | “致谢”二字                                                           |
-    |   o   | `[\wuhao ... \tongji@ch@name@ackn]` | 致谢的页眉                                                           |
+    | 参数  | 内容                                | 解释                                            |
+    | :---: | :---------------------------------- | :---------------------------------------------- |
+    |   s   | `*`                                 | 确认带星号                                      |
+    |   o   | `[\tongji@ch@name@ackn]`            | 有且不为空，在目录中显示 `\tongji@ch@name@ackn` |
+    |   m   | `{\tongji@ch@name@ackn}`            | “致谢”二字                                      |
+    |   o   | `[\wuhao ... \tongji@ch@name@ackn]` | 致谢的页眉                                      |
+
+   特别的，环境的结尾处 `clearpage` 改为 `\tjclearpage` 否则背面的偶数页页眉会错误地显示上一章的页眉。
 
 3. 不带星号的 `\listof`
 
    `\tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]`
 
-    | 参数  | 内容                             | 解释                            |
-    | :---: | :------------------------------- | :------------------------------ |
-    |   s   |                                  | 确认带星号                      |
-    |   o   |                                  | 没有，在目录显示 `m` 参数的文字 |
-    |   m   | `{\csname list#2name\endcsname}` | 对应的“索引”名字                |
-    |   o   | `[\wuhao ... \endcsname]`        | 索引的页眉                      |
+  | 参数  | 内容                             | 解释                            |
+  | :---: | :------------------------------- | :------------------------------ |
+  |   s   |                                  | 确认带星号                      |
+  |   o   |                                  | 没有，在目录显示 `m` 参数的文字 |
+  |   m   | `{\csname list#2name\endcsname}` | 对应的“索引”名字                |
+  |   o   | `[\wuhao ... \endcsname]`        | 索引的页眉                      |
 
-    正文的章节都是这种类型。
+  正文的章节都是这种类型。
 
 ## 优化电子书签
 

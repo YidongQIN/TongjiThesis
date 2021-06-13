@@ -389,6 +389,7 @@
   autoindent=true,% 首行缩进 2 字符
   chapter={% 章标题
     name={第,章},
+    break+={\tjclearpage},
     format=\centering\heiti\bfseries\sanhao[1],% format 章节标题的全局格式，作用域为章节名字和随后的标题内容。
     nameformat={},% 默认\huge\bfseries，需要取消
     numberformat=\tongji@title@font\xiaosan,% 默认为\huge，改为比中文小一号
@@ -474,11 +475,11 @@
 % 下面定义的用法是：\cs{tongji@chapter*}\oarg{tocline}\marg{title}\oarg{header}
 % 其中 tocline 是出现在目录中的条目，如果为空则此 chapter 不出现在目录中，如果省略表示目录出现 title；title 是章标题；header 是页眉出现的标题，如果忽略则取 title。
 \newcounter{tongji@bookmark}
-\NewDocumentCommand\tongji@chapter{s o m o}{
+\NewDocumentCommand\tongji@chapter{s o m o}{%
   \IfBooleanF{#1}{% 如果调用的时候不带*，那么 #1 = \BooleanFalse
     \ClassError{tongjithesis}{You have to use the star form: \string\tongji@chapter*}{}
   }% 在cls中的\chapter命令必须带*号。
-  \tjclearpage
+  \tjclearpage%
   \chapter*{#3}% 生成不计入目录的章节标题，后续手动控制它是否加入目录或电子书签
   % \IfValueTF {<argument>} {<true code>} {<false code>}
   \IfValueTF{#2}{% 若第一个o对应的可选参数没有提供，那么#2=-NoValue-,此判断为false。
