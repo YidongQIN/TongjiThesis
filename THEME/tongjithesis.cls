@@ -109,7 +109,7 @@
 % 将伪粗体与伪斜体的选项传递给xeCJK package
 \PassOptionsToPackage{AutoFakeBold=1.2, AutoFakeSlant}{xeCJK}
 % 使用 CTeX 宏包的默认中文字体配置，支持不同引擎
-\LoadClass[a4paper, UTF8, zihao=-4, scheme=plain]{ctexbook}
+\LoadClass[a4paper, UTF8, zihao=-4, openany, scheme=plain]{ctexbook}
 % 判断是否运行在xetex模式。
 \RequirePackage{ifxetex}
 \ifxetex\relax\else\ClassWarning{TongjiThesis}{XeLaTex Compiler Required \MessageBreak Without XeLaTeX, somefeatures like addCJKfontfeatures and hyperref won't work}{}\fi
@@ -669,7 +669,7 @@
 
   \vfill
   \sanhao\songti\tongji@ch@date% 日期
-  \tjclearpage
+  \tjclearpage%
 }% 结束中文封面页
 
 %% English Cover 英文封面页面
@@ -719,7 +719,7 @@
 
   \vfill
   \sanhao\rmfamily\tongji@en@date% date
-  \tjclearpage
+  \tjclearpage%
 }% end of english cover
 
 %% 书脊页面，无外框线，含三个默认参数（标题 作者 “同济大学”）
@@ -773,7 +773,7 @@
     }%
   \hfill% 文本框framebox右边的hfill以居中排布
   \restoregeometry%
-  \tjclearpage
+  \tjclearpage%
 }
 
 %% 组装中英文封面与书脊
@@ -803,7 +803,7 @@
     {\tongji@make@declare}% 没有PDF就生成电子版
     {\includepdf{#1}} % 有PDF就导入扫描页
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@declare}
-  \tjclearpage
+  \tjclearpage%
 }
 % 电子版原创性声明页面
 \newcommand{\tongji@make@declare}{%
@@ -830,7 +830,7 @@
     {\tongji@make@authorization}% 没有PDF就生成电子版
     {\includepdf{#1}}% 有PDF就导入扫描页
   \bookmark[dest=\HyperLocalCurrentHref, level=0]{\tongji@ch@name@authorization}
-  \tjclearpage
+  \tjclearpage%
 }
 % 电子版授权页面
 \newcommand{\tongji@make@authorization}{%
@@ -875,7 +875,7 @@
 
 % 原本摘要命令\tongji@makeabstract独立
 \newcommand{\makeabstract}{%
-  \tjclearpage\normalsize% always openright for Abstract
+  \normalsize%
   \tongji@chapter*[]{\tongji@ch@name@abstract}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@abstract]
   \tongji@ch@abstract% 收集了中文摘要正文内容
   \vspace*{12bp}\par% 结束摘要正文，空白段落，开始关键词
@@ -884,14 +884,15 @@
   \hangindent\wd0% 缩进距离相当于 box0 的宽度
   \hangafter1% 从第1行之后，即第2行开始缩进
   \box0% 清空 box0 的设置
-  \tongji@chinesekeywords%输出中文关键词
-  % 结束中文摘要，以下 Abstract。代码涵义不再解析。
+  \tongji@chinesekeywords% 输出中文关键词
+  % 结束中文摘要，以下 Abstract 代码涵义不再解析。
   \tongji@chapter*[]{\tongji@en@name@abstract}[\wuhao\tongji@en@name@school~\tongji@en@degree~\tongji@en@name@abstract]
   \tongji@en@abstract% ABSTRACT text
   \vspace*{12bp}\par
   \setbox0=\hbox{{\bfseries Key Words:\enskip}}
   \noindent\hangindent\wd0\hangafter1
-  \box0\tongji@englishkeywords
+  \box0% 清空 box0 的设置
+  \tongji@englishkeywords%
 }
 
 %% 目录
@@ -919,9 +920,9 @@
 %% 致谢
 \NewDocumentEnvironment{acknowledgement}{}{%
   \ctexset{chapter/pagestyle={tongji@back@heading}}
-  \pagestyle{tongji@back@heading}
   \tongji@chapter*[]{\tongji@ch@name@ackn}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\tongji@ch@name@ackn]
-  \fangsong\xiaosi[1.5]}{\clearpage\normalsize}
+  \fangsong\xiaosi[1.5]}{%
+  \normalsize\tjclearpage}
 
 %% 参考文献
 % 兼容参考文献的老命令
@@ -936,7 +937,7 @@
   \ctexset{chapter/pagestyle={tongji@back@heading}}
   \pagestyle{tongji@back@heading}
   \printbibliography[heading=bibintoc]
-  \clearpage}
+  \tjclearpage}
 
 %% 附录
 \let\tongji@appendix\appendix
@@ -946,9 +947,10 @@
     chapter/pagestyle={tongji@back@heading}% 这句用来保证章首页的页眉正确
     }
   \pagestyle{tongji@back@heading}% 这一句是保证附录非章首页的其他页面的页眉正确。
-  \let\title\tongji@appendix@title
+  \let\title\tongji@appendix@title%
   \tongji@appendix}{%
-  \let\title\@gobble\clearpage}
+  \let\title\@gobble%
+  \tjclearpage}
 
 %% 个人简历
 \newenvironment{resume}{%
@@ -968,7 +970,7 @@
   \begin{tongji@denotation}[labelwidth=#1]
   }{%
   \end{tongji@denotation}
-  \clearpage
+  \tjclearpage%
 }
 \newlist{tongji@denotation}{description}{1}% 基于 description 的专用列表样式
 \setlist[tongji@denotation]{%
@@ -991,12 +993,11 @@
   \IfBooleanTF#1
   {% 带星 \listof* 的不加入目录
     \tongji@chapter*[]{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]
-    \tongji@starttoc{#2}
-    \clearpage}
+    \tongji@starttoc{#2}}
   {% 不带星 \listof 加入目录
-    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]
-    \tongji@starttoc{#2}
-    \clearpage}
+    \tongji@chapter*{\csname list#2name\endcsname}[\wuhao\songti\tongji@ch@name@school~\tongji@ch@type@apply~\csname list#2name\endcsname]%
+    \tongji@starttoc{#2}}
+    \tjclearpage
   }
 % 图索引
 \RenewDocumentCommand\listoffigures{s}{\IfBooleanTF#1
