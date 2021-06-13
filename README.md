@@ -171,10 +171,19 @@
 开启文档类型中的参数 `electronic=true` 时，具体效果包括：
 1. 封面显示本模板的适用类型，以及 `（打印时删除）` 字样。
 2. 原本的多处 `\cleardoublepage` 变为 `\clearpage`，~~节约了可能的空白页面~~。
-3. 开启宏包 `hyperref` 的超链接颜色：
+3. 用自定义的 `\tjclearpage` 手动控制是否从奇数页开始。
+   1. 当 `electronic=true` 时，只用 `\clearpage`。
+   2. 当 `electronic=false` 时，用 `\cleardoubelpage` 保证每一章从奇数页开始。
+4. 开启宏包 `hyperref` 的超链接颜色：
    1. 内部链接默认是红色，改为深灰色。
    2. 引用数字改为深绿色。
    3. URL 链接改为深蓝色。
+
+其中 `\tjclearpage` 需要在两类地方确保 `\tjclearpage` 的设置。
+1. 一类，调用模板新定义 `\tongji@chapter` 生成的章节，比如致谢、个人简历等。
+2. 另一类，是模板 `{ctexbook}` 中的设置，需要用 `break+=` 手动插入一个 `\tjclearpage`。
+
+这是因为，正文的 chapter 是直接由 ctex 产生，没有调用新模板定义的章节产生命令。
 
 此外，需要手动操作的部分包括：
 1. 使用 `\makecover*{}` 则不生成书脊。
@@ -194,12 +203,6 @@
 最初为了从奇数页开始新的章，所以取消了这个参数。
 
 后来开发了 `electronic` 模板选项后，需要分情况是否插入空白页调整章的开始位置，所以需要传入 `openany` 参数。
-同时用自定义的 `\tjclearpage` 手动控制是否从奇数页开始。
-1. 当 `electronic=true` 时，只用 `\clearpage`。
-2. 当 `electronic=false` 时，用 `\cleardoubelpage` 保证每一章从奇数页开始。
-   * 需要在两类地方确保 `\tjclearpage` 的设置。
-   * 一类，调用模板新定义 `\tongji@chapter` 生成的章节，比如致谢、个人简历。
-   * 另一类，是模板 `{ctexbook}` 中的设置，需要用 `break+=` 手动插入一个 `\tjclearpage`。
 
 取消了宏包 `{emptypage}` 方式填充的空白页导致页眉、页码失效。
 
