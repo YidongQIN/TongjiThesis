@@ -1,7 +1,7 @@
 同济 $\LaTeX{}$ 大论文模板
 ======
 
-为了**简化大论文的排版工作**，决心采用LaTeX进行论文撰写。
+为了**简化大论文的排版工作**，决心采用 $\LaTeX{}$ 进行论文撰写。
 感谢校友 marquistj13 的 [TongjiThesis 模版](https://github.com/marquistj13/TongjiThesis)。
 
 本 README 记录了自己在 $\LaTeX$ 方面踩过的坑，以及按照自己的思路进行的调整。
@@ -39,10 +39,10 @@
 
 1. 校方模版中校徽都不舍得提供向量图。
 
-   借用了 [关于Logo #20](https://github.com/marquistj13/TongjiThesis/issues/20) 中 [chennanzhang](https://github.com/chennanzhang) 用宏包 `Tikz` 绘制的学校 Logo。
+   * 借用了 [关于Logo #20](https://github.com/marquistj13/TongjiThesis/issues/20) 中 [chennanzhang](https://github.com/chennanzhang) 用宏包 `Tikz` 绘制的学校 Logo。
 
-   不过，其中的距离尺寸都是手动测量的，与校方模板终归有偏差。
-   原 `\includegraphics` 仍予以保留。
+   * 不过，其中的距离尺寸都是手动测量的，与校方模板终归有偏差。
+     原 `\includegraphics` 插入图片的方法仍予以保留。
 
 2. 各个元素之间的间距没有出确定值，只是大概的“换一行”、“空半行”。
 
@@ -71,7 +71,7 @@
 在新的校方模板中，封面 `electronic` 和 `secret` 选项均已失去了意义；
 但考虑到日后万一又加了回来，故不做删除、予以保留。
 
-此外，尝试采用`CTeX` 提供的 `\zihao{}` 命令，但是发现反而没有原模版的旧命令好用。
+此外，尝试采用 `CTeX` 提供的 `\zihao{}` 命令，但是发现反而没有原模版的旧命令好用。
 因为校方模版许多地方要求同时更改字号和行距，旧命令可以很方便地执行。
 
 ## 命名空间
@@ -128,10 +128,10 @@
 
 经过测试，`\hspace{0.65em}` 始得汉字基本处于 framebox 的中央。
 猜测是跟仿宋字体的宽高比 $0.7$ 有关。
-四号字高度是 $14.0$ pt（$1.00$ em），即 frame 的横向尺寸。
-四号字显示宽度为 $0.7 \times 14 = 9.8$ pt（$0.70$ em），所以反转后基线左、右侧各 $4.9$ pt。
-则汉字轴线到右侧 frame 的距离依然是四号字高度 $14.0$ pt。
-则为了使得汉字轴线在 frame 居中，左侧需要填充的偏移距离是 $14.0-4.9=9.1$ pt（$0.65$ em）。
+四号字高度是 $14.0 pt$（$1.00 em$），即 frame 的横向尺寸。
+四号字显示宽度为 $0.7 \times 14 = 9.8 pt$（$0.70 em$），所以反转后基线左、右侧各 $4.9 pt$。
+则汉字轴线到右侧 frame 的距离依然是四号字高度 $14.0 pt$。
+则为了使得汉字轴线在 frame 居中，左侧需要填充的偏移距离是 $14.0-4.9=9.1 pt$（$0.65 em$）。
 
 不过，如果同时出现旋转和非旋转的字体，那么这个偏移问题还是没有解决。
 最明显的例子，就是标题中的汉字旋转后，与英文字母或模板中的 $\LaTeX{}$ 符号，有明显的上下偏移。
@@ -156,6 +156,9 @@
 \makedeclarepage[../data/scandecl.pdf]% 插入扫描版的《原创声明》PDF文件
 ```
 
+其实是无用的命令。
+一般都是直接签写、不用扫描的。
+
 ## PDF 元数据
 
 用 `\hypersetup{\pdftitle={}}` 把文档的元数据写入 PDF 文件的属性。
@@ -175,15 +178,15 @@
    1. 当 `electronic=true` 时，只用 `\clearpage`。
    2. 当 `electronic=false` 时，用 `\cleardoubelpage` 保证每一章从奇数页开始。
 4. 开启宏包 `hyperref` 的超链接颜色：
-   1. 内部链接默认是红色，改为深灰色。
-   2. 引用数字改为深绿色。
-   3. URL 链接改为深蓝色。
+   1. 内部链接显示为深灰色。
+   2. 引用数字显示为深绿色。
+   3. URL 链接显示为深蓝色。
 
-其中 `\tjclearpage` 需要在两类地方确保 `\tjclearpage` 的设置。
-1. 一类，调用模板新定义 `\tongji@chapter` 生成的章节，比如致谢、个人简历等。
+其中 `\tjclearpage` 需要在两类地方确保：
+1. 第一类，调用模板新定义 `\tongji@chapter` 生成的章节，比如致谢、个人简历等；
 2. 另一类，是模板 `{ctexbook}` 中的设置，需要用 `break+=` 手动插入一个 `\tjclearpage`。
-
-这是因为，正文的 chapter 是直接由 ctex 产生，没有调用新模板定义的章节产生命令。
+   * 因为正文的 chapter 是直接由 ctex 产生，没有调用新模板定义的章节命令。
+   * 所以需要手动插入 `\tjclearpage`。
 
 此外，需要手动操作的部分包括：
 1. 使用 `\makecover*{}` 则不生成书脊。
@@ -209,7 +212,8 @@
 1. `ctexbook` 的 `openany` 和 `openright` 设置，影响了常规 chapter 的行为。
 2. 自定义的 `\tongji@chapter*` 中 `\clearpage` 设置，影响了自定义的章节（致谢、简历、摘要）等的行为。
 
-取消了宏包 `{emptypage}` 方式填充的空白页导致页眉、页码失效。
+取消了宏包 `{emptypage}` 方式填充的空白页。
+因为该宏包导致页眉、页码消失，产生了完全的空白页。
 
 ## 索引修复
 
@@ -249,7 +253,7 @@
 但是此时发现，这个功能直接用 snippet 完成仿佛更加合适、灵巧。
 因此又放弃了这些命令。
 
-附上取而代之的 snippet。
+附上取而代之的 VS Code 的 snippet。
 
 ```json
 "Ref with Prefix": {
@@ -264,21 +268,23 @@
 ## 模板结构调整
 
 按照 [cls guide](http://texdoc.net/texmf-dist/doc/latex/base/clsguide.pdf) 的理解，宏包 package 是更加具有通用性的文件，而 cls 类文件仅仅对一类文档有用。
-所以，按照自己的思路重新调整了cls和sty文件。
+所以，按照自己的思路重新调整了`.cls`和 `.sty` 文件。
 
-* `.cls` 旨在满足**基本要求**：
+* `.cls` 旨在满足 **基本要求**：
 
   《同济大学学位论文写作规范》等校方模版的要求，学术论文习惯（例如三线表格）。
 
-* `.sty` 提供**扩展工具**：
+* `.sty` 提供 **扩展工具**：
 
   此类并不是每个人都需要，完全可以注释、删除掉。
 
-比如原本 `.cls` 中有细致地美化了脚注 `\footnote` 命令。
+比如，原本 `.cls` 中有细致地美化了脚注 `\footnote` 命令。
 因为下划线、脚注并不常用，而且校方模版中也没有样式说明，所以移入了 `.sty` 文件。
 
-同理，表格类宏包和设置（比如跨页长表格）基本都从 `.cls` 移至 `.sty`；
-`.cls` 文件中只有基本的三线表格实现。
+同理，表格类宏包和设置：
+* `.cls` 中只有基本的三线表格实现。
+* `.sty` 中有跨页长表格等。
+
 特殊环境（算法环境，源代码环境）也放入了 `.sty` 文件。
 
 实际上，本模板的 `tongjithesis.sty` 文件完全可以移除，也不影响 *基本* 的使用。
@@ -332,13 +338,14 @@ __以前 CAD 课的要求“数字要比汉字小一号”，算是一个纪念�
 
 后者的样式定义，则在 `{text}` 中指定即可。
 
-曾经，本模板新定义了命令 `\colorurl`，用于彩色展示 URL。
-不过，该命令仅当 `electronic=false` 时才生效，当 `electronic=true` 时 URL 的颜色由 `hyperref` 宏包的设置接管。
-所以属于画蛇添足的行为罢了，权当练习了。
+> 曾经，本模板新定义了命令 `\colorurl`，用于彩色展示 URL。
+> 不过，该命令仅当 `electronic=false` 时才生效，当 `electronic=true` 时 URL 的颜色由 `hyperref` 宏包的设置接管。
+> 所以属于画蛇添足的行为罢了，权当练习了。
 
 ## 圆圈序号
 之前一直困于多级列表与段落的样式过于重合，想寻找中文中常用的、更多的序号样式。
 整理脚注的时候，也发现圆圈样式的实现很特别，所以就找到了一篇关于 [带圈数字](https://stone-zeng.github.io/2019-02-09-circled-numbers/) 的实现教程，将部分成果吸纳进了这个模板。
+
 > 根本原因，是为了使小段落的标题样式，跟老板编的教材保持一致。
 
 传统方法是利用 `pifont` 宏包，它封装了很多PostScript 字体。这也是原模板采用的美化方法。
@@ -584,7 +591,7 @@ footskip = 5.4 mm,
 ```
 
 其中，`headsep` 参数控制了页眉底线与正文之间的距离。
-在校方模板中，这个距离是 $0.7$ 倍行高，即$20bp*0.7=14bp$。
+在校方模板中，这个距离是 $0.7$ 倍行高，即$20 bp \times 0.7=14 bp$。
 
 同时，观察到每一章都会另起一页，章标题之前的“段前24磅”与此间距叠加，导致空白过大。
 出于美观考虑，在 `ctexset` 中，`chapter` 的 `aboveskip` 设置为 $24 bp - 14 bp = 10 bp$。
@@ -593,11 +600,11 @@ footskip = 5.4 mm,
 
 ## 吐槽
 
-页码是五号字，即 $ 10.5 / 72 * 25.4 = 3.70 mm$ 左右。
+页码是五号字，即 $10.5 \div 72 \times 25.4 = 3.70 mm$ 左右。
 所以说，这样的设置留给页码上边缘和正文下边缘的距离不足 $2 mm$。
 
 校方模板中，这个“紧凑”的边距并不明显，是因为最后一行如果行距不够的情况，会排入下一页；
-从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过 $25.4 mm + 20 bp = 3cm$；
+从而相当于空出了将近一行的距离，正文底线到页底的边距可能超过 $25.4 mm + 20 bp = 3 cm$；
 换句话说，如果全用正文字体多填充几页，就很容易发现这个边距其实挺小的。
 
 页眉部分同理，在 MS Word 中控制“页面上边距 $2.54 cm$，页眉 $2.0 cm$”并且多用正文填充几页，也可以发现，页眉、分割线和正文会挤在一起。
@@ -648,8 +655,8 @@ footskip = 5.4 mm,
 \documentclass[scheme=plain]{ctexbook}
 \ctexset{
   chapter={
-    format=\small,
-    titleformat={},
+    format      = \small,
+    titleformat = {},
   }
 }
 ```
@@ -677,7 +684,7 @@ footskip = 5.4 mm,
 在 `ctexset` 中，章节标题在不同 schema 下已经有默认值，如果不取消则会继承，所以如果要定制章节标题样式，需要记得取消默认设置。
   * 通常，`\section` 以下的默认设置均为空（`={}`），比较省心。
 
-对于，ctex 的中文字体命令调用了的还是 xeCJK，其**只**对 CJK 中日韩文字有效果，而对英文和数字不起效果。所以采用 `ctex` 提供的 `\songti`，`\heiti` 等命令均不会影响英文字母和数字的字体。
+对于，ctex 的中文字体命令调用了的还是 xeCJK，其 **只** 对 CJK 中日韩文字有效果，而对英文和数字不起效果。所以采用 `ctex` 提供的 `\songti`，`\heiti` 等命令均不会影响英文字母和数字的字体。
 这是 `xeCJK` 宏包的底层设计，使得 CJK 的字体可以独立于英语字体设置。。
 
 如果必要调整字体，可以用宏包 `{fontspec}` 处理。
@@ -751,13 +758,12 @@ footskip = 5.4 mm,
 这项修改纯属本人对于文件夹的某种奇怪强迫症而已，望同学们不要模仿——这项功能毫无意义。
 
 分章节独立编译常用宏包是 `{subfiles}` 和 `{standalone}` 两个。
-前者更加简单；后者提供了更多的控制选项，代价是更复杂一些。
-
-宏包 `{subfiles}` 文档 <http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/subfiles/subfiles.pdf>。
+* 前者更加简单；
+* 后者提供了更多的控制选项，代价是更复杂一些。
 
 ## 状况描述
 
-如果把章节 .tex 文档放到另一个文件夹中，则宏包、参考文献和图片的路径相对位置是不同的。
+如果把章节 `.tex` 文档放到另一个文件夹中，则宏包、参考文献和图片的路径相对位置是不同的。
 会编译报错，比如找不到文件。
 
 ## 答疑
@@ -769,27 +775,27 @@ footskip = 5.4 mm,
 
 调整过后的文档结构示意如下。
 
-```
+```latex
 ..  % 主文件夹 Master Folder
-|-- appendix\ % 附录
+|-- appendix/ % 附录
     |-- appendix.tex % 附录章节，可以在一个.tex文件中分\chapter，也可以每章一个.tex文件。
-|-- body\ % 正文
+|-- body/ % 正文
     |-- chapter1.tex % 单独章节
     |-- chapter2.tex
-|-- code\ % 存放代码，用于algorithm和listing环境引用。
-|-- figure\ % 各类图片
+|-- code/ % 存放代码，用于algorithm和listing环境引用。
+|-- figure/ % 各类图片
     |-- fig1,2,...[png|pdf|eps|...]
-|-- pages\ % 格式化的页面
+|-- pages/ % 格式化的页面
     |-- abstract.tex % 摘要，以{environment}形式
     |-- acknowledge.tex % 致谢，以{environment}形式
     |-- cover.tex % 封面信息，填表
     |-- denotation.tex % 符号对照表，以{environment}形式（description列表）
     |-- resume.tex % 个人简历，以{environment}形式
-|-- main\
+|-- main/
     |-- Thesis.tex % 组装成完整的论文
-|-- ref\
+|-- ref/
     |-- references.bib % 参考文献
-|-- THEME\ % 用于存放模板样式文件
+|-- THEME/ % 用于存放模板样式文件
     |-- tongjithesis.cls % class文件
     |-- tongjithesis.sty % package文件
     |-- tongjithesis.cfg % 配置 configuration 文件
@@ -799,8 +805,8 @@ footskip = 5.4 mm,
 
 ### 在主文件 main.tex 中的调整
 
-各种路径都要先用`../`回到上一层、然后再指定平级目录、最后指定文件。
-虽然这种操作不是很常见，但是相比正常路径，也就多了`../`这一步，算是可以接受。
+各种路径都要先用 `../` 回到上一层、然后再指定平级目录、最后指定文件。
+虽然这种操作不是很常见，但是相比正常路径，也就多了 `../` 这一步，算是可以接受。
 
 ```latex
 \documentclass[bibtype=numeric]{../THEME/tongjithesis} % 1. 文档类型
@@ -874,11 +880,12 @@ You have requested document class `../THEME/tongjithesis',
 ### 讨论
 
 * 命令 `kpsewhich` 是 $\TeX Live$ 命令，用法参看 `texlive-en.pdf`；如果是其他发行版，需要另行找资料。
-* 「安装」在 `TEXMFHOME` 中的文件，只有（登陆操作系统的）当前用户可以使用。
-  + 如果希望为所有用户「安装」，可以把第二步中的 TEXMFHOME 替换为 TEXMFLOCAL。
+* 安装在 `TEXMFHOME` 中的文件，只有（登陆操作系统的）当前用户可以使用。
+  + 如果希望为所有用户安装，可以把第二步中的 TEXMFHOME 替换为 TEXMFLOCAL。
   + 此时，还需要第七步：以管理员权限在终端执行 `texhash` 命令。
 * 变量 `TEXMFHOME` 的值（第二步中得到的路径）可以修改，还可以包括多个路径。
-* 变量 `TEXMFHOME` 储存的每一个路径，都要满足特定的目录结构要求，称为 TDS (TeX Directory Structure)。有时也叫做 texmf 树。在步骤介绍中，
+* 变量 `TEXMFHOME` 储存的每一个路径，都要满足特定的目录结构要求，称为 TDS （TeX Directory Structure）。
+  + 有时也叫做 texmf 树。在步骤介绍中，
   + `tex/latex/` 两层目录是 TDS 强制的，表示【这是 latex 格式的宏包文件】。
   + `my-pkg/` 一层，体现的是包名（package name），可以任取。有多个包时，可以在 `tex/latex/` 下建立多个文件夹。
 * 可以用符号链接的方式把宏文件（包括但不限于 sty, cls, tex, def 等）加到 TDS 的特定子目录中。符号链接能进一步提高宏文件的可维护性。
@@ -915,9 +922,8 @@ Package xkeyval Error: `gbnamefmt` undefined in families `blx@opt@pre`.
 * gb7714-2015.cbx
 * gb7714-2015ay.cbx
 
-原README也指出了这个问题。
-此外，如下论坛帖也有详细说明。
-https://blog.genkun.me/post/xjtu-undergraduate-thesis/
+原README也指出了这个问题；
+此外，此[论坛帖](https://blog.genkun.me/post/xjtu-undergraduate-thesis/)也有详细说明。
 
 # Biber 版本错误
 
@@ -931,9 +937,9 @@ This means that your biber (2.12) and biblatex (3.11) versions are incompatible.
 See compat matrix in biblatex or biber PDF documentation.
 ```
 
-本项目编译时(2019年3月)，TexLive 提供的的最新版本 biber 2.1 与 biblatex 3.12 不能兼容。
+本项目编译时（2019年3月）， $\TeX Live$ 提供的的最新版本 biber 2.1 与 biblatex 3.12 不能兼容。
 
-其官方论坛也承认了这个bug，且唯一办法就是 (downgrade biber)[https://bugs.archlinux.org/task/60844]。
+其官方论坛也承认了这个bug，且唯一办法就是 [downgrade biber](https://bugs.archlinux.org/task/60844)。
 
 ## 答疑
 
@@ -1013,6 +1019,8 @@ $\LaTeX$ 原生没有“公式索引”这样的命令，所以是从清华的�
 
 一个稍微复杂的方案，是手动用 Acrobat 或者其他阅读器删除一个多余的“代码片段”电子书签。
 或者，重新定义这个代码索引生成方法。
+
+或者，学习其他索引的定义方法，自己开发新的索引定义。
 
 首先，查看 `\lstlistoflistings` 的定义方式。
 
